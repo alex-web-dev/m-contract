@@ -1025,6 +1025,7 @@ button {
 }
 
 .steps__tab-left {
+  position: relative;
   width: 50%;
 }
 
