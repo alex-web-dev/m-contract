@@ -679,16 +679,10 @@ button {
   flex-direction: column;
 }
 
-.down-btn img {
-  opacity: 0.5;
-}
-
-.down-btn img:not(:first-child) {
-  margin-top: -5px;
-}
-
-.down-btn img:last-child {
-  opacity: 1;
+.down-btn object {
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
 }
 
 .nav-btns {

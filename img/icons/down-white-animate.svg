@@ -1,0 +1,71 @@
+<svg
+  viewBox="0 0 36 50"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:anim="http://www.w3.org/2000/anim"
+>
+  <style>
+    @keyframes fade {
+    0% {
+    opacity: 0;
+    transform: translateY(-28%);
+    }
+
+    25% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+    100% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    }
+
+    @keyframes fade_2 {
+    0% {
+    opacity: 1;
+    }
+
+    5% {
+    opacity: 1;
+    }
+
+    25% {
+    opacity: 0;
+    }
+
+    75% {
+    opacity: 1;
+    }
+
+    100% {
+    opacity: 0;
+    }
+    }
+
+    path:nth-child(1) {
+    animation: fade 4s ease-in-out infinite forwards;
+    }
+
+    path:nth-child(2) {
+    animation: fade_2 4s ease-in-out infinite forwards;
+    }
+  </style>
+  <g id="animation">
+    <path
+      id="Rectangle 89"
+      d="M34.877 31.2578L17.877 48.3514L0.876952 31.2578"
+      stroke="white"
+      anim:opacity="1[0:1:0:ease-in-out]"
+    ></path>
+    <path
+      id="Rectangle 90"
+      d="M34.877 31.2578L17.877 48.3514L0.876952 31.2578"
+      stroke="white"
+      anim:opacity="0[0:1:1:ease-in-out]"
+      anim:y="0[0:1:14:ease-in-out]"
+    ></path>
+  </g>
+
+</svg>
