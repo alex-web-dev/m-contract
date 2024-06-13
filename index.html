@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <title>M-Contract</title>
+  </head>
+
+  <body class="body">
+    <header class="header">
+      <div class="container container--px-0">
+        <div class="header__content">
+          <a href="#" class="logo header__logo">
+            <svg class="logo__img" width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M26.7917 0.418701H27.2111L53.5692 26.7841L53.571 27.2033L27.2108 53.5812H26.7915L0.429199 27.2033L0.431053 26.7841L26.7917 0.418701ZM30.369 34.8796L28.341 32.8481L29.2156 31.9735L31.2481 34.0019L30.369 34.8796ZM32.0828 33.1681L30.0503 31.1388L30.9443 30.2449L32.9769 32.275L32.0828 33.1681ZM16.3512 27.5662V40.9787L27.0014 51.635L37.6516 40.9774V27.6018L33.8026 31.4502C32.1755 29.8228 30.5489 28.2057 28.9209 26.5764L26.955 28.5452C24.8939 30.2324 22.2114 27.6621 24.0312 25.6215L25.9222 23.7277L16.3512 14.1586V25.4162L20.4328 29.4974L20.9747 28.9548C21.9359 28.1502 23.6393 29.3832 23.6343 30.543C24.3853 30.4226 25.5395 31.2768 25.507 32.2442C26.2009 32.2712 27.1575 32.9988 27.1489 33.9666C27.5639 33.973 28.0578 34.2321 28.4057 34.6386L29.5114 35.741L27.0253 38.2267L26.6251 37.8271L26.2003 37.4028C26.7326 36.873 27.2641 36.3431 27.7989 35.812L27.0031 35.016L25.4055 36.6089L24.5149 35.7193C25.0475 35.189 25.5793 34.6588 26.1146 34.1272L25.2548 33.2669C24.7198 33.7989 24.1882 34.3296 23.655 34.8607L22.7734 33.9802L24.3675 32.3792L23.5309 31.5422C22.9994 32.079 22.4692 32.6124 21.9391 33.1469L21.0479 32.257C21.5816 31.725 22.1144 31.1933 22.6497 30.6607L21.8196 29.8272L20.2197 31.4298L16.3512 27.5662ZM14.8689 39.4954V26.0822L9.085 20.2915L8.73202 20.6447V33.3551L14.8689 39.4954ZM7.24958 31.8718V22.1283L2.38062 26.9999L7.24958 31.8718ZM10.155 19.2209L14.8689 23.9342V14.5044L10.155 19.2209ZM16.8678 12.5043L27.0014 22.6511L37.1422 12.5131L27.0014 2.36484L16.8678 12.5043ZM39.1339 14.5061V23.9264L43.844 19.219L39.1339 14.5061ZM46.7532 22.1301V31.8698L51.6201 26.9999L46.7532 22.1301ZM45.2708 33.3532V20.6466L44.9374 20.3132L39.1339 26.119V39.4943L45.2708 33.3532ZM37.6516 14.1416L25.1091 26.6993C24.3741 27.3499 25.2778 28.1225 25.8763 27.4666L28.8467 24.4957L33.7058 29.3511L37.6516 25.4076V14.1416Z"
+                fill="#182136" />
+            </svg>
+            <div class="logo__text">M-contract</div>
+          </a>
+          <div class="search header__search">
+            <div class="search__content">
+              <button class="search__btn search__btn--close">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.77051 2.77051L19.0471 19.2293" stroke-linecap="round" />
+                  <path d="M19.2297 2.77051L2.95312 19.2293" stroke-linecap="round" />
+                </svg>
+              </button>
+              <button class="search__btn search__btn--filter">
+                <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.99512 17.6387C10.2378 17.6387 11.2451 16.6313 11.2451 15.3887C11.2451 14.146 10.2378 13.1387 8.99512 13.1387C7.75248 13.1387 6.74512 14.146 6.74512 15.3887C6.74512 16.6313 7.75248 17.6387 8.99512 17.6387Z" />
+                  <path
+                    d="M14.8789 11.6274C16.1215 11.6274 17.1289 10.6201 17.1289 9.37744C17.1289 8.1348 16.1215 7.12744 14.8789 7.12744C13.6363 7.12744 12.6289 8.1348 12.6289 9.37744C12.6289 10.6201 13.6363 11.6274 14.8789 11.6274Z" />
+                  <path
+                    d="M5.82642 5.5C7.06906 5.5 8.07642 4.49264 8.07642 3.25C8.07642 2.00736 7.06906 1 5.82642 1C4.58377 1 3.57642 2.00736 3.57642 3.25C3.57642 4.49264 4.58377 5.5 5.82642 5.5Z" />
+                  <path d="M1 15.3887H6.745" stroke-linecap="round" />
+                  <path d="M11.2451 15.3887H19.2401" stroke-linecap="round" />
+                  <path d="M1 3.36621H3.58" stroke-linecap="round" />
+                  <path d="M8.07251 3.36621H19.24" stroke-linecap="round" />
+                  <path d="M1 9.37744H12.6287" stroke-linecap="round" />
+                  <path d="M17.1289 9.37744H19.2402" stroke-linecap="round" />
+                </svg>
+              </button>
+              <input class="search__field" type="text" placeholder="Поиск" />
+              <button class="search__btn search__btn--submit">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.9999 18.9999L14.6499 14.6499" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+            <button class="search__toggle">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.9999 18.9999L14.6499 14.6499" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="header__user">
+            <a class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link" href="#">
+              Разместить объявление
+            </a>
+            <a class="link link--iflex link--medium link--upper link--spacing-10 header__user-link header__user-link--login" href="#">
+              <svg
+                class="link__icon link__icon--mx-sm"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.6709 1H23.0001V23H11.6709" stroke-linecap="round" />
+                <path
+                  d="M11.9048 8.49023L16.0646 11.8132C16.0927 11.8354 16.1153 11.8638 16.1309 11.8962C16.1465 11.9286 16.1546 11.9641 16.1546 12.0002C16.1546 12.0362 16.1465 12.0717 16.1309 12.1041C16.1153 12.1365 16.0927 12.1649 16.0646 12.1871L11.9048 15.5101"
+                  stroke-linecap="round" />
+                <path d="M15.6895 12.001L0.999985 12.001" stroke-linecap="round" />
+              </svg>
+              <span>Вход</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="banner">
+        <div class="banner__main">
+          <div class="banner__main-content">
+            <div class="banner__info">
+              <div class="text text--xs text--medium text--upper text--spacing-10 banner__subtitle">Электронная торговая площадка</div>
+              <h1 class="title title--1 title--gray-300 banner__title">
+                Продажа и закупка
+                <b>вторичного сырья и&nbsp;готовой продукции</b>
+              </h1>
+            </div>
+            <div class="banner__images">
+              <object class="banner__img" data="img/banner-section/1.svg" width="350" height="350"></object>
+              <object class="banner__img" data="img/banner-section/2.svg" width="582" height="314"></object>
+            </div>
+          </div>
+          <div class="banner__bg-boxes">
+            <div class="bg-box banner__bg-box"></div>
+            <div class="bg-box banner__bg-box"></div>
+            <div class="bg-box banner__bg-box"></div>
+            <div class="bg-box banner__bg-box"></div>
+            <div class="bg-box banner__bg-box"></div>
+            <div class="bg-box banner__bg-box"></div>
+          </div>
+        </div>
+        <div class="banner__bg-images">
+          <img class="banner__bg-img" src="img/banner-section/bg-images/1.svg" alt="" />
+          <img class="banner__bg-img" src="img/banner-section/bg-images/2.svg" alt="" />
+          <img class="banner__bg-img" src="img/banner-section/bg-images/3.svg" alt="" />
+          <img class="banner__bg-img" src="img/banner-section/bg-images/4.svg" alt="" />
+          <img class="banner__bg-img" src="img/banner-section/bg-images/5.svg" alt="" />
+        </div>
+        <a class="down-btn banner__down" href="#features">
+          <img src="img/icons/down-thin-white.svg" alt="" />
+          <img src="img/icons/down-thin-white.svg" alt="" />
+        </a>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container container--px-0">
+          <div class="features__content">
+            <div class="features__list">
+              <div class="feature-item features__item">
+                <div class="feature-item__content">
+                  <h2 class="title title--2 feature-item__title">Наша цель</h2>
+                  <div class="text text--lg text--lh-16 feature-item__text">
+                    <p>
+                      Предоставить всем организациям и индивидуальным предпринимателям возможность быстро просто и выгодно продавать и
+                      покупать сырье, а также многие виды уже готовых изделий. Ассортимент площадки будет постоянно увеличиваться.
+                    </p>
+                  </div>
+                  <img class="feature-item__img" src="img/features/1.svg" alt="" />
+                </div>
+                <button class="feature-item__more">
+                  <img src="img/icons/down-black.svg" alt="">
+                </button>
+              </div>
+              <div class="feature-item features__item">
+                <div class="feature-item__content">
+                  <h2 class="title title--2 feature-item__title">Как работаем</h2>
+                  <div class="text text--lg text--lh-16 feature-item__text">
+                    <p>
+                      M-CONTRACT использует метод сбора оферт (предложений) участников. И если по окончанию подачи предложений организатор
+                      процедуры на закупку или продажу выбирает победителя, то это является акцептом оферты данного участника. И между ними
+                      возникает обязанность по исполнению обязательств друг перед другом.
+                    </p>
+                  </div>
+                  <img class="feature-item__img" src="img/features/2.svg" alt="" />
+                </div>
+                <button class="feature-item__more">
+                  <img src="img/icons/down-black.svg" alt="">
+                </button>
+              </div>
+              <div class="feature-item features__item">
+                <div class="feature-item__content">
+                  <h2 class="title title--2 feature-item__title">Технические удобства</h2>
+                  <div class="text text--lg text--lh-16 feature-item__text">
+                    <ul>
+                      <li>Полноценный мессенджер для общения</li>
+                      <li>Автоматические уведомления о событиях на эл.почту, сайт и в Telegram  </li>
+                      <li>Не требуется усиленная электронная подпись </li>
+                      <li>Функционал «Партнеры» и закрытые виды процедур</li>
+                      <li>Адаптивное оформление для мобильных устройств</li>
+                    </ul>
+                  </div>
+                  <img class="feature-item__img" src="img/features/3.svg" alt="" />
+                </div>
+                <button class="feature-item__more">
+                  <img src="img/icons/down-black.svg" alt="">
+                </button>
+              </div>
+              <div class="feature-item features__item">
+                <div class="feature-item__content">
+                  <h2 class="title title--2 feature-item__title">Выгодные сделки</h2>
+                  <div class="text text--lg text--lh-16 feature-item__text">
+                    <ul>
+                      <li>Доступ к большой аудитории поставщиков и покупателей.</li>
+                      <li>Честная конкуренция.</li>
+                      <li>Снижение операционных затрат. </li>
+                      <li>Увеличение скорости оборота запасов.</li>
+                      <li>Экономия времени.</li>
+                    </ul>
+                  </div>
+                  <img class="feature-item__img" src="img/features/4.svg" alt="" />
+                </div>
+                <button class="feature-item__more">
+                  <img src="img/icons/down-black.svg" alt="">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="steps main__steps">
+        <div class="steps__content">
+          <div class="steps__btns nav-btns tabs-btns" data-tabs-name="steps">
+            <button class="steps__nav-btn nav-btns__btn tabs-btns__btn tabs-btns__btn--active">Я организатор</button>
+            <button class="steps__nav-btn nav-btns__btn tabs-btns__btn">Я участник</button>
+          </div>
+          <div class="steps__tabs tabs-list" data-tabs-name="steps">
+            <div class="steps__tab tabs-list__item tabs-list__item--flex tabs-list__item--active">
+              <div class="steps__tab-left">
+                <div class="steps__value">
+                  <div class="steps__value-main">
+                    <img class="steps__value-img" src="img/steps/circle.svg" alt="" />
+                    <span class="steps__value-num">1</span>
+                  </div>
+                </div>
+                <img class="steps__tab-img" src="img/steps/img.svg" alt="" />
+              </div>
+              <div class="steps__tab-right">
+                <div class="steps__list-box">
+                  <ul class="steps__list">
+                    <li class="text text--upper steps__item">
+                      <span>Выберите форму объявления Закупка или Продажа</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Определитесь с видом процедуры</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Заполните условия и укажите товар</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Установите настройки приватности для участников</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Опубликуйте объявление</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Дождитесь окончания подачи предложений</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Выберите одного или нескольких победителей</span>
+                    </li>
+                    <li class="text text--upper steps__item">
+                      <span>Процедура завершена</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="steps__tab tabs-list__item tabs-list__item--flex">
+              <div class="steps__tab-left">
+                <div class="steps__value">
+                  <div class="steps__value-main">
+                    <img class="steps__value-img" src="img/steps/circle.svg" alt="" />
+                    <span class="steps__value-num">1</span>
+                  </div>
+                </div>
+                <img class="steps__tab-img" src="img/steps/img.svg" alt="" />
+              </div>
+              <div class="steps__tab-right">
+                <div class="steps__list-box">
+                  <ul class="steps__list">
+                    <li class="text text--upper steps__item">Воспользуйтесь поиском и выберите процедуру</li>
+                    <li class="text text--upper steps__item">Ознакомьтесь с условиями и документацией</li>
+                    <li class="text text--upper steps__item">Заполните и отправьте предложение</li>
+                    <li class="text text--upper steps__item">Следите за ходом процедуры из уведомлений</li>
+                    <li class="text text--upper steps__item">Время для внесения изменений ограниченно</li>
+                    <li class="text text--upper steps__item">Дождитесь подведения итогов</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="faq main__faq">
+        <div class="container container--px-0">
+          <div class="faq__content">
+            <h2 class="title title--2 title--upper faq__title">Популярные вопросы</h2>
+            <div class="faq__cols">
+              <div class="faq__col">
+                <div class="faq-item accordion faq__item">
+                  <button class="text accordion__btn faq-item__btn">
+                    <span>Что нужно для начала работы с электронной торговой площадки?</span>
+                  </button>
+                  <div class="accordion__content">
+                    <div class="text text--lh-15 accordion__main faq-item__main">
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
+                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, non consequatur! Amet ad perferendis vero deserunt
+                        nisi nemo possimus illum. Tempore numquam doloribus dolorum porro optio maxime! Minus omnis illo illum tempora! Iure
+                        error voluptatibus praesentium voluptate, accusamus esse quod inventore omnis ipsam nemo impedit. Dicta aliquid
+                        cumque eum ex?
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="faq-item accordion faq__item">
+                  <button class="text accordion__btn faq-item__btn">
+                    <span>
+                      Как я могу лучше всего использовать инструменты и функции анализа платформы для принятия обоснованных торговых
+                      решений?
+                    </span>
+                  </button>
+                  <div class="accordion__content">
+                    <div class="text text--lh-15 accordion__main faq-item__main">
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
+                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="faq__col">
+                <div class="faq-item accordion faq__item">
+                  <button class="text accordion__btn faq-item__btn">
+                    <span>Как я могу настроить оповещения о ценах или других мероприятиях?</span>
+                  </button>
+                  <div class="accordion__content">
+                    <div class="text text--lh-15 accordion__main faq-item__main">
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
+                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="faq-item accordion faq__item">
+                  <button class="text accordion__btn faq-item__btn">
+                    <span>Каковы сборы, связанные с торговлей на платформе?</span>
+                  </button>
+                  <div class="accordion__content">
+                    <div class="text text--lh-15 accordion__main faq-item__main">
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
+                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="callback">
+        <form class="form callback__form js-form" action="#" autocomplete="off">
+          <div class="form__header">
+            <h2 class="title title--2 title--upper title--center title--gray-200">Консультация эксперта</h2>
+            <p class="text text--center text--sm form__text">Оставьте заявку и наш специалист свяжется с Вами в ближайшее время</p>
+          </div>
+          <div class="form__main">
+            <div class="input form__item">
+              <label class="input__label" for="">Ваше имя</label>
+              <div class="input__main">
+                <input class="input__field" type="text" placeholder="Алекс" name="name" />
+              </div>
+              <span class="input__error"></span>
+            </div>
+            <div class="input form__item">
+              <label class="input__label" for="">Телефон*</label>
+              <div class="input__main">
+                <input
+                  class="input__field js-imask"
+                  type="text"
+                  placeholder="+7 (899) 999-99-99"
+                  name="phone"
+                  data-validate="phone"
+                  data-mask="+{7} (000) 000-00-00" />
+              </div>
+              <span class="input__error"></span>
+            </div>
+            <p class="text text--xxs text--gray-200 text--lh-125 form__privacy">
+              Нажимая на кнопку «Оставить заявку», Вы даёте своё согласие на
+              <a href="#">обработку персональных данных</a>
+            </p>
+            <button class="btn btn--full btn--upper form__btn">Оставить заявку</button>
+          </div>
+        </form>
+        <div class="callback__images">
+          <object class="callback__img" data="img/callback/1.svg" width="417" height="417"></object>
+          <img class="callback__img" src="img/callback/2.svg" alt="" />
+        </div>
+        <div class="callback__bg-boxes">
+          <div class="bg-box callback__bg-box"></div>
+          <div class="bg-box callback__bg-box"></div>
+          <div class="bg-box callback__bg-box"></div>
+          <div class="bg-box callback__bg-box"></div>
+          <div class="bg-box callback__bg-box"></div>
+          <div class="bg-box callback__bg-box"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container container--px-0">
+        <div class="footer__content">
+          <div class="footer__currencies">
+            <div class="text text--xxs text--iflex footer__currency">
+              <img class="text__icon text__icon--mx-sm" src="img/icons/dollar.svg" alt="" />
+              <span>92,0134₽</span>
+            </div>
+            <div class="text text--xxs text--iflex footer__currency">
+              <img class="text__icon text__icon--mx-sm" src="img/icons/euro.svg" alt="" />
+              <span>98,7187₽</span>
+            </div>
+          </div>
+          <nav class="footer-menu footer__menu">
+            <ul class="footer-menu__list">
+              <li class="footer-menu__item">
+                <a class="link link--h-primary footer-menu__link" href="#">Правила</a>
+              </li>
+              <li class="footer-menu__item">
+                <a class="link link--h-primary footer-menu__link" href="#">Помощь</a>
+              </li>
+              <li class="footer-menu__item">
+                <a class="link link--h-primary footer-menu__link" href="#">О компании</a>
+              </li>
+              <li class="footer-menu__item">
+                <a class="link link--h-primary footer-menu__link" href="#">Тарифы</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="footer__copyright">© 2024 M-Contract Все права защищены</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="js/imask.js"></script>
+  <script src="js/smooth-scrollbar.min.js"></script>
+  <script src="js/main.js"></script>
+</html>
