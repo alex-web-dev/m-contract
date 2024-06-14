@@ -408,6 +408,8 @@ $stepsTabs.forEach(($stepsTab) => {
   $stepsNavBtns.forEach(($btn) => {
     $btn.addEventListener("click", () => {
       stepsScrollHandler();
+      scrollbar.update();
+      scrollIndex = 0;
     });
   });
 
