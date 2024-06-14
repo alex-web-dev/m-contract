@@ -294,7 +294,8 @@ function changeTab(name, index) {
 /* Features */
 const $featuresItems = document.querySelectorAll(".feature-item");
 $featuresItems.forEach(($feature, index) => {
-  const delay = 500;
+  const desktopDelay = 500;
+  const mobileDelay = 400;
   let animated = false;
   let timer;
 
@@ -329,7 +330,7 @@ $featuresItems.forEach(($feature, index) => {
       if (!animated) {
         $text.classList.remove("feature-item__text--active");
       }
-    }, delay);
+    }, desktopDelay);
   });
 
   $moreBtn.addEventListener("click", () => {
@@ -351,7 +352,7 @@ $featuresItems.forEach(($feature, index) => {
         if (!animated) {
           $text.classList.remove("feature-item__text--active");
         }
-      }, delay);
+      }, mobileDelay);
     }
   });
 });
@@ -410,21 +411,35 @@ $stepsTabs.forEach(($stepsTab) => {
     });
   });
 
+  let stepValue = 1;
+  const $valueNum = $stepsTab.querySelector(".steps__value-num");
+  $valueNum.innerText = stepValue;
+
   stepsScrollHandler();
   scrollbar.addListener(stepsScrollHandler);
 
   function stepsScrollHandler() {
     const containerHeight = $stepsListBox.clientHeight;
     const scrollTop = scrollbar.offset.y;
+    let elemsUpperBorderCount = 0;
 
-    $items.forEach(function (item) {
-      const offsetTop = item.offsetTop;
+    $items.forEach(function ($item) {
+      const offsetTop = $item.offsetTop;
 
       const distanceFromTop = offsetTop - scrollTop;
       let opacity = 1 - (distanceFromTop / containerHeight) * 1.06;
       opacity = Math.max(0, Math.min(1, opacity));
 
-      item.style.opacity = opacity.toFixed(2);
+      $item.style.opacity = opacity.toFixed(2);
+
+      if (distanceFromTop <= -($item.offsetHeight / 2)) {
+        elemsUpperBorderCount++;
+      }
     });
+
+    if (elemsUpperBorderCount + 1 !== stepValue) {
+      stepValue = elemsUpperBorderCount + 1;
+      $valueNum.innerText = stepValue;
+    }
   }
 });

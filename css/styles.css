@@ -639,6 +639,7 @@ button {
 
 .search__btn--filter {
   left: 0;
+  border-right: 1px solid var(--color-gray-300);
 }
 
 .search__btn--submit {
@@ -823,10 +824,13 @@ button {
   width: 100%;
   height: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 .banner__bg-box {
   flex: 1 1 100%;
+  margin-left: -1px;
+  margin-right: -1px;
 }
 
 .banner__bg-images {
@@ -853,17 +857,23 @@ button {
 .features {
   padding: 155px 37px 125px;
   background-color: var(--color-gray-200);
+  overflow: hidden;
 }
 
-.features__list {
+.features__cols {
   display: flex;
   align-items: flex-start;
+}
+
+.features__col {
   margin: 0 -12px;
   padding: 0 12px;
+  width: 50%;
+  display: flex;
 }
 
 .features__item {
-  width: calc(25% + 24px);
+  width: calc(50% + 24px);
 }
 
 .features__item:nth-child(2n + 1) {
@@ -872,6 +882,22 @@ button {
 
 .features__item:nth-child(2n) {
   transform: rotate(5deg);
+}
+
+.features__col:nth-child(1) .features__item:nth-child(2) .feature-item__img {
+  right: -58px;
+  bottom: -84px;
+}
+
+.features__col:nth-child(2) .features__item:nth-child(1) .feature-item__img {
+  right: -156px;
+  bottom: -180px;
+}
+
+.features__col:nth-child(2) .features__item:nth-child(2) .feature-item__img {
+  right: 2px;
+  bottom: -39px;
+  transform: rotate(0deg);
 }
 
 .feature-item {
@@ -910,7 +936,16 @@ button {
   line-clamp: 4;
   height: 153px;
   -webkit-box-orient: vertical;
+  color: rgba(var(--color-second--rgb), 0.8);
   transition: height 0.5s;
+}
+
+.feature-item__text li::marker {
+  color: #444b5c;
+}
+
+.feature-item--hover .feature-item__text {
+  display: block;
 }
 
 .feature-item__text--active {
@@ -925,22 +960,6 @@ button {
   transition: visibility 0.4s, opacity 0.4s;
 }
 
-.feature-item:nth-child(2) .feature-item__img {
-  right: -58px;
-  bottom: -84px;
-}
-
-.feature-item:nth-child(3) .feature-item__img {
-  right: -156px;
-  bottom: -180px;
-}
-
-.feature-item:nth-child(4) .feature-item__img {
-  right: 2px;
-  bottom: -39px;
-  transform: rotate(0deg);
-}
-
 .feature-item__more {
   height: 17px;
   width: 100%;
@@ -952,7 +971,7 @@ button {
 
 .feature-item__more img {
   width: 15px;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 
 .feature-item__more--active img {
@@ -1145,10 +1164,14 @@ button {
   width: 100%;
   height: 100%;
   display: flex;
+  background: #000;
+  overflow: hidden;
 }
 
 .callback__bg-box {
   flex: 1 1 100%;
+  margin-left: -1px;
+  margin-right: -1px;
 }
 
 .callback__bg-box:nth-child(3) {
