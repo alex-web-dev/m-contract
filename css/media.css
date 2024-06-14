@@ -427,6 +427,7 @@
 
   .feature-item__title {
     font-size: 16px;
+    max-width: none;
   }
 
   .feature-item__text {
@@ -454,6 +455,12 @@
 
   .steps__tab {
     padding-top: 35px;
+  }
+
+  .steps__value {
+    padding-left: 25px;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .steps__value-img {

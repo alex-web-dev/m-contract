@@ -870,6 +870,7 @@ button {
   padding: 0 12px;
   width: 50%;
   display: flex;
+  align-items: flex-start;
 }
 
 .features__item {
