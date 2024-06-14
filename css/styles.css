@@ -924,6 +924,7 @@ button {
 .feature-item__title {
   position: relative;
   z-index: 1;
+  max-width: 250px;
 }
 
 .feature-item__text {
@@ -1146,6 +1147,7 @@ button {
 .callback {
   position: relative;
   padding: 118px 0;
+  overflow: hidden;
 }
 
 .callback__form {
@@ -1235,17 +1237,16 @@ button {
 }
 
 .footer__menu {
-  margin: 0 30px;
+  margin: 0 15px;
 }
 
 .footer-menu__list {
-  margin: -11px -22px 0;
   display: flex;
   flex-wrap: wrap;
 }
 
-.footer-menu__item {
-  margin: 11px 22px 0;
+.footer-menu__item:not(:first-child) {
+  margin-left: 44px;
 }
 
 .footer-menu__link {
