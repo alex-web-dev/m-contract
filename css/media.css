@@ -32,6 +32,18 @@
     padding-bottom: 100px;
   }
 
+  .banner__info--about {
+    max-width: 670px;
+  }
+
+  .banner__name {
+    margin-bottom: 110px;
+  }
+
+  .banner__title--about {
+    font-size: 42px;
+  }
+
   .banner__img:nth-child(1) {
     width: 323px;
     height: auto;
@@ -115,6 +127,10 @@
     max-width: 580px;
   }
 
+  .banner__info--about {
+    max-width: 630px;
+  }
+
   .banner__title {
     font-size: 42px;
   }
@@ -127,6 +143,11 @@
   .banner__img:nth-child(2) {
     width: 440px;
     height: auto;
+  }
+
+  .banner__single-img {
+    padding-right: 15px;
+    max-width: 35.5%;
   }
 
   .features {
@@ -321,9 +342,20 @@
     padding: 80px 0;
   }
 
+  .banner__main--about {
+    padding-top: 35px;
+    padding-bottom: 150px;
+  }
+
   .banner__main-content {
     padding-top: 95px;
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner__main-content--about {
+    padding-top: 0;
+    flex-direction: row;
     align-items: flex-start;
   }
 
@@ -333,8 +365,25 @@
     max-width: 552px;
   }
 
+  .banner__info--about {
+    padding-bottom: 20px;
+  }
+
+  .banner__name {
+    font-size: 18px;
+  }
+
+  .banner__title--about {
+    font-size: 32px;
+  }
+
   .banner__subtitle {
     margin-bottom: 45px;
+    font-size: 16px;
+  }
+
+  .banner__subtitle--about {
+    margin-bottom: 35px;
   }
 
   .banner__images {
@@ -352,6 +401,12 @@
   .banner__img:nth-child(2) {
     order: -1;
     width: 350px;
+  }
+
+  .banner__single-img {
+    padding-right: 12px;
+    max-width: 43%;
+    align-self: flex-end;
   }
 
   .banner__down {
@@ -649,23 +704,55 @@
     padding: 60px 0;
   }
 
+  .banner__main--about {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .banner__main-content {
     padding-top: 30px;
+  }
+
+  .banner__main-content--about {
+    padding-top: 40px;
+    padding-bottom: 6px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .banner__info {
     margin: 0 auto;
   }
 
+  .banner__info--about {
+    max-width: none;
+  }
+
+  .banner__name {
+    margin-bottom: 35px;
+  }
+
   .banner__subtitle {
     margin-bottom: 20px;
     text-align: center;
     font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .banner__subtitle--about {
+    margin-bottom: 35px;
+    font-size: 16px;
+    text-align: left;
   }
 
   .banner__title {
     font-size: 26px;
     text-align: center;
+  }
+
+  .banner__title--about {
+    font-size: 22px;
+    text-align: left;
   }
 
   .banner__images {
@@ -680,6 +767,15 @@
 
   .banner__img:nth-child(2) {
     width: 186px;
+  }
+
+  .banner__single-img {
+    align-self: flex-start;
+    padding-top: 30px;
+    padding-left: 12px;
+    max-width: none;
+    width: 100%;
+    max-width: 320px;
   }
 
   .features {

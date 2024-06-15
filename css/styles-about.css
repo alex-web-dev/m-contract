@@ -9,73 +9,6 @@
   overflow: hidden;
 }
 
-.hero {
-  background-image: url(../img/about/hero-bg.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 110px 0;
-}
-
-.hero .container {
-  width: 100%;
-  padding: 0 20px;
-}
-
-.hero .flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 10px;
-}
-
-.hero .hero__text {
-  text-transform: uppercase;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 31.47px;
-  letter-spacing: 0.1em;
-  text-align: left;
-  color: rgb(235, 239, 248);
-}
-
-.hero .hero__descr {
-  text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 21.78px;
-  letter-spacing: 0.1em;
-  text-align: left;
-  color: rgb(131, 153, 224);
-  margin-bottom: 35px;
-}
-
-.hero .hero__title {
-  text-transform: uppercase;
-  font-size: 56px;
-  font-weight: 400;
-  line-height: 1.2;
-  text-align: left;
-  color: rgb(235, 239, 248);
-  max-width: 50%;
-}
-
-.hero .hero__img {
-  max-width: 512px;
-  width: 100%;
-}
-
-@media (max-width: 1600px) {
-  .hero .hero__title {
-    font-size: 42px;
-    max-width: 649px;
-  }
-
-  .hero .hero__descr {
-    font-size: 16px;
-  }
-}
-
 .idea {
   padding: 90px 0 40px;
   background-color: rgb(235, 239, 248);
@@ -101,21 +34,8 @@
   width: 100%;
 }
 
-.idea .idea__title {
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 50.4px;
-  text-align: left;
+.idea__title {
   margin-bottom: 35px;
-  color: rgb(24, 33, 54);
-}
-
-.idea .idea__text {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-  text-align: left;
-  color: rgb(24, 33, 54);
 }
 
 .tabs {
@@ -135,7 +55,11 @@
   margin-bottom: 45px;
 }
 
-.tabs .tablinks {
+.tabs__btns {
+  overflow-x: auto;
+}
+
+.tablinks {
   color: #2b3b64;
   font-size: 16px;
   font-weight: 500;
@@ -147,7 +71,7 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.tabs .active {
+.tablinks.tabs-btns__btn--active {
   background-color: #2b3b64;
   color: #fff;
   padding: 9px 30px;
@@ -181,12 +105,6 @@
 
 .tabs .tab__title {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 40px;
-  text-align: left;
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
 }
 
 .tabs .tab__text {
@@ -198,8 +116,7 @@
   margin-top: auto;
 }
 
-.tabs .tabcontent {
-  display: none;
+.tabcontent {
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -218,7 +135,7 @@
   background-color: rgb(235, 239, 248);
 }
 
-.subscribe .subscribe__card {
+.subscribe__card {
   background-image: url(../img/about/subscribe-bg.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -226,7 +143,7 @@
   justify-content: space-between;
 }
 
-.subscribe .subscribe__block {
+.subscribe__block {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -234,36 +151,13 @@
   min-height: 260px;
 }
 
-.subscribe .subscribe__title {
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 50.4px;
-  text-align: left;
-  color: rgb(24, 33, 54);
-  text-transform: uppercase;
-}
-
-.subscribe .subscribe__text {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
-  text-align: left;
-  color: rgb(24, 33, 54);
+.subscribe__text {
   opacity: 0.7;
 }
 
-.subscribe .subscribe__btn {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  text-align: center;
-  color: rgb(235, 239, 248);
-  background-color: rgb(99, 129, 224);
-  border-radius: 4px;
+.subscribe__btn {
   max-width: 240px;
   width: 100%;
-  padding: 13px 0;
-  text-transform: uppercase;
 }
 
 .contacts {
@@ -271,7 +165,7 @@
   background-color: rgb(235, 239, 248);
 }
 
-.contacts .contacts__title {
+.contacts__title {
   font-size: 42px;
   font-weight: 400;
   line-height: 50.4px;
@@ -280,32 +174,24 @@
   margin-bottom: 30px;
 }
 
-.contacts .contacts__grid {
+.contacts__grid {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 34px;
 }
 
-.contacts .contacts__block {
+.contacts__block {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-.contacts .text {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 19.5px;
-  text-align: left;
-  color: rgb(24, 33, 54);
-}
-
-.contacts .text span {
+.contacts__text span {
   font-weight: 400;
 }
 
-.contacts .contacts__link {
+.contacts__link {
   display: flex;
   align-items: self-end;
   background-image: url(../img/about/contacts-bg.svg);
@@ -321,13 +207,14 @@
   color: rgb(24, 33, 54);
   font-size: 32px;
   text-wrap: nowrap;
+  overflow: hidden;
 }
 
-.contacts .contacts__link:hover {
+.contacts__link:hover {
   color: rgb(99, 129, 224);
 }
 
-.contacts .contacts__link:hover svg path {
+.contacts__link:hover svg path {
   stroke: rgb(99, 129, 224);
 }
 
@@ -414,90 +301,49 @@
 }
 
 .modal {
-  display: none;
-  opacity: 0;
   position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 7;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.modal__body {
+  opacity: 0;
+  position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 1;
   transform: translate(-50%, -50%);
   max-width: 460px;
   width: 100%;
 }
 
-.modal .modal-content {
+.modal__content {
   background-color: rgb(255, 255, 255);
   border-radius: 4px;
   padding: 24px;
 }
 
-.modal .modal__tile {
-  text-transform: uppercase;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 35.2px;
-  text-align: left;
-  color: rgb(24, 33, 54);
+.modal__title {
   margin-bottom: 35px;
 }
 
-.modal .modal__input {
-  width: 100%;
-  height: 46px;
-  background-color: rgb(235, 239, 248);
-  box-shadow: 0px 0px 0px 1px rgba(0, 6, 51, 0.2) inset;
-  border: unset;
-  margin-bottom: 24px;
-  padding-left: 8px;
-  border-radius: 4px;
+.modal__text {
+  margin-top: 16px;
 }
 
-.modal .modal__input::-moz-placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  text-align: left;
-  color: rgba(0, 5, 27, 0.5);
+.modal__btn {
+  margin-top: 24px;
 }
 
-.modal .modal__input::placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.36px;
-  text-align: left;
-  color: rgba(0, 5, 27, 0.5);
-}
-
-.modal .modal__btn {
-  padding: 13px 0;
-  background-color: rgb(99, 129, 224);
-  width: 100%;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 4px;
-  margin-bottom: 16px;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.modal .modal__text {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: left;
-  color: rgb(24, 33, 54);
-}
-
-.modal .modal__text a {
-  color: rgb(99, 129, 224);
-}
-
-.modal .modal__text-block {
+.modal__text-block {
   display: none;
 }
 
-.modal .modal__text-2 {
+.modal__text-2 {
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
@@ -506,7 +352,7 @@
   color: rgb(24, 33, 54);
 }
 
-.modal .modal__btn-2 {
+.modal__btn-2 {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -552,7 +398,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1199px) {
   .footer .footer__grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -562,43 +408,20 @@
     text-align: center;
   }
 
-  .contacts .contacts__grid {
+  .contacts__grid {
     grid-template-columns: repeat(auto-fill, minmax(365px, 1fr));
   }
 
-  .contacts .contacts__grid .contacts__link:first-child {
+  .contacts__grid .contacts__link:first-child {
     grid-column: 1;
   }
 
-  .contacts .contacts__grid .contacts__link:nth-child(2) {
+  .contacts__grid .contacts__link:nth-child(2) {
     grid-column: 1;
-  }
-
-  .hero .hero__img {
-    max-width: 320px;
   }
 }
 
-@media (max-width: 768px) {
-  .hero .hero__text {
-    font-size: 18px;
-    margin-bottom: unset;
-  }
-
-  .hero .hero__descr {
-    font-size: 16px;
-    line-height: 19px;
-  }
-
-  .hero .hero__title {
-    font-size: 32px;
-    line-height: 38px;
-  }
-
-  .hero .hero__img {
-    max-width: 320px;
-  }
-
+@media (max-width: 991px) {
   .idea {
     padding: 90px 0 35px;
   }
@@ -620,12 +443,12 @@
     flex-direction: row-reverse;
   }
 
-  .idea .idea__title {
+  .idea__title {
     font-size: 32px;
     margin-bottom: 45px;
   }
 
-  .idea .idea__text {
+  .idea__text {
     font-size: 18px;
   }
 
@@ -640,6 +463,11 @@
 
   .tabs .flex {
     margin-bottom: 35px;
+  }
+
+  .tablinks.tabs-btns__btn--active {
+    padding-left: 27px;
+    padding-right: 27px;
   }
 
   .tabs .card {
@@ -668,7 +496,7 @@
     gap: 10px;
   }
 
-  .subscribe .subscribe__title {
+  .subscribe__title {
     font-size: 32px;
   }
 
@@ -676,11 +504,11 @@
     padding: 60px 0 60px;
   }
 
-  .contacts .contacts__title {
+  .contacts__title {
     font-size: 32px;
   }
 
-  .contacts .contacts__grid {
+  .contacts__grid {
     gap: 45px 12px;
   }
 
@@ -708,39 +536,26 @@
     gap: 20px;
   }
 
-  .hero .container {
-    padding: 0 12px;
+  .close {
+    right: 20px;
+    top: 20px;
+    width: 33px;
+    height: 33px;
   }
 }
 
 @media (max-width: 576px) {
-  .hero .flex {
-    flex-direction: column;
-  }
-
-  .hero {
-    padding: 40px 0 5px;
-  }
-
-  .hero .hero__text {
-    margin-bottom: 35px;
-  }
-
   .idea .flex img {
     max-width: 260px;
     width: 100%;
     height: 174px;
   }
 
-  .hero .hero__img {
-    max-width: unset;
-  }
-
   .idea {
     padding: 60px 0 35px;
   }
 
-  .idea .idea__title {
+  .idea__title {
     margin-bottom: 35px;
   }
 
@@ -760,7 +575,7 @@
     flex-direction: column-reverse;
   }
 
-  .idea .idea__text {
+  .idea__text {
     font-size: 16px;
   }
 
@@ -792,17 +607,17 @@
     border-radius: 6px;
   }
 
-  .subscribe .subscribe__block {
+  .subscribe__block {
     min-height: 430px;
     justify-content: unset;
     gap: 24px;
   }
 
-  .subscribe .subscribe__btn {
+  .subscribe__btn {
     max-width: unset;
   }
 
-  .contacts .contacts__grid {
+  .contacts__grid {
     gap: 35px 12px;
   }
 
@@ -822,29 +637,30 @@
     place-self: flex-start;
   }
 
-  .modal {
+  .modal__body {
     max-width: 351px;
   }
 
-  .subscribe .subscribe__envelope {
+  .subscribe__envelope {
     margin: 0 auto;
   }
 
-  .contacts .contacts__grid {
+  .contacts__grid {
     grid-template-columns: 1fr;
   }
 
-  .subscribe .subscribe__card {
+  .subscribe__card {
     flex-direction: column;
     background-image: url(../img/about/subscribe-bg-576.svg);
   }
 
-  .subscribe .subscribe__block {
+  .subscribe__block {
     min-height: unset;
   }
+}
 
-  .hero .hero__title {
-    font-size: 22px;
-    line-height: 130%;
+@media (max-width: 350px) {
+  .contacts__link {
+    font-size: 28px;
   }
-} /*# sourceMappingURL=style.css.map */
+}

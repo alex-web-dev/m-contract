@@ -109,6 +109,14 @@ button {
   font-size: 42px;
 }
 
+.title--4 {
+  font-size: 26px;
+}
+
+.title--white {
+  color: #fff;
+}
+
 .title--gray-200 {
   color: var(--color-gray-200);
 }
@@ -119,6 +127,14 @@ button {
 
 .title--center {
   text-align: center;
+}
+
+.title--spacing-10 {
+  letter-spacing: 0.1em;
+}
+
+.title--medium {
+  font-weight: 500;
 }
 
 .text {
@@ -161,6 +177,10 @@ button {
   margin-left: 10px;
 }
 
+.text--xxxs {
+  font-size: 14px;
+}
+
 .text--xxs {
   font-size: 16px;
 }
@@ -189,6 +209,14 @@ button {
   line-height: 1.25;
 }
 
+.text--lh-14 {
+  line-height: 1.4;
+}
+
+.text--lh-155 {
+  line-height: 1.55;
+}
+
 .text--lh-16 {
   line-height: 1.6;
 }
@@ -197,8 +225,16 @@ button {
   color: var(--color-gray-200);
 }
 
+.text--second {
+  color: var(--color-second);
+}
+
 .text--medium {
   font-weight: 500;
+}
+
+.text--semibold {
+  font-weight: 600;
 }
 
 .text--spacing-5 {
@@ -260,11 +296,6 @@ button {
   transition: color 0.35s, background 0.35s, border 0.35s;
 }
 
-.btn:disabled {
-  opacity: 0.75;
-  cursor: default;
-}
-
 .btn__icon {
   flex: 0 0 auto;
 }
@@ -311,6 +342,15 @@ button {
 
 .btn--upper {
   text-transform: uppercase;
+}
+
+.btn--py-sm {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.btn--text-sm {
+  font-size: 16px;
 }
 
 .link {
@@ -787,6 +827,11 @@ button {
   position: relative;
 }
 
+.banner__main--about {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
 .banner__main-content {
   display: flex;
   justify-content: space-between;
@@ -796,8 +841,16 @@ button {
 .banner__info {
   position: relative;
   z-index: 1;
-  padding-left: 42px;
+  padding-left: 50px;
   max-width: 782px;
+}
+
+.banner__info--about {
+  max-width: 860px;
+}
+
+.banner__name {
+  margin-bottom: 40px;
 }
 
 .banner__subtitle {
@@ -815,6 +868,15 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.banner__single-img {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  padding-right: 50px;
+  width: 562px;
+  max-width: 100%;
 }
 
 .banner__bg-boxes {

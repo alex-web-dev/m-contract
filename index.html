@@ -16,7 +16,7 @@
     <header class="header">
       <div class="container container--px-0">
         <div class="header__content">
-          <a href="#" class="logo header__logo">
+          <a href="index.html" class="logo header__logo">
             <svg class="logo__img" width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 fill-rule="evenodd"
@@ -371,17 +371,18 @@
           </div>
           <div class="form__main">
             <div class="input form__item">
-              <label class="input__label" for="">Ваше имя</label>
+              <label class="input__label" for="callback-name">Ваше имя</label>
               <div class="input__main">
-                <input class="input__field" type="text" placeholder="Алекс" name="name" />
+                <input class="input__field" id="callback-name" type="text" placeholder="Алекс" name="name" />
               </div>
               <span class="input__error"></span>
             </div>
             <div class="input form__item">
-              <label class="input__label" for="">Телефон*</label>
+              <label class="input__label" for="callback-phone">Телефон*</label>
               <div class="input__main">
                 <input
                   class="input__field js-imask"
+                  id="callback-phone"
                   type="text"
                   placeholder="+7 (899) 999-99-99"
                   name="phone"

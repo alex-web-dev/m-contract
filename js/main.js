@@ -155,6 +155,13 @@ $forms.forEach(($form) => {
     } else {
       // const formData = new FormData($form);
 
+      const successFormEvent = new CustomEvent("modalFormSuccess", {
+        detail: {
+          form: $form,
+        },
+      });
+      document.dispatchEvent(successFormEvent);
+      
       clearInputs($inputs);
       clearSelects($selects);
     }
@@ -195,6 +202,12 @@ function validateItem({ $item, itemErrorClass, fieldClass, errorLabelClass }) {
     return false;
   }
 
+  if (validateType === "email" && !validateEmail($field)) {
+    $item.classList.add(itemErrorClass);
+    $error.innerText = `Error`;
+    return false;
+  }
+
   return true;
 }
 
@@ -212,6 +225,14 @@ function validatePhone($field) {
   }
 
   return true;
+}
+
+function validateEmail($field) {
+  return String($field.value)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
 }
 
 function clearInputs($inputs) {
@@ -450,6 +471,7 @@ $stepsTabs.forEach(($stepsTab) => {
 let overlay = document.getElementById("overlay");
 let closeBtn = document.getElementById("closeBtn");
 let modal = document.getElementById("modal");
+let modalBody = document.getElementById("modalBody");
 let openModalBtn = document.getElementById("subscribeBtn");
 let modalInput = document.getElementById("modalInput");
 let modalBtn = document.getElementById("modalBtn");
@@ -458,46 +480,34 @@ let modalTextblock = document.getElementById("modalTextblock");
 let subscribeBlock = document.getElementById("subscribeBlock");
 let envelope = document.getElementById("envelope");
 
-openModalBtn.addEventListener("click", function () {
+openModalBtn?.addEventListener("click", function () {
   overlay.style.display = "block";
   modal.style.display = "block";
-  modal.style.animation = "scaler .3s ease forwards";
+  modalBody.style.animation = "scaler .3s ease forwards";
   closeBtn.style.display = "block";
 });
 
-closeBtn.addEventListener("click", function () {
+closeBtn?.addEventListener("click", closeModal);
+overlay?.addEventListener("click", closeModal);
+
+function closeModal() {
   overlay.style.display = "none";
-  modal.style.animation = "scalerOut .3s ease";
+  modalBody.style.animation = "scalerOut .3s ease";
   closeBtn.style.display = "none";
   setTimeout(() => {
     modal.style.display = "none";
   }, 300);
-});
+}
 
-modalInput.addEventListener("input", function () {
+modalInput?.addEventListener("input", function () {
   modalBtn.disabled = modalInput.value === "";
 });
 
-modalForm.addEventListener("submit", function () {
+document.addEventListener('modalFormSuccess', (e) => {
   modalForm.style.display = "none";
   modalTextblock.style.display = "block";
   closeBtn.addEventListener("click", function () {
     overlay.style.display = "none";
-    modal.style.animation = "scalerOut .3s ease";
+    modalBody.style.animation = "scalerOut .3s ease";
   });
 });
-
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  document.getElementById(tabName).style.display = "block";
-
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].classList.remove("active");
-  }
-  evt.currentTarget.classList.add("active");
-}
