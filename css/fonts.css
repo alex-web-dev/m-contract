@@ -33,3 +33,11 @@
 	src: url("../fonts/Inter-Bold.woff2") format("woff2"),
 		url("../fonts/Inter-Bold.woff") format("woff");
 }
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/IBMPlexSans.woff2") format("woff2");
+}
