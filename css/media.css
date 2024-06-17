@@ -889,7 +889,7 @@
   }
 
   .banner__single-img {
-    align-self: flex-start;
+    align-self: center;
     padding-top: 30px;
     padding-left: 12px;
     max-width: none;
