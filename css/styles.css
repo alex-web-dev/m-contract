@@ -759,7 +759,7 @@ button {
 .header__content {
   padding-left: 50px;
   display: flex;
-  min-height: 64px;
+  min-height: 62px;
 }
 
 .header__search {
