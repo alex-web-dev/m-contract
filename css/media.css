@@ -100,21 +100,57 @@
 }
 
 @media (max-width: 1400px) {
+  .logo__text {
+    font-size: 10.3px;
+  }
+
+  .logo__text:not(:first-child) {
+    margin-left: 5px;
+  }
+
+  .logo__img {
+    width: 36px;
+    height: 36px;
+  }
+
   .header__content {
-    padding-left: 20px;
+    padding-left: 15px;
+    min-height: 44px;
   }
 
   .header__search {
     margin-left: 16px;
-    flex-basis: 528px;
+    flex-basis: 498px;
   }
 
   .header__user {
     margin-left: 30px;
   }
 
+  .header__user-link {
+    font-size: 10px;
+    text-underline-offset: 2px;
+  }
+
+  .header__user-link:not(:first-child) {
+    margin-left: 50px;
+  }
+
   .header__user-link--login {
-    width: 140px;
+    font-size: 12px;
+    width: 90px;
+  }
+
+  .header__user-link .link__icon {
+    width: 18px;
+  }
+
+  .header__user-link .link__icon:first-child:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .header__user-link .link__icon:last-child:not(:first-child) {
+    margin-left: 8px;
   }
 
   .main__steps {
@@ -217,8 +253,40 @@
   }
 
   .footer__content {
-    padding-left: 20px;
-    padding-right: 15px;
+    padding: 19px 15px 19px 18px;
+  }
+
+  .footer__currency {
+    font-size: 15px;
+  }
+
+  .footer__currency .text__icon {
+    max-width: 12px;
+    max-height: 14px;
+  }
+
+  .footer__currency:not(:first-child) {
+    margin-left: 45px;
+  }
+
+  .footer__currency .text__icon:first-child:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .footer__currency .text__icon:last-child:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+  }
+
+  .footer-menu__item:not(:first-child) {
+    margin-left: 25px;
+  }
+
+  .footer-menu__link {
+    font-size: 15px;
   }
 
   .tabs .flex-2 {
@@ -267,7 +335,7 @@
   }
 
   .footer-menu__item:not(:first-child) {
-    margin-left: 0;
+    margin-left: 16px;
   }
 
   .contacts__grid {
@@ -333,31 +401,17 @@
     font-size: 14px;
   }
 
-  .logo__img {
-    width: 44px;
-    height: 44px;
-  }
-
-  .logo__text {
-    font-size: 12.8px;
-  }
-
   .header__content {
     position: relative;
-    padding-left: 12px;
   }
 
   .header__search {
-    margin-left: 35px;
-    flex: 0 1 70px;
+    margin-left: 16px;
+    flex: 0 1 64px;
   }
 
-  .header__user-link {
-    font-size: 14px;
-  }
-
-  .header__user-link--login {
-    width: 120px;
+  .header__user-link:not(:first-child){
+    margin-left: 40px;
   }
 
   .main__faq {
@@ -602,35 +656,25 @@
   }
 
   .footer__content {
-    padding: 34px 12px 30px;
-  }
-
-  .footer__currencies {
-    flex-direction: column;
-  }
-
-  .footer__currency:not(:first-child) {
-    margin-left: 0;
-    margin-top: 20px;
+    padding: 18px 12px 20px;
   }
 
   .footer__copyright {
-    margin-top: 20px;
+    margin-top: 22px;
   }
 
   .footer-menu__list {
-    margin-left: 0;
-    margin-right: 0;
-    flex-direction: column;
+    margin-left: -12px;
+    margin-right: -12px;
   }
 
   .footer-menu__item {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   .footer-menu__item:not(:first-child) {
-    margin-top: 16px;
+    margin-left: 12px;
   }
 
   .idea {
@@ -800,19 +844,6 @@
 
   .header__user-link--login {
     font-size: 12px;
-    width: 90px;
-  }
-
-  .header__user-link .link__icon {
-    width: 18px;
-  }
-
-  .header__user-link .link__icon:first-child:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .header__user-link .link__icon:last-child:not(:first-child) {
-    margin-left: 8px;
   }
 
   .main__steps {
@@ -1019,6 +1050,22 @@
 
   .footer__copyright {
     margin-top: 34px;
+  }
+
+  .footer-menu__list {
+    margin-left: 0;
+    margin-right: 0;
+    flex-direction: column;
+  }
+
+  .footer-menu__item {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer-menu__item:not(:first-child) {
+    margin-left: 0;
+    margin-top: 16px;
   }
 }
 
