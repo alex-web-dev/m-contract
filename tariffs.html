@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/fonts.css?v=11" />
     <link rel="stylesheet" href="css/styles.css?v=11" />
     <link rel="stylesheet" href="css/media.css?v=11" />
-    <title>M-Contract</title>
+    <title>M-Contract - Тарифы</title>
   </head>
 
   <body class="body">
@@ -149,318 +149,94 @@
     </header>
 
     <main class="main">
-      <section class="banner">
-        <div class="banner__main">
-          <div class="banner__main-content">
-            <div class="banner__info">
-              <div class="text text--xs text--medium text--upper text--spacing-10 banner__subtitle">Электронная торговая площадка</div>
-              <h1 class="title title--1 title--gray-300 banner__title">
-                Продажа и закупка
-                <b>вторичного сырья и&nbsp;готовой продукции</b>
-              </h1>
-            </div>
-            <div class="banner__images">
-              <object class="banner__img" data="img/banner-section/1.svg" width="350" height="350"></object>
-              <object class="banner__img" data="img/banner-section/2.svg" width="582" height="314"></object>
-            </div>
+      <section class="tariffs main__tariffs">
+        <div class="tariffs__content">
+          <div class="tariffs__header">
+            <h1 class="title title--4 title--gray-200 title--medium title--spacing-10 tariffs__title">Тарифы для участников</h1>
           </div>
-          <div class="banner__bg-boxes">
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
+          <div class="tariffs__list">
+            <a class="tariff-item tariffs__item" href="#">
+              <div class="tariff-item__content">
+                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Базовый минимальный</h2>
+                <div class="text text--sm text--blue-750 tariff-item__price">
+                  <span class="tariff-item__price-value">119</span>
+                  ₽
+                  <span class="tariff-item__price-text">(119₽ / предложение)</span>
+                </div>
+                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                  <img class="text__icon" src="img/icons/infinity.svg" alt="" />
+                  <span>Бессрочно</span>
+                </div>
+                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                  В стоимость включено участие в одной процедуре в течение неограниченного периода времени с момента покупки тарифного плана
+                </div>
+                <div class="tariff-item__footer">
+                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                </div>
+              </div>
+            </a>
+            <a class="tariff-item tariffs__item" href="#">
+              <div class="tariff-item__content">
+                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Базовый оптимальный</h2>
+                <div class="text text--sm text--blue-750 tariff-item__price">
+                  <span class="tariff-item__price-value">395</span>
+                  ₽
+                  <span class="tariff-item__price-text">(79₽ / предложение)</span>
+                </div>
+                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                  <img class="text__icon" src="img/icons/infinity.svg" alt="" />
+                  <span>Бессрочно</span>
+                </div>
+                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                  В стоимость включено участие в пяти процедурах в течение неограниченного периода времени с момента покупки тарифного плана
+                </div>
+                <div class="tariff-item__footer">
+                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                </div>
+              </div>
+            </a>
+            <a class="tariff-item tariffs__item" href="#">
+              <div class="tariff-item__content">
+                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит минимальный</h2>
+                <div class="text text--sm text--blue-750 tariff-item__price">
+                  <span class="tariff-item__price-value">610</span>
+                  ₽ / 30 дней
+                </div>
+                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                  <img class="text__icon" src="img/icons/datetime.svg" alt="" />
+                  <span>30 дней</span>
+                </div>
+                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                  В стоимость включено неограниченное количество участий в процедурах в течение 30 дней с момента покупки тарифного плана
+                </div>
+                <div class="tariff-item__footer">
+                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                </div>
+              </div>
+            </a>
+            <a class="tariff-item tariff-item--active tariffs__item" href="#">
+              <div class="tariff-item__content">
+                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит оптимальный</h2>
+                <div class="text text--sm text--blue-750 tariff-item__price">
+                  <span class="tariff-item__price-value">5 990</span>
+                  ₽
+                </div>
+                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                  <img class="text__icon" src="img/icons/datetime.svg" alt="" />
+                  <span>1 год</span>
+                </div>
+                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                  В стоимость включено неограниченное количество участий в процедурах в течение 1 года с момента покупки тарифного плана
+                </div>
+                <div class="tariff-item__footer">
+                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                </div>
+              </div>
+              <img class="tariff-item__img" src="img/tariffs/img.svg" alt="" />
+              <span class="tariff-item__label">Выгодно</span>
+            </a>
           </div>
-        </div>
-        <div class="banner__bg-images">
-          <img class="banner__bg-img" src="img/banner-section/bg-images/1.svg" alt="" />
-          <img class="banner__bg-img" src="img/banner-section/bg-images/2.svg" alt="" />
-          <img class="banner__bg-img" src="img/banner-section/bg-images/3.svg" alt="" />
-          <img class="banner__bg-img" src="img/banner-section/bg-images/4.svg" alt="" />
-          <img class="banner__bg-img" src="img/banner-section/bg-images/5.svg" alt="" />
-        </div>
-        <a class="down-btn banner__down" href="#features">
-          <object data="img/icons/down-white-animate.svg"></object>
-        </a>
-      </section>
-
-      <section class="features" id="features">
-        <div class="container container--px-0">
-          <div class="features__content">
-            <div class="features__cols">
-              <div class="features__col">
-                <div class="feature-item features__item">
-                  <div class="feature-item__content">
-                    <h2 class="title title--2 feature-item__title">Наша цель</h2>
-                    <div class="text text--lg text--lh-16 feature-item__text">
-                      <p>
-                        Предоставить всем организациям и индивидуальным предпринимателям возможность быстро просто и выгодно продавать и
-                        покупать сырье, а также многие виды уже готовых изделий. Ассортимент площадки будет постоянно увеличиваться.
-                      </p>
-                    </div>
-                    <img class="feature-item__img" src="img/features/1.svg" alt="" />
-                  </div>
-                  <button class="feature-item__more">
-                    <img src="img/icons/down-black.svg" alt="" />
-                  </button>
-                </div>
-                <div class="feature-item features__item">
-                  <div class="feature-item__content">
-                    <h2 class="title title--2 feature-item__title">Как работаем</h2>
-                    <div class="text text--lg text--lh-16 feature-item__text">
-                      <p>
-                        M-CONTRACT использует метод сбора оферт (предложений) участников. И если по окончанию подачи предложений организатор
-                        процедуры на закупку или продажу выбирает победителя, то это является акцептом оферты данного участника. И между
-                        ними возникает обязанность по исполнению обязательств друг перед другом.
-                      </p>
-                    </div>
-                    <img class="feature-item__img" src="img/features/2.svg" alt="" />
-                  </div>
-                  <button class="feature-item__more">
-                    <img src="img/icons/down-black.svg" alt="" />
-                  </button>
-                </div>
-              </div>
-              <div class="features__col">
-                <div class="feature-item features__item">
-                  <div class="feature-item__content">
-                    <h2 class="title title--2 feature-item__title">Технические удобства</h2>
-                    <div class="text text--lg text--lh-16 feature-item__text">
-                      <ul>
-                        <li>Полноценный мессенджер для общения</li>
-                        <li>Автоматические уведомления о событиях на эл.почту, сайт и в Telegram  </li>
-                        <li>Не требуется усиленная электронная подпись </li>
-                        <li>Функционал «Партнеры» и закрытые виды процедур</li>
-                        <li>Адаптивное оформление для мобильных устройств</li>
-                      </ul>
-                    </div>
-                    <img class="feature-item__img" src="img/features/3.svg" alt="" />
-                  </div>
-                  <button class="feature-item__more">
-                    <img src="img/icons/down-black.svg" alt="" />
-                  </button>
-                </div>
-                <div class="feature-item features__item">
-                  <div class="feature-item__content">
-                    <h2 class="title title--2 feature-item__title">Выгодные сделки</h2>
-                    <div class="text text--lg text--lh-16 feature-item__text">
-                      <ul>
-                        <li>Доступ к большой аудитории поставщиков и покупателей.</li>
-                        <li>Честная конкуренция.</li>
-                        <li>Снижение операционных затрат. </li>
-                        <li>Увеличение скорости оборота запасов.</li>
-                        <li>Экономия времени.</li>
-                      </ul>
-                    </div>
-                    <img class="feature-item__img" src="img/features/4.svg" alt="" />
-                  </div>
-                  <button class="feature-item__more">
-                    <img src="img/icons/down-black.svg" alt="" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="steps main__steps">
-        <div class="steps__content">
-          <div class="steps__btns nav-btns tabs-btns" data-tabs-name="steps">
-            <button class="steps__nav-btn nav-btns__btn tabs-btns__btn tabs-btns__btn--active">Я организатор</button>
-            <button class="steps__nav-btn nav-btns__btn tabs-btns__btn">Я участник</button>
-          </div>
-          <div class="steps__tabs tabs-list" data-tabs-name="steps">
-            <div class="steps__tab tabs-list__item tabs-list__item--flex tabs-list__item--active">
-              <div class="steps__tab-left">
-                <div class="steps__value">
-                  <div class="steps__value-main">
-                    <img class="steps__value-img" src="img/steps/circle.svg" alt="" />
-                    <span class="steps__value-num">1</span>
-                  </div>
-                </div>
-                <img class="steps__tab-img" src="img/steps/1.svg" alt="" />
-              </div>
-              <div class="steps__tab-right">
-                <div class="steps__list-box">
-                  <ul class="steps__list">
-                    <li class="text text--upper steps__item">
-                      <span>Выберите форму объявления Закупка или Продажа</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Определитесь с видом процедуры</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Заполните условия и укажите товар</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Установите настройки приватности для участников</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Опубликуйте объявление</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Дождитесь окончания подачи предложений</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Выберите одного или нескольких победителей</span>
-                    </li>
-                    <li class="text text--upper steps__item">
-                      <span>Процедура завершена</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="steps__tab tabs-list__item tabs-list__item--flex">
-              <div class="steps__tab-left">
-                <div class="steps__value">
-                  <div class="steps__value-main">
-                    <img class="steps__value-img" src="img/steps/circle.svg" alt="" />
-                    <span class="steps__value-num">1</span>
-                  </div>
-                </div>
-                <img class="steps__tab-img" src="img/steps/2.svg" alt="" />
-              </div>
-              <div class="steps__tab-right">
-                <div class="steps__list-box">
-                  <ul class="steps__list">
-                    <li class="text text--upper steps__item">Воспользуйтесь поиском и выберите процедуру</li>
-                    <li class="text text--upper steps__item">Ознакомьтесь с условиями и документацией</li>
-                    <li class="text text--upper steps__item">Заполните и отправьте предложение</li>
-                    <li class="text text--upper steps__item">Следите за ходом процедуры из уведомлений</li>
-                    <li class="text text--upper steps__item">Время для внесения изменений ограниченно</li>
-                    <li class="text text--upper steps__item">Дождитесь подведения итогов</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <section class="faq main__faq">
-        <div class="container container--px-0">
-          <div class="faq__content">
-            <h2 class="title title--2 title--upper faq__title">Популярные вопросы</h2>
-            <div class="faq__cols">
-              <div class="faq__col">
-                <div class="faq-item accordion faq__item">
-                  <button class="text accordion__btn faq-item__btn">
-                    <span>Что нужно для начала работы с электронной торговой площадки?</span>
-                  </button>
-                  <div class="accordion__content">
-                    <div class="text text--lh-15 accordion__main faq-item__main">
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
-                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, non consequatur! Amet ad perferendis vero deserunt
-                        nisi nemo possimus illum. Tempore numquam doloribus dolorum porro optio maxime! Minus omnis illo illum tempora! Iure
-                        error voluptatibus praesentium voluptate, accusamus esse quod inventore omnis ipsam nemo impedit. Dicta aliquid
-                        cumque eum ex?
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="faq-item accordion faq__item">
-                  <button class="text accordion__btn faq-item__btn">
-                    <span>
-                      Как я могу лучше всего использовать инструменты и функции анализа платформы для принятия обоснованных торговых
-                      решений?
-                    </span>
-                  </button>
-                  <div class="accordion__content">
-                    <div class="text text--lh-15 accordion__main faq-item__main">
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
-                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="faq__col">
-                <div class="faq-item accordion faq__item">
-                  <button class="text accordion__btn faq-item__btn">
-                    <span>Как я могу настроить оповещения о ценах или других мероприятиях?</span>
-                  </button>
-                  <div class="accordion__content">
-                    <div class="text text--lh-15 accordion__main faq-item__main">
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
-                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="faq-item accordion faq__item">
-                  <button class="text accordion__btn faq-item__btn">
-                    <span>Каковы сборы, связанные с торговлей на платформе?</span>
-                  </button>
-                  <div class="accordion__content">
-                    <div class="text text--lh-15 accordion__main faq-item__main">
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia aliquam, esse dolorem nemo ab veniam corporis
-                        harum labore quas vero rerum voluptatibus impedit modi laboriosam.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="callback">
-        <form class="form callback__form js-form" action="#" autocomplete="off">
-          <div class="form__header">
-            <h2 class="title title--2 title--upper title--center title--gray-200">Консультация эксперта</h2>
-            <p class="text text--center text--sm form__text">Оставьте заявку и наш специалист свяжется с Вами в ближайшее время</p>
-          </div>
-          <div class="form__main">
-            <div class="input form__item">
-              <label class="input__label" for="callback-name">Ваше имя</label>
-              <div class="input__main">
-                <input class="input__field" id="callback-name" type="text" placeholder="Алекс" name="name" />
-              </div>
-              <span class="input__error"></span>
-            </div>
-            <div class="input form__item">
-              <label class="input__label" for="callback-phone">Телефон*</label>
-              <div class="input__main">
-                <input
-                  class="input__field js-imask"
-                  id="callback-phone"
-                  type="text"
-                  placeholder="+7 (899) 999-99-99"
-                  name="phone"
-                  data-validate="phone"
-                  data-mask="+{7} (000) 000-00-00" />
-              </div>
-              <span class="input__error"></span>
-            </div>
-            <p class="text text--xxs text--gray-200 text--lh-125 form__privacy">
-              Нажимая на кнопку «Оставить заявку», Вы даёте своё согласие на
-              <a href="#">обработку персональных данных</a>
-            </p>
-            <button class="btn btn--full btn--upper form__btn">Оставить заявку</button>
-          </div>
-        </form>
-        <div class="callback__images">
-          <object class="callback__img" data="img/callback/1.svg" width="417" height="417"></object>
-          <img class="callback__img" src="img/callback/2.svg" alt="" />
-        </div>
-        <div class="callback__bg-boxes">
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
+          <div class="text text--xs text--gray-200 tariffs__ps">*Организаторы процедур пользуются площадкой бесплатно</div>
         </div>
       </section>
     </main>
