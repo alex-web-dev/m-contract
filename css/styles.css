@@ -471,6 +471,14 @@ button {
   margin-left: 10px;
 }
 
+.link__icon--mx-sm:first-child:not(:last-child) {
+  margin-right: 8px;
+}
+
+.link__icon--mx-sm:last-child:not(:first-child) {
+  margin-left: 8px;
+}
+
 .link--primary {
   color: var(--color-primary);
 }
