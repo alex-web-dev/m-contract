@@ -2085,6 +2085,11 @@ div.scrollbar-thumb-x {
 }
 
 .header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 8;
   background-color: var(--color-gray-200);
   border: 1px solid var(--color-gray-300);
 }
@@ -2096,15 +2101,11 @@ div.scrollbar-thumb-x {
 }
 
 .header--lk .header__content {
-  padding-left: 100px;
+  padding-left: 108px;
 }
 
 .header__logo {
   padding: 1.5px 0;
-}
-
-.header--lk .header__logo .logo__img {
-  width: 198px;
 }
 
 .header__search {
@@ -2116,7 +2117,7 @@ div.scrollbar-thumb-x {
 }
 
 .header--lk .header__search {
-  margin-left: 100px;
+  margin-left: 108px;
 }
 
 .header__user {
@@ -2176,6 +2177,7 @@ div.scrollbar-thumb-x {
 }
 
 .main {
+  padding-top: 64px;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;

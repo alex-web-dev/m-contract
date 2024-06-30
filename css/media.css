@@ -6,11 +6,11 @@
 
 @media (max-width: 2400px) {
   .header--lk .header__search {
-    margin-left: 80px;
+    margin-left: 88px;
   }
 
   .header--lk .header__content {
-    padding-left: 80px;
+    padding-left: 88px;
   }
 
   .lk-user__img {
@@ -163,15 +163,11 @@
 
 @media (max-width: 1600px) {
   .header--lk .header__content {
-    padding-left: 64px;
+    padding-left: 58px;
   }
 
   .header--lk .header__search {
-    margin-left: 64px;
-  }
-
-  .header--lk .header__logo .logo__img {
-    width: 170px;
+    margin-left: 58px;
   }
 
   .main__steps {
@@ -375,6 +371,14 @@
     width: 68px;
   }
 
+  .header--lk .header__content {
+    padding-left: 84px;
+  }
+
+  .header--lk .header__search {
+    margin-left: 84px;
+  }
+
   .header__content {
     padding-left: 15px;
     min-height: 44px;
@@ -413,6 +417,10 @@
 
   .header__user-link .link__icon:last-child:not(:first-child) {
     margin-left: 8px;
+  }
+
+  .main {
+    padding-top: 46px;
   }
 
   .main__steps {
@@ -643,11 +651,11 @@
 
 @media (max-width: 1180px) {
   .header--lk .header__content {
-    padding-left: 39px;
+    padding-left: 59px;
   }
 
   .header--lk .header__search {
-    margin-left: 39px;
+    margin-left: 59px;
   }
 
   .steps__value-main:after {
@@ -1362,10 +1370,6 @@
     width: 68px;
   }
 
-  .header--lk .header__logo .logo__img {
-    width: 40px;
-  }
-
   .logo__img--desktop {
     display: none;
   }
@@ -1513,7 +1517,6 @@
   .header__user-link--profile .link__icon:last-child:not(:first-child) {
     margin-left: 0;
   }
-
 
   .header--lk .header__content {
     padding-left: 0;
