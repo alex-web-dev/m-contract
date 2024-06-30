@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=11" />
-    <link rel="stylesheet" href="css/fonts.css?v=11" />
-    <link rel="stylesheet" href="css/styles.css?v=11" />
-    <link rel="stylesheet" href="css/media.css?v=11" />
+    <link rel="stylesheet" href="css/normalize.css?v=12" />
+    <link rel="stylesheet" href="css/fonts.css?v=12" />
+    <link rel="stylesheet" href="css/styles.css?v=12" />
+    <link rel="stylesheet" href="css/media.css?v=12" />
     <title>M-Contract - О площадке</title>
   </head>
   <body>
@@ -495,7 +495,7 @@
             <img loading="lazy" src="img/about/img1.svg" alt="" />
             <div class="block">
               <h2 class="title title--2 title--upper idea__title">Идея и польза</h2>
-              <p class="text text--sm text--lh-16 text--second idea__text">
+              <p class="text text--sm text--lh-16 idea__text">
                 Идея по созданию M-CONTRACT возникла еще в 2019 г. в связи с трудностями, которые возникали в момент проведения и участия в
                 закупках по причине сложного функционала и запутанной логики закупочных процедур на многих популярных ЭТП. Разработка
                 началась в начале 2020 г. и вот спустя более четырех лет упорной работы представляем Вам современный сервис для поиска
@@ -506,7 +506,7 @@
           <div class="flex">
             <img loading="lazy" src="img/about/img2.svg" alt="" />
             <div class="block">
-              <p class="text text--sm text--lh-16 text--second idea__text">
+              <p class="text text--sm text--lh-16 idea__text">
                 Электронная торговая платформа создана не только для поиска новых контрагентов, но и для того, чтобы автоматизировать
                 процесс переговоров с текущими постоянными партнерами. Все сделки фиксируются простой электронной подписью, которая на
                 основании принятого соглашения в момент регистрации имеет юридическую силу.
@@ -516,7 +516,7 @@
           <div class="flex">
             <img loading="lazy" src="img/about/img3.svg" alt="" />
             <div class="block">
-              <p class="text text--sm text--lh-16 text--second idea__text">
+              <p class="text text--sm text--lh-16 idea__text">
                 В дополнение отмечаем, что мы не можем заставить Организаторов процедур на закупку или продажу обязательно выбирать
                 победителя по итогам процедуры, тем самым заключать контракт, так как закон и сама специфика приглашений делать оферты этого
                 не подразумевает. Но в противодействие данным обстоятельствам на площадке разработана система рейтингов, которая учитывает
@@ -598,7 +598,7 @@
             <div class="subscribe__block" id="subscribeBlock">
               <h2 class="title title--2 title--upper subscribe__title">Оформить подписку</h2>
               <p class="text text--sm subscribe__text">на новые объявления</p>
-              <button aria-label="button" class="btn btn--upper btn--py-sm btn--text-sm subscribe__btn" id="subscribeBtn">
+              <button aria-label="button" class="btn btn--medium btn--upper btn--py-xs subscribe__btn" id="subscribeBtn">
                 подписаться
               </button>
             </div>
@@ -619,16 +619,16 @@
           <h2 class="contacts__title">КОНТАКТЫ</h2>
           <div class="contacts__grid">
             <div class="contacts__block">
-              <p class="text text--xs text--semibold text--second contacts__text">ООО «М-КОНТРАКТ»</p>
-              <p class="text text--xs text--semibold text--second contacts__text">
+              <p class="text text--xs text--semibold contacts__text">ООО «М-КОНТРАКТ»</p>
+              <p class="text text--xs text--semibold contacts__text">
                 ИНН
                 <span>5609205469</span>
               </p>
-              <p class="text text--xs text--semibold text--second contacts__text">
+              <p class="text text--xs text--semibold contacts__text">
                 КПП
                 <span>560901001</span>
               </p>
-              <p class="text text--xs text--semibold text--second contacts__text">
+              <p class="text text--xs text--semibold contacts__text">
                 ОГРН
                 <span>1245600005155</span>
               </p>
@@ -652,21 +652,21 @@
       </section>
     </main>
 
-    <div class="modal js-form" id="modal">
+    <div class="modal" id="modal">
       <div class="modal__body" id="modalBody">
         <div class="modal__content">
-          <h2 class="text text--second text--upper text--lh-16 modal__title">✉️ оформить подписку</h2>
-          <form id="modalForm" action="#">
-            <div class="input">
+          <h2 class="text text--upper text--lh-16 modal__title">✉️ оформить подписку</h2>
+          <form class="form form--modal js-form" id="modalForm" action="#">
+            <div class="input form__item">
               <div class="input__main">
-                <input class="input__field" type="text" placeholder="Email*" name="email" data-validate="email" />
+                <input class="input__field input__field--px-sm" type="text" placeholder="Email*" name="email" data-validate="email" />
               </div>
-              <span class="input__error"></span>
+              <span class="text text--3xs text--lh-125 input__error"></span>
             </div>
-            <button aria-label="button" type="submit" class="btn btn--py-sm btn--text--sm btn--upper btn--full modal__btn" id="modalBtn">
+            <button aria-label="button" type="submit" class="btn btn--medium btn--py-xs btn--upper btn--full modal__btn" id="modalBtn">
               Подписаться
             </button>
-            <p class="text text--3xs text--second text--lh-14 modal__text">
+            <p class="text text--3xs text--lh-14 modal__text">
               Нажимая на кнопку «Подписаться», Вы даёте своё согласие на
               <a aria-label="button" href="#">обработку персональных данных</a>
             </p>
@@ -718,6 +718,8 @@
     </footer>
     <script defer src="js/figmania.js" type="module"></script>
     <script defer src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <script src="js/main.js?v=11"></script>
+    <script src="js/imask.js"></script>
+    <script src="js/smooth-scrollbar.min.js"></script>
+    <script src="js/main.js?v=12"></script>
   </body>
 </html>

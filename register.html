@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/normalize.css?v=12" />
+    <link rel="stylesheet" href="css/fonts.css?v=12" />
+    <link rel="stylesheet" href="css/styles.css?v=12" />
+    <link rel="stylesheet" href="css/media.css?v=12" />
+    <title>M-Contract - Регистрация</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="login main__full-section">
+        <div class="login__left">
+          <a href="index.html" class="logo login__logo">
+            <svg
+              class="logo__img logo__img--sm"
+              width="54"
+              height="54"
+              viewBox="0 0 296 298"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M167.817 174.739L173.024 169.508L184.915 181.405L179.708 186.637L167.817 174.739Z" fill="#182136" />
+              <path d="M157.798 184.758L162.943 179.606L174.813 191.524L169.668 196.676L157.798 184.758Z" fill="#182136" />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M166.406 8.47814C156.074 -1.87611 139.322 -1.87615 128.99 8.47812L7.78445 129.942C-2.54778 140.296 -2.54777 157.084 7.78445 167.438L129.608 289.522C139.941 299.876 156.692 299.876 167.025 289.522L288.23 168.058C298.562 157.704 298.562 140.916 288.23 130.562L166.406 8.47814ZM135.862 15.3652C142.399 8.81451 152.997 8.81452 159.534 15.3652L209.406 65.344L149.564 125.019L87.877 63.4529L135.862 15.3652ZM33.1057 118.341L14.6568 136.829C8.12012 143.38 8.12012 154.001 14.6568 160.551L33.4047 179.339L33.1057 118.341ZM87.0896 233.138L136.481 282.635C143.017 289.186 153.616 289.186 160.152 282.635L211.794 230.883V154.028L189.279 176.602C179.751 167.1 170.224 157.598 160.696 148.045L149.213 159.609C137.178 169.513 121.483 154.43 132.113 142.465L143.195 131.353L87.1833 75.2447V141.358L111.052 165.29L114.212 162.123C119.828 157.397 129.756 164.636 129.756 171.424C134.119 170.72 140.889 175.697 140.688 181.379C144.75 181.529 150.366 185.803 150.316 191.484C152.773 191.484 155.631 193.043 157.687 195.406L164.156 201.891L149.614 216.472L147.257 214.109L144.75 211.645C147.909 208.528 151.018 205.411 154.127 202.294L149.463 197.618L140.137 206.969L134.921 201.741C138.081 198.623 141.19 195.506 144.299 192.389L139.284 187.361C136.125 190.479 133.016 193.596 129.907 196.713L124.742 191.534L134.069 182.133L129.155 177.206C127.6 178.764 126.045 180.336 124.491 181.907C122.936 183.478 121.382 185.049 119.828 186.607L114.613 181.379C116.166 179.821 117.731 178.264 119.297 176.707L119.305 176.699C120.871 175.142 122.437 173.584 123.99 172.027L119.126 167.15L109.749 176.552L87.1332 153.877L87.0896 233.138ZM256.423 186.159L220.519 222.139V145.33L254.467 111.293L256.423 113.254V186.159ZM265.711 176.851L281.358 161.171C287.895 154.62 287.895 144 281.358 137.449L265.148 121.205L265.711 176.851ZM78.5584 223.812L42.6545 187.814V113.304L44.7104 111.243L78.5584 145.179V223.812ZM78.5584 132.56L50.9786 104.908L78.5584 77.2558V132.56ZM211.844 141.208L188.777 164.335L160.345 135.878L142.945 153.274C139.434 157.145 134.169 152.57 138.432 148.799L211.794 75.1442V141.208H211.844ZM220.519 77.2558L248.099 104.908L220.519 132.51V77.2558Z"
+                fill="#182136" />
+            </svg>
+          </a>
+          <form class="form login__form js-form" action="#" autocomplete="off">
+            <div class="form__header form__header--mb-sm">
+              <h2 class="text text--bold text--center text--upper form__title">Регистрация</h2>
+              <p class="text text--center text--xxs text--neutral-600 form__text form__text--mt-xs">
+                Добро пожаловать! Заполните свои данные
+              </p>
+            </div>
+            <div class="form__steps-router">
+              <div class="form__steps-route form__steps-route--active">Шаг 1</div>
+              <div class="form__steps-route">Шаг 2</div>
+            </div>
+            <div class="form__steps-list">
+              <div class="form__step form__step--active">
+                <div class="form__main">
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="register-name">Логин</label>
+                    <div class="input__main">
+                      <input
+                        class="input__field input__field--sm"
+                        id="register-name"
+                        type="text"
+                        placeholder="example@gmail.com"
+                        name="login"
+                        data-validate="email" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                    <span class="text text--4xs text--neutral-600 text--lh-13 input__message input__message--xs">
+                      Ваша электронная почта будет логином для входа в систему
+                    </span>
+                  </div>
+                  <div class="form__group js-passwords-match">
+                    <div class="form__group-items">
+                      <div class="input form__group-item">
+                        <label class="text text--3xs input__label" for="register-password">Пароль</label>
+                        <div class="input__main">
+                          <input
+                            class="input__field input__field--sm input__field--with-eye"
+                            id="register-password"
+                            type="password"
+                            name="password"
+                            data-validate="password" />
+                          <button class="input__eye-btn" type="button"></button>
+                        </div>
+                        <span class="text text--4xs text--lh-125 input__error"></span>
+                      </div>
+                      <div class="input form__group-item">
+                        <label class="text text--3xs input__label" for="register-password-repeat">Повтор пароля</label>
+                        <div class="input__main">
+                          <input
+                            class="input__field input__field--sm input__field--with-eye"
+                            id="register-password-repeat"
+                            type="password"
+                            name="password-repeat"
+                            data-validate="password" />
+                          <button class="input__eye-btn" type="button"></button>
+                        </div>
+                        <span class="text text--4xs text--lh-125 input__error"></span>
+                      </div>
+                    </div>
+                    <span class="text text--4xs text--neutral-600 text--lh-13 form__group-message form__group-message--xs">
+                      Пароль должен содержать от 6 до 24 символов, хотя бы один из которых - цифра
+                    </span>
+                  </div>
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="register-fio">ФИО</label>
+                    <div class="input__main">
+                      <input
+                        class="input__field input__field--sm"
+                        id="register-fio"
+                        type="text"
+                        placeholder="Иванов Иван Иванович"
+                        name="fio"
+                        data-validate="empty" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                    <span class="text text--4xs text--neutral-600 text--lh-13 input__message input__message--sm">
+                      Имя будет отображаться в системе для обращений от администрации и пользователей
+                    </span>
+                  </div>
+                  <div
+                    class="input input--confirm form__item"
+                    data-confirm-name="phone-confirm"
+                    data-confirm-error-text="Необходимо подтвердить номер телефона">
+                    <label class="text text--3xs input__label" for="register-phone">Контактный номер телефона</label>
+                    <div class="input__content">
+                      <div class="input__main">
+                        <input
+                          class="input__field input__field--sm js-imask"
+                          id="register-phone"
+                          type="text"
+                          placeholder="+7 (899) 999-99-99"
+                          name="phone"
+                          data-validate="phone"
+                          data-mask="+{7} (000) 000-00-00" />
+                        <div class="input__right-icon input__right-icon--confirm" type="button">
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M5.90915 11.0341L5.90913 11.0342C5.85543 11.0879 5.79167 11.1306 5.72149 11.1597C5.65131 11.1887 5.57608 11.2037 5.5001 11.2037C5.42413 11.2037 5.3489 11.1887 5.27872 11.1597C5.20853 11.1306 5.14477 11.0879 5.09108 11.0342L5.09106 11.0341L0.716062 6.65915C0.607577 6.55066 0.546631 6.40352 0.546631 6.2501C0.546631 6.09668 0.607577 5.94955 0.716062 5.84106C0.824546 5.73258 0.971683 5.67163 1.1251 5.67163C1.27852 5.67163 1.42566 5.73258 1.53414 5.84106C1.53414 5.84106 1.53414 5.84106 1.53415 5.84106L5.46695 9.77465L5.5001 9.80781L5.53325 9.77466L15.0911 0.21606C15.1995 0.107577 15.3467 0.0466309 15.5001 0.0466309C15.6535 0.0466309 15.8007 0.107577 15.9091 0.216061C16.0176 0.324546 16.0786 0.471683 16.0786 0.625103C16.0786 0.778524 16.0176 0.925661 15.9091 1.03415L5.90915 11.0341Z"
+                              fill="#1CA854"
+                              stroke="#1CA854"
+                              stroke-width="0.09375" />
+                          </svg>
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn--white btn--text-xs btn--py-sm btn--px-sm btn--color-blue-500 btn--no-shadow btn--no-border input__confirm-btn"
+                        type="button">
+                        Выслать код
+                      </button>
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                  </div>
+                  <div class="form__steps-btns">
+                    <button class="btn btn--full btn--text-xs btn--blue-500 btn--py-sm form__steps-btn form__steps-btn--next" type="button">
+                      Далее
+                    </button>
+                  </div>
+                  <div class="text text--4xs text--neutral-500 text--link-line text--lh-13 form__privacy form__privacy--size-sm">
+                    Нажимая на кнопку «Далее», Вы соглашаетесь на
+                    <a href="#">Обработку персональных данных</a>
+                    и получение электронных писем от M-Contract
+                  </div>
+                </div>
+              </div>
+              <div class="form__step">
+                <div class="form__main">
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="register-name">Наименование организации или ИП</label>
+                    <div class="input__main">
+                      <input class="input__field input__field--sm" id="register-name" type="text" name="login" data-validate="empty" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                    <span class="text text--4xs text--neutral-600 text--lh-13 input__message input__message--sm">
+                      Введите наименование организации (ФИО для ИП) или номер ИНН
+                    </span>
+                  </div>
+                  <div class="form__group">
+                    <div class="form__group-items">
+                      <div class="input form__group-item">
+                        <label class="text text--3xs input__label" for="register-inn">ИНН</label>
+                        <div class="input__main">
+                          <input
+                            class="input__field input__field--sm input__field--color-second-05"
+                            id="register-inn"
+                            type="text"
+                            name="inn"
+                            data-validate="empty"
+                            value="1234567890"
+                            readonly />
+                        </div>
+                        <span class="text text--4xs text--lh-125 input__error"></span>
+                      </div>
+                      <div class="input form__group-item">
+                        <label class="text text--3xs input__label" for="register-ogrn">ОГРН (ОГРНИП)</label>
+                        <div class="input__main">
+                          <input
+                            class="input__field input__field--sm input__field--color-second-05"
+                            id="register-ogrn"
+                            type="text"
+                            name="ogrn"
+                            value="1-32-11-22-98765-2"
+                            data-validate="empty"
+                            readonly />
+                        </div>
+                        <span class="text text--4xs text--lh-125 input__error"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
+                    <label class="text text--3xs select__label" for="register-address">Юридический адрес</label>
+                    <div class="input select__input">
+                      <div class="input__main">
+                        <input class="input__field input__field--sm" id="register-address" type="text" />
+                      </div>
+                    </div>
+                    <select class="select__field" data-validate="empty" data-validate-text="Выберите адрес из списка">
+                      <option value=""></option>
+                      <option value="1" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="2" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="3" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="4" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="5" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="6" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="7" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="8" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                    </select>
+                    <div class="text text--4xs text--lh-125 select__error"></div>
+                  </div>
+                  <div class="select select--hide-field form__item">
+                    <label class="text text--3xs select__label" for="register-city">Город, Регион</label>
+                    <div class="input select__input">
+                      <div class="input__main">
+                        <input class="input__field input__field--sm" id="register-city" type="text" />
+                      </div>
+                    </div>
+                    <select class="select__field" data-validate="empty" data-validate-text="Выберите регион из списка">
+                      <option value=""></option>
+                      <optgroup label="А">
+                        <option value="1">Адыгея</option>
+                        <option value="2">Алтай</option>
+                      </optgroup>
+                      <optgroup label="Б">
+                        <option value="3">Башкортостан</option>
+                        <option value="4">Белгородская область</option>
+                        <option value="5">Брянская область</option>
+                        <option value="6">Бурятия</option>
+                      </optgroup>
+                      <optgroup label="В">
+                        <option value="7">Владимирская область</option>
+                        <option value="8">Волгоградская область</option>
+                        <option value="9">Вологодская область</option>
+                        <option value="10">Воронежская область</option>
+                      </optgroup>
+                    </select>
+                    <div class="text text--4xs text--lh-125 select__error"></div>
+                  </div>
+                  <div class="form__steps-btns">
+                    <button
+                      class="btn btn--iflex btn--white btn--text-xs btn--py-sm btn--px-xs form__steps-btn form__steps-btn--auto form__steps-btn--prev"
+                      type="button">
+                      <svg class="btn__icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M6.12527 0.183058C6.36935 0.427136 6.36935 0.822864 6.12527 1.06694L1.50888 5.68333L6.12527 10.2997C6.36935 10.5438 6.36935 10.9395 6.12527 11.1836C5.8812 11.4277 5.48547 11.4277 5.24139 11.1836L0.183058 6.12528C0.065848 6.00807 0 5.84909 0 5.68333C0 5.51757 0.065848 5.3586 0.183058 5.24139L5.24139 0.183058C5.48547 -0.0610194 5.8812 -0.0610194 6.12527 0.183058Z"
+                          fill="#464853" />
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M0.141602 5.68311C0.141602 5.33793 0.421424 5.05811 0.766602 5.05811H14.7916C15.1368 5.05811 15.4166 5.33793 15.4166 5.68311C15.4166 6.02828 15.1368 6.30811 14.7916 6.30811H0.766602C0.421424 6.30811 0.141602 6.02828 0.141602 5.68311Z"
+                          fill="#464853" />
+                      </svg>
+                      <span>Назад</span>
+                    </button>
+                    <button class="btn btn--blue-500 btn--text-xs btn--py-sm btn--px-xs form__steps-btn" type="submit">
+                      Зарегистрироваться
+                    </button>
+                  </div>
+                  <div class="text text--4xs text--neutral-500 text--link-line text--lh-13 form__privacy">
+                    Нажимая на кнопку «Зарегистрироваться», Вы принимаете условия
+                    <a href="#">Пользовательского соглашения</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text text--3xs text--center text--lh-125 form__addition form__addition--mt-sm">
+              У Вас уже есть аккаунт?
+              <a href="login.html">Войти</a>
+            </p>
+          </form>
+        </div>
+        <div class="login__right">
+          <div class="login-banner login__banner">
+            <div class="login-banner__main">
+              <div class="login-banner__info">
+                <div class="text text--xs text--medium text--upper text--spacing-10 login-banner__subtitle">
+                  Электронная торговая площадка
+                </div>
+                <h1 class="title title--1 title--gray-400 login-banner__title">
+                  Продажа и закупка
+                  <b>вторичного сырья и&nbsp;готовой продукции</b>
+                </h1>
+              </div>
+              <div class="bg-boxes login-banner__bg-boxes">
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+              </div>
+            </div>
+            <object class="login-banner__img" data="img/banner-section/2.svg" width="582" height="314"></object>
+            <div class="login-banner__bg-images">
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/1.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/2.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/3.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/4.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/5.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="popup" data-popup-name="phone-confirm">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <form
+            class="popup-content popup-content--xxs popup__content js-form js-form-confirm"
+            data-confirm-name="phone-confirm"
+            action="#"
+            autocomplete="off">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Подтверждение номера</div>
+            </div>
+            <div class="popup-content__main">
+              <div class="form">
+                <div class="input form__item">
+                  <label class="text text--3xs input__label input__label--mb-sm" for="sms-code">Код из SMS</label>
+                  <div class="input__main">
+                    <input
+                      class="input__field input__field--sm"
+                      id="sms-code"
+                      type="number"
+                      placeholder="Введите код из SMS"
+                      name="sms-code"
+                      data-validate="code" />
+                  </div>
+                  <span class="text text--4xs text--lh-125 input__error"></span>
+                </div>
+                <button class="link link--blue-500 link--xs form__link" type="button">Запросить код повторно</button>
+                <!-- <button class="link link--blue-500 link--xs link--disabled form__link" type="button">Запросить код повторно через 0:32</button> -->
+              </div>
+            </div>
+            <div class="popup-content__footer">
+              <div class="popup-content__btns">
+                <button
+                  class="btn btn--gray-100 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-close-popup"
+                  type="button">
+                  Отменить
+                </button>
+                <button
+                  class="btn btn--blue-500 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-form-submit"
+                  data-disable-empty
+                  disabled>
+                  Готово
+                </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+    <script src="js/imask.js"></script>
+    <script src="js/smooth-scrollbar.min.js"></script>
+    <script src="js/main.js?v=12"></script>
+  </body>
+</html>

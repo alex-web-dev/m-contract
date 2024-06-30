@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/normalize.css?v=12" />
+    <link rel="stylesheet" href="css/fonts.css?v=12" />
+    <link rel="stylesheet" href="css/styles.css?v=12" />
+    <link rel="stylesheet" href="css/media.css?v=12" />
+    <title>M-Contract - Навигация по сайту</title>
+    <style type="text/css">
+      body {
+        background-color: var(--color-neutral-100);
+        padding: 0 16px;
+      }
+
+      .all-pages {
+        width: 100%;
+        max-width: 640px;
+        max-height: calc(100% - 40px);
+        overflow: hidden;
+        border-radius: 4px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+      }
+
+      .all-pages__title {
+        font-size: 28px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--color-gray-100);
+        text-align: center;
+      }
+
+      .all-pages__main {
+        counter-reset: list;
+      }
+
+      .all-pages__list {
+        list-style: none;
+        overflow-y: auto;
+      }
+
+      .all-pages__list:not(:first-child) {
+        margin-top: 25px;
+      }
+
+      .all-pages__item {
+        display: block;
+        text-align: left;
+      }
+
+      .all-pages__link {
+        padding: 8px 20px;
+        display: block;
+        line-height: 1.4;
+        color: var(--color-blue-500);
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .all-pages__link:hover {
+        background-color: var(--color-neutral-50);
+      }
+
+      .all-pages__item .all-pages__link:before {
+        counter-increment: list;
+        content: counter(list) ". ";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all-pages">
+      <div class="all-pages__title">Навигация по сайту</div>
+      <div class="all-pages__main">
+        <ul class="all-pages__list">
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="index.html">Главная</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="about.html">О площадке</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="tariffs.html">Тарифы</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="tariffs-registered-user.html">Тарифы - Зарегистрированный пользователь</a>
+          </li>
+        </ul>
+        <ul class="all-pages__list">
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="login.html">Вход</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="register.html">Регистрация</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data.html">Данные профиля</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-notifications.html">Данные профиля - Уведомления</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-subscribe.html">Данные профиля - Подписка на объявления</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-subscribe-edit.html">Данные профиля - Подписка на объявления - Редактирование</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-subscribe-empty.html">Данные профиля - Подписка на объявления - Пусто</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-edit.html">Данные профиля - Редактирование данных</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="profile-data-change-password.html">Данные профиля - Смена пароля</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="payments.html">Платежи</a>
+          </li>
+          <li class="all-pages__item">
+            <a class="all-pages__link" href="my-ads.html">Мои объявления</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

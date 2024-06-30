@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/normalize.css?v=12" />
+    <link rel="stylesheet" href="css/fonts.css?v=12" />
+    <link rel="stylesheet" href="css/styles.css?v=12" />
+    <link rel="stylesheet" href="css/media.css?v=12" />
+    <title>M-Contract - Вход</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="login main__full-section">
+        <div class="login__left">
+          <a href="index.html" class="logo login__logo">
+            <svg
+              class="logo__img logo__img--sm"
+              width="54"
+              height="54"
+              viewBox="0 0 296 298"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M167.817 174.739L173.024 169.508L184.915 181.405L179.708 186.637L167.817 174.739Z" fill="#182136" />
+              <path d="M157.798 184.758L162.943 179.606L174.813 191.524L169.668 196.676L157.798 184.758Z" fill="#182136" />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M166.406 8.47814C156.074 -1.87611 139.322 -1.87615 128.99 8.47812L7.78445 129.942C-2.54778 140.296 -2.54777 157.084 7.78445 167.438L129.608 289.522C139.941 299.876 156.692 299.876 167.025 289.522L288.23 168.058C298.562 157.704 298.562 140.916 288.23 130.562L166.406 8.47814ZM135.862 15.3652C142.399 8.81451 152.997 8.81452 159.534 15.3652L209.406 65.344L149.564 125.019L87.877 63.4529L135.862 15.3652ZM33.1057 118.341L14.6568 136.829C8.12012 143.38 8.12012 154.001 14.6568 160.551L33.4047 179.339L33.1057 118.341ZM87.0896 233.138L136.481 282.635C143.017 289.186 153.616 289.186 160.152 282.635L211.794 230.883V154.028L189.279 176.602C179.751 167.1 170.224 157.598 160.696 148.045L149.213 159.609C137.178 169.513 121.483 154.43 132.113 142.465L143.195 131.353L87.1833 75.2447V141.358L111.052 165.29L114.212 162.123C119.828 157.397 129.756 164.636 129.756 171.424C134.119 170.72 140.889 175.697 140.688 181.379C144.75 181.529 150.366 185.803 150.316 191.484C152.773 191.484 155.631 193.043 157.687 195.406L164.156 201.891L149.614 216.472L147.257 214.109L144.75 211.645C147.909 208.528 151.018 205.411 154.127 202.294L149.463 197.618L140.137 206.969L134.921 201.741C138.081 198.623 141.19 195.506 144.299 192.389L139.284 187.361C136.125 190.479 133.016 193.596 129.907 196.713L124.742 191.534L134.069 182.133L129.155 177.206C127.6 178.764 126.045 180.336 124.491 181.907C122.936 183.478 121.382 185.049 119.828 186.607L114.613 181.379C116.166 179.821 117.731 178.264 119.297 176.707L119.305 176.699C120.871 175.142 122.437 173.584 123.99 172.027L119.126 167.15L109.749 176.552L87.1332 153.877L87.0896 233.138ZM256.423 186.159L220.519 222.139V145.33L254.467 111.293L256.423 113.254V186.159ZM265.711 176.851L281.358 161.171C287.895 154.62 287.895 144 281.358 137.449L265.148 121.205L265.711 176.851ZM78.5584 223.812L42.6545 187.814V113.304L44.7104 111.243L78.5584 145.179V223.812ZM78.5584 132.56L50.9786 104.908L78.5584 77.2558V132.56ZM211.844 141.208L188.777 164.335L160.345 135.878L142.945 153.274C139.434 157.145 134.169 152.57 138.432 148.799L211.794 75.1442V141.208H211.844ZM220.519 77.2558L248.099 104.908L220.519 132.51V77.2558Z"
+                fill="#182136" />
+            </svg>
+          </a>
+          <form class="form login__form js-form" action="#" autocomplete="off">
+            <div class="form__header">
+              <h2 class="text text--bold text--center text--upper form__title">Вход</h2>
+              <p class="text text--center text--xxs text--neutral-600 form__text form__text--mt-xs">С возвращением! Введите свои данные</p>
+            </div>
+            <div class="form__main">
+              <div class="input form__item">
+                <label class="text text--3xs input__label input__label--mb-sm" for="login-name">Логин</label>
+                <div class="input__main">
+                  <input
+                    class="input__field input__field--sm"
+                    id="login-name"
+                    type="text"
+                    placeholder="example@gmail.com"
+                    name="login"
+                    data-validate="email" />
+                </div>
+                <span class="text text--3xs text--lh-125 input__error"></span>
+              </div>
+              <div class="input form__item">
+                <label class="text text--3xs input__label input__label--mb-sm" for="login-password">Пароль</label>
+                <div class="input__main">
+                  <input
+                    class="input__field input__field--sm input__field--with-eye"
+                    id="login-password"
+                    type="password"
+                    name="password"
+                    data-validate="password" />
+                  <button class="input__eye-btn" type="button"></button>
+                </div>
+                <span class="text text--3xs text--lh-125 input__error"></span>
+              </div>
+              <a class="link link--primary link--hover-line link--xs link--iblock link--blue-500 form__remind" href="#">Забыли пароль?</a>
+              <button class="btn btn--full btn--text-xs btn--blue-500 btn--py-sm form__btn">Войти</button>
+              <p class="text text--3xs text--center text--lh-125 form__addition">
+                У Вас нет аккаунта?
+                <a href="register.html">Зарегистрироваться</a>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="login__right">
+          <div class="login-banner login__banner">
+            <div class="login-banner__main">
+              <div class="login-banner__info">
+                <div class="text text--xs text--medium text--upper text--spacing-10 login-banner__subtitle">
+                  Электронная торговая площадка
+                </div>
+                <h1 class="title title--1 title--gray-400 login-banner__title">
+                  Продажа и закупка
+                  <b>вторичного сырья и&nbsp;готовой продукции</b>
+                </h1>
+              </div>
+              <div class="bg-boxes login-banner__bg-boxes">
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+                <div class="bg-box bg-boxes__item"></div>
+              </div>
+            </div>
+            <object class="login-banner__img" data="img/banner-section/2.svg" width="582" height="314"></object>
+            <div class="login-banner__bg-images">
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/1.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/2.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/3.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/4.svg" alt="" />
+              <img class="login-banner__bg-img" src="img/banner-section/bg-images/5.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="js/imask.js"></script>
+    <script src="js/smooth-scrollbar.min.js"></script>
+    <script src="js/main.js?v=12"></script>
+  </body>
+</html>

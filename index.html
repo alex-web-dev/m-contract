@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=11" />
-    <link rel="stylesheet" href="css/fonts.css?v=11" />
-    <link rel="stylesheet" href="css/styles.css?v=11" />
-    <link rel="stylesheet" href="css/media.css?v=11" />
+    <link rel="stylesheet" href="css/normalize.css?v=12" />
+    <link rel="stylesheet" href="css/fonts.css?v=12" />
+    <link rel="stylesheet" href="css/styles.css?v=12" />
+    <link rel="stylesheet" href="css/media.css?v=12" />
     <title>M-Contract</title>
   </head>
 
@@ -164,13 +164,13 @@
               <object class="banner__img" data="img/banner-section/2.svg" width="582" height="314"></object>
             </div>
           </div>
-          <div class="banner__bg-boxes">
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
-            <div class="bg-box banner__bg-box"></div>
+          <div class="bg-boxes banner__bg-boxes">
+            <div class="bg-box bg-boxes__item"></div>
+            <div class="bg-box bg-boxes__item"></div>
+            <div class="bg-box bg-boxes__item"></div>
+            <div class="bg-box bg-boxes__item"></div>
+            <div class="bg-box bg-boxes__item"></div>
+            <div class="bg-box bg-boxes__item"></div>
           </div>
         </div>
         <div class="banner__bg-images">
@@ -419,21 +419,28 @@
         <form class="form callback__form js-form" action="#" autocomplete="off">
           <div class="form__header">
             <h2 class="title title--2 title--upper title--center title--gray-200">Консультация эксперта</h2>
-            <p class="text text--center text--sm form__text">Оставьте заявку и наш специалист свяжется с Вами в ближайшее время</p>
+            <p class="text text--center text--sm text--gray-200-07 form__text">
+              Оставьте заявку и наш специалист свяжется с Вами в ближайшее время
+            </p>
           </div>
           <div class="form__main">
             <div class="input form__item">
-              <label class="input__label" for="callback-name">Ваше имя</label>
-              <div class="input__main">
-                <input class="input__field" id="callback-name" type="text" placeholder="Алекс" name="name" />
-              </div>
-              <span class="input__error"></span>
-            </div>
-            <div class="input form__item">
-              <label class="input__label" for="callback-phone">Телефон*</label>
+              <label class="text text--xxs text--gray-200 input__label input__label--mb-lg" for="callback-name">Ваше имя</label>
               <div class="input__main">
                 <input
-                  class="input__field js-imask"
+                  class="input__field input__field--px-sm input__field--gray-200 input__field--no-shadow"
+                  id="callback-name"
+                  type="text"
+                  placeholder="Алекс"
+                  name="name" />
+              </div>
+              <span class="text text--3xs text--lh-125 input__error"></span>
+            </div>
+            <div class="input form__item">
+              <label class="text text--xxs text--gray-200 input__label input__label--mb-lg" for="callback-phone">Телефон*</label>
+              <div class="input__main">
+                <input
+                  class="input__field input__field--px-sm input__field--gray-200 input__field--no-shadow js-imask"
                   id="callback-phone"
                   type="text"
                   placeholder="+7 (899) 999-99-99"
@@ -441,26 +448,26 @@
                   data-validate="phone"
                   data-mask="+{7} (000) 000-00-00" />
               </div>
-              <span class="input__error"></span>
+              <span class="text text--3xs text--lh-125 input__error"></span>
             </div>
             <p class="text text--xxs text--gray-200 text--lh-125 form__privacy">
               Нажимая на кнопку «Оставить заявку», Вы даёте своё согласие на
               <a href="#">обработку персональных данных</a>
             </p>
-            <button class="btn btn--full btn--upper form__btn">Оставить заявку</button>
+            <button class="btn btn--medium btn--full btn--upper form__btn">Оставить заявку</button>
           </div>
         </form>
         <div class="callback__images">
           <object class="callback__img" data="img/callback/1.svg" width="417" height="417"></object>
           <img class="callback__img" src="img/callback/2.svg" alt="" />
         </div>
-        <div class="callback__bg-boxes">
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
-          <div class="bg-box callback__bg-box"></div>
+        <div class="bg-boxes callback__bg-boxes">
+          <div class="bg-box bg-boxes__item"></div>
+          <div class="bg-box bg-boxes__item"></div>
+          <div class="bg-box bg-boxes__item"></div>
+          <div class="bg-box bg-boxes__item"></div>
+          <div class="bg-box bg-boxes__item"></div>
+          <div class="bg-box bg-boxes__item"></div>
         </div>
       </section>
     </main>
@@ -501,5 +508,5 @@
   </body>
   <script src="js/imask.js"></script>
   <script src="js/smooth-scrollbar.min.js"></script>
-  <script src="js/main.js?v=11"></script>
+  <script src="js/main.js?v=12"></script>
 </html>
