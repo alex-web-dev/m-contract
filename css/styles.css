@@ -4458,6 +4458,7 @@ div.scrollbar-thumb-x {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .lk-empty__text {
