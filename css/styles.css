@@ -2183,6 +2183,10 @@ div.scrollbar-thumb-x {
   flex-direction: column;
 }
 
+.main--pt-0 {
+  padding-top: 0;
+}
+
 .main__steps {
   padding-top: 90px;
 }
