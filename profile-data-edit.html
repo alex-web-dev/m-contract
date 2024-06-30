@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=16" />
-    <link rel="stylesheet" href="css/fonts.css?v=16" />
-    <link rel="stylesheet" href="css/styles.css?v=16" />
-    <link rel="stylesheet" href="css/media.css?v=16" />
+    <link rel="stylesheet" href="css/normalize.css?v=17" />
+    <link rel="stylesheet" href="css/fonts.css?v=17" />
+    <link rel="stylesheet" href="css/styles.css?v=17" />
+    <link rel="stylesheet" href="css/media.css?v=17" />
     <title>M-Contract - Данные профиля - Редактирование данных</title>
   </head>
   <body>
@@ -455,31 +455,46 @@
                       </div>
                       <div class="form__group">
                         <div class="form__group-items form__group-items--mobile-column">
-                          <div class="input form__group-item">
-                            <label class="text text--3xs input__label" for="edit-city">Город, Регион</label>
-                            <div class="input__main">
-                              <input
-                                class="input__field input__field--sm"
-                                id="edit-city"
-                                type="text"
-                                name="city"
-                                data-validate="empty"
-                                value="г. Санкт-Петербург, Зеленогорск" />
+                          <div class="select select--hide-field form__group-item">
+                            <label class="text text--3xs select__label" for="register-city">Город, Регион</label>
+                            <div class="input select__input">
+                              <div class="input__main">
+                                <input class="input__field input__field--sm" id="register-city" type="text" />
+                              </div>
                             </div>
-                            <span class="text text--4xs text--lh-125 input__error"></span>
+                            <select class="select__field" data-validate="empty" data-validate-text="Выберите регион из списка">
+                              <optgroup label="А">
+                                <option value="1">Адыгея</option>
+                                <option value="2">Алтай</option>
+                              </optgroup>
+                              <optgroup label="Б">
+                                <option value="3">Башкортостан</option>
+                                <option value="4">Белгородская область</option>
+                                <option value="5">Брянская область</option>
+                                <option value="6">Бурятия</option>
+                              </optgroup>
+                              <optgroup label="В">
+                                <option value="7">Владимирская область</option>
+                                <option value="8">Волгоградская область</option>
+                                <option value="9">Вологодская область</option>
+                                <option value="10">Воронежская область</option>
+                              </optgroup>
+                            </select>
+                            <div class="text text--4xs text--lh-125 select__error"></div>
                           </div>
-                          <div class="input form__group-item">
-                            <label class="text text--3xs input__label" for="edit-address">Фактический адрес</label>
-                            <div class="input__main">
-                              <input
-                                class="input__field input__field--sm"
-                                id="edit-address"
-                                type="text"
-                                name="address"
-                                data-validate="empty"
-                                value="460003, г. Оренбург, переулок Станочный 7" />
+                          <div class="select select--hide-field select--list-sm select--item-value-sm form__group-item">
+                            <label class="text text--3xs select__label" for="edit-address">Фактический адрес</label>
+                            <div class="input select__input">
+                              <div class="input__main">
+                                <input class="input__field input__field--sm" id="edit-address" type="text" />
+                              </div>
                             </div>
-                            <span class="text text--4xs text--lh-125 input__error"></span>
+                            <select class="select__field" data-validate="empty" data-validate-text="Выберите адрес из списка">
+                              <option value="1">460003, г. Оренбург, переулок Станочный 7</option>
+                              <option value="2">460003, г. Оренбург, переулок Станочный 7</option>
+                              <option value="3">460003, г. Оренбург, переулок Станочный 7</option>
+                            </select>
+                            <div class="text text--4xs text--lh-125 select__error"></div>
                           </div>
                         </div>
                       </div>
@@ -1312,6 +1327,6 @@
     </div>
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
-    <script src="js/main.js?v=16"></script>
+    <script src="js/main.js?v=17"></script>
   </body>
 </html>

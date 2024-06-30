@@ -365,8 +365,13 @@ $selectFields.forEach(($select) => {
     $simpleSelect.classList.add(SELECT_ACTIVE_CLASS);
   });
 
-  console.log($inputField);
-  
+  const $firstItem = $simpleSelectList.querySelector(`.${ITEM_CLASS}`);
+  const firstItemValue = $firstItem.querySelector(`.${ITEM_CLASS}-value`)?.innerText;
+  if ($inputField && firstItemValue && !$firstItem.classList.contains(ITEM_PLACEHOLDER_CLASS)) {
+    $inputField.value = firstItemValue;
+    $firstItem.classList.add(ITEM_ACTIVE_CLASS);
+  }
+
   const $simpleSelectElems = $simpleSelectList.querySelectorAll(`.${ITEM_CLASS}, .${GROUP_CLASS}`);
   const $itemsSortedByGroups = [];
   let currentItem = { group: null, items: [] };
@@ -389,6 +394,9 @@ $selectFields.forEach(($select) => {
     $select.selectedIndex = -1;
     $simpleSelectField.innerText = "";
     let isEmptyFilter = true;
+
+    const $activeItem = $simpleSelectList.querySelector(`.${ITEM_ACTIVE_CLASS}`);
+    $activeItem?.classList.remove(ITEM_ACTIVE_CLASS);
 
     $itemsSortedByGroups.forEach(($itemSorterByGroups) => {
       let isAllItemsNoFilter = true;
@@ -903,6 +911,10 @@ function clearSelects($selects) {
 
 function submitDisableHandler($form) {
   const $submit = $form.querySelector(".js-form-submit");
+  if (!$submit) {
+    return;
+  }
+
   let fieldsFilled = true;
 
   const $fields = $form.querySelectorAll(".input__field[data-validate]");
