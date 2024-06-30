@@ -3605,9 +3605,16 @@ div.scrollbar-thumb-x {
 }
 
 .lk-sidebar {
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 64px;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  width: 401px;
+  height: calc(100vh - 64px);
+  border-right: 1px solid rgba(25, 25, 25, 0.08);
+  background-color: #fff;
 }
 
 .lk-sidebar__content {
@@ -3698,14 +3705,9 @@ div.scrollbar-thumb-x {
   display: flex;
 }
 
-.lk__sidebar {
-  flex: 0 0 401px;
-  border-right: 1px solid rgba(25, 25, 25, 0.08);
-  background-color: #fff;
-}
-
 .lk__body {
   position: relative;
+  padding-left: 401px;
   flex: 1 1 auto;
   background-color: var(--color-neutral-75);
 }

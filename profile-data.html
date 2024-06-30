@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=13" />
-    <link rel="stylesheet" href="css/fonts.css?v=13" />
-    <link rel="stylesheet" href="css/styles.css?v=13" />
-    <link rel="stylesheet" href="css/media.css?v=13" />
+    <link rel="stylesheet" href="css/normalize.css?v=14" />
+    <link rel="stylesheet" href="css/fonts.css?v=14" />
+    <link rel="stylesheet" href="css/styles.css?v=14" />
+    <link rel="stylesheet" href="css/media.css?v=14" />
     <title>M-Contract - Данные профиля</title>
   </head>
   <body>
@@ -201,103 +201,105 @@
     <main class="main">
       <div class="lk main__full-section">
         <div class="lk-sidebar lk__sidebar">
-          <div class="lk-sidebar__profile">
-            <div class="lk-user lk-sidebar__user">
-              <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
-              <div class="lk-user__info">
-                <div class="text text--medium text--xxs lk-user__name">АО "Торговый Дом "Перекресток</div>
-                <div class="text text--3xs text--medium text--lh-13 lk-user__email">konst.ilin22@gmail.com</div>
-                <div class="text text--3xs text--lh-13 text--iflex lk-user__rate">
-                  <span>4.8</span>
-                  <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+          <div class="lk-sidebar__content" data-scrollbar>
+            <div class="lk-sidebar__profile">
+              <div class="lk-user lk-sidebar__user">
+                <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                <div class="lk-user__info">
+                  <div class="text text--medium text--xxs lk-user__name">АО "Торговый Дом "Перекресток</div>
+                  <div class="text text--3xs text--medium text--lh-13 lk-user__email">konst.ilin22@gmail.com</div>
+                  <div class="text text--3xs text--lh-13 text--iflex lk-user__rate">
+                    <span>4.8</span>
+                    <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="balance-panel balance-panel--p-0 balance-panel--lg lk-sidebar__balance">
-              <div class="balance-panel__info">
-                <div class="text text--xs text--lh-14 text--neutral-500 balance-panel__text">Баланс</div>
-                <div class="text text--lg text--semibold balance-panel__value">234 778 ₽</div>
+              <div class="balance-panel balance-panel--p-0 balance-panel--lg lk-sidebar__balance">
+                <div class="balance-panel__info">
+                  <div class="text text--xs text--lh-14 text--neutral-500 balance-panel__text">Баланс</div>
+                  <div class="text text--lg text--semibold balance-panel__value">234 778 ₽</div>
+                </div>
+                <button
+                  class="btn btn--gray-100 btn--color-blue-500 btn--text-lg balance-panel__btn js-open-popup"
+                  data-popup-name="up-balance">
+                  Пополнить
+                </button>
               </div>
-              <button
-                class="btn btn--gray-100 btn--color-blue-500 btn--text-lg balance-panel__btn js-open-popup"
-                data-popup-name="up-balance">
-                Пополнить
-              </button>
-            </div>
-            <ul class="lk-menu lk-sidebar__menu">
-              <li class="lk-menu__item">
-                <div class="lk-menu-link lk-menu-link--active lk-menu__link">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/1.svg" alt="" />
+              <ul class="lk-menu lk-sidebar__menu">
+                <li class="lk-menu__item">
+                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/1.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Данные профиля</span>
                   </div>
-                  <span class="lk-menu-link__text">Данные профиля</span>
-                </div>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="payments.html">
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="payments.html">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/2.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Платежи</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="my-ads.html">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/3.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Мои объявления</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="#">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/4.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">История сделок</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="#">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/5.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Избранное</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link js-open-popup" href="#" data-popup-name="messages">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/6.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Сообщения</span>
+                    <span class="count-circle lk-menu-link__count">8</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="#">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/7.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Мои предложения</span>
+                  </a>
+                </li>
+                <li class="lk-menu__item">
+                  <a class="lk-menu-link lk-menu__link" href="#">
+                    <div class="lk-menu-link__icon">
+                      <img src="img/icons/lk-menu/8.svg" alt="" />
+                    </div>
+                    <span class="lk-menu-link__text">Партнеры</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="lk-sidebar__bottom-item">
+                <a class="lk-menu-link lk-sidebar__bottom-link" href="#">
                   <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/2.svg" alt="" />
+                    <img src="img/icons/lk-menu/9.svg" alt="" />
                   </div>
-                  <span class="lk-menu-link__text">Платежи</span>
+                  <span class="lk-menu-link__text">Выход</span>
                 </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="my-ads.html">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/3.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Мои объявления</span>
-                </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="#">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/4.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">История сделок</span>
-                </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="#">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/5.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Избранное</span>
-                </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link js-open-popup" href="#" data-popup-name="messages">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/6.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Сообщения</span>
-                  <span class="count-circle lk-menu-link__count">8</span>
-                </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="#">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/7.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Мои предложения</span>
-                </a>
-              </li>
-              <li class="lk-menu__item">
-                <a class="lk-menu-link lk-menu__link" href="#">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/8.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Партнеры</span>
-                </a>
-              </li>
-            </ul>
-            <div class="lk-sidebar__bottom-item">
-              <a class="lk-menu-link lk-sidebar__bottom-link" href="#">
-                <div class="lk-menu-link__icon">
-                  <img src="img/icons/lk-menu/9.svg" alt="" />
-                </div>
-                <span class="lk-menu-link__text">Выход</span>
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1116,6 +1118,6 @@
     </div>
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
-    <script src="js/main.js?v=13"></script>
+    <script src="js/main.js?v=14"></script>
   </body>
 </html>
