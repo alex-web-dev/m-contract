@@ -1292,6 +1292,7 @@
 
   .lk__body {
     min-width: 0;
+    padding-left: 0;
   }
 
   .lk__main {

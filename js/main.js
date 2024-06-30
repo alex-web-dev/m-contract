@@ -365,6 +365,8 @@ $selectFields.forEach(($select) => {
     $simpleSelect.classList.add(SELECT_ACTIVE_CLASS);
   });
 
+  console.log($inputField);
+  
   const $simpleSelectElems = $simpleSelectList.querySelectorAll(`.${ITEM_CLASS}, .${GROUP_CLASS}`);
   const $itemsSortedByGroups = [];
   let currentItem = { group: null, items: [] };
