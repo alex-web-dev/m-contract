@@ -52,6 +52,13 @@
   --color-orange-400: #ec6512;
   --color-orange-500: #ec3912;
   --color-orange-800: #947163;
+  --custom-100vh: 100vh;
+}
+
+@supports (height: 100dvh) {
+  :root {
+      --custom-100vh: 100dvh;
+  }
 }
 
 * {
@@ -3403,7 +3410,7 @@ div.scrollbar-thumb-x {
 
 .popup-content--mobile-full {
   max-width: 100%;
-  max-height: 100vh;
+  max-height: var(--custom-100vh);
 }
 
 .popup-content--sm {
