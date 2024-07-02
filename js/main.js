@@ -40,7 +40,7 @@ function lockBody() {
   document.body.classList.add("body--lock");
   document.body.style.paddingRight = scrollbarWidthPX;
 
-  const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box");
+  const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box, .header");
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = scrollbarWidthPX));
 }
 
@@ -48,7 +48,7 @@ function unlockBody() {
   document.body.classList.remove("body--lock");
   document.body.style.paddingRight = "";
 
-  const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box");
+  const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box, .header");
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = ""));
 }
 
