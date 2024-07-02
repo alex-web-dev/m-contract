@@ -57,7 +57,7 @@
 
 @supports (height: 100dvh) {
   :root {
-      --custom-100vh: 100dvh;
+    --custom-100vh: 100dvh;
   }
 }
 
@@ -891,6 +891,15 @@ mark {
 
 .input__field::placeholder {
   color: var(--color-neutral-500);
+}
+
+.input__field:read-only:hover,
+.input__field:read-only:focus {
+  box-shadow: 0px 1.5px 4px -1px rgba(10, 9, 11, 0.07);
+}
+
+.input__field.js-open-popup {
+  cursor: pointer;
 }
 
 .input__field::-webkit-inner-spin-button,
@@ -4393,10 +4402,6 @@ div.scrollbar-thumb-x {
   padding: 12px;
   width: 100%;
   display: flex;
-  text-transform: uppercase;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
 }
 
 .category__checkbox {
@@ -4405,6 +4410,11 @@ div.scrollbar-thumb-x {
 
 .category__checkbox--hide {
   display: none;
+}
+
+.category__item-btn {
+  padding: 12px;
+  font-size: 14px;
 }
 
 .category__content {
@@ -4470,8 +4480,11 @@ div.scrollbar-thumb-x {
 }
 
 .categories__list {
-  flex: 0 1 auto;
-  max-height: 554px;
+  flex: 0 1 554px;
+}
+
+.categories__list-h-sm {
+  flex-basis: 425px;
 }
 
 .categories__footer {

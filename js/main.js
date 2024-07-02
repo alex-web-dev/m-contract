@@ -223,6 +223,15 @@ $fileInputs.forEach(($fileInput) => {
   });
 });
 
+/* Update input buttons */
+const $updateInputBtns = document.querySelectorAll(".js-update-input");
+$updateInputBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const $input = document.getElementById($btn.dataset.inputId);
+    $input.value = $btn.dataset.inputValue || "";
+  });
+});
+
 /* IMask js */
 const $imaskInputs = document.querySelectorAll(".js-imask");
 $imaskInputs.forEach(($input) => {
@@ -1382,8 +1391,10 @@ $categoriesBoxes.forEach(($categoriesBox) => {
 
 function filterCategory(category, searchText, rawSearchText) {
   let checkboxes = category.querySelectorAll(".category__checkbox:not(.category__checkbox--all)");
+  let buttons = category.querySelectorAll(".category__item-btn");
   let childCategories = category.querySelectorAll(".category__item");
   let anyCheckboxVisible = false;
+  let anyButtonVisible = false;
   let anyChildCategoryVisible = false;
 
   checkboxes.forEach((checkbox) => {
@@ -1403,6 +1414,22 @@ function filterCategory(category, searchText, rawSearchText) {
     }
   });
 
+  buttons.forEach((button) => {
+    let buttonText = button.textContent.toLowerCase();
+    let normalizedButtonText = buttonText.replace(/[\s.,!]/g, "");
+
+    if (normalizedButtonText.includes(searchText) && searchText !== "") {
+      button.classList.remove("category__checkbox--hide");
+      anyButtonVisible = true;
+
+      const highlightedText = highlightText(button.textContent, rawSearchText);
+      button.innerHTML = highlightedText;
+    } else {
+      button.classList.add("category__checkbox--hide");
+      button.innerHTML = button.textContent;
+    }
+  });
+
   childCategories.forEach((childCategory) => {
     const childVisible = filterCategory(childCategory, searchText, rawSearchText);
     if (childVisible) {
@@ -1413,14 +1440,14 @@ function filterCategory(category, searchText, rawSearchText) {
     }
   });
 
-  if (!anyCheckboxVisible && !anyChildCategoryVisible) {
+  if (!anyCheckboxVisible && !anyButtonVisible && !anyChildCategoryVisible) {
     category.classList.add("category--hide");
   } else {
     category.classList.remove("category--hide");
     category.classList.add("category--active");
   }
 
-  return anyCheckboxVisible || anyChildCategoryVisible;
+  return anyCheckboxVisible || anyButtonVisible || anyChildCategoryVisible;
 }
 
 function highlightText(text, searchText) {
@@ -1436,6 +1463,12 @@ function resetVisibility(categories) {
       checkbox.classList.remove("category__checkbox--hide");
       let labelElement = checkbox.querySelector(".checkbox__text");
       labelElement.innerHTML = labelElement.textContent;
+    });
+
+    let buttons = category.querySelectorAll(".category__item-btn");
+    buttons.forEach((button) => {
+      button.classList.remove("category__checkbox--hide");
+      button.innerHTML = button.textContent;
     });
 
     let childCategories = category.querySelectorAll(".category__item");
