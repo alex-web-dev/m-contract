@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=22" />
-    <link rel="stylesheet" href="css/fonts.css?v=22" />
-    <link rel="stylesheet" href="css/styles.css?v=22" />
-    <link rel="stylesheet" href="css/media.css?v=22" />
+    <link rel="stylesheet" href="css/normalize.css?v=23" />
+    <link rel="stylesheet" href="css/fonts.css?v=23" />
+    <link rel="stylesheet" href="css/styles.css?v=23" />
+    <link rel="stylesheet" href="css/media.css?v=23" />
     <title>M-Contract - Регистрация</title>
   </head>
   <body>
@@ -158,15 +158,29 @@
               </div>
               <div class="form__step">
                 <div class="form__main">
-                  <div class="input form__item">
-                    <label class="text text--3xs input__label" for="register-name">Наименование организации или ИП</label>
-                    <div class="input__main">
-                      <input class="input__field input__field--sm" id="register-name" type="text" name="login" data-validate="empty" />
+                  <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
+                    <label class="text text--3xs select__label" for="register-name">Наименование организации или ИП</label>
+                    <div class="input select__input">
+                      <div class="input__main">
+                        <input class="input__field input__field--sm" id="register-name" type="text" />
+                      </div>
                     </div>
-                    <span class="text text--4xs text--lh-125 input__error"></span>
-                    <span class="text text--4xs text--neutral-600 text--lh-13 input__message input__message--sm">
-                      Введите наименование организации (ФИО для ИП) или номер ИНН
-                    </span>
+                    <select
+                      class="select__field"
+                      data-validate="empty"
+                      data-validate-text="Выберите наименование из списка"
+                      data-update-input-id-text="register-address">
+                      <option value=""></option>
+                      <option value="1" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="2" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="3" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="4" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="5" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="6" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="7" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                      <option value="8" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
+                    </select>
+                    <div class="text text--4xs text--lh-125 select__error"></div>
                   </div>
                   <div class="form__group">
                     <div class="form__group-items">
@@ -200,25 +214,15 @@
                       </div>
                     </div>
                   </div>
-                  <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
-                    <label class="text text--3xs select__label" for="register-address">Юридический адрес</label>
-                    <div class="input select__input">
-                      <div class="input__main">
-                        <input class="input__field input__field--sm" id="register-address" type="text" />
-                      </div>
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="register-address">Юридический адрес</label>
+                    <div class="input__main">
+                      <input class="input__field input__field--sm" id="register-address" type="text" name="adress" data-validate="empty" />
                     </div>
-                    <select class="select__field" data-validate="empty" data-validate-text="Выберите адрес из списка">
-                      <option value=""></option>
-                      <option value="1" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="2" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="3" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="4" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="5" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="6" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="7" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="8" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                    </select>
-                    <div class="text text--4xs text--lh-125 select__error"></div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                    <span class="text text--4xs text--neutral-600 text--lh-13 input__message input__message--sm">
+                      Введите наименование организации (ФИО для ИП) или номер ИНН
+                    </span>
                   </div>
                   <div class="input form__item">
                     <label class="text text--3xs input__label" for="register-city">Город, Регион</label>
@@ -310,7 +314,6 @@
             <div class="popup-content__header">
               <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
                 <span>Регионы</span>
-                <span class="count-circle count-circle--oval count-circle--oval--px-sm text__icon">3</span>
               </div>
             </div>
             <div class="categories popup-content__categories">
@@ -575,6 +578,6 @@
     </div>
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
-    <script src="js/main.js?v=22"></script>
+    <script src="js/main.js?v=23"></script>
   </body>
 </html>

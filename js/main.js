@@ -34,11 +34,12 @@ function getScrollbarWidth() {
   return Math.abs(window.innerWidth - documentWidth);
 }
 
-function lockBody() {
+function lockBody(lockBy = "") {
   const scrollbarWidthPX = `${getScrollbarWidth()}px`;
 
   document.body.classList.add("body--lock");
   document.body.style.paddingRight = scrollbarWidthPX;
+  document.body.dataset.lockedBy = lockBy;
 
   const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box, .header");
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = scrollbarWidthPX));
@@ -47,9 +48,18 @@ function lockBody() {
 function unlockBody() {
   document.body.classList.remove("body--lock");
   document.body.style.paddingRight = "";
+  document.body.removeAttribute("data-locked-by");
 
   const $absoluteElems = document.querySelectorAll(".lk__fixed-btn-box, .header");
   $absoluteElems.forEach(($elem) => ($elem.style.paddingRight = ""));
+}
+
+function isLockedBody() {
+  return document.body.classList.contains("body--lock");
+}
+
+function getLockedBodyBy() {
+  return document.body.dataset.lockedBy;
 }
 
 /* Accordion */
@@ -336,6 +346,22 @@ $selectFields.forEach(($select) => {
 
       if ($inputField) {
         $inputField.value = $option.innerText;
+      }
+
+      if ($select.dataset.updateInputIdText && $option.dataset.text) {
+        const $updateInputField = document.getElementById($select.dataset.updateInputIdText);
+        $updateInputField.value = $option.dataset.text;
+
+        const $updateInput = $updateInputField.closest('.input');
+        $updateInput.classList.remove('input--error');
+      }
+
+      if ($select.classList.contains('js-select-update-btn-text') && $option.dataset.btnText) {
+        const $form = $select.closest('.js-form');
+        if ($form) {
+          const $btn = $form.querySelector('.js-form-submit');
+          $btn.textContent = $option.dataset.btnText;
+        }
       }
     });
 
@@ -995,6 +1021,9 @@ document.addEventListener("formSuccess", (e) => {
     $item.classList.remove("select-tabs__item--active");
     const $field = $item.querySelector(".input__field");
     $field?.setAttribute("disabled", "");
+
+    const $fieldFile = $item.querySelector(".input__field-file");
+    $fieldFile?.setAttribute("disabled", "");
   });
 });
 
@@ -1323,19 +1352,36 @@ window.addEventListener("click", (e) => {
 
 function closePopup($popup) {
   $popup.classList.remove("popup--active");
-  $popup.addEventListener("transitionend", () => unlockBody(), { once: true });
+  $popup.addEventListener(
+    "transitionend",
+    () => {
+      if (isLockedBody() && getLockedBodyBy() === `popup-${$popup.dataset.popupName}`) {
+        unlockBody();
+      }
+    },
+    { once: true }
+  );
 }
 
 function openPopup($popup) {
   $popup.classList.add("popup--active");
-  lockBody();
+  console.log();
+  if (!isLockedBody()) {
+    lockBody(`popup-${$popup.dataset.popupName}`);
+  }
 }
 
 /* Dropdown */
 const $dropdowns = document.querySelectorAll(".dropdown");
 $dropdowns.forEach(($dropdown) => {
   const $btn = $dropdown.querySelector(".dropdown__btn");
-  $btn.addEventListener("click", () => $dropdown.classList.toggle("dropdown--active"));
+  $btn.addEventListener("click", () => {
+    if ($btn.dataset.dropdownMinWidth && window.innerWidth <= $btn.dataset.dropdownMinWidth) {
+      return;
+    }
+
+    $dropdown.classList.toggle("dropdown--active");
+  });
 });
 
 window.addEventListener("click", (e) => {
@@ -1493,4 +1539,41 @@ function toggleAllCheckboxes(category, isChecked) {
   allCheckboxes.forEach((checkbox) => {
     checkbox.checked = isChecked;
   });
+}
+
+/* lk sidebar */
+const $lkSidebar = document.querySelector(".lk-sidebar");
+if ($lkSidebar) {
+  const $openBtns = document.querySelectorAll(".js-open-lk-sidebar");
+  $openBtns.forEach(($btn) =>
+    $btn.addEventListener("click", () => {
+      if (window.innerWidth <= 991) {
+        openLKSidebar($lkSidebar);
+      }
+    })
+  );
+
+  const $closeBtns = document.querySelectorAll(".js-close-lk-sidebar");
+  $closeBtns.forEach(($btn) => $btn.addEventListener("click", () => closeLKSidebar($lkSidebar)));
+
+  window.addEventListener("click", (e) => {
+    if (window.innerWidth <= 991 && e.target === $lkSidebar) {
+      closeLKSidebar($lkSidebar);
+    }
+  });
+}
+
+function openLKSidebar($lkSidebar) {
+  $lkSidebar.classList.add("lk-sidebar--active");
+  if (!isLockedBody()) {
+    lockBody("lk-sidebar");
+  }
+}
+
+function closeLKSidebar($lkSidebar) {
+  $lkSidebar.classList.remove("lk-sidebar--active");
+
+  if (isLockedBody() && getLockedBodyBy() === "lk-sidebar") {
+    unlockBody();
+  }
 }

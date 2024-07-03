@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=22" />
-    <link rel="stylesheet" href="css/fonts.css?v=22" />
-    <link rel="stylesheet" href="css/styles.css?v=22" />
-    <link rel="stylesheet" href="css/media.css?v=22" />
+    <link rel="stylesheet" href="css/normalize.css?v=23" />
+    <link rel="stylesheet" href="css/fonts.css?v=23" />
+    <link rel="stylesheet" href="css/styles.css?v=23" />
+    <link rel="stylesheet" href="css/media.css?v=23" />
     <title>M-Contract - Платежи</title>
   </head>
   <body>
@@ -127,7 +127,7 @@
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
-              <button class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn">
+              <button class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn js-open-lk-sidebar" data-dropdown-min-width="991">
                 <svg
                   class="link__icon link__icon--mx-sm"
                   width="20"
@@ -1211,14 +1211,18 @@
                 <div class="select-tabs">
                   <div class="select select-tabs__main">
                     <label class="text text--3xs select__label">Способ оплаты</label>
-                    <select class="select__field" data-validate="empty" data-validate-text="Выберите способ оплаты" name="method">
+                    <select
+                      class="select__field js-select-update-btn-text"
+                      data-validate="empty"
+                      data-validate-text="Выберите способ оплаты"
+                      name="method">
                       <option value="">Выбрать способ оплаты</option>
-                      <option value="1">Выставить счет</option>
-                      <option value="2">Visa</option>
-                      <option value="3">Mastercard</option>
-                      <option value="4">Карта МИР</option>
-                      <option value="5">Альфа Клик</option>
-                      <option value="6">Платежное поручение</option>
+                      <option value="1" data-btn-text="Сформировать">Выставить счет</option>
+                      <option value="2" data-btn-text="Пополнить">Visa</option>
+                      <option value="3" data-btn-text="Пополнить">Mastercard</option>
+                      <option value="4" data-btn-text="Пополнить">Карта МИР</option>
+                      <option value="5" data-btn-text="Пополнить">Альфа Клик</option>
+                      <option value="6" data-btn-text="Отправить">Платежное поручение</option>
                     </select>
                     <div class="text text--4xs text--lh-125 select__error"></div>
                   </div>
@@ -1294,6 +1298,6 @@
     </div>
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
-    <script src="js/main.js?v=22"></script>
+    <script src="js/main.js?v=23"></script>
   </body>
 </html>
