@@ -1016,12 +1016,15 @@
   }
 
   .banner__subtitle {
-    margin-bottom: 45px;
     font-size: 16px;
   }
 
-  .banner__subtitle--about {
-    margin-bottom: 35px;
+  .banner__title:not(:first-child) {
+    margin-top: 45px;
+  }
+
+  .banner__title--about:not(:first-child) {
+    margin-top: 35px;
   }
 
   .banner__images {
@@ -1717,16 +1720,23 @@
   }
 
   .banner__subtitle {
-    margin-bottom: 20px;
     text-align: center;
     font-size: 14px;
     line-height: 1.3;
   }
 
   .banner__subtitle--about {
-    margin-bottom: 30px;
     font-size: 16px;
     text-align: left;
+  }
+
+  .banner__subtitle2 {
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .banner__subtitle2:not(:first-child) {
+    margin-top: 4px;
   }
 
   .banner__title {
@@ -1734,9 +1744,17 @@
     text-align: center;
   }
 
+  .banner__title:not(:first-child) {
+    margin-top: 20px;
+  }
+
   .banner__title--about {
     font-size: 22px;
     text-align: left;
+  }
+
+  .banner__title--about:not(:first-child) {
+    margin-top: 30px;
   }
 
   .banner__images {

@@ -362,6 +362,10 @@ mark {
   color: rgba(var(--color-gray-200--rgb), 0.7);
 }
 
+.text--gray-300 {
+  color: var(--color-gray-300);
+}
+
 .text--neutral-400 {
   color: var(--color-neutral-500);
 }
@@ -2252,12 +2256,19 @@ div.scrollbar-thumb-x {
 }
 
 .banner__subtitle {
-  margin-bottom: 32px;
   color: #8399e0;
+}
+
+.banner__subtitle2:not(:first-child) {
+  margin-top: 7px;
 }
 
 .banner__title {
   font-size: 56px;
+}
+
+.banner__title:not(:first-child) {
+  margin-top: 32px;
 }
 
 .banner__images {
