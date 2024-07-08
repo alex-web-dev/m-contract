@@ -123,18 +123,22 @@ $scrollbarElems.forEach(($scrollbarElem) => {
   });
 });
 
-/* Messages popup */
-const $dialogList = document.querySelector(".dialog__list");
-if ($dialogList) {
-  const dialogListScrollbar = Scrollbar.init($dialogList, {
+/* Dialog */
+const dialogListsScrollbars = [];
+const $dialogLists = document.querySelectorAll(".dialog__list");
+$dialogLists.forEach(($popupDialogList) => {
+  const continuousScrolling = $popupDialogList.dataset.scrollbarContinue !== undefined;
+  const dialogListScrollbar = Scrollbar.init($popupDialogList, {
     damping: 0.1,
     alwaysShowTracks: false,
-    continuousScrolling: false,
+    continuousScrolling,
   });
 
   dialogListScrollbar.scrollTo(0, dialogListScrollbar.limit.y, 0);
-}
+  dialogListsScrollbars.push(dialogListScrollbar);
+});
 
+/* Messages popup */
 const $messagesPopupDialog = document.querySelector(".messages-popup__dialog");
 const $messagesPopupItems = document.querySelectorAll(".messages-popup__item");
 $messagesPopupItems.forEach(($item) => {
@@ -147,6 +151,38 @@ const $messagesPopupDialogBack = document.querySelector(".messages-popup__dialog
 $messagesPopupDialogBack?.addEventListener("click", () => {
   $messagesPopupDialog.classList.remove("messages-popup__dialog--active");
 });
+
+/* Messages */
+const $messages = document.querySelector(".messages");
+if ($messages) {
+  const $messagesDialogBox = $messages.querySelector(".messages__dialog-box");
+  const $messagesDialog = $messages.querySelector(".messages__dialog");
+  const $messagesDialogEmpty = $messages.querySelector(".messages__dialog-empty");
+  const $messagesItems = $messages.querySelectorAll(".messages__item");
+  const $messagesDialogList = $messagesDialog.querySelector(".dialog__list");
+  const messagesDialogListScrollbar = dialogListsScrollbars.find((scrollbar) => scrollbar.containerEl === $messagesDialogList);
+
+  $messagesItems.forEach(($item) => {
+    $item.addEventListener("click", () => {
+      $messagesDialogBox.classList.add("messages__dialog-box--active");
+      $messagesDialog.classList.add("messages__dialog--active");
+      $messagesDialogEmpty.classList.add("messages__dialog-empty--hide");
+
+      messagesDialogListScrollbar.update();
+      messagesDialogListScrollbar.scrollTo(0, messagesDialogListScrollbar.limit.y, 0);
+    });
+  });
+
+  const $messagesDialogBack = $messages.querySelector(".messages__dialog .dialog__back");
+  $messagesDialogBack.addEventListener("click", () => {
+    $messagesDialogBox.classList.remove("messages__dialog-box--active");
+  });
+
+  const $messagesHeaderBack = $messages.querySelector(".messages .messages-header__back");
+  $messagesHeaderBack.addEventListener("click", () => {
+    $messagesDialogBox.classList.remove("messages__dialog-box--active");
+  });
+}
 
 /* Switch items */
 const $switchBoxes = document.querySelectorAll(".js-switch");
@@ -196,6 +232,10 @@ $inputs.forEach(($input) => {
   const $clearBtn = $input.querySelector(".input__clear-field");
   const $field = $input.querySelector(".input__field");
 
+  if ($field?.value !== "") {
+    $clearBtn?.classList.add("input__clear-field--active");
+  }
+
   $clearBtn?.addEventListener("click", () => {
     $field.value = "";
     $clearBtn.classList.remove("input__clear-field--active");
@@ -205,6 +245,8 @@ $inputs.forEach(($input) => {
   $field?.addEventListener("input", () => {
     if ($field.value !== "") {
       $clearBtn?.classList.add("input__clear-field--active");
+    } else {
+      $clearBtn?.classList.remove("input__clear-field--active");
     }
   });
 });
@@ -352,14 +394,14 @@ $selectFields.forEach(($select) => {
         const $updateInputField = document.getElementById($select.dataset.updateInputIdText);
         $updateInputField.value = $option.dataset.text;
 
-        const $updateInput = $updateInputField.closest('.input');
-        $updateInput.classList.remove('input--error');
+        const $updateInput = $updateInputField.closest(".input");
+        $updateInput.classList.remove("input--error");
       }
 
-      if ($select.classList.contains('js-select-update-btn-text') && $option.dataset.btnText) {
-        const $form = $select.closest('.js-form');
+      if ($select.classList.contains("js-select-update-btn-text") && $option.dataset.btnText) {
+        const $form = $select.closest(".js-form");
         if ($form) {
-          const $btn = $form.querySelector('.js-form-submit');
+          const $btn = $form.querySelector(".js-form-submit");
           $btn.textContent = $option.dataset.btnText;
         }
       }
@@ -1061,9 +1103,9 @@ $tabsBtnsBoxes.forEach(($tabsBtnsBox) => {
 });
 
 function changeTab(name, index) {
-  const $oldActiveBtn = document.querySelector(`.tabs-btns[data-tabs-name="${name}"] > .tabs-btns__btn--active`);
+  const $oldActiveBtn = document.querySelector(`.tabs-btns[data-tabs-name="${name}"] .tabs-btns__btn--active`);
   const $oldActiveTab = document.querySelector(`.tabs-list[data-tabs-name="${name}"] > .tabs-list__item--active`);
-  const $newActiveBtn = document.querySelectorAll(`.tabs-btns[data-tabs-name="${name}"] > .tabs-btns__btn`)[index];
+  const $newActiveBtn = document.querySelectorAll(`.tabs-btns[data-tabs-name="${name}"] .tabs-btns__btn`)[index];
   const $newActiveTab = document.querySelectorAll(`.tabs-list[data-tabs-name="${name}"] > .tabs-list__item`)[index];
 
   $oldActiveTab.classList.remove("tabs-list__item--active");
@@ -1374,12 +1416,16 @@ function openPopup($popup) {
 const $dropdowns = document.querySelectorAll(".dropdown");
 $dropdowns.forEach(($dropdown) => {
   const $btn = $dropdown.querySelector(".dropdown__btn");
-  $btn.addEventListener("click", () => {
-    if ($btn.dataset.dropdownMinWidth && window.innerWidth <= $btn.dataset.dropdownMinWidth) {
-      return;
-    }
+  $btn.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-    $dropdown.classList.toggle("dropdown--active");
+    document.querySelectorAll(".dropdown--active").forEach(($activeDropdown) => {
+      $activeDropdown.classList.remove("dropdown--active");
+    });
+
+    if (!$btn.dataset.dropdownMinWidth || window.innerWidth > $btn.dataset.dropdownMinWidth) {
+      $dropdown.classList.toggle("dropdown--active");
+    }
   });
 });
 
@@ -1397,7 +1443,7 @@ window.addEventListener("click", (e) => {
 const $categoriesItems = document.querySelectorAll(".category");
 $categoriesItems.forEach(($category) => {
   const $btn = $category.querySelector(".category__btn");
-  $btn.addEventListener("click", () => {
+  $btn?.addEventListener("click", () => {
     $category.classList.toggle("category--active");
   });
 });
@@ -1576,3 +1622,179 @@ function closeLKSidebar($lkSidebar) {
     unlockBody();
   }
 }
+
+/* Search items */
+const $searchItemsBoxes = document.querySelectorAll(".search-items");
+
+$searchItemsBoxes.forEach(($searchItemsBox) => {
+  const $searchInput = $searchItemsBox.querySelector(".search-items__input .input__field");
+  const $clearButton = $searchItemsBox.querySelector(".input__clear-field");
+  let $searchItems = $searchItemsBox.querySelectorAll(".search-items__item");
+
+  const resetSearch = () => {
+    $searchItems.forEach(($item) => {
+      const $textElements = $item.querySelectorAll(".search-items__text");
+      $textElements.forEach(($textElement) => {
+        $textElement.innerHTML = $textElement.textContent;
+      });
+      $item.classList.remove("search-items__item--hide");
+    });
+  };
+
+  $searchInput.addEventListener("input", () => {
+    const query = $searchInput.value.trim().toLowerCase();
+
+    if (query === "") {
+      resetSearch();
+      return;
+    }
+
+    $searchItems = $searchItemsBox.querySelectorAll(".search-items__item");
+    $searchItems.forEach(($item) => {
+      const $textElements = $item.querySelectorAll(".search-items__text");
+      let itemMatches = false;
+
+      $textElements.forEach(($textElement) => {
+        const originalText = $textElement.textContent;
+        const text = originalText.toLowerCase();
+
+        if (text.includes(query)) {
+          itemMatches = true;
+          const startIndex = text.indexOf(query);
+          const endIndex = startIndex + query.length;
+          $textElement.innerHTML = `${originalText.substring(0, startIndex)}<mark>${originalText.substring(
+            startIndex,
+            endIndex
+          )}</mark>${originalText.substring(endIndex)}`;
+        } else {
+          $textElement.innerHTML = originalText;
+        }
+      });
+
+      if (itemMatches) {
+        $item.classList.remove("search-items__item--hide");
+      } else {
+        $item.classList.add("search-items__item--hide");
+      }
+    });
+  });
+
+  $clearButton.addEventListener("click", () => {
+    resetSearch();
+  });
+});
+
+/* Tippy.js */
+tippy("[data-tippy-content]");
+
+/* Groups */
+const $groups = document.querySelectorAll(".groups");
+$groups.forEach(($group) => {
+  const $addBtn = $group.querySelector(".groups__add");
+  const $list = $group.querySelector(".groups__list");
+  $addBtn.addEventListener("click", () => {
+    const $newItem = createGroupItem("groups__item search-items__item");
+    $list.prepend($newItem);
+  });
+});
+
+function createGroupItem(className) {
+  const $groupItem = createElem("div", `group-item group-item--edit ${className}`);
+  $groupItem.innerHTML = `
+    <div class="text text--3xs text--lh-14 group-item__value search-items__text"></div>
+    <div class="input group-item__input">
+      <input
+        class="input__field input__field--xxs"
+        type="text"
+        value="" />
+    </div>`;
+
+  const $inputField = $groupItem.querySelector(".group-item__input .input__field");
+  const $valueText = $groupItem.querySelector(".group-item__value");
+  let defaultValue = "";
+  let isCreating = true;
+
+  const $saveBtn = createElem("button", "group-item__btn group-item__btn--save");
+  $saveBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />';
+  $saveBtn.addEventListener("click", () => {
+    const value = $inputField.value;
+    if (value !== "") {
+      $groupItem.classList.remove("group-item--edit");
+      $valueText.textContent = value;
+      defaultValue = value;
+      isCreating = false;
+    }
+  });
+
+  const $editBtn = createElem("button", "group-item__btn group-item__btn--edit");
+  $editBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />';
+  $editBtn.addEventListener("click", () => {
+    $groupItem.classList.add("group-item--edit");
+  });
+
+  const $deleteBtn = createElem("button", "group-item__btn group-item__btn--delete");
+  $deleteBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />';
+  $deleteBtn.addEventListener("click", () => {
+    $groupItem.remove();
+  });
+
+  const $cancelBtn = createElem("button", "group-item__btn group-item__btn--cancel");
+  $cancelBtn.innerHTML = '<img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />';
+  $cancelBtn.addEventListener("click", () => {
+    if (isCreating) {
+      $groupItem.remove();
+    } else {
+      $groupItem.classList.remove("group-item--edit");
+      $inputField.value = defaultValue;
+    }
+  });
+
+  $groupItem.prepend($saveBtn);
+  $groupItem.prepend($editBtn);
+  $groupItem.append($deleteBtn);
+  $groupItem.append($cancelBtn);
+
+  return $groupItem;
+}
+
+/* Group items */
+const $groupItems = document.querySelectorAll(".group-item");
+$groupItems.forEach(($groupItem) => {
+  const $inputField = $groupItem.querySelector(".group-item__input .input__field");
+  const $valueText = $groupItem.querySelector(".group-item__value");
+  let defaultValue = $inputField.value;
+
+  const $editBtn = $groupItem.querySelector(".group-item__btn--edit");
+  $editBtn.addEventListener("click", () => {
+    $groupItem.classList.add("group-item--edit");
+  });
+
+  const $cancelBtn = $groupItem.querySelector(".group-item__btn--cancel");
+  $cancelBtn.addEventListener("click", () => {
+    $groupItem.classList.remove("group-item--edit");
+    $inputField.value = defaultValue;
+  });
+
+  const $saveBtn = $groupItem.querySelector(".group-item__btn--save");
+  $saveBtn.addEventListener("click", () => {
+    const value = $inputField.value;
+    if (value !== "") {
+      $groupItem.classList.remove("group-item--edit");
+      $valueText.textContent = value;
+      defaultValue = value;
+    }
+  });
+
+  const $deleteBtn = $groupItem.querySelector(".group-item__btn--delete");
+  $deleteBtn.addEventListener("click", () => {
+    $groupItem.remove();
+  });
+});
+
+/* Info */
+const $infoSidebarMenuLinks = document.querySelectorAll(".info__sidebar .lk-menu .lk-menu__link");
+$infoSidebarMenuLinks.forEach(($link) => {
+  $link.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});

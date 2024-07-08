@@ -91,6 +91,10 @@
     margin-bottom: 15px;
   }
 
+  .lk__header--mb-20 {
+    margin-bottom: 20px;
+  }
+
   .lk__header-title {
     font-size: 32px;
     font-weight: 700;
@@ -138,6 +142,16 @@
 
   .filter-btn {
     font-size: 14px;
+  }
+
+  .messages__header-title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .info__title {
+    font-size: 32px;
+    font-weight: 700;
   }
 }
 
@@ -367,6 +381,24 @@
   .advert__img-box {
     width: 100px;
     height: 64px;
+  }
+
+  .messages__header-title {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .info__title {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .info__main {
+    padding-top: 75px;
   }
 }
 
@@ -655,6 +687,22 @@
     margin-left: auto;
   }
 
+  .advert__header {
+    flex-wrap: wrap;
+  }
+
+  .advert__statuses {
+    padding-right: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .advert__info {
+    margin-top: 12px;
+    margin-left: 0;
+    order: 2;
+    width: 100%;
+  }
+
   .advert__footer {
     flex-wrap: wrap;
   }
@@ -663,6 +711,23 @@
     width: 100%;
     padding-top: 12px;
     padding-left: 0;
+  }
+
+  .messages-header__clear {
+    display: none;
+  }
+
+  .trade-history__rate:not(:first-child) {
+    flex: 0 0 29%;
+  }
+
+  .info__content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .info__sidebar {
+    max-height: calc(100vh - 46px - 40px - 56px);
   }
 }
 
@@ -822,6 +887,10 @@
     padding-left: 250px;
   }
 
+  .lk__back {
+    font-size: 14px;
+  }
+
   .lk-tarif-panel__balance {
     flex-direction: column;
     align-items: flex-start;
@@ -865,6 +934,168 @@
 
   .advert__location:not(:last-child) {
     margin-right: 12px;
+  }
+
+  .messages__dialog-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    margin-left: 0;
+    height: 100%;
+    max-height: none;
+    width: 100%;
+    transform: translateX(100%);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.45s, opacity 0.45s, transform 0.45s;
+  }
+
+  .messages__dialog-box--active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .dialog__back-box {
+    padding-bottom: 20px;
+    display: block;
+    background-color: #f4f6fc;
+  }
+
+  .messages__list {
+    flex: none;
+    width: 100%;
+  }
+
+  .lk-catalog__item--col-6 {
+    width: calc(100% - 12px);
+  }
+
+  .partner-header__content {
+    flex-wrap: wrap;
+  }
+
+  .partner-header__main {
+    flex: 0 0 calc(100% - 92px);
+  }
+
+  .partner-header__btns {
+    margin-top: 16px;
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .partner-header__btn:not(:first-child) {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+
+  .partner-groups {
+    justify-content: space-between;
+  }
+
+  .table-partner tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-partner tr:not(:first-child) {
+    padding-top: 8px;
+    border-top: 1px solid var(--color-neutral-100);
+  }
+
+  .table-partner tr:not(:last-child) {
+    padding-bottom: 8px;
+  }
+
+  .table-partner tr:not(:first-child) td {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .table-partner tr:not(:last-child) td {
+    padding-bottom: 0;
+  }
+
+  .table-partner tr td:not(:first-child):not(.table-partner__not-specified) {
+    padding-top: 8px;
+  }
+
+  .partner-locked {
+    min-height: 144px;
+  }
+
+  .offer__header {
+    flex-wrap: wrap;
+  }
+
+  .offer__price-label,
+  .offer__price-value {
+    font-size: 13px;
+  }
+
+  .offer__info {
+    order: 2;
+    width: 100%;
+  }
+
+  .offer__info:not(:first-child) {
+    margin-top: 12px;
+    margin-left: 0;
+  }
+
+  .offer__name {
+    font-size: 13px;
+  }
+
+  .offer__info:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .offer__location:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  .offer__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .offer__addition-info {
+    margin-left: 0;
+    margin-top: 12px;
+    padding-left: 0;
+  }
+
+  .trade-history__addition {
+    margin-top: 12px;
+  }
+
+  .trade-history__rate:not(:first-child) {
+    margin-left: 12px;
+  }
+
+  .table-price th:first-child,
+  .table-price td:first-child {
+    width: 32px;
+  }
+
+  .table-price th:nth-child(3),
+  .table-price td:nth-child(3) {
+    width: 20%;
+  }
+
+  .table-price th:nth-child(4),
+  .table-price td:nth-child(4) {
+    width: 28%;
+  }
+
+  .table-price__total {
+    width: calc(28% - 4px);
   }
 }
 
@@ -1373,7 +1604,7 @@
   }
 
   .lk-sidebar:before {
-    content: '';
+    content: "";
     position: fixed;
     left: 0;
     top: 0;
@@ -1495,6 +1726,58 @@
 
   .lk-section-footer__pagination .pagination__link--right {
     margin-left: 20px;
+  }
+
+  .popup-content--mobile-full {
+    max-height: var(--custom-100vh);
+  }
+
+  .partner-header__title .text__icon {
+    display: none;
+  }
+
+  .info {
+    background-color: var(--color-neutral-75);
+  }
+
+  .info__body {
+    flex-direction: column;
+  }
+
+  .info__sidebar {
+    position: static;
+    margin-bottom: 20px;
+    margin-right: 0;
+    width: 100%;
+    max-height: none;
+    flex: none;
+  }
+
+  .info__sidebar-content {
+    overflow: initial !important;
+  }
+
+  .info__main {
+    padding-top: 0;
+    padding-left: 0;
+  }
+
+  .help-box {
+    display: flex;
+  }
+
+  .help-box__info {
+    flex: 0 0 50%;
+  }
+
+  .help-box__text {
+    max-width: none;
+  }
+
+  .help-box__btns {
+    margin-top: 0;
+    margin-left: 20px;
+    flex: 0 0 calc(50% - 20px)
   }
 }
 
@@ -1995,6 +2278,13 @@
     margin-left: 0;
   }
 
+  .lk__header-links {
+    margin-top: 8px;
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+
   .lk__header-status {
     margin-top: 8px;
     width: 100%;
@@ -2142,6 +2432,16 @@
     margin-bottom: 16px;
   }
 
+  .filter__sort-btns {
+    width: 100%;
+    flex: none;
+  }
+
+  .sort-btns__list--mobile-between {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .advert {
     padding: 8px;
   }
@@ -2172,6 +2472,21 @@
 
   .advert__main {
     flex-wrap: wrap;
+  }
+
+  .advert__info {
+    display: none;
+  }
+
+  .advert__mobile-info {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 100px - 12px);
+  }
+
+  .advert__info-location:not(:first-child) {
+    margin-top: 4px;
+    margin-left: 0;
   }
 
   .advert__mobile-location {
@@ -2214,6 +2529,289 @@
 
   .advert__meta-item:not(:first-child) {
     margin-left: 8px;
+  }
+
+  .lk__messages {
+    margin: -16px;
+    padding: 16px;
+  }
+
+  .dialog__back-box {
+    display: none;
+  }
+
+  .dialog__tags-box--mobile {
+    display: flex;
+  }
+
+  .messages-header__img--xl {
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .messages__header-title {
+    font-size: 16px;
+  }
+
+  .messages-header__back--mobile {
+    display: flex;
+  }
+
+  .messages-header__more.btn--icon-xs {
+    width: 20px;
+    height: 20px;
+  }
+
+  .messages-header__tags-box--desktop {
+    display: none;
+  }
+
+  .messages__controls {
+    flex-direction: column;
+  }
+
+  .messages__search {
+    flex: none;
+    width: 100%;
+  }
+
+  .messages__controls-btns {
+    margin-top: 12px;
+    margin-left: 0;
+    flex: none;
+    width: 100%;
+  }
+
+  .messages__controls-btn {
+    padding-left: 12px;
+    padding-right: 12px;
+    flex: 1 1 0%;
+  }
+
+  .messages__list {
+    max-height: 550px;
+  }
+
+  .partner-item__btns {
+    margin-top: 8px;
+    margin-left: 0;
+    grid-area: 3 / 1 / 3 / 4;
+  }
+
+  .partner-header__title--desktop {
+    display: none;
+  }
+
+  .partner-header__title--mobile {
+    display: block;
+  }
+
+  .partner-header__location {
+    font-size: 12px;
+  }
+
+  .partner-locked {
+    min-height: 248px;
+  }
+
+  .offer__location {
+    font-size: 13px;
+  }
+
+  .offer__tags .tags__list,
+  .offer__statuses .tags__list {
+    margin-top: -8px;
+    margin-left: -8px;
+  }
+
+  .offer__tags .tags__item,
+  .offer__statuses .tags__item {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+
+  .offer__tags .tags__item .tag__text,
+  .offer__statuses .tags__item .tag__text {
+    font-size: 12px;
+  }
+
+  .table-price__mobile-label {
+    margin-right: 8px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+
+  .table-price__mobile-label--num {
+    padding: 3px 7px;
+    background-color: #fff;
+    border-radius: 2px;
+    color: var(--color-primary);
+  }
+
+  .table-price__value {
+    margin-top: 4px;
+  }
+
+  .table-price__value--desktop {
+    display: none;
+  }
+
+  .table-price__total {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .table-price tr {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gray-50);
+  }
+
+  .table-price tr:not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .table-price th {
+    display: none;
+  }
+
+  .table-price td {
+    padding: 3px 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: none;
+  }
+
+  .table-price td:first-child {
+    padding-top: 12px;
+  }
+
+  .table-price td:last-child {
+    padding-bottom: 12px;
+  }
+
+  .table-price td:first-child,
+  .table-price td:nth-child(3),
+  .table-price td:nth-child(4) {
+    width: 100%;
+  }
+
+  .table-price__total {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .table-price__total-value {
+    font-size: 16px;
+  }
+
+  .trade-history__main-footer {
+    border-top: none;
+  }
+
+  .trade-history__main-footer-btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .trade-history__addition {
+    flex-direction: column;
+  }
+
+  .trade-history__authors,
+  .trade-history__rate {
+    min-height: 126px;
+  }
+
+  .trade-history__authors {
+    flex: none;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .trade-history__authors-logo {
+    margin: 10px 0;
+  }
+
+  .trade-history__rate {
+    flex: none;
+    width: 100%;
+  }
+
+  .trade-history__rate:not(:first-child) {
+    margin-top: 12px;
+    margin-left: 0;
+  }
+
+  .info__content {
+    padding: 16px;
+  }
+
+  .info__title {
+    max-width: calc(100% - 26px);
+    font-size: 16px;
+  }
+
+  .info-text h1 {
+    font-size: 18px;
+  }
+  
+  .info-text h1:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  
+  .info-text h1:not(:first-child) {
+    margin-top: 8px;
+  }
+  
+  .info-text h2 {
+    font-size: 16px;
+  }
+  
+  .info-text h2:not(:first-child) {
+    margin-top: 12px;
+  }
+  
+  .info-text h2:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  
+  .info-text p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .info-text p:not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .info-text p a {
+    text-decoration: none;
+  }
+
+  .help-box {
+    flex-direction: column;
+  }
+
+  .help-box__info {
+    flex: none;
+    width: 100%;
+  }
+
+  .help-box__text {
+    max-width: 270px;
+  }
+
+  .help-box__btns {
+    margin-top: 12px;
+    margin-left: 0;
+    flex: none;
+    width: 100%;
   }
 }
 
