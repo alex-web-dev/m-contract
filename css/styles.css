@@ -5827,6 +5827,10 @@ div.scrollbar-thumb-x {
   margin-top: 10px;
 }
 
+.table-price {
+  max-height: 374px;
+}
+
 .table-price__main {
   width: 100%;
   border-spacing: 0;
