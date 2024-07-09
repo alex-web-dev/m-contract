@@ -2,13 +2,13 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=25" />
-    <link rel="stylesheet" href="css/fonts.css?v=25" />
-    <link rel="stylesheet" href="css/styles.css?v=25" />
-    <link rel="stylesheet" href="css/media.css?v=25" />
+    <link rel="stylesheet" href="css/normalize.css?v=26" />
+    <link rel="stylesheet" href="css/fonts.css?v=26" />
+    <link rel="stylesheet" href="css/styles.css?v=26" />
+    <link rel="stylesheet" href="css/media.css?v=26" />
     <title>M-Contract - Партнер</title>
   </head>
   <body>
@@ -331,18 +331,17 @@
                   </a>
                   <div class="partner__body">
                     <div class="partner-header partner__header">
-                      <div class="text text--iflex text--3xs text--lh-14 text--semibold partner-header__title partner-header__title--mobile">
-                        <span>ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</span>
-                      </div>
                       <div class="partner-header__content">
                         <div class="partner-header__img">
                           <img src="img/lk/partner.jpg" alt="" />
                         </div>
                         <div class="partner-header__main">
-                          <div class="text text--iflex text--xxs text--lh-14 text--semibold partner-header__title partner-header__title--desktop">
-                            <span>ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</span>
+                          <div class="text text--iblock text--xxs text--lh-14 text--semibold partner-header__title">
+                            <span class="text__clamp text__clamp--2">
+                              ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                            </span>
                           </div>
-                          <div class="text text--3xs text--lh-14 partner-header__text">г. Оренбург (Оренбургская область)</div>
+                          <div class="text text--3xs text--lh-14 partner-header__location">г. Оренбург (Оренбургская область)</div>
                           <div class="text text--iflex text--3xs text--lh-14 partner-header__rating">
                             <span>4.8</span>
                             <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
@@ -365,7 +364,9 @@
                               </div>
                             </div>
                           </div>
-                          <button class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn js-open-popup" data-popup-name="delete">
+                          <button
+                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn js-open-popup"
+                            data-popup-name="delete">
                             <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
                             <span>Удалить</span>
                           </button>
@@ -377,7 +378,9 @@
                       <div class="partner-groups__list">
                         <div class="text text--neutral-600 text--3xs partner-groups__item">Группа</div>
                       </div>
-                      <button class="btn btn--iflex btn--white btn--px-xxs btn--py-3xs btn--text-xs partner-groups__add js-open-popup" data-popup-name="add-group">
+                      <button
+                        class="btn btn--iflex btn--white btn--px-xxs btn--py-3xs btn--text-xs partner-groups__add js-open-popup"
+                        data-popup-name="add-group">
                         <img class="btn__icon" src="img/icons/plus-second.svg" alt="" />
                         <span>Добавить в группу</span>
                       </button>
@@ -390,7 +393,9 @@
                               <span class="text text--3xs text--neutral-600 text--lh-14">Наименование организации</span>
                             </td>
                             <td>
-                              <span class="text text--3xs text--medium text--lh-14">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</span>
+                              <span class="text text--3xs text--medium text--lh-14">
+                                ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                              </span>
                             </td>
                           </tr>
                           <tr>
@@ -449,13 +454,21 @@
                           </tr>
                           <tr>
                             <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Должность представителя</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--italic text--neutral-500 text--lh-14">Должность не указана</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
                               <span class="text text--3xs text--neutral-600 text--lh-14">E-mail</span>
                             </td>
                             <td>
                               <span class="text text--flex text--justify-between text--3xs text--medium text--lh-14">
                                 <span>konst.ilin22@gmail.com</span>
                                 <div class="icon text__icon">
-                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="">
+                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="" />
                                 </div>
                               </span>
                             </td>
@@ -468,7 +481,7 @@
                               <span class="text text--flex text--justify-between text--3xs text--medium text--lh-14">
                                 <span>+7(555)222-55-55</span>
                                 <div class="icon text__icon">
-                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="">
+                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="" />
                                 </div>
                               </span>
                             </td>
@@ -1745,7 +1758,9 @@
               </div>
               <div class="add-list search-items__add-list" data-scrollbar>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Длинное наименование группы для проверки отображения информации в блоке</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    Длинное наименование группы для проверки отображения информации в блоке
+                  </div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
                   <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Металлолом</div>
@@ -1799,7 +1814,9 @@
               </div>
               <div class="popup-content__btns popup-content__btns--end popup-content__btns--mt-20">
                 <button class="btn btn--px-sm btn--orange-100 btn--text-xs popup-content__btns-btn" type="button">Удалить из группы</button>
-                <button class="btn btn--px-sm btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn js-close-popup" type="button">
+                <button
+                  class="btn btn--px-sm btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn js-close-popup"
+                  type="button">
                   Отменить
                 </button>
               </div>
@@ -1820,6 +1837,6 @@
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
-    <script src="js/main.js?v=25"></script>
+    <script src="js/main.js?v=26"></script>
   </body>
 </html>

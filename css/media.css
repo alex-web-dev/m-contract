@@ -2166,6 +2166,10 @@
     font-size: 18px;
   }
 
+  .footer--desktop {
+    display: none;
+  }
+
   .footer__currencies {
     width: 100%;
     flex-direction: row;
@@ -2593,18 +2597,24 @@
     max-height: 550px;
   }
 
+  .partner-item__img-box {
+    padding-bottom: 0;
+  }
+
+  .partner-item__info {
+    padding-bottom: 0;
+    padding-right: 8px;
+  }
+
   .partner-item__btns {
     margin-top: 8px;
     margin-left: 0;
+    padding-left: 8px;
     grid-area: 3 / 1 / 3 / 4;
   }
 
-  .partner-header__title--desktop {
-    display: none;
-  }
-
-  .partner-header__title--mobile {
-    display: block;
+  .partner-header__title {
+    font-size: 14px;
   }
 
   .partner-header__location {

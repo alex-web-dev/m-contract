@@ -1695,6 +1695,9 @@ $groups.forEach(($group) => {
   $addBtn.addEventListener("click", () => {
     const $newItem = createGroupItem("groups__item search-items__item");
     $list.prepend($newItem);
+
+    const $newItemInputField = $newItem.querySelector('.group-item__input .input__field');
+    $newItemInputField.focus();
   });
 });
 
