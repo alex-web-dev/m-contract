@@ -1889,6 +1889,10 @@
     font-size: 16px;
   }
 
+  .header--desktop {
+    display: none;
+  }
+
   .header__content {
     padding-left: 0;
     min-height: 44px;
@@ -1964,6 +1968,10 @@
 
   .header--lk .header__search {
     margin-left: 0;
+  }
+
+  .header--desktop ~ .main {
+    padding-top: 0;
   }
 
   .main__steps {
@@ -2548,6 +2556,12 @@
     display: flex;
   }
 
+  .messages {
+    max-height: var(--custom-100vh);
+    display: flex;
+    flex-direction: column;
+  }
+
   .messages-header__img--xl {
     margin-right: 8px;
     width: 32px;
@@ -2591,6 +2605,11 @@
     padding-left: 12px;
     padding-right: 12px;
     flex: 1 1 0%;
+  }
+
+  .messages__main {
+    flex: 1 1 auto;
+    min-height: 0;
   }
 
   .messages__list {
