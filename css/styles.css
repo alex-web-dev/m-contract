@@ -4223,6 +4223,10 @@ div.scrollbar-thumb-x {
   flex-wrap: wrap;
 }
 
+.tags__list--nowrap {
+  flex-wrap: nowrap;
+}
+
 .tags__list--offset-lg {
   margin-top: -12px;
   margin-left: -12px;
@@ -4255,6 +4259,7 @@ div.scrollbar-thumb-x {
   line-clamp: 1;
   -webkit-box-orient: vertical;
   word-break: break-all;
+  line-height: 1;
 }
 
 .tag__delete {
@@ -4268,6 +4273,11 @@ div.scrollbar-thumb-x {
 
 .tag--sm {
   padding: 1px 4px;
+}
+
+.tag--clamp.tag--sm {
+  padding-top: 0;
+  padding-bottom: 2px;
 }
 
 .tag--py-lg {
@@ -4381,7 +4391,7 @@ div.scrollbar-thumb-x {
 }
 
 .message-item__date {
-  margin-left: 12px;
+  margin-left: 8px;
 }
 
 .message-item__info {
@@ -4442,6 +4452,7 @@ div.scrollbar-thumb-x {
 }
 
 .messages-header__body-more {
+  margin-left: 8px;
   flex: 0 0 auto;
   align-self: flex-start;
 }
@@ -4471,6 +4482,7 @@ div.scrollbar-thumb-x {
 }
 
 .messages-header__main {
+  padding-top: 2px;
   flex: 1 1 auto;
 }
 
@@ -4481,6 +4493,14 @@ div.scrollbar-thumb-x {
 
 .messages-header__title {
   font-size: 13px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.messages-header__title button {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
