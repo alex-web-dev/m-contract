@@ -727,7 +727,7 @@
   }
 
   .info__sidebar {
-    max-height: calc(100vh - 46px - 40px - 56px);
+    max-height: calc(100vh - 46px - 40px);
   }
 }
 
