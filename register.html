@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=28" />
-    <link rel="stylesheet" href="css/fonts.css?v=28" />
-    <link rel="stylesheet" href="css/styles.css?v=28" />
-    <link rel="stylesheet" href="css/media.css?v=28" />
+    <link rel="stylesheet" href="css/normalize.css?v=29" />
+    <link rel="stylesheet" href="css/fonts.css?v=29" />
+    <link rel="stylesheet" href="css/styles.css?v=29" />
+    <link rel="stylesheet" href="css/media.css?v=29" />
     <title>M-Contract - Регистрация</title>
   </head>
   <body>
@@ -142,6 +142,7 @@
                         Выслать код
                       </button>
                     </div>
+                    <span id="number-attempts" class="text text--4xs text--lh-125"></span>
                     <span class="text text--4xs text--lh-125 input__error"></span>
                   </div>
                   <div class="form__steps-btns">
@@ -159,10 +160,10 @@
               <div class="form__step">
                 <div class="form__main">
                   <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
-                    <label class="text text--3xs select__label" for="register-name">Наименование организации или ИП</label>
+                    <label class="text text--3xs select__label" for="register-organization-name">Наименование организации или ИП</label>
                     <div class="input select__input">
                       <div class="input__main">
-                        <input class="input__field input__field--sm" id="register-name" type="text" />
+                        <input class="input__field input__field--sm" id="register-organization-name" type="text" />
                       </div>
                     </div>
                     <select
@@ -580,6 +581,8 @@
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
-    <script src="js/main.js?v=28"></script>
+    <script src="js/main.js?v=29"></script>
+    <script src="js/input-confirm.js"></script>
+    <script src="js/popup.js"></script>
   </body>
 </html>
