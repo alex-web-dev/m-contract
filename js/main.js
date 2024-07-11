@@ -1703,3 +1703,17 @@ $infoSidebarMenuLinks.forEach(($link) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+
+/* Partners */
+const $partnersDeleteBtn = document.getElementById('partner-delete');
+$partnersDeleteBtn?.addEventListener('click', () => {
+  const $deletePopup = createPopup({
+    text: "Вы уверены, что хотите удалить из группы?",
+    btnText: "Отменить",
+    btnDangerText: "Удалить из группы",
+    btnDangerCallback: () => {
+      console.log('delete');
+      removePopup($deletePopup);
+    },
+  });
+});
