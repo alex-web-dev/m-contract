@@ -1345,8 +1345,11 @@ window.addEventListener("click", (e) => {
 const $categoriesItems = document.querySelectorAll(".category");
 $categoriesItems.forEach(($category) => {
   const $btn = $category.querySelector(".category__btn");
-  $btn?.addEventListener("click", () => {
-    $category.classList.toggle("category--active");
+  $btn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = $category.classList.contains("category--active");
+    closeOtherCategories($category);
+    $category.classList.toggle("category--active", !isOpen);
   });
 });
 
@@ -1369,75 +1372,78 @@ $categoriesBoxes.forEach(($categoriesBox) => {
     }
   });
 
-  document.addEventListener("click", (event) => {
-    if (event.target.matches(".category__checkbox--all .checkbox__input")) {
-      const checkbox = event.target;
-      const $category = checkbox.closest(".category");
-      toggleAllCheckboxes($category, checkbox.checked);
-    }
+  $searchClearBtn?.addEventListener("click", () => {
+    $searchField.value = "";
+    resetVisibility($categories);
+    closeOtherCategories();
   });
 
-  $searchClearBtn?.addEventListener("click", () => {
-    resetVisibility($categories);
+  document.addEventListener("click", (event) => {
+    if (event.target.matches(".category__checkbox--all .checkbox__input")) {
+      const $checkbox = event.target;
+      const $category = $checkbox.closest(".category");
+      toggleAllCheckboxes($category, $checkbox.checked);
+    }
   });
 });
 
-function filterCategory(category, searchText, rawSearchText) {
-  let checkboxes = category.querySelectorAll(".category__checkbox:not(.category__checkbox--all)");
-  let buttons = category.querySelectorAll(".category__item-btn");
-  let childCategories = category.querySelectorAll(".category__item");
+function filterCategory($category, searchText, rawSearchText) {
+  const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all)");
+  const $buttons = $category.querySelectorAll(".category__item-btn");
+  const $childCategories = $category.querySelectorAll(".category__item");
   let anyCheckboxVisible = false;
   let anyButtonVisible = false;
   let anyChildCategoryVisible = false;
 
-  checkboxes.forEach((checkbox) => {
-    let labelElement = checkbox.querySelector(".checkbox__text");
-    let labelText = labelElement.textContent.toLowerCase();
-    let normalizedLabelText = labelText.replace(/[\s.,!]/g, "");
+  $checkboxes.forEach(($checkbox) => {
+    const $labelElement = $checkbox.querySelector(".checkbox__text");
+    const labelText = $labelElement.textContent.toLowerCase();
+    const normalizedLabelText = labelText.replace(/[\s.,!]/g, "");
 
     if (normalizedLabelText.includes(searchText) && searchText !== "") {
-      checkbox.classList.remove("category__checkbox--hide");
+      $checkbox.classList.remove("category__checkbox--hide");
       anyCheckboxVisible = true;
 
-      const highlightedText = highlightText(labelElement.textContent, rawSearchText);
-      labelElement.innerHTML = highlightedText;
+      const highlightedText = highlightText($labelElement.textContent, rawSearchText);
+      $labelElement.innerHTML = highlightedText;
     } else {
-      checkbox.classList.add("category__checkbox--hide");
-      labelElement.innerHTML = labelElement.textContent;
+      $checkbox.classList.add("category__checkbox--hide");
+      $labelElement.innerHTML = $labelElement.textContent;
     }
   });
 
-  buttons.forEach((button) => {
-    let buttonText = button.textContent.toLowerCase();
-    let normalizedButtonText = buttonText.replace(/[\s.,!]/g, "");
+  $buttons.forEach(($button) => {
+    const buttonText = $button.textContent.toLowerCase();
+    const normalizedButtonText = buttonText.replace(/[\s.,!]/g, "");
 
     if (normalizedButtonText.includes(searchText) && searchText !== "") {
-      button.classList.remove("category__checkbox--hide");
+      $button.classList.remove("category__checkbox--hide");
       anyButtonVisible = true;
 
-      const highlightedText = highlightText(button.textContent, rawSearchText);
-      button.innerHTML = highlightedText;
+      const highlightedText = highlightText($button.textContent, rawSearchText);
+      $button.innerHTML = highlightedText;
     } else {
-      button.classList.add("category__checkbox--hide");
-      button.innerHTML = button.textContent;
+      $button.classList.add("category__checkbox--hide");
+      $button.innerHTML = $button.textContent;
     }
   });
 
-  childCategories.forEach((childCategory) => {
-    const childVisible = filterCategory(childCategory, searchText, rawSearchText);
+  $childCategories.forEach(($childCategory) => {
+    const childVisible = filterCategory($childCategory, searchText, rawSearchText);
     if (childVisible) {
-      childCategory.classList.remove("category--hide");
+      $childCategory.classList.remove("category--hide");
       anyChildCategoryVisible = true;
     } else {
-      childCategory.classList.add("category--hide");
+      $childCategory.classList.add("category--hide");
     }
   });
 
   if (!anyCheckboxVisible && !anyButtonVisible && !anyChildCategoryVisible) {
-    category.classList.add("category--hide");
+    $category.classList.add("category--hide");
+    $category.classList.remove("category--active");
   } else {
-    category.classList.remove("category--hide");
-    category.classList.add("category--active");
+    $category.classList.remove("category--hide");
+    $category.classList.add("category--active");
   }
 
   return anyCheckboxVisible || anyButtonVisible || anyChildCategoryVisible;
@@ -1448,43 +1454,54 @@ function highlightText(text, searchText) {
   return text.replace(regex, "<mark>$1</mark>");
 }
 
-function resetVisibility(categories) {
-  categories.forEach((category) => {
-    category.classList.remove("category--hide");
-    let checkboxes = category.querySelectorAll(".category__checkbox");
-    checkboxes.forEach((checkbox) => {
-      checkbox.classList.remove("category__checkbox--hide");
-      let labelElement = checkbox.querySelector(".checkbox__text");
-      labelElement.innerHTML = labelElement.textContent;
+function resetVisibility($categories) {
+  $categories.forEach(($category) => {
+    $category.classList.remove("category--hide");
+    const $checkboxes = $category.querySelectorAll(".category__checkbox");
+    $checkboxes.forEach(($checkbox) => {
+      $checkbox.classList.remove("category__checkbox--hide");
+      const $labelElement = $checkbox.querySelector(".checkbox__text");
+      $labelElement.innerHTML = $labelElement.textContent;
     });
 
-    let buttons = category.querySelectorAll(".category__item-btn");
-    buttons.forEach((button) => {
-      button.classList.remove("category__checkbox--hide");
-      button.innerHTML = button.textContent;
+    const $buttons = $category.querySelectorAll(".category__item-btn");
+    $buttons.forEach(($button) => {
+      $button.classList.remove("category__checkbox--hide");
+      $button.innerHTML = $button.textContent;
     });
 
-    let childCategories = category.querySelectorAll(".category__item");
-    childCategories.forEach((childCategory) => {
-      childCategory.classList.remove("category--hide");
+    const $childCategories = $category.querySelectorAll(".category__item");
+    $childCategories.forEach(($childCategory) => {
+      $childCategory.classList.remove("category--hide");
     });
   });
 }
 
-function toggleAllCheckboxes(category, isChecked) {
-  let checkboxes = category.querySelectorAll(".category__checkbox:not(.category__checkbox--hide) .checkbox__input");
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = isChecked;
+function toggleAllCheckboxes($category, isChecked) {
+  const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--hide) .checkbox__input");
+  $checkboxes.forEach(($checkbox) => {
+    $checkbox.checked = isChecked;
   });
 
-  let childCategories = category.querySelectorAll(".category__item");
-  childCategories.forEach((childCategory) => {
-    toggleAllCheckboxes(childCategory, isChecked);
+  const $childCategories = $category.querySelectorAll(".category__item");
+  $childCategories.forEach(($childCategory) => {
+    toggleAllCheckboxes($childCategory, isChecked);
   });
 
-  let allCheckboxes = category.querySelectorAll(".category__checkbox--all .checkbox__input");
-  allCheckboxes.forEach((checkbox) => {
-    checkbox.checked = isChecked;
+  const $allCheckboxes = $category.querySelectorAll(".category__checkbox--all .checkbox__input");
+  $allCheckboxes.forEach(($checkbox) => {
+    $checkbox.checked = isChecked;
+  });
+}
+
+function closeOtherCategories($currentCategory = null) {
+  const $allCategories = document.querySelectorAll(".category");
+  $allCategories.forEach(($category) => {
+    if ($currentCategory && $category.contains($currentCategory)) {
+      return;
+    }
+
+    $category.classList.remove("category--active");
   });
 }
 
@@ -1598,7 +1615,7 @@ $groups.forEach(($group) => {
     const $newItem = createGroupItem("groups__item search-items__item");
     $list.prepend($newItem);
 
-    const $newItemInputField = $newItem.querySelector('.group-item__input .input__field');
+    const $newItemInputField = $newItem.querySelector(".group-item__input .input__field");
     $newItemInputField.focus();
   });
 });
@@ -1705,14 +1722,14 @@ $infoSidebarMenuLinks.forEach(($link) => {
 });
 
 /* Partners */
-const $partnersDeleteBtn = document.getElementById('partner-delete');
-$partnersDeleteBtn?.addEventListener('click', () => {
+const $partnersDeleteBtn = document.getElementById("partner-delete");
+$partnersDeleteBtn?.addEventListener("click", () => {
   const $deletePopup = createPopup({
     text: "Вы уверены, что хотите удалить из группы?",
     btnText: "Отменить",
     btnDangerText: "Удалить из группы",
     btnDangerCallback: () => {
-      console.log('delete');
+      console.log("delete");
       removePopup($deletePopup);
     },
   });

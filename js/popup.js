@@ -56,6 +56,8 @@ function closePopup($popup) {
     },
     { once: true }
   );
+
+  closeOtherCategories();
 }
 
 function openPopup($popup) {
