@@ -1727,10 +1727,26 @@ $partnersDeleteBtn?.addEventListener("click", () => {
   const $deletePopup = createPopup({
     text: "Вы уверены, что хотите удалить из группы?",
     btnText: "Отменить",
+    btnCallback: () => {
+      console.log("cancel");
+      removePopup($deletePopup);
+    },
     btnDangerText: "Удалить из группы",
     btnDangerCallback: () => {
       console.log("delete");
-      removePopup($deletePopup);
+      removePopup($deletePopup, false);
+      createConfirmPopup();
     },
   });
 });
+
+function createConfirmPopup() {
+  const $popup = createPopup({
+    text: "Требуется подтвердить",
+    btnDangerText: "Удалить",
+    btnDangerCallback: () => {
+      console.log("delete confirmed");
+      removePopup($popup);
+    },
+  });
+}

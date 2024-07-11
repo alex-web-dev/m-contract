@@ -45,19 +45,33 @@ window.addEventListener("click", (e) => {
   closePopup($activePopup);
 });
 
-function closePopup($popup) {
+function closePopup($popup, isLockBody = true) {
   $popup.classList.remove("popup--active");
   $popup.addEventListener(
     "transitionend",
     () => {
-      if (isLockedBody() && getLockedBodyBy() === `popup-${$popup.dataset.popupName}`) {
+      if (isLockBody && isLockedBody() && getLockedBodyBy() === `popup-${$popup.dataset.popupName}`) {
         unlockBody();
       }
     },
     { once: true }
   );
 
-  closeOtherCategories();
+  const $categoriesSearchField = $popup.querySelector(".categories__search .input__field");
+  if ($categoriesSearchField) {
+    $categoriesSearchField.value = "";
+
+    const $clearBtnActive = $popup.querySelector(".input__clear-field--active");
+    $clearBtnActive?.classList.remove("input__clear-field--active");
+  }
+
+  const $categoriesBoxes = document.querySelectorAll(".categories");
+  $categoriesBoxes.forEach(($categoriesBox) => {
+    const $categories = $categoriesBox.querySelectorAll(".categories__item");
+
+    closeOtherCategories();
+    resetVisibility($categories);
+  });
 }
 
 function openPopup($popup) {
@@ -67,8 +81,8 @@ function openPopup($popup) {
   }
 }
 
-function createPopup({ text = "", btnText = "ОК", className = "", btnDangerText, btnDangerCallback }) {
-  if (document.querySelector('.popup[data-popup-name="custom"]')) {
+function createPopup({ name = 'custom', text = "", btnText, btnCallback, className = "", btnDangerText, btnDangerCallback }) {
+  if (document.querySelector('.popup--active[data-popup-name="custom"]')) {
     return;
   }
 
@@ -96,10 +110,7 @@ function createPopup({ text = "", btnText = "ОК", className = "", btnDangerTex
   $popupBody.append($popupDialog);
 
   const $btns = createElem("div", "popup-content__btns popup-content__btns--end popup-content__btns--mt-20");
-  const $btnConfirm = createElem("div", "btn btn--px-sm btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn", {
-    innerHTML: btnText,
-  });
-  $btnConfirm.addEventListener("click", () => removePopup($popup), { once: true });
+
   if (btnDangerText) {
     const $btnDanger = createElem("div", "btn btn--px-sm btn--orange-100 btn--text-xs popup-content__btns-btn", {
       innerHTML: btnDangerText,
@@ -111,14 +122,25 @@ function createPopup({ text = "", btnText = "ОК", className = "", btnDangerTex
     $btns.append($btnDanger);
   }
 
-  $btns.append($btnConfirm);
+  if (btnText) {
+    const $btnConfirm = createElem("div", "btn btn--px-sm btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn", {
+      innerHTML: btnText,
+    });
+
+    if (btnCallback) {
+      $btnConfirm.addEventListener("click", btnCallback);
+    }
+
+    $btns.append($btnConfirm);
+  }
+
   $popupMain.append($btns);
 
   const $popupBackdrop = createElem("div", "popup__backdrop");
   $popupBackdrop.addEventListener("click", () => removePopup($popup), { once: true });
 
   const $popup = createElem("div", `popup popup--show ${className}`);
-  $popup.dataset.popupName = "custom";
+  $popup.dataset.popupName = name;
 
   $popup.append($popupContent);
   $popup.append($popupBackdrop);
@@ -130,13 +152,15 @@ function createPopup({ text = "", btnText = "ОК", className = "", btnDangerTex
   return $popup;
 }
 
-function removePopup($popup) {
-  closePopup($popup);
+function removePopup($popup, isLockBody = true) {
+  closePopup($popup, isLockBody);
   setTimeout(() => $popup.remove(), 600);
 }
 
 function showPopup($popup) {
   setTimeout(() => $popup.classList.add("popup--active"));
+
+  document.body.dataset.lockedBy = `popup-${$popup.dataset.popupName}`;
 
   if (!isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
