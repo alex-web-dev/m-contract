@@ -1278,7 +1278,8 @@ mark {
   display: none;
 }
 
-.select--hide-field .simple-select__list {
+.select--hide-field .simple-select__list,
+.select--hide-field .simple-select__ul {
   top: 4px;
 }
 
@@ -1294,7 +1295,8 @@ mark {
   border-color: var(--color-danger);
 }
 
-.select--list-sm .simple-select__list {
+.select--list-sm .simple-select__list,
+.select--list-sm .simple-select__box {
   max-height: 205px;
 }
 
@@ -1358,19 +1360,44 @@ mark {
   transform: translateY(-50%);
 }
 
-.simple-select__list {
+.simple-select__box,
+.simple-select__list,
+.simple-select__ul {
+  width: 100%;
+  max-height: 264px;
+}
+
+.simple-select__ul {
+  max-height: none;
+  border: 1px solid #e3e4e8;
+}
+
+.simple-select__ul:empty {
+  display: none;
+}
+
+.simple-select__list,
+.simple-select__box {
   position: absolute;
   left: 0;
   top: calc(100% + 4px);
   z-index: 5;
-  display: none;
-  width: 100%;
-  max-height: 264px;
+  background-color: #fff;
+  border-radius: 4px;
   overflow: hidden;
   overflow-y: auto;
-  background-color: #fff;
-  border: 1px solid #e3e4e8;
-  border-radius: 4px;
+}
+
+.simple-select__list {
+  display: none;
+}
+
+.simple-select__ul {
+  position: static;
+}
+
+.simple-select__box[data-scrollbar] {
+  position: absolute;
 }
 
 .simple-select__list[data-scrollbar] {
@@ -1404,7 +1431,8 @@ mark {
   visibility: hidden;
 }
 
-.simple-select__item {
+.simple-select__item,
+.simple-select__li {
   position: relative;
   padding: 8px 12px;
   font-size: 14px;
@@ -1414,7 +1442,8 @@ mark {
   color: var(--color-second);
 }
 
-.simple-select__item--active:after {
+.simple-select__item--active:after,
+.simple-select__li--active {
   content: "";
   position: absolute;
   right: 12px;
@@ -1426,7 +1455,8 @@ mark {
   height: 16px;
 }
 
-.simple-select__item:not(:last-child) {
+.simple-select__item:not(:last-child),
+.simple-select__li:not(:last-child) {
   border-bottom: 1px solid var(--color-neutral-100);
 }
 
@@ -1434,7 +1464,8 @@ mark {
   display: none;
 }
 
-.simple-select__item--hover {
+.simple-select__item--hover,
+.simple-select__li:hover {
   background-color: var(--color-neutral-50);
 }
 
@@ -1458,6 +1489,10 @@ mark {
 
 .simple-select__group--no-filter {
   display: none;
+}
+
+.select {
+  position: relative;
 }
 
 .select-btn {

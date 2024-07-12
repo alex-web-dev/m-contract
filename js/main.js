@@ -1750,3 +1750,54 @@ function createConfirmPopup() {
     },
   });
 }
+
+/* register */
+const clickHandler = document.ontouchstart !== null ? "click" : "touchstart";
+
+const $formSingup = document.querySelector(".form.login__form.js-form");
+
+const $resultsHTML = $formSingup.querySelector("#results");
+const $registerOrganizationName = $formSingup.querySelector("#register-organization-name");
+
+const $registerInn = $formSingup.querySelector("#register-inn");
+const $registerOgrn = $formSingup.querySelector("#register-ogrn");
+const $registerAddress = $formSingup.querySelector("#register-address");
+
+$registerOrganizationName.addEventListener("input", async () => {
+  if (parseInt($registerOrganizationName.value.length) < 1) {
+    $registerInn.value = "";
+    $registerOgrn.value = "";
+    $registerAddress.value = "";
+  } else if (parseInt($registerOrganizationName.value.length) > 3) {
+    //fetch
+    const company = {
+      Name: "ЯНДЕКС БАНК",
+      ShortName: "ЯНДЕКС БАНК",
+      OPF: "НАО",
+      KPP: "770501001",
+      INN: "7750004168",
+      OGRN: "1077711000091",
+      Address: "115035, г Москва, р-н Замоскворечье, ул Садовническая, д 82 стр 2",
+      DateRegistered: 1180569600000,
+      RegisteredDate: "/Date(-62135489543040)/",
+      RegisteredDateNalog: "/Date(-62135489543040)/",
+    };
+
+    $resultsHTML.innerHTML = '';
+    const $itemLi = createElem("li", "simple-select__li");
+    $itemLi.setAttribute("data-company", JSON.stringify(company));
+    $itemLi.innerHTML = company.Name;
+    $resultsHTML.append($itemLi);
+  }
+});
+
+$resultsHTML.addEventListener(clickHandler, function (event) {
+  const $target = event.target;
+  const setValue = $target.innerText;
+  $registerOrganizationName.value = setValue;
+  let dataCompany = JSON.parse($target.getAttribute("data-company"));
+  $registerInn.value = dataCompany.INN;
+  $registerOgrn.value = dataCompany.OGRN;
+  $registerAddress.value = dataCompany.Address;
+  this.innerHTML = "";
+});

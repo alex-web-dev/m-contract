@@ -2,13 +2,13 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=33" />
-    <link rel="stylesheet" href="css/fonts.css?v=33" />
-    <link rel="stylesheet" href="css/styles.css?v=33" />
-    <link rel="stylesheet" href="css/media.css?v=33" />
+    <link rel="stylesheet" href="css/normalize.css?v=34" />
+    <link rel="stylesheet" href="css/fonts.css?v=34" />
+    <link rel="stylesheet" href="css/styles.css?v=34" />
+    <link rel="stylesheet" href="css/media.css?v=34" />
     <title>M-Contract - Регистрация</title>
   </head>
   <body>
@@ -44,7 +44,7 @@
               <div class="form__steps-route">Шаг 2</div>
             </div>
             <div class="form__steps-list">
-              <div class="form__step form__step--active">
+              <div class="form__step">
                 <div class="form__main">
                   <div class="input form__item">
                     <label class="text text--3xs input__label" for="register-name">Логин</label>
@@ -157,30 +157,18 @@
                   </div>
                 </div>
               </div>
-              <div class="form__step">
+              <div class="form__step form__step--active">
                 <div class="form__main">
                   <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
                     <label class="text text--3xs select__label" for="register-organization-name">Наименование организации или ИП</label>
                     <div class="input select__input">
                       <div class="input__main">
                         <input class="input__field input__field--sm" id="register-organization-name" type="text" />
+                        <div class="simple-select__box" data-scrollbar>
+                          <ul class="simple-select__ul" id="results"></ul>
+                        </div>
                       </div>
                     </div>
-                    <select
-                      class="select__field"
-                      data-validate="empty"
-                      data-validate-text="Выберите наименование из списка"
-                      data-update-input-id-text="register-address">
-                      <option value=""></option>
-                      <option value="1" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="2" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="3" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="4" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="5" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="6" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="7" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                      <option value="8" data-text="119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16">Яндекс</option>
-                    </select>
                     <div class="text text--4xs text--lh-125 select__error"></div>
                   </div>
                   <div class="form__group">
@@ -581,7 +569,7 @@
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
-    <script src="js/main.js?v=33"></script>
+    <script src="js/main.js?v=34"></script>
     <script src="js/input-confirm.js"></script>
     <script src="js/popup.js"></script>
   </body>
