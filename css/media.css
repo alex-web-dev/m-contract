@@ -937,10 +937,10 @@
   }
 
   .messages__dialog-box {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     margin-left: 0;
     height: 100%;
     max-height: none;
@@ -1588,7 +1588,7 @@
     left: unset;
     right: 0;
     top: 0;
-    z-index: 8;
+    z-index: 10;
     background-color: transparent;
     height: 100vh;
     width: 100%;
@@ -2543,11 +2543,6 @@
     margin-left: 8px;
   }
 
-  .lk__messages {
-    margin: -16px;
-    padding: 16px;
-  }
-
   .dialog__back-box {
     display: none;
   }
@@ -2557,9 +2552,15 @@
   }
 
   .messages {
-    max-height: var(--custom-100vh);
+    position: absolute;
+    left: 0;
+    top: 46px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    max-height: calc(var(--custom-100vh) - 46px);
+    width: 100%;
   }
 
   .messages-header__img--xl {

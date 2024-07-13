@@ -4044,7 +4044,6 @@ div.scrollbar-thumb-x {
 }
 
 .lk__body {
-  position: relative;
   padding-left: 401px;
   flex: 1 1 auto;
   background-color: var(--color-neutral-75);
