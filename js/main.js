@@ -1784,7 +1784,7 @@ $registerOrganizationName.addEventListener("input", async () => {
     };
 
     $resultsHTML.innerHTML = '';
-    const $itemLi = createElem("li", "simple-select__li");
+    const $itemLi = createElem("div", "simple-select__li");
     $itemLi.setAttribute("data-company", JSON.stringify(company));
     $itemLi.innerHTML = company.Name;
     $resultsHTML.append($itemLi);
@@ -1800,4 +1800,8 @@ $resultsHTML.addEventListener(clickHandler, function (event) {
   $registerOgrn.value = dataCompany.OGRN;
   $registerAddress.value = dataCompany.Address;
   this.innerHTML = "";
+
+  $registerInn.closest('.input').classList.remove('input--error');
+  $registerOgrn.closest('.input').classList.remove('input--error');
+  $registerAddress.closest('.input').classList.remove('input--error');
 });

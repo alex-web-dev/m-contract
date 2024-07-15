@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="css/normalize.css?v=37" />
-    <link rel="stylesheet" href="css/fonts.css?v=37" />
-    <link rel="stylesheet" href="css/styles.css?v=37" />
-    <link rel="stylesheet" href="css/media.css?v=37" />
+    <link rel="stylesheet" href="css/normalize.css?v=38" />
+    <link rel="stylesheet" href="css/fonts.css?v=38" />
+    <link rel="stylesheet" href="css/styles.css?v=38" />
+    <link rel="stylesheet" href="css/media.css?v=38" />
     <title>M-Contract - Регистрация</title>
   </head>
   <body>
@@ -159,17 +159,15 @@
               </div>
               <div class="form__step form__step--active">
                 <div class="form__main">
-                  <div class="select select--hide-field select--list-sm select--item-value-sm form__item">
-                    <label class="text text--3xs select__label" for="register-organization-name">Наименование организации или ИП</label>
-                    <div class="input select__input">
-                      <div class="input__main">
-                        <input class="input__field input__field--sm" id="register-organization-name" type="text" />
-                        <div class="simple-select__box" data-scrollbar>
-                          <ul class="simple-select__ul" id="results"></ul>
-                        </div>
+                  <div class="input form__group-item">
+                    <label class="text text--3xs input__label" for="register-organization-name">Наименование организации или ИП</label>
+                    <div class="input__main">
+                      <input class="input__field input__field--sm" id="register-organization-name" type="text" data-validate="empty" />
+                      <div class="simple-select__box" data-scrollbar>
+                        <div class="simple-select__ul" id="results"></div>
                       </div>
                     </div>
-                    <div class="text text--4xs text--lh-125 select__error"></div>
+                    <div class="text text--4xs text--lh-125 input__error"></div>
                   </div>
                   <div class="form__group">
                     <div class="form__group-items">
@@ -534,8 +532,10 @@
                   </div>
                   <span class="text text--4xs text--lh-125 input__error"></span>
                 </div>
-                <button class="link link--blue-500 link--xs form__link" type="button">Запросить код повторно</button>
-                <!-- <button class="link link--blue-500 link--xs link--disabled form__link" type="button">Запросить код повторно через 0:32</button> -->
+                <button id="resend-sms-code-btn" class="link link--blue-500 link--xs form__link" type="button">
+                  Запросить код повторно
+                </button>
+                <button id="timer-btn" class="link link--blue-500 link--xs link--disabled form__link display_none" type="button"></button>
               </div>
             </div>
             <div class="popup-content__footer">
@@ -569,7 +569,7 @@
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
-    <script src="js/main.js?v=37"></script>
+    <script src="js/main.js?v=38"></script>
     <script src="js/input-confirm.js"></script>
     <script src="js/popup.js"></script>
   </body>
