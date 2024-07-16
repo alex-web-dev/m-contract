@@ -802,6 +802,7 @@ mark {
 .link--disabled {
   opacity: 0.6;
   cursor: default;
+  pointer-events: none;
 }
 
 .link--primary {
@@ -6073,4 +6074,8 @@ div.scrollbar-thumb-x {
 
 .help-box__btns-btn:not(:first-child) {
   margin-top: 12px;
+}
+
+.display_none {
+  display: none;
 }
