@@ -1005,6 +1005,11 @@ mark {
   appearance: textfield;
 }
 
+.input__field[type="password"]::-ms-reveal,
+.input__field[type="password"]::-ms-clear {
+  display: none;
+}
+
 .input__field--area {
   resize: none;
   height: 100px;

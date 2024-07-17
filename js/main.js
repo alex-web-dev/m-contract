@@ -736,7 +736,7 @@ $forms.forEach(($form) => {
 
       const $passwordSecond = $passwordsMatch.querySelectorAll(".input")[1];
       const $passwordSecondError = $passwordSecond.querySelector(`.input__error`);
-      if ($passwordSecondError.innerText === "Пароли не совпадают") {
+      if ($passwordSecondError.innerText === "Пароли должны совпадать") {
         $passwordSecond.classList.remove("input--error");
       }
     });
@@ -861,7 +861,7 @@ function validateFields($form) {
     const $passwordSecondField = $passwordSecond.querySelector(".input__field");
     if ($passwordFirstField.value !== $passwordSecondField.value) {
       const $passwordSecondError = $passwordSecond.querySelector(`.input__error`);
-      $passwordSecondError.innerText = "Пароли не совпадают";
+      $passwordSecondError.innerText = "Пароли должны совпадать";
       $passwordSecond.classList.add("input--error");
       isError = true;
     }
@@ -1763,7 +1763,7 @@ const $registerInn = $formSingup.querySelector("#register-inn");
 const $registerOgrn = $formSingup.querySelector("#register-ogrn");
 const $registerAddress = $formSingup.querySelector("#register-address");
 
-$registerOrganizationName.addEventListener("input", async () => {
+$registerOrganizationName?.addEventListener("input", async () => {
   if (parseInt($registerOrganizationName.value.length) < 1) {
     $registerInn.value = "";
     $registerOgrn.value = "";
@@ -1791,7 +1791,7 @@ $registerOrganizationName.addEventListener("input", async () => {
   }
 });
 
-$resultsHTML.addEventListener(clickHandler, function (event) {
+$resultsHTML?.addEventListener(clickHandler, function (event) {
   const $target = event.target;
   const setValue = $target.innerText;
   $registerOrganizationName.value = setValue;
