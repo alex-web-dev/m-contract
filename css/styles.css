@@ -1736,6 +1736,7 @@ mark {
 
 .form__remind {
   margin-top: 16px;
+  align-self: flex-start;
 }
 
 .form__privacy {
@@ -4009,6 +4010,7 @@ div.scrollbar-thumb-x {
   padding: 15.5px 0;
   border-bottom: 1px solid var(--color-neutral-100);
   display: flex;
+  align-items: center;
 }
 
 .lk-data__item:first-child {
@@ -4044,6 +4046,14 @@ div.scrollbar-thumb-x {
   background: url("../img/icons/check-green-400.svg") center / contain no-repeat;
   width: 16px;
   height: 12px;
+}
+
+.lk-data__item-btn {
+  margin-left: 8px;
+}
+
+.lk-data__item-value--confirmed .lk-data__item-btn {
+  display: none;
 }
 
 .lk {

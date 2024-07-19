@@ -389,7 +389,10 @@
                     </div>
                     <div class="lk-data__item">
                       <span class="text text--xs text--lh-155 text--neutral-600 lk-data__item-label">Телефон</span>
-                      <span class="text text--xs text--lh-155 lk-data__item-value lk-data__item-value--confirmed">+7(555)222-55-55</span>
+                      <span class="text text--xs text--lh-155 lk-data__item-value lk-data__item-value--phone">
+                        +7(555)222-55-55
+                        <button class="btn btn--gray-100 btn--px-xs btn--py-xxs btn--text-xs lk-data__item-btn js-open-popup" data-popup-name="phone-confirm">Подтвердить</button>
+                      </span>
                     </div>
                     <div class="lk-data__item">
                       <span class="text text--xs text--lh-155 text--neutral-600 lk-data__item-label">Доп. телефон</span>
@@ -435,7 +438,7 @@
                     </div>
                   </li>
                   <li class="lk-menu__item">
-                    <a class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link" href="#">
+                    <a class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link" href="blacklist.html">
                       <span class="lk-menu-link__text">Черный список</span>
                     </a>
                   </li>
@@ -1251,6 +1254,66 @@
               </svg>
             </button>
           </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup" data-popup-name="phone-confirm">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <form
+            class="popup-content popup-content--xxs popup__content js-form js-form-confirm"
+            data-confirm-name="profile-data-phone-confirm"
+            action="#"
+            autocomplete="off">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Подтверждение номера</div>
+            </div>
+            <div class="popup-content__main">
+              <div class="form">
+                <div class="input form__item">
+                  <label class="text text--3xs input__label input__label--mb-sm" for="sms-code">Код из SMS</label>
+                  <div class="input__main">
+                    <input
+                      class="input__field input__field--sm"
+                      id="sms-code"
+                      type="number"
+                      placeholder="Введите код из SMS"
+                      name="sms-code"
+                      data-validate="code" />
+                  </div>
+                  <span class="text text--4xs text--lh-125 input__error"></span>
+                </div>
+                <button id="resend-sms-code-btn" class="link link--blue-500 link--xs form__link" type="button">
+                  Запросить код повторно
+                </button>
+                <button id="timer-btn" class="link link--blue-500 link--xs link--disabled form__link display_none" type="button"></button>
+              </div>
+            </div>
+            <div class="popup-content__footer">
+              <div class="popup-content__btns">
+                <button
+                  class="btn btn--gray-100 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-close-popup"
+                  type="button">
+                  Отменить
+                </button>
+                <button
+                  class="btn btn--blue-500 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-form-submit"
+                  data-disable-empty
+                  disabled>
+                  Готово
+                </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
       <div class="popup__backdrop"></div>

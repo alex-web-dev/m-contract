@@ -20,6 +20,10 @@ document.addEventListener("formSuccess", (e) => {
   }
 
   const $confirmedInput = document.querySelector(`.input[data-confirm-name="${$form.dataset.confirmName}"]`);
+  if (!$confirmedInput) {
+    return;
+  }
+  
   $confirmedInput.classList.remove("input--error");
   $confirmedInput.classList.add("input--confirmed");
 
