@@ -672,7 +672,15 @@ const validatePatterns = [
       if (value.length < 6 || value.length > 24) {
         return false;
       }
-
+    
+      const hasDigit = /\d/.test(value);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>_\-+=]/.test(value);
+      const hasLatinLetter = /[a-zA-Z]/.test(value);
+    
+      if (!hasDigit || !hasSpecialChar || !hasLatinLetter) {
+        return false;
+      }
+    
       return true;
     },
   },
