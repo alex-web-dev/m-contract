@@ -4368,6 +4368,46 @@ div.scrollbar-thumb-x {
   border-color: var(--color-blue-500);
 }
 
+.tag--wait {
+  
+}
+
+.tag--wait .tag__text {
+  
+}
+
+.tag--published {
+  background-color: var(--color-green-100);
+}
+
+.tag--published .tag__text {
+  color: var(--color-green-400);
+}
+
+.tag--closed {
+  background-color: var(--color-orange-100);
+}
+
+.tag--closed .tag__text {
+  color: var(--color-orange-400);
+}
+
+.tag--deleted {
+  background-color: var(--color-orange-100);
+}
+
+.tag--deleted .tag__text {
+  color: var(--color-orange-500);
+}
+
+.tag--contractconcluded {
+  background-color: var(--color-gray-100);
+}
+
+.tag--contractconcluded .tag__text {
+  color: var(--color-blue-500);
+}
+
 .status {
   padding: 0 5px;
   display: flex;
