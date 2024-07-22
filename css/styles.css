@@ -5853,7 +5853,7 @@ div.scrollbar-thumb-x {
 }
 
 .offer__location:not(:first-child) {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .offer__options-btn {
