@@ -2668,6 +2668,18 @@
     font-size: 12px;
   }
 
+  .offer__tags.tags--inline .tags__list,
+  .offer__statuses.tags--inline .tags__list{
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .offer__tags.tags--inline .tags__item,
+  .offer__statuses.tags--inline .tags__item{
+    margin-top: 0;
+    margin-left: 0;
+  }
+
   .table-price__mobile-label {
     margin-right: 8px;
     margin-top: 4px;

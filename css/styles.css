@@ -4263,6 +4263,20 @@ div.scrollbar-thumb-x {
   transform: translateX(0);
 }
 
+.tags--inline .tags__list {
+  margin-top: 0;
+  margin-left: 0;
+  display: block;
+}
+
+.tags--inline .tags__item {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 8px;
+  display: inline;
+  line-height: 2.42;
+}
+
 .tags__label {
   margin-bottom: 8px;
 }
