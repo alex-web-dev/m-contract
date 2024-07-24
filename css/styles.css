@@ -2294,6 +2294,15 @@ div.scrollbar-thumb-x {
   right: 12px;
 }
 
+.dropdown__main--t-14 {
+  top: calc(100% + 14px);
+}
+
+.dropdown__main--left {
+  right: unset;
+  left: 0;
+}
+
 .dropdown--active .dropdown__main {
   display: block;
 }
@@ -5015,6 +5024,10 @@ div.scrollbar-thumb-x {
   border: 1px solid var(--color-neutral-100);
 }
 
+.profile-menu--shadow {
+  box-shadow: 0px 6px 16px rgba(10, 9, 11, 0.08);
+}
+
 .profile-menu__item:not(:first-child) {
   border-top: 1px solid var(--color-neutral-100);
 }
@@ -5035,8 +5048,21 @@ div.scrollbar-thumb-x {
   background-color: var(--color-neutral-50);
 }
 
+.profile-menu__link--active:after {
+  content: '';
+  margin-left: 10px;
+  display: inline-block;
+  background: url('../img/icons/check-green-400.svg') center / 14px 10px no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
 .profile-menu__count {
   margin-left: 10px;
+}
+
+.sort-menu__main {
+  top: calc(100% + 14px);
 }
 
 .lk-subscribe__section:not(:first-child) {
@@ -5182,6 +5208,10 @@ div.scrollbar-thumb-x {
 
 .table-payments__header {
   margin-bottom: 15px;
+}
+
+.table-payments__header-sort-btn {
+  display: inline-flex;
 }
 
 .table-payments__main {

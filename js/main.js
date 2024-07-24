@@ -288,21 +288,21 @@ $updateInputBtns.forEach(($btn) => {
 const $imaskInputs = document.querySelectorAll(".js-imask");
 $imaskInputs.forEach(($input) => {
   const mask = $input.dataset.mask;
-  if (mask === 'num') {
+  if (mask === "num") {
     IMask($input, {
       mask: Number,
       scale: 2,
       signed: false,
-      thousandsSeparator: ' ',
+      thousandsSeparator: " ",
       padFractionalZeros: true,
       normalizeZeros: true,
-      radix: ',',
-      mapToRadix: ['.'],
+      radix: ",",
+      mapToRadix: ["."],
     });
-  } else if (mask === 'date') {
+  } else if (mask === "date") {
     IMask($input, {
       mask: Date,
-      pattern: 'd{.}m{.}Y',
+      pattern: "d{.}m{.}Y",
       blocks: {
         d: {
           mask: IMask.MaskedRange,
@@ -326,14 +326,10 @@ $imaskInputs.forEach(($input) => {
         const day = date.getDate();
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
-        return [
-          day < 10 ? '0' + day : day,
-          month < 10 ? '0' + month : month,
-          year
-        ].join('.');
+        return [day < 10 ? "0" + day : day, month < 10 ? "0" + month : month, year].join(".");
       },
       parse: function (str) {
-        const dayMonthYear = str.split('.');
+        const dayMonthYear = str.split(".");
         return new Date(dayMonthYear[2], dayMonthYear[1] - 1, dayMonthYear[0]);
       },
       autofix: true,
@@ -1410,6 +1406,26 @@ window.addEventListener("click", (e) => {
   }
 
   $activeDropdown.classList.remove("dropdown--active");
+});
+
+/* Dropdown sort */
+const $dropdownSortBoxes = document.querySelectorAll(".dropdown--sort");
+$dropdownSortBoxes.forEach(($dropdownSort) => {
+  const $dropdownBtnText = $dropdownSort.querySelector(".dropdown__btn-text");
+  const $btns = $dropdownSort.querySelectorAll(".profile-menu__link ");
+  $btns.forEach(($btn) => {
+    $btn.addEventListener("click", () => {
+      const $prevActiveBtn = $dropdownSort.querySelector(".profile-menu__link--active");
+      $prevActiveBtn?.classList.remove("profile-menu__link--active");
+
+      $btn.classList.add("profile-menu__link--active");
+
+      const btnText = $btn.querySelector("span").innerText;
+      $dropdownBtnText.innerText = btnText;
+
+      $dropdownSort.classList.remove('dropdown--active');
+    });
+  });
 });
 
 /* Categories */
