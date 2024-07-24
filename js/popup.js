@@ -76,7 +76,8 @@ function closePopup($popup, isLockBody = true) {
 
 function openPopup($popup) {
   $popup.classList.add("popup--active");
-  if (!isLockedBody()) {
+  console.log($popup.dataset.popupLock, $popup);
+  if ($popup.dataset.popupLock !== 'no' && !isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
   }
 }
@@ -162,7 +163,7 @@ function showPopup($popup) {
 
   document.body.dataset.lockedBy = `popup-${$popup.dataset.popupName}`;
 
-  if (!isLockedBody()) {
+  if ($popup.dataset.popupLock !== 'no' && !isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
   }
 }

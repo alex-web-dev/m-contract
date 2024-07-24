@@ -2,14 +2,14 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/normalize.css?v=39" />
     <link rel="stylesheet" href="css/fonts.css?v=39" />
     <link rel="stylesheet" href="css/styles.css?v=39" />
     <link rel="stylesheet" href="css/media.css?v=39" />
-    <title>M-Contract - Платежи</title>
+    <title>M-Contract - Мои объявления – Выбранное объявление – Анализ предложений</title>
   </head>
   <body>
     <header class="header header--lk">
@@ -130,7 +130,9 @@
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
-              <button class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn js-open-lk-sidebar" data-dropdown-min-width="991">
+              <button
+                class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn js-open-lk-sidebar"
+                data-dropdown-min-width="991">
                 <svg
                   class="link__icon link__icon--mx-sm"
                   width="20"
@@ -203,416 +205,320 @@
 
     <main class="main">
       <div class="lk main__full-section">
-        <div class="lk-sidebar lk__sidebar">
-          <div class="lk-sidebar__content" data-scrollbar>
-            <div class="lk-sidebar__profile">
-              <div class="lk-user lk-sidebar__user">
-                <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
-                <div class="lk-user__info">
-                  <div class="text text--medium text--xxs lk-user__name">АО "Торговый Дом "Перекресток</div>
-                  <div class="text text--3xs text--medium text--lh-13 lk-user__email">konst.ilin22@gmail.com</div>
-                  <div class="text text--3xs text--lh-13 text--iflex lk-user__rate">
-                    <span>4.8</span>
-                    <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                  </div>
-                </div>
-              </div>
-              <div class="balance-panel balance-panel--p-0 balance-panel--lg lk-sidebar__balance">
-                <div class="balance-panel__info">
-                  <div class="text text--xs text--lh-14 text--neutral-500 balance-panel__text">Баланс</div>
-                  <div class="text text--lg text--semibold balance-panel__value">234 778 ₽</div>
-                </div>
-                <button
-                  class="btn btn--gray-100 btn--color-blue-500 btn--text-lg balance-panel__btn js-open-popup"
-                  data-popup-name="up-balance">
-                  Пополнить
-                </button>
-              </div>
-              <ul class="lk-menu lk-sidebar__menu">
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="profile-data.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/1.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Данные профиля</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/2.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Платежи</span>
-                  </div>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="my-ads.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/3.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Мои объявления</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="#">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/4.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">История сделок</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="favourites.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/5.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Избранное</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="messages.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/6.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Сообщения</span>
-                    <span class="count-circle lk-menu-link__count">8</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="my-offers.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/7.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Мои предложения</span>
-                  </a>
-                </li>
-                <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="partners.html">
-                    <div class="lk-menu-link__icon">
-                      <img src="img/icons/lk-menu/8.svg" alt="" />
-                    </div>
-                    <span class="lk-menu-link__text">Партнеры</span>
-                  </a>
-                </li>
-              </ul>
-              <div class="lk-sidebar__bottom-item">
-                <a class="lk-menu-link lk-sidebar__bottom-link" href="login.html">
-                  <div class="lk-menu-link__icon">
-                    <img src="img/icons/lk-menu/9.svg" alt="" />
-                  </div>
-                  <span class="lk-menu-link__text">Выход</span>
-                </a>
-              </div>
-            </div>
-            <button class="lk-sidebar__close js-close-lk-sidebar">
-              <img src="img/icons/exit-second.svg" alt="" />
-            </button>
-          </div>
-        </div>
         <div class="lk__body">
           <div class="lk__body-content">
-            <div class="lk__header">
-              <div class="text text--bold text--lh-16 lk__header-title">Платежи</div>
+            <a class="link link--iflex link--blue-500 link--upper link--xs lk__back" href="#">
+              <svg
+                class="link__icon link__icon--mx-lg"
+                width="8"
+                height="15"
+                viewBox="0 0 8 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M6.98153 0.183058C7.2256 0.427136 7.2256 0.822864 6.98153 1.06694L1.54819 6.50028C1.1506 6.89786 1.1506 7.55214 1.54819 7.94972L6.98153 13.3831C7.2256 13.6271 7.2256 14.0229 6.98153 14.2669C6.73745 14.511 6.34172 14.511 6.09764 14.2669L0.664308 8.83361C-0.221436 7.94786 -0.221436 6.50214 0.664308 5.61639L6.09764 0.183058C6.34172 -0.0610194 6.73745 -0.0610194 6.98153 0.183058Z"
+                  fill="#3C5EC4" />
+              </svg>
+              <span>Закупка № 22678123</span>
+            </a>
+            <div class="lk__header lk__header--mobile-nowrap">
+              <div class="text text--bold text--lh-16 lk__header-title">
+                <span>Анализ предложений</span>
+                <span class="count-circle count-circle--blue-500 lk__header-title-count">32</span>
+              </div>
+              <div class="lk__header-links lk__header-links--mobile-row">
+                <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
+                  <img class="icon icon--xs link__icon link__icon--mx-xs" src="img/icons/excel.svg" alt="">
+                  <span>Сохранить</span>
+                </button>
+              </div>
             </div>
             <div class="lk__main">
               <div class="lk__main-body">
-                <div class="lk-box lk-box--mobile-neutral-75 lk-box--mobile-p-0">
-                  <div class="table-payments">
-                    <div class="table-payments__header">
-                      <button class="link link--iflex link--blue-500 link--xs" href="#">
-                        <span>Последние операции</span>
-                        <img class="link__icon link__icon--mx-lg" src="img/icons/down-triangle-blue-500.svg" alt="" />
-                      </button>
+                <div class="lk-catalog">
+                  <div class="filter lk-catalog__filter lk-catalog__filter--mobile-mb-lg">
+                    <div class="filter__info">
+                      <span class="text text--3xs text--lh-14 text--neutral-600 filter__info-label">Завершена подача предложений</span>
+                      <span class="text text--3xs text--lh-14 text--medium">24.05.2024 12:00 Мск</span>
                     </div>
-                    <table class="table-payments__main">
-                      <thead>
-                        <tr>
-                          <th>
-                            <span class="text text--3xs text--lh-13 text--medium table-payments__header-label">Дата и время операции</span>
-                          </th>
-                          <th>
-                            <span class="text text--3xs text--lh-13 text--medium table-payments__header-label">Сумма операции</span>
-                          </th>
-                          <th>
-                            <span class="text text--3xs text--lh-13 text--medium table-payments__header-label">Доп.информация</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--green-400 table-payments__value">+500 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--green-400 table-payments__value">+500 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--green-400 table-payments__value">+500 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--green-400 table-payments__value">+500 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Дата и время операции</span>
-                            <span class="text text--3xs table-payments__value">30.04.2024, 20:37:38</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Сумма операции</span>
-                            <span class="text text--3xs text--orange-400 table-payments__value">-101 ₽</span>
-                          </td>
-                          <td>
-                            <span class="text text--3xs text--medium table-payments__mobile-label">Доп.информация</span>
-                            <span class="text text--3xs table-payments__value">Тестовый повременный</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="lk-section-footer table-payments__footer">
-                      <div class="text text--4xs text--neutral-600 lk-section-footer__count">Показ 1 - 50 из 1 286</div>
-                      <div class="pagination lk-section-footer__pagination">
-                        <div class="pagination__list">
-                          <a class="pagination__link pagination__link--left" href="#">Назад</a>
-                          <a class="pagination__link" href="#">1</a>
-                          <a class="pagination__link" href="#">2</a>
-                          <span class="pagination__active" href="#">3</span>
-                          <a class="pagination__link" href="#">4</a>
-                          <a class="pagination__link" href="#">5</a>
-                          <a class="pagination__link" href="#">6</a>
-                          <a class="pagination__link pagination__link--right" href="#">Вперед</a>
-                        </div>
+                    <div class="sort-btns sort-btns--items-end filter__sort-btns filter__sort-btns--ml-auto">
+                      <div class="sort-btns__list sort-btns__list--items-end">
+                        <button class="link link--iflex link--blue-500 link--xs link--lh-14 sort-btns__btn" href="#">
+                          <span>Цена (По возрастанию)</span>
+                          <img class="link__icon link__icon--mx-lg" src="img/icons/down-triangle-blue-500.svg" alt="" />
+                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="lk__main-sidebar">
-                <div class="lk-tarif-panel">
-                  <div class="balance-panel balance-panel--p-0 balance-panel--lg lk-tarif-panel__balance">
-                    <div class="balance-panel__info">
-                      <div class="text text--xs text--lh-14 text--neutral-500 balance-panel__text">Текущий баланс:</div>
-                      <div class="text text--lg text--semibold balance-panel__value">234 778 ₽</div>
+                  <div class="lk-catalog__list">
+                    <div class="offers-list lk-catalog__item">
+                      <div class="offers-list__items">
+                        <div class="offers-item offers-list__item accordion accordion--active">
+                          <div class="offers-item__header">
+                            <div class="offers-item__header-items">
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">№</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">1</div>
+                              </div>
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">Наименование товара</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">Чушка свинца С2С</div>
+                              </div>
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">Кол-во (тн).</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">100</div>
+                              </div>
+                            </div>
+                            <button class="link link--iflex link--blue-500 link--xs offers-item__header-link accordion__btn accordion__btn--active">
+                              <span>Предложения</span>
+                              <span class="count-circle count-circle--xs link__count link__count--ml-xs">3</span>
+                              <img class="link__icon link__icon--mx-sm" src="img/icons/down-round-blue-500.svg" alt="" />
+                            </button>
+                          </div>
+                          <div class="accordion__content">
+                            <div class="offers-item__main accordion__main">
+                              <div class="table-offers" data-scrollbar data-scrollbar-continue>
+                                <table class="table-offers__main">
+                                  <thead>
+                                    <tr>
+                                      <th></th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium">Наименование участника</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium table-offers__label">Дата отправки</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium table-offers__label">Цена за 1 (тн) / без НДС</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium table-offers__label">Сумма / без НДС</span>
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="offers-item offers-list__item accordion accordion--active">
+                          <div class="offers-item__header">
+                            <div class="offers-item__header-items">
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">№</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">2</div>
+                              </div>
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">Наименование товара</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">Картон</div>
+                              </div>
+                              <div class="offers-item__header-item">
+                                <div class="text text--4xs text--lh-13 offers-item__header-label">Кол-во (тн).</div>
+                                <div class="text text--xxs text--lh-13 text--medium offers-item__header-value">100</div>
+                              </div>
+                            </div>
+                            <button class="link link--iflex link--blue-500 link--xs offers-item__header-link accordion__btn accordion__btn--active">
+                              <span>Предложения</span>
+                              <span class="count-circle count-circle--xs link__count link__count--ml-xs">3</span>
+                              <img class="link__icon link__icon--mx-sm" src="img/icons/down-round-blue-500.svg" alt="" />
+                            </button>
+                          </div>
+                          <div class="accordion__content">
+                            <div class="offers-item__main accordion__main">
+                              <div class="table-offers" data-scrollbar data-scrollbar-continue>
+                                <table class="table-offers__main">
+                                  <thead>
+                                    <tr>
+                                      <th></th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium">Наименование участника</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium">Дата отправки</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium">Цена за 1 (тн) / без НДС</span>
+                                      </th>
+                                      <th>
+                                        <span class="text text--4xs text--lh-13 text--medium">Сумма / без НДС</span>
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label class="checkbox table-offers__checkbox">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <div class="table-offers__name">
+                                          <div class="text text--4xs text--lh-13 text--iflex table-offers__rate">
+                                            <span>4.8</span>
+                                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                                          </div>
+                                          <a class="text text--4xs text--blue-500 text--lh-13 text--clamp text--clamp-lines-2 text--clamp-word" href="my-offer.html">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</a>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">08.03.2024, 09:10</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">10 000</span>
+                                      </td>
+                                      <td>
+                                        <span class="text text--4xs text--lh-13">9 000</span>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="offers-list__footer">
+                        <div class="offers-list__btns">
+                          <button class="link link--blue-500 link--xs offers-list__btns-btn">Сбросить</button>
+                          <button class="btn btn--blue-500 btn--px-sm btn--py-sm btn--text-xs offers-list__btns-btn offers-list__btns-btn--submit" disabled>Заключить контракт (0)</button>
+                        </div>
+                      </div>
                     </div>
-                    <button
-                      class="btn btn--gray-100 btn--color-blue-500 btn--text-lg balance-panel__btn js-open-popup"
-                      data-popup-name="up-balance">
-                      Пополнить
-                    </button>
-                  </div>
-                  <div class="lk-tarif-panel__main">
-                    <div class="text text--3xs text--medium text--lh-14 text--neutral-500 lk-tarif-panel__label">Текущий тарифный план</div>
-                    <div class="text text--xxs text--semibold text--lh-14">Пробный период до 09.05.2024, 15:33</div>
                   </div>
                 </div>
               </div>
@@ -910,7 +816,11 @@
           </div>
           <div class="messages-popup__btns">
             <button class="btn btn--py-sm btn--text-xs btn--white messages-popup__btn">Прочитать все</button>
-            <button class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup" data-popup-name="create-chat">Создать чат</button>
+            <button
+              class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup"
+              data-popup-name="create-chat">
+              Создать чат
+            </button>
           </div>
           <div class="messages-popup__list" data-scrollbar>
             <button class="message-item messages-popup__item">
@@ -1544,7 +1454,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1564,7 +1476,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1584,7 +1498,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">

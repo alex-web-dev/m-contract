@@ -102,6 +102,9 @@
                 </svg>
               </button>
               <input class="search__field" type="text" placeholder="Поиск" />
+              <button class="icon icon--xl search__info">
+                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="">
+              </button>
               <button class="search__btn search__btn--submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18.9999 18.9999L14.6499 14.6499" stroke-linecap="round" stroke-linejoin="round" />
@@ -187,7 +190,7 @@
                       </a>
                     </li>
                     <li class="profile-menu__item">
-                      <a class="profile-menu__link" href="#">
+                      <a class="profile-menu__link" href="login.html">
                         <span>Выход</span>
                       </a>
                     </li>
@@ -295,7 +298,7 @@
                 </li>
               </ul>
               <div class="lk-sidebar__bottom-item">
-                <a class="lk-menu-link lk-sidebar__bottom-link" href="#">
+                <a class="lk-menu-link lk-sidebar__bottom-link" href="login.html">
                   <div class="lk-menu-link__icon">
                     <img src="img/icons/lk-menu/9.svg" alt="" />
                   </div>
@@ -329,8 +332,9 @@
                   <span>История сделок</span>
                 </a>
                   <div class="lk__header lk__header--mb-20">
-                    <div class="text text--bold text--lh-16 lk__header-title">
-                      <span>Спецификация №2091</span>
+                    <div class="text text--bold text--lh-16 text--link-no-line lk__header-title">
+                      <span>Контракт</span>
+                      <a class="lk__header-title-link" href="#">№2091</a>
                     </div>
                     <div class="lk__header-links">
                       <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
@@ -361,7 +365,7 @@
                                 <span class="text text--3xs text--neutral-600 text--lh-14">Покупатель</span>
                               </td>
                               <td>
-                                <span class="text text--3xs text--medium text--lh-14">ООО "МЕТПРОМ", Новотроицк, Оренбургская область</span>
+                                <span class="text text--3xs text--medium text--lh-14">ООО "МЕТПРОМ", ИНН 5609205469</span>
                               </td>
                             </tr>
                             <tr>
@@ -369,12 +373,12 @@
                                 <span class="text text--3xs text--neutral-600 text--lh-14">Продавец</span>
                               </td>
                               <td>
-                                <span class="text text--3xs text--medium text--lh-14">ООО "МКонтакт", Оренбург, Оренбургская область</span>
+                                <span class="text text--3xs text--medium text--lh-14">ООО "МКонтакт"</span>
                               </td>
                             </tr>
                             <tr>
                               <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Город местонахождения товара</span>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Местонахождение товара</span>
                               </td>
                               <td>
                                 <span class="text text--3xs text--medium text--lh-14">Оренбург (Оренбургская область)</span>
@@ -417,20 +421,12 @@
                                 <span class="text text--3xs text--neutral-600 text--lh-14">Валюта</span>
                               </td>
                               <td>
-                                <span class="text text--3xs text--medium text--lh-14">Рубль</span>
+                                <span class="text text--3xs text--medium text--lh-14">Российский рубль (RUB)</span>
                               </td>
                             </tr>
                             <tr>
                               <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Погрузка</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Силами продавца</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Спецификация действительна до</span>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Срок поставки до</span>
                               </td>
                               <td>
                                 <span class="text text--3xs text--medium text--lh-14">13.05.2024 23:59 (МСК)</span>
@@ -453,7 +449,10 @@
                                 <span class="text text--4xs text--medium">Кол-во (шт.)</span>
                               </th>
                               <th>
-                                <span class="text text--4xs text--medium">Цена за 1 (шт.) мин / без НДС</span>
+                                <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
+                              </th>
+                              <th>
+                                <span class="text text--4xs text--medium">Сумма / без НДС</span>
                               </th>
                             </tr>
                           </thead>
@@ -473,7 +472,11 @@
                               </td>
                               <td>
                                 <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000 ₽</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                              </td>
+                              <td>
+                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
                               </td>
                             </tr>
                             <tr>
@@ -491,7 +494,11 @@
                               </td>
                               <td>
                                 <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000 ₽</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                              </td>
+                              <td>
+                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
                               </td>
                             </tr>
                             <tr>
@@ -509,7 +516,11 @@
                               </td>
                               <td>
                                 <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000 ₽</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                              </td>
+                              <td>
+                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
                               </td>
                             </tr>
                             <tr>
@@ -527,13 +538,17 @@
                               </td>
                               <td>
                                 <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000 ₽</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                              </td>
+                              <td>
+                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                         <div class="table-price__total">
-                          <div class="text text--xs text--medium table-price__total-value">27 000 ₽</div>
+                          <div class="text text--xs text--medium table-price__total-value">27 000,00 ₽</div>
                           <div class="text text--4xs table-price__total-label">Итого</div>
                         </div>
                       </div>
@@ -576,6 +591,189 @@
                     </div>
                   </div>
               </div>
+            </div>
+
+            <div class="partner-popup popup" data-popup-name="partner">
+              <div class="partner-popup__content popup__content">
+                <div class="partner partner-popup__main">
+                  <div class="partner__body partner__body--popup" data-scrollbar data-scrollbar-continue>
+                    <div class="partner-header partner__header">
+                      <div class="partner-header__content">
+                        <div class="partner-header__img">
+                          <img src="img/lk/partner.jpg" alt="" />
+                        </div>
+                        <div class="partner-header__main">
+                          <div class="text text--iblock text--xxs text--lh-14 text--semibold partner-header__title">
+                            <span class="text__clamp text__clamp--2">
+                              ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                            </span>
+                          </div>
+                          <div class="text text--3xs text--lh-14 partner-header__location">г. Оренбург (Оренбургская область)</div>
+                          <div class="text text--iflex text--3xs text--lh-14 partner-header__rating">
+                            <span>4.8</span>
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                          </div>
+                        </div>
+                        <div class="partner-header__btns">
+                          <div class="dropdown partner-header__btn">
+                            <button class="btn btn--icon btn--icon-sm btn--gray-100 dropdown__btn">
+                              <img src="img/icons/more-blue-500.svg" alt="" />
+                            </button>
+                            <div class="dropdown__main">
+                              <div class="profile-menu dropdown__controls">
+                                <ul class="profile-menu__list">
+                                  <li class="profile-menu__item">
+                                    <button class="profile-menu__link">
+                                      <span>Заблокировать</span>
+                                    </button>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <button
+                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn" id="partner-delete">
+                            <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
+                            <span>Удалить</span>
+                          </button>
+                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--blue-500 partner-header__btn">Написать</button>
+                        </div>
+                      </div>
+                      <button class="icon partner-header__close js-close-popup" type="button">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                            fill="#5D606F" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="partner-groups partner__groups">
+                      <div class="partner-groups__list">
+                        <div class="text text--neutral-600 text--3xs partner-groups__item">Группа</div>
+                      </div>
+                      <button
+                        class="btn btn--iflex btn--white btn--px-xxs btn--py-3xs btn--text-xs partner-groups__add js-open-popup"
+                        data-popup-name="add-group">
+                        <img class="btn__icon" src="img/icons/plus-second.svg" alt="" />
+                        <span>Добавить в группу</span>
+                      </button>
+                    </div>
+                    <div class="table-partner partner__table">
+                      <table class="table-partner__main">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Наименование организации</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">
+                                ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">ИНН</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">2222227777</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">КПП</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">172638176238716</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">ОГРН</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">2-22-22-22-22222-2</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Юридический адрес</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">460003, г. Оренбург, переулок Станочный 7</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Фактический адрес</span>
+                            </td>
+                            <td class="table-partner__not-specified">
+                              <span class="text text--3xs text--italic text--neutral-500 text--lh-14">Адрес не указан</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="table-partner partner__table">
+                      <table class="table-partner__main">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">ФИО представителя</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Семченко Роман Олегович</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Должность представителя</span>
+                            </td>
+                            <td class="table-partner__not-specified">
+                              <span class="text text--3xs text--italic text--neutral-500 text--lh-14">Должность не указана</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">E-mail</span>
+                            </td>
+                            <td>
+                              <span class="text text--flex text--justify-between text--3xs text--medium text--lh-14">
+                                <span>konst.ilin22@gmail.com</span>
+                                <div class="icon text__icon">
+                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="" />
+                                </div>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Телефон</span>
+                            </td>
+                            <td>
+                              <span class="text text--flex text--justify-between text--3xs text--medium text--lh-14">
+                                <span>+7(555)222-55-55</span>
+                                <div class="icon text__icon">
+                                  <img class="icon__img icon__img--w-16" src="img/icons/check-green-400.svg" alt="" />
+                                </div>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Доп. телефон</span>
+                            </td>
+                            <td class="table-partner__not-specified">
+                              <span class="text text--3xs text--italic text--neutral-500 text--lh-14">Телефон не указан</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="popup__backdrop"></div>
             </div>
           </div>
           <div class="lk__fixed-btn-box">
@@ -965,7 +1163,7 @@
                 <div class="messages-header__main">
                   <div class="messages-header__info">
                     <div class="text text--medium text--blue-500 text--link-no-line text--clamp messages-header__title">
-                      <button>ООО “Рога и копыта”, Москва</button>
+                      <button class="js-open-popup js-close-popup" data-popup-name="partner">ООО “Рога и копыта”, Москва</button>
                     </div>
                     <div class="status status--success messages-header__status">
                       <span class="text text--4xs text--green-400 text--lh-14">Онлайн</span>
@@ -1385,6 +1583,99 @@
                 <button class="add-item add-list__item search-items__item">
                   <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">АО "УК "Кузбассразрезуголь"</div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
+                </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup popup--mobile-full" data-popup-name="add-group">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup-content--mobile-full popup__content">
+            <div class="popup-content__header">
+              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
+                <span>Добавить в группу</span>
+              </div>
+            </div>
+            <div class="search-items">
+              <div class="search-items__header">
+                <div class="input search-items__input">
+                  <div class="input__main">
+                    <button class="input__left-btn" type="button">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M13.5835 13.5833L17.3335 17.3333"
+                          stroke="#5D606F"
+                          stroke-width="1.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path
+                          d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
+                          stroke="#5D606F"
+                          stroke-width="1.25"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                    <input
+                      class="input__field input__field--sm input__field--left-btn input__field--right-btn"
+                      type="text"
+                      placeholder="Поиск"
+                      name="search"
+                      autocomplete="off" />
+                    <button class="input__right-btn input__clear-field" type="button">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
+                          fill="#9093A2" />
+                      </svg>
+                    </button>
+                  </div>
+                  <span class="text text--3xs text--lh-125 input__error"></span>
+                </div>
+              </div>
+              <div class="add-list search-items__add-list" data-scrollbar>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    Длинное наименование группы для проверки отображения информации в блоке
+                  </div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Металлолом</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 1</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 2</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 3</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 4</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 5</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 6</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 7</div>
+                </button>
+                <button class="add-item add-list__item search-items__item">
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 8</div>
                 </button>
               </div>
             </div>

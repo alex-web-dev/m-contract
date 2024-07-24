@@ -288,7 +288,59 @@ $updateInputBtns.forEach(($btn) => {
 const $imaskInputs = document.querySelectorAll(".js-imask");
 $imaskInputs.forEach(($input) => {
   const mask = $input.dataset.mask;
-  IMask($input, { mask });
+  if (mask === 'num') {
+    IMask($input, {
+      mask: Number,
+      scale: 2,
+      signed: false,
+      thousandsSeparator: ' ',
+      padFractionalZeros: true,
+      normalizeZeros: true,
+      radix: ',',
+      mapToRadix: ['.'],
+    });
+  } else if (mask === 'date') {
+    IMask($input, {
+      mask: Date,
+      pattern: 'd{.}m{.}Y',
+      blocks: {
+        d: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          maxLength: 2,
+        },
+        m: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          maxLength: 2,
+        },
+        Y: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 9999,
+        },
+      },
+      format: function (date) {
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return [
+          day < 10 ? '0' + day : day,
+          month < 10 ? '0' + month : month,
+          year
+        ].join('.');
+      },
+      parse: function (str) {
+        const dayMonthYear = str.split('.');
+        return new Date(dayMonthYear[2], dayMonthYear[1] - 1, dayMonthYear[0]);
+      },
+      autofix: true,
+    });
+  } else {
+    IMask($input, { mask });
+  }
 });
 
 /* Select */
@@ -672,15 +724,26 @@ const validatePatterns = [
       if (value.length < 6 || value.length > 24) {
         return false;
       }
-    
+
       const hasDigit = /\d/.test(value);
       const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>_\-+=]/.test(value);
       const hasLatinLetter = /[a-zA-Z]/.test(value);
-    
+
       if (!hasDigit || !hasSpecialChar || !hasLatinLetter) {
         return false;
       }
-    
+
+      return true;
+    },
+  },
+  {
+    name: "password-length",
+    defaultMessage: "Некорректный пароль",
+    validate: (value) => {
+      if (value.length < 6 || value.length > 24) {
+        return false;
+      }
+
       return true;
     },
   },
@@ -756,9 +819,9 @@ $forms.forEach(($form) => {
 
       const validateType = $field.dataset.validate;
       const pattern = validatePatterns.find((pattern) => pattern.name === validateType);
-      if (pattern.validate($field.value)) {
+      if (validateType && pattern.validate($field.value)) {
         $input.classList.add("input--validated");
-      } else {
+      } else if (validateType) {
         $input.classList.remove("input--validated");
       }
 
@@ -1759,7 +1822,7 @@ function createConfirmPopup() {
   });
 }
 
-/* register */
+/* Register */
 const clickHandler = document.ontouchstart !== null ? "click" : "touchstart";
 
 const $formSingup = document.querySelector(".form.login__form.js-form");
@@ -1829,3 +1892,84 @@ document.addEventListener("formSuccess", (e) => {
   const $formPopup = $form.closest(".popup");
   closePopup($formPopup);
 });
+
+/* Offers list */
+const $offersLists = document.querySelectorAll(".offers-list");
+$offersLists.forEach(($offersList) => {
+  const $submit = $offersList.querySelector(".offers-list__btns-btn--submit");
+  if (!$submit) {
+    return;
+  }
+
+  let checkedCount = 0;
+
+  const $tableOffersTrList = document.querySelectorAll(".table-offers tr");
+  $tableOffersTrList.forEach(($tableOffersTr) => {
+    const $checkboxInput = $tableOffersTr.querySelector(".table-offers__checkbox .checkbox__input");
+    if (!$checkboxInput) {
+      return;
+    }
+
+    if ($checkboxInput.checked) {
+      checkedCount++;
+    }
+
+    $checkboxInput?.addEventListener("change", () => {
+      if ($checkboxInput.checked) {
+        checkedCount++;
+        $tableOffersTr.classList.add("table-offers__tr--active");
+      } else {
+        checkedCount--;
+        $tableOffersTr.classList.remove("table-offers__tr--active");
+      }
+
+      updateOffersListSubmit($submit, checkedCount);
+    });
+  });
+
+  updateOffersListSubmit($submit, checkedCount);
+});
+
+function updateOffersListSubmit($submit, count = 0) {
+  $submit.innerText = `Заключить контракт (${count})`;
+
+  if (count > 0) {
+    $submit.removeAttribute("disabled");
+  } else {
+    $submit.setAttribute("disabled", "");
+  }
+}
+
+/* Offer */
+const $offerTabsBtns = document.querySelectorAll(".offer-main__tabs .tabs-btns__btn");
+const $offerTabsHeaderBtn = document.querySelector(".offer-main__tabs-header-btn");
+$offerTabsBtns.forEach(($btn, index) => {
+  $btn.addEventListener("click", () => {
+    if (index === 1) {
+      $offerTabsHeaderBtn.classList.add("offer-main__tabs-header-btn--show");
+    } else {
+      $offerTabsHeaderBtn.classList.remove("offer-main__tabs-header-btn--show");
+    }
+  });
+});
+
+const $offerMainFiles = document.querySelector(".offer-main__files");
+if ($offerMainFiles) {
+  const $offerTabsHeaderBtnFileField = $offerTabsHeaderBtn.querySelector(".btn__file-field");
+  $offerTabsHeaderBtnFileField?.addEventListener("change", () => {
+    const file = $offerTabsHeaderBtnFileField.files[0];
+    if (file) {
+      const $offerFile = createOfferFile(file.name);
+      $offerMainFiles.append($offerFile);
+    }
+  });
+}
+
+function createOfferFile(name) {
+  const $offerFile = createElem("a", "file file--success offer-main__file", {
+    innerText: name,
+    href: "#",
+  });
+
+  return $offerFile;
+}
