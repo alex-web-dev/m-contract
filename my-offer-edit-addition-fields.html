@@ -323,12 +323,14 @@
                               <label class="text text--3xs input__label" for="offer-delivery-place">Место поставки</label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm"
+                                  class="input__field input__field--sm js-open-popup"
                                   id="offer-delivery-place"
                                   type="text"
                                   name="delivery-place"
                                   value="г. Санкт-Петербург, Зеленогорск"
-                                  data-validate="empty" />
+                                  data-validate="empty"
+                                  data-popup-name="regions"
+                                  readonly />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
@@ -421,12 +423,12 @@
                               </label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm js-imask"
+                                  class="input__field input__field--sm js-open-popup"
                                   id="offer-active-until-date"
                                   type="text"
                                   name="until-date"
-                                  value="12.04.2024"
-                                  data-mask="date"
+                                  value="12.04.2024 23:59 мск"
+                                  readonly
                                   autocomplete="off"
                                   data-validate="empty" />
                               </div>
@@ -441,13 +443,13 @@
                         <div class="panel-btns panel-btns--mobile-full offer-main__tabs-btns">
                           <div class="panel-btns__list tabs-btns" data-tabs-name="offer">
                             <button
-                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active">
+                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active" type="button">
                               Товары
                             </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Документы
                             </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Комментарий
                             </button>
                           </div>
@@ -504,7 +506,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">9 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
@@ -521,7 +523,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
                                 <tr>
@@ -541,7 +543,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">18 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
@@ -558,7 +560,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
                               </tbody>
@@ -571,10 +573,22 @@
                         </div>
                         <div class="tabs-list__item">
                           <div class="offer-main__files">
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
                           </div>
                         </div>
                         <div class="tabs-list__item">
@@ -1689,6 +1703,218 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                 <button class="add-item add-list__item search-items__item">
                   <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">Группа 8</div>
                 </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup popup--mobile-full" data-popup-name="regions">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup-content--mobile-full popup__content">
+            <div class="popup-content__header">
+              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
+                <span>Регионы</span>
+              </div>
+            </div>
+            <div class="categories popup-content__categories">
+              <div class="input categories__search">
+                <div class="input__main">
+                  <button class="input__left-btn" type="button">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M13.5835 13.5833L17.3335 17.3333"
+                        stroke="#5D606F"
+                        stroke-width="1.25"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path
+                        d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
+                        stroke="#5D606F"
+                        stroke-width="1.25"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                  <input
+                    class="input__field input__field--sm input__field--left-btn input__field--right-btn"
+                    type="text"
+                    placeholder="Поиск"
+                    name="search"
+                    autocomplete="off" />
+                  <button class="input__right-btn input__clear-field" type="button">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
+                        fill="#9093A2" />
+                    </svg>
+                  </button>
+                </div>
+                <span class="text text--3xs text--lh-125 input__error"></span>
+              </div>
+              <div class="categories__list categories__list-h-sm" data-scrollbar data-scrollbar-continue>
+                <div class="category categories__item">
+                  <button class="text text--3xs text--lh-14 category__btn" type="button">
+                    <span class="category__btn-icon"></span>
+                    <span>А</span>
+                  </button>
+                  <div class="category__content">
+                    <div class="category__list category__list--sub">
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Алтайский край</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Барнаул"
+                              data-popup-name="regions">
+                              Барнаул
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Адыгея</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Майкоп"
+                              data-popup-name="regions">
+                              Майкоп
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Амурская область</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-popup-name="regions"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Благовещенск">
+                              Благовещенск
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Архангельская область</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Архангельск"
+                              data-popup-name="regions">
+                              Архангельск
+                            </button>
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Вельск"
+                              data-popup-name="regions">
+                              Вельск
+                            </button>
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Каргополь"
+                              data-popup-name="regions">
+                              Каргополь
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Астраханская область</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Астрахань"
+                              data-popup-name="regions">
+                              Астрахань
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="category categories__item">
+                  <button class="text text--3xs text--lh-14 category__btn" type="button">
+                    <span class="category__btn-icon"></span>
+                    <span>Б</span>
+                  </button>
+                  <div class="category__content">
+                    <div class="category__list category__list--sub">
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Башкортостан</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Уфа"
+                              data-popup-name="regions">
+                              Уфа
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="category category__item">
+                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                          <span class="category__btn-icon"></span>
+                          <span>Белгородская область</span>
+                        </button>
+                        <div class="category__content">
+                          <div class="category__list category__list--sub">
+                            <button
+                              class="category__item-btn js-update-input js-close-popup"
+                              data-input-id="offer-delivery-place"
+                              data-input-value="Белгород"
+                              data-popup-name="regions">
+                              Белгород
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <button class="popup__close js-close-popup" type="button">

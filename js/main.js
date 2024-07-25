@@ -1423,7 +1423,7 @@ $dropdownSortBoxes.forEach(($dropdownSort) => {
       const btnText = $btn.querySelector("span").innerText;
       $dropdownBtnText.innerText = btnText;
 
-      $dropdownSort.classList.remove('dropdown--active');
+      $dropdownSort.classList.remove("dropdown--active");
     });
   });
 });
@@ -1979,13 +1979,35 @@ if ($offerMainFiles) {
       $offerMainFiles.append($offerFile);
     }
   });
+
+  const $offerMainFilesItems = document.querySelectorAll(".offer-main__file");
+  $offerMainFilesItems.forEach(($offerMainFile) => {
+    const $delete = $offerMainFile.querySelector(".file__delete");
+    $delete.addEventListener(
+      "click",
+      () => {
+        $offerMainFile.remove();
+      },
+      { once: true }
+    );
+  });
 }
 
 function createOfferFile(name) {
-  const $offerFile = createElem("a", "file file--success offer-main__file", {
-    innerText: name,
-    href: "#",
+  const $offerFile = createElem("div", "file file--success offer-main__file", {
+    innerHTML: `<a class="file__name" href="#">${name}</a>`,
   });
+
+  const $delete = createElem("button", "file__delete");
+  $delete.addEventListener(
+    "click",
+    () => {
+      $offerFile.remove();
+    },
+    { once: true }
+  );
+
+  $offerFile.append($delete);
 
   return $offerFile;
 }

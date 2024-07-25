@@ -302,18 +302,18 @@
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-delivery-type">Условия доставки</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm"
-                                  id="offer-delivery-type"
-                                  type="text"
-                                  name="delivery-type"
-                                  value="Силами продавца"
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            <div class="select select--shadow form__group-item">
+                              <label class="text text--3xs select__label">Условия доставки</label>
+                              <select
+                                class="select__field"
+                                id="offer-delivery-type"
+                                data-validate="empty"
+                                name="delivery-type">
+                                <option value="">Не выбрано</option>
+                                <option value="2">Силами продавца</option>
+                                <option value="3">Силами покупателя</option>
+                              </select>
+                              <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
                           </div>
                         </div>
@@ -391,12 +391,12 @@
                               </label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm js-imask"
+                                  class="input__field input__field--sm js-open-popup"
                                   id="offer-active-until-date"
                                   type="text"
                                   name="until-date"
-                                  value="12.04.2024"
-                                  data-mask="date"
+                                  value="12.04.2024 23:59 мск"
+                                  readonly
                                   autocomplete="off"
                                   data-validate="empty" />
                               </div>
@@ -411,13 +411,13 @@
                         <div class="panel-btns panel-btns--mobile-full offer-main__tabs-btns">
                           <div class="panel-btns__list tabs-btns" data-tabs-name="offer">
                             <button
-                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active">
+                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active" type="button">
                               Товары
                             </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Документы
                             </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Комментарий
                             </button>
                           </div>
@@ -444,7 +444,7 @@
                                     <span class="text text--4xs text--medium">Кол-во (шт.)</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium text--blue-600">Цена за 1 (шт.) / без НДС</span>
+                                    <span class="text text--4xs text--medium text--blue-600">Цена за 1 (шт.) мин. / без НДС</span>
                                   </th>
                                   <th>
                                     <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
@@ -473,8 +473,8 @@
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">9 000,00 ₽</span>
+                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) мин. / без НДС</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
@@ -491,7 +491,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
                                 <tr>
@@ -510,8 +510,8 @@
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">18 000,00 ₽</span>
+                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) мин. / без НДС</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
@@ -528,7 +528,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00 ₽</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
                               </tbody>
@@ -541,10 +541,22 @@
                         </div>
                         <div class="tabs-list__item">
                           <div class="offer-main__files">
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
-                            <a class="file file--success offer-main__file" href="#">BRIX Templates.pdf</a>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
+                            <div class="file file--success offer-main__file">
+                              <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              <button class="file__delete"></button>
+                            </div>
                           </div>
                         </div>
                         <div class="tabs-list__item">

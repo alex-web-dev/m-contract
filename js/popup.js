@@ -76,7 +76,6 @@ function closePopup($popup, isLockBody = true) {
 
 function openPopup($popup) {
   $popup.classList.add("popup--active");
-  console.log($popup.dataset.popupLock, $popup);
   if ($popup.dataset.popupLock !== 'no' && !isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
   }

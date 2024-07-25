@@ -1350,6 +1350,10 @@ mark {
   line-height: 17px;
 }
 
+.select--shadow .simple-select__list {
+  box-shadow: 0px 6px 16px rgba(10, 9, 11, 0.08);
+}
+
 .simple-select {
   position: relative;
   user-select: none;
@@ -5049,10 +5053,10 @@ div.scrollbar-thumb-x {
 }
 
 .profile-menu__link--active:after {
-  content: '';
+  content: "";
   margin-left: 10px;
   display: inline-block;
-  background: url('../img/icons/check-green-400.svg') center / 14px 10px no-repeat;
+  background: url("../img/icons/check-green-400.svg") center / 14px 10px no-repeat;
   width: 16px;
   height: 16px;
 }
@@ -5328,6 +5332,11 @@ div.scrollbar-thumb-x {
   width: auto;
   font-size: 14px;
   color: var(--color-blue-500);
+}
+
+span.pagination__link--left,
+span.pagination__link--right {
+  opacity: 0.5;
 }
 
 .pagination__link--left {
@@ -6411,6 +6420,14 @@ div.scrollbar-thumb-x {
   margin-left: 30px;
 }
 
+.offers-item__header-link .link__icon {
+  transition: transform 0.4s;
+}
+
+.offers-item__header-link.accordion__btn--active .link__icon {
+  transform: rotate(-180deg);
+}
+
 .offers-item__main {
   padding-top: 12px;
 }
@@ -6650,7 +6667,7 @@ div.scrollbar-thumb-x {
 }
 
 .file {
-  padding: 8px;
+  position: relative;
   display: inline-flex;
   align-items: center;
   border-radius: 2px;
@@ -6660,7 +6677,19 @@ div.scrollbar-thumb-x {
   background-color: var(--color-blue-50);
 }
 
-.file:before {
+.file--success {
+  background-color: var(--color-green-100);
+  color: var(--color-green-400);
+}
+
+.file__name {
+  padding: 8px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.file__name:before {
   content: "";
   flex: 0 0 auto;
   margin-right: 10px;
@@ -6670,11 +6699,17 @@ div.scrollbar-thumb-x {
   height: 20px;
 }
 
-.file--success {
-  background-color: var(--color-green-100);
-  color: var(--color-green-400);
+.file--success .file__name:before {
+  background-image: url("../img/icons/file-green-400.svg");
 }
 
-.file--success:before {
-  background-image: url("../img/icons/file-green-400.svg");
+.file__delete {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url('../img/icons/exit-neutral-600.svg') center / 10px 10px no-repeat;
+  width: 32px;
+  height: 100%;
 }

@@ -1169,7 +1169,7 @@
     padding-left: 148px;
     font-size: 14px;
   }
-  
+
   .form__group-items--tablet-column {
     flex-direction: column;
     align-items: flex-start;
@@ -1960,6 +1960,15 @@
 
   .nav-btns__btn {
     font-size: 16px;
+  }
+
+  .dropdown__main--t-14 {
+    top: calc(100% + 12px);
+  }
+
+  .dropdown__main--mobile-left {
+    right: unset;
+    left: 0;
   }
 
   .header--desktop {
@@ -2779,13 +2788,13 @@
   }
 
   .offer__tags.tags--inline .tags__list,
-  .offer__statuses.tags--inline .tags__list{
+  .offer__statuses.tags--inline .tags__list {
     margin-top: 0;
     margin-left: 0;
   }
 
   .offer__tags.tags--inline .tags__item,
-  .offer__statuses.tags--inline .tags__item{
+  .offer__statuses.tags--inline .tags__item {
     margin-top: 0;
     margin-left: 0;
   }
