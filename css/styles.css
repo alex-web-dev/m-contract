@@ -6038,6 +6038,10 @@ span.pagination__link--right {
   overflow: hidden;
 }
 
+.offer:hover .offer__content {
+  background: var(--color-blue-50);
+}
+
 .offer--active {
   border: 1px solid var(--color-blue-500);
 }
@@ -6046,6 +6050,8 @@ span.pagination__link--right {
   padding: 12px;
   background-color: #fff;
   border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.4s;
 }
 
 .offer__type {
