@@ -363,13 +363,24 @@ const GROUP_CLASS = "simple-select__group";
 const GROUP_NO_FILTER_CLASS = "simple-select__group--no-filter";
 
 const $selectFields = document.querySelectorAll(".select__field");
-$selectFields.forEach(($select) => {
-  const $selectBox = $select.closest(".select");
+$selectFields.forEach(($selectField) => {
+  initializeCustomSelect($selectField);
+});
+
+function initializeCustomSelect($selectField) {
+  const $selectBox = $selectField.closest(".select");
+
+  const $existingCustomSelect = $selectBox.querySelector(`.${SELECT_CLASS}`);
+  if ($existingCustomSelect) {
+    const $errorBlock = $selectBox.querySelector(".select__error");
+    $selectBox.insertBefore($selectField, $errorBlock);
+    $selectBox.removeChild($existingCustomSelect);
+  }
 
   const $simpleSelect = createElem("div", SELECT_CLASS);
-  $select.parentNode.insertBefore($simpleSelect, $select);
-  $select.classList.add(INPUT_CLASS);
-  $simpleSelect.append($select);
+  $selectField.parentNode.insertBefore($simpleSelect, $selectField);
+  $selectField.classList.add(INPUT_CLASS);
+  $simpleSelect.append($selectField);
   $simpleSelect.tabIndex = 0;
 
   const $input = $selectBox.querySelector(".select__input");
@@ -377,8 +388,8 @@ $selectFields.forEach(($select) => {
 
   /* Select field */
   const $simpleSelectField = createElem("div", FIELD_CLASS);
-  $simpleSelectField.innerText = $select.options[0].innerText;
-  if ($select.options[0].value === "") {
+  $simpleSelectField.innerText = $selectField.options[0].innerText;
+  if ($selectField.options[0].value === "") {
     $simpleSelectField.classList.add(FIELD_PLACEHOLDER_CLASS);
   }
   $simpleSelectField.addEventListener("click", () => {
@@ -389,7 +400,7 @@ $selectFields.forEach(($select) => {
   $simpleSelect.append($simpleSelectField);
 
   /* Select items */
-  const $elems = $select.querySelectorAll("optgroup, option");
+  const $elems = $selectField.querySelectorAll("optgroup, option");
   const $simpleSelectList = createElem("div", LIST_CLASS);
   $elems.forEach(($elem, index) => {
     if ($elem.nodeName === "OPTGROUP") {
@@ -425,7 +436,7 @@ $selectFields.forEach(($select) => {
 
       $selectBox.classList.remove("select--error");
 
-      $select.selectedIndex = +$item.dataset.selectIndex;
+      $selectField.selectedIndex = +$item.dataset.selectIndex;
 
       $simpleSelectField.innerText = $option.innerText;
       $simpleSelectField.classList.remove(FIELD_PLACEHOLDER_CLASS);
@@ -438,16 +449,16 @@ $selectFields.forEach(($select) => {
         $inputField.value = $option.innerText;
       }
 
-      if ($select.dataset.updateInputIdText && $option.dataset.text) {
-        const $updateInputField = document.getElementById($select.dataset.updateInputIdText);
+      if ($selectField.dataset.updateInputIdText && $option.dataset.text) {
+        const $updateInputField = document.getElementById($selectField.dataset.updateInputIdText);
         $updateInputField.value = $option.dataset.text;
 
         const $updateInput = $updateInputField.closest(".input");
         $updateInput.classList.remove("input--error");
       }
 
-      if ($select.classList.contains("js-select-update-btn-text") && $option.dataset.btnText) {
-        const $form = $select.closest(".js-form");
+      if ($selectField.classList.contains("js-select-update-btn-text") && $option.dataset.btnText) {
+        const $form = $selectField.closest(".js-form");
         if ($form) {
           const $btn = $form.querySelector(".js-form-submit");
           $btn.textContent = $option.dataset.btnText;
@@ -464,6 +475,10 @@ $selectFields.forEach(($select) => {
     });
 
     $simpleSelectList.append($item);
+
+    if ($option.selected && $option.value !== "") {
+      $item.click();
+    }
   });
   $simpleSelect.append($simpleSelectList);
 
@@ -516,7 +531,7 @@ $selectFields.forEach(($select) => {
   }
 
   $inputField?.addEventListener("input", () => {
-    $select.selectedIndex = -1;
+    $selectField.selectedIndex = -1;
     $simpleSelectField.innerText = "";
     let isEmptyFilter = true;
 
@@ -610,7 +625,7 @@ $selectFields.forEach(($select) => {
       }
     }
   });
-});
+}
 
 /* Select close when click outside */
 window.addEventListener("click", (e) => {
