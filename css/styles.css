@@ -6705,6 +6705,10 @@ span.pagination__link--right {
   height: 20px;
 }
 
+.file__name:not(:last-child) {
+  padding-right: 32px;
+}
+
 .file--success .file__name:before {
   background-image: url("../img/icons/file-green-400.svg");
 }
