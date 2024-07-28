@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/air-datepicker.min.css" />
     <link rel="stylesheet" href="css/normalize.css?v=39" />
     <link rel="stylesheet" href="css/fonts.css?v=39" />
     <link rel="stylesheet" href="css/styles.css?v=39" />
@@ -103,7 +104,7 @@
               </button>
               <input class="search__field" type="text" placeholder="Поиск" />
               <button class="icon icon--xl search__info">
-                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="">
+                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="" />
               </button>
               <button class="search__btn search__btn--submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -304,37 +305,7 @@
                             </div>
                             <div class="select select--shadow form__group-item">
                               <label class="text text--3xs select__label">Условия доставки</label>
-                              <select
-                                class="select__field"
-                                id="offer-delivery-type"
-                                data-validate="empty"
-                                name="delivery-type">
-                                <option value="">Не выбрано</option>
-                                <option value="2">Силами продавца</option>
-                                <option value="3" selected>Силами покупателя</option>
-                              </select>
-                              <div class="text text--4xs text--lh-125 select__error"></div>
-                            </div>
-                            <div class="select select--shadow form__group-item">
-                              <label class="text text--3xs select__label">Условия доставки</label>
-                              <select
-                                class="select__field"
-                                id="offer-delivery-type"
-                                data-validate="empty"
-                                name="delivery-type">
-                                <option value="">Не выбрано</option>
-                                <option value="2">Силами продавца</option>
-                                <option value="3" selected>Силами покупателя</option>
-                              </select>
-                              <div class="text text--4xs text--lh-125 select__error"></div>
-                            </div>
-                            <div class="select select--shadow form__group-item">
-                              <label class="text text--3xs select__label">Условия доставки</label>
-                              <select
-                                class="select__field"
-                                id="offer-delivery-type"
-                                data-validate="empty"
-                                name="delivery-type">
+                              <select class="select__field" id="offer-delivery-type" data-validate="empty" name="delivery-type">
                                 <option value="">Не выбрано</option>
                                 <option value="2">Силами продавца</option>
                                 <option value="3" selected>Силами покупателя</option>
@@ -436,7 +407,7 @@
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
                             <div class="input form__group-item form__group-item--tablet-full">
-                              <label class="text text--3xs input__label" for="offer-active-until-date">
+                              <div class="text text--3xs input__label" for="offer-active-until-date">
                                 <span>Действительно до</span>
                                 <img
                                   class="text__icon"
@@ -444,16 +415,18 @@
                                   data-tippy-content="Это значение временного отрезка, который вы выбираете для измерения продолжительности в проекте (часы, дни, месяцы)."
                                   data-tippy-placement="bottom"
                                   alt="" />
-                              </label>
+                              </div>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm js-open-popup"
+                                  class="input__field input__field--sm"
                                   id="offer-active-until-date"
                                   type="text"
                                   name="until-date"
                                   value="12.04.2024 23:59 мск"
                                   readonly
                                   autocomplete="off"
+                                  data-datepicker
+                                  data-datepicker-addition-time-text="мск"
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
@@ -467,7 +440,8 @@
                         <div class="panel-btns panel-btns--mobile-full offer-main__tabs-btns">
                           <div class="panel-btns__list tabs-btns" data-tabs-name="offer">
                             <button
-                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active" type="button">
+                              class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active"
+                              type="button">
                               Товары
                             </button>
                             <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
@@ -478,10 +452,11 @@
                             </button>
                           </div>
                         </div>
-                        <label class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-sm btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--file">
-                          <img class="btn__icon" src="img/icons/plus-blue-500.svg" alt="">
+                        <label
+                          class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-sm btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--file">
+                          <img class="btn__icon" src="img/icons/plus-blue-500.svg" alt="" />
                           <span>Добавить документ</span>
-                          <input class="btn__file-field" type="file">
+                          <input class="btn__file-field" type="file" />
                         </label>
                       </div>
                       <div class="tabs-list" data-tabs-name="offer">
@@ -529,7 +504,9 @@
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) мин. / без НДС</span>
+                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">
+                                      Цена за 1 (шт.) мин. / без НДС
+                                    </span>
                                     <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
                                   </td>
                                   <td>
@@ -566,7 +543,9 @@
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">Цена за 1 (шт.) мин. / без НДС</span>
+                                    <span class="text text--4xs text--medium text--blue-600 table-price__mobile-label">
+                                      Цена за 1 (шт.) мин. / без НДС
+                                    </span>
                                     <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
                                   </td>
                                   <td>
@@ -632,10 +611,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                     </div>
                     <div class="offer-bottom offer-main__footer">
                       <div class="offer-btns offer-bottom__btns">
-                        <button class="btn btn--white btn--px-sm btn--py-sm btn--text-xs offer-bottom__btns-btn">
-                          Отменить
+                        <button class="btn btn--white btn--px-sm btn--py-sm btn--text-xs offer-bottom__btns-btn">Отменить</button>
+                        <button class="btn btn--blue-500 btn--px-sm btn--py-sm btn--text-xs offer-bottom__btns-btn">
+                          Сохранить изменения
                         </button>
-                        <button class="btn btn--blue-500 btn--px-sm btn--py-sm btn--text-xs offer-bottom__btns-btn">Сохранить изменения</button>
                       </div>
                     </div>
                   </form>
@@ -682,7 +661,8 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                             </div>
                           </div>
                           <button
-                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn" id="partner-delete">
+                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn"
+                            id="partner-delete">
                             <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
                             <span>Удалить</span>
                           </button>
@@ -1746,6 +1726,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
+    <script src="js/air-datepicker.min.js"></script>
     <script src="js/main.js?v=39"></script>
     <script src="js/input-confirm.js"></script>
     <script src="js/popup.js"></script>

@@ -668,16 +668,6 @@ function swapHoverItem($oldItem, $newItem) {
   $newItem.classList.add(ITEM_HOVER_CLASS);
 }
 
-function createElem(type, className, options) {
-  const $elem = document.createElement(type);
-  $elem.className = className;
-  for (let key in options) {
-    $elem[key] = options[key];
-  }
-
-  return $elem;
-}
-
 /* Validate patterns */
 const validatePatterns = [
   {
@@ -1400,17 +1390,7 @@ document.addEventListener("formSuccess", (e) => {
 const $dropdowns = document.querySelectorAll(".dropdown");
 $dropdowns.forEach(($dropdown) => {
   const $btn = $dropdown.querySelector(".dropdown__btn");
-  $btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    document.querySelectorAll(".dropdown--active").forEach(($activeDropdown) => {
-      $activeDropdown.classList.remove("dropdown--active");
-    });
-
-    if (!$btn.dataset.dropdownMinWidth || window.innerWidth > $btn.dataset.dropdownMinWidth) {
-      $dropdown.classList.toggle("dropdown--active");
-    }
-  });
+  $btn.addEventListener("click", (e) => dropdownBtnHandler($btn, $dropdown, e));
 });
 
 window.addEventListener("click", (e) => {
@@ -1422,6 +1402,20 @@ window.addEventListener("click", (e) => {
 
   $activeDropdown.classList.remove("dropdown--active");
 });
+
+function dropdownBtnHandler($btn, $dropdown, e) {
+  e.stopPropagation();
+
+  const isActive = $dropdown.classList.contains("dropdown--active");
+
+  document.querySelectorAll(".dropdown--active").forEach(($activeDropdown) => {
+    $activeDropdown.classList.remove("dropdown--active");
+  });
+
+  if (!isActive && (!$btn.dataset.dropdownMinWidth || window.innerWidth > $btn.dataset.dropdownMinWidth)) {
+    $dropdown.classList.add("dropdown--active");
+  }
+}
 
 /* Dropdown sort */
 const $dropdownSortBoxes = document.querySelectorAll(".dropdown--sort");
@@ -1941,7 +1935,7 @@ if ($offerMainFiles) {
   const $offerMainFilesItems = document.querySelectorAll(".offer-main__file");
   $offerMainFilesItems.forEach(($offerMainFile) => {
     const $delete = $offerMainFile.querySelector(".file__delete");
-    $delete.addEventListener(
+    $delete?.addEventListener(
       "click",
       () => {
         $offerMainFile.remove();
@@ -1968,4 +1962,357 @@ function createOfferFile(name) {
   $offerFile.append($delete);
 
   return $offerFile;
+}
+
+/* Datepicker */
+const pickerMinYear = 2000;
+const pickerMaxYear = new Date().getFullYear() + 5;
+const pickerOffsetTop = 8;
+const $datepickerInputs = document.querySelectorAll("[data-datepicker]");
+
+$datepickerInputs.forEach(($datepickerInput) => {
+  const datepickerInputAdditionTimeText = $datepickerInput.dataset.datepickerAdditionTimeText;
+  let datepickerInputDefaultValue = $datepickerInput.value;
+  const range = $datepickerInput.dataset.datepickerRange !== undefined;
+  const picker = new AirDatepicker($datepickerInput, {
+    inline: true,
+    showOtherMonths: false,
+    selectOtherMonths: false,
+    selectedDates: [new Date()],
+    minDate: new Date(pickerMinYear, 0, 1),
+    maxDate: new Date(pickerMaxYear, 11, 31),
+    dateFormat: "dd.MM.yyyy",
+    timeFormat: "HH:mm",
+    timepicker: true,
+    position: ({ $datepicker, $target, $pointer }) => {
+      const coords = $target.getBoundingClientRect();
+      const top = coords.y + coords.height + window.scrollY + pickerOffsetTop;
+      const left = coords.x;
+
+      $datepicker.style.left = `${left}px`;
+      $datepicker.style.top = `${top}px`;
+
+      $pointer.style.display = "none";
+    },
+    range,
+    multipleDatesSeparator: " - ",
+    locale: {
+      daysMin: ["В", "П", "В", "С", "Ч", "П", "С"],
+    },
+    buttons: [
+      {
+        content: "Отменить",
+        className: "btn btn--gray-100 btn--text-xs",
+        attrs: {
+          type: "button",
+        },
+        onClick: () => {
+          if (picker.opts.inline) {
+            picker.$datepicker.classList.remove("air-datepicker--show");
+          } else {
+            picker.hide();
+          }
+        },
+      },
+      {
+        content: "Выбрать",
+        className: "btn btn--blue-500 btn--text-xs",
+        attrs: {
+          type: "button",
+        },
+        onClick: () => {
+          const selectedDates = picker.selectedDates;
+          const updateOnlyDate = $datepickerInput.dataset.datepickerUpdateOnlyDate !== undefined;
+          const formattedDates = selectedDates.map((date) => {
+            if (updateOnlyDate) {
+              return picker.formatDate(date, `${picker.opts.dateFormat}`);
+            } else {
+              return picker.formatDate(date, `${picker.opts.dateFormat} ${picker.opts.timeFormat}`);
+            }
+          });
+          const joinDates = formattedDates.join(" - ");
+          if (datepickerInputAdditionTimeText && !updateOnlyDate) {
+            $datepickerInput.value = `${joinDates} ${datepickerInputAdditionTimeText}`;
+          } else {
+            $datepickerInput.value = `${joinDates}`;
+          }
+
+          datepickerInputDefaultValue = $datepickerInput.value;
+
+          if (picker.opts.inline) {
+            picker.$datepicker.classList.remove("air-datepicker--show");
+          } else {
+            picker.hide();
+          }
+        },
+      },
+    ],
+    onShow: (isFinished) => {
+      if (isFinished) {
+        return;
+      }
+
+      renderDatePicker({
+        picker,
+        minYear: pickerMinYear,
+        maxYear: pickerMaxYear,
+      });
+
+      pickerBottomOffsetHandler($datepickerInput, picker);
+    },
+    onHide: (isFinished) => {
+      if (isFinished) {
+        return;
+      }
+
+      resetBottomOffset();
+    },
+    onChangeViewDate: ({ month, year }) => {
+      updateDateDropdown({
+        picker,
+        type: "month",
+        newIndex: month,
+        newItemName: getMonthName(month),
+      });
+      updateDateDropdown({
+        picker,
+        type: "year",
+        newIndex: year,
+        newItemName: year,
+      });
+    },
+    onSelect: () => {
+      $datepickerInput.value = datepickerInputDefaultValue;
+    },
+  });
+
+  setTimeout(() => (picker.$el.value = datepickerInputDefaultValue));
+
+  if (picker.opts.inline) {
+    renderDatePicker({
+      picker,
+      minYear: pickerMinYear,
+      maxYear: pickerMaxYear,
+    });
+  }
+
+  $datepickerInput.addEventListener("click", () => {
+    const $otherActiveDatepicker = document.querySelector(".air-datepicker--show");
+    $otherActiveDatepicker?.classList.remove("air-datepicker--show");
+
+    picker.$datepicker.classList.add("air-datepicker--show");
+
+    pickerBottomOffsetHandler($datepickerInput, picker);
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target.dataset.datepicker === "" || e.target.closest("[data-datepicker]")) {
+      return;
+    }
+
+    if (picker.opts.inline && !e.target.closest(".air-datepicker")) {
+      picker.$datepicker.classList.remove("air-datepicker--show");
+      resetBottomOffset();
+    } else if (picker.visible && !e.target.closest(".air-datepicker")) {
+      picker.hide();
+    }
+  });
+});
+
+function renderDatePicker({ picker, minYear, maxYear }) {
+  const $nav = picker.$nav.querySelector(".air-datepicker-nav");
+  const $navTitle = $nav.querySelector(".air-datepicker-nav--title");
+  $navTitle?.remove();
+
+  const $monthsDropdown = createDateDropdown({
+    picker,
+    type: "month",
+    items: getMonthsNames(),
+    currentIndex: new Date().getMonth(),
+    currentItemName: getMonthName(new Date().getMonth()),
+  });
+  const $yearsDropdown = createDateDropdown({
+    picker,
+    type: "year",
+    items: getYearsArray(minYear, maxYear),
+    currentIndex: new Date().getFullYear(),
+    currentItemName: new Date().getFullYear(),
+  });
+  const $timeInput = createTimeInput(picker);
+  const $prevBtn = $nav.querySelector(".air-datepicker-nav--action");
+
+  const monthsDropdownAdded = !!$nav.querySelector(".dropdown-month");
+  if (!monthsDropdownAdded) {
+    $prevBtn.after($yearsDropdown);
+    $prevBtn.after($monthsDropdown);
+  }
+
+  const $timePicker = picker.$timepicker;
+  const timeInputAdded = !!$timePicker.querySelector(".datepicker-time");
+  if (!timeInputAdded) {
+    $timePicker.append($timeInput);
+  }
+
+  picker.$datepicker.addEventListener("mousedown", (e) => {
+    if (!e.target.closest(".datepicker-time")) {
+      e.preventDefault();
+    }
+  });
+}
+
+function createDateDropdown({ picker, type, items, currentIndex, currentItemName }) {
+  const $dropdown = createElem("div", `dropdown dropdown-${type}`);
+  const $btn = createElem("button", `select-btn select-btn--py-sm dropdown-${type}__btn dropdown__btn`, {
+    innerText: currentItemName,
+  });
+  $btn.setAttribute("type", "button");
+
+  const $dropdownMain = createElem("div", "dropdown__main dropdown__main--full");
+  const $dateMenu = createElem("div", "date-menu dropdown__date");
+  const $dateMenuList = createElem("ul", "date-menu__list");
+
+  items.forEach((item, index) => {
+    const $dateMenuItem = createElem("li", "date-menu__item");
+    const $dateMenuLink = createElem("button", "date-menu__link");
+    if ((type === "month" && index === currentIndex) || (type === "year" && item === currentIndex)) {
+      $dateMenuLink.classList.add("date-menu__link--active");
+    }
+    $dateMenuLink.setAttribute("type", "button");
+    $dateMenuLink.innerHTML = `<span>${item}</span>`;
+    $dateMenuLink.addEventListener("click", () => {
+      const selectedDate = type === "month" ? new Date(picker.viewDate.getFullYear(), index) : new Date(item, picker.viewDate.getMonth());
+      picker.setViewDate(selectedDate);
+      $dropdown.classList.remove("dropdown--active");
+      $btn.innerText = item;
+    });
+    $dateMenuLink.dataset.index = type === "month" ? index : item;
+    $dateMenuItem.append($dateMenuLink);
+    $dateMenuList.append($dateMenuItem);
+  });
+
+  $dateMenu.append($dateMenuList);
+  $dropdownMain.append($dateMenu);
+
+  const scrollbar = Scrollbar.init($dateMenu, {
+    damping: 0.1,
+    continuousScrolling: false,
+  });
+
+  $btn.addEventListener("click", (e) => {
+    dropdownBtnHandler($btn, $dropdown, e);
+
+    const $activeLink = $dropdown.querySelector(".date-menu__link--active");
+    if ($activeLink) {
+      scrollbar.update();
+      scrollbar.scrollTo(0, $activeLink.offsetTop);
+    }
+  });
+
+  $dropdown.append($btn);
+  $dropdown.append($dropdownMain);
+
+  return $dropdown;
+}
+
+function getDistanceToElementEnd(fromElement, toElement) {
+  const fromRect = fromElement.getBoundingClientRect();
+  const toRect = toElement.getBoundingClientRect();
+  const distance = toRect.bottom - fromRect.bottom;
+
+  return distance;
+}
+
+function addBottomOffset(offset) {
+  const $main = document.querySelector(".main");
+  const $lkBody = document.querySelector(".lk__body");
+  if ($lkBody) {
+    $lkBody.style.height = `${$lkBody.getBoundingClientRect().height + offset}px`;
+  } else {
+    $main.style.height = `${$main.getBoundingClientRect().height + offset}px`;
+  }
+}
+
+function resetBottomOffset() {
+  const $main = document.querySelector(".main");
+  const $lkBody = document.querySelector(".lk__body");
+  if ($lkBody) {
+    $lkBody.style.height = "";
+  } else {
+    $main.style.height = "";
+  }
+}
+
+function pickerBottomOffsetHandler($elem, picker) {
+  const $footer = document.querySelector(".footer");
+  const offsetToBottom = getDistanceToElementEnd($elem, $footer) - pickerOffsetTop;
+  const pickerHeight = picker.$datepicker.offsetHeight;
+  const pickerBottomOffsetReserve = 20;
+  const bottomOffset = pickerHeight - offsetToBottom + pickerBottomOffsetReserve;
+  if (bottomOffset > 0) {
+    addBottomOffset(bottomOffset);
+  }
+}
+
+function updateDateDropdown({ picker, type, newIndex, newItemName }) {
+  const $dropdown = picker.$datepicker.querySelector(`.dropdown-${type}`);
+  const $activeLink = $dropdown.querySelector(".date-menu__link--active");
+  $activeLink?.classList.remove("date-menu__link--active");
+
+  const $newActiveLink = $dropdown.querySelector(`.date-menu__link[data-index="${newIndex}"]`);
+  $newActiveLink.classList.add("date-menu__link--active");
+
+  const $btn = $dropdown.querySelector(`.dropdown-${type}__btn`);
+  $btn.innerText = newItemName;
+}
+
+function createTimeInput(picker) {
+  const $timeInputContainer = createElem("div", "input datepicker-time");
+  const $timeType = createElem("span", "text text--neutral-400 text--3xs datepicker-time__type", {
+    innerText: "мск",
+  });
+
+  const thisHours = String(picker.timepicker.hours).padStart(2, "0");
+  const thisMinutes = String(picker.timepicker.minutes).padStart(2, "0");
+
+  const $timeInput = createElem("input", "input__field input__field--sm datepicker-time__field", {
+    type: "time",
+    value: `${thisHours}:${thisMinutes}`,
+  });
+
+  $timeInput.addEventListener("mouseup", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+  $timeInput.addEventListener("input", () => {
+    const [hours, minutes] = $timeInput.value.split(":").map(Number);
+    const selectedDates = picker.selectedDates;
+
+    if (selectedDates.length === 0) {
+      selectedDates.push(new Date());
+    }
+
+    selectedDates.forEach((selectedDate) => {
+      selectedDate.setHours(hours);
+      selectedDate.setMinutes(minutes);
+    });
+  });
+
+  $timeInputContainer.append($timeInput);
+  $timeInputContainer.append($timeType);
+
+  return $timeInputContainer;
+}
+
+function getMonthName(index) {
+  const months = getMonthsNames();
+  return months[index];
+}
+
+function getMonthsNames() {
+  return ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+}
+
+function getYearsArray(minYear, maxYear) {
+  return Array.from({ length: maxYear - minYear + 1 }, (_, i) => maxYear - i);
 }
