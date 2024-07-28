@@ -2285,7 +2285,12 @@ function createTimeInput(picker) {
   });
 
   $timeInput.addEventListener("input", () => {
-    const [hours, minutes] = $timeInput.value.split(":").map(Number);
+    if (!$timeInput.value) {
+      $timeInput.value = '00:00';
+    }
+
+    let [hours, minutes] = $timeInput.value.split(":").map(Number);
+
     const selectedDates = picker.selectedDates;
 
     if (selectedDates.length === 0) {

@@ -6458,6 +6458,10 @@ span.pagination__link--right {
   width: 100%;
 }
 
+.table-price__input .input__field {
+  text-align: right;
+}
+
 .table-price th {
   background-color: var(--color-gray-50);
 }
