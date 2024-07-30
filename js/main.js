@@ -464,6 +464,8 @@ function initializeCustomSelect($selectField) {
           $btn.textContent = $option.dataset.btnText;
         }
       }
+
+      $selectField.dispatchEvent(new Event('change'));
     });
 
     $item.addEventListener("mouseover", () => {
@@ -580,6 +582,8 @@ function initializeCustomSelect($selectField) {
 
         $hoverItem?.click();
         $simpleSelectField.classList.remove(FIELD_PLACEHOLDER_CLASS);
+
+        $selectField.dispatchEvent(new Event('change'));
       } else {
         $simpleSelectList.classList.toggle(LIST_ACTIVE_CLASS);
         $simpleSelectField.classList.toggle(FIELD_ACTIVE_CLASS);
@@ -2021,7 +2025,19 @@ $datepickerInputs.forEach(($datepickerInput) => {
           type: "button",
         },
         onClick: () => {
+          const $timeInput = picker.$datepicker.querySelector('.datepicker-time__field');
           const selectedDates = picker.selectedDates;
+          const [hours, minutes] = $timeInput.value.split(":").map(Number);
+          const roundedMinutes = Math.round(minutes / 5) * 5;
+          if (roundedMinutes > 55) {
+            roundedMinutes = 55;
+          }
+
+          selectedDates.forEach((selectedDate) => {
+            selectedDate.setHours(hours);
+            selectedDate.setMinutes(roundedMinutes);
+          });
+
           const updateOnlyDate = $datepickerInput.dataset.datepickerUpdateOnlyDate !== undefined;
           const formattedDates = selectedDates.map((date) => {
             if (updateOnlyDate) {
@@ -2154,6 +2170,9 @@ function renderDatePicker({ picker, minYear, maxYear }) {
   }
 
   picker.$datepicker.addEventListener("mousedown", (e) => {
+    const $timeInput = picker.$datepicker.querySelector('.datepicker-time__field');
+    $timeInput?.blur();
+
     if (!e.target.closest(".datepicker-time")) {
       e.preventDefault();
     }
@@ -2273,10 +2292,11 @@ function createTimeInput(picker) {
 
   const thisHours = String(picker.timepicker.hours).padStart(2, "0");
   const thisMinutes = String(picker.timepicker.minutes).padStart(2, "0");
+  const thisMinutesRounded = Math.round(thisMinutes / 5) * 5;
 
   const $timeInput = createElem("input", "input__field input__field--sm datepicker-time__field", {
     type: "time",
-    value: `${thisHours}:${thisMinutes}`,
+    value: `${thisHours}:${thisMinutesRounded}`,
   });
 
   $timeInput.addEventListener("mouseup", (e) => {
@@ -2286,10 +2306,22 @@ function createTimeInput(picker) {
 
   $timeInput.addEventListener("input", () => {
     if (!$timeInput.value) {
-      $timeInput.value = '00:00';
+      $timeInput.value = "00:00";
+    }
+  });
+
+  $timeInput.addEventListener("blur", () => {
+    if (!$timeInput.value) {
+      $timeInput.value = "00:00";
     }
 
-    let [hours, minutes] = $timeInput.value.split(":").map(Number);
+    const [hours, minutes] = $timeInput.value.split(":").map(Number);
+    let roundedMinutes = Math.round(minutes / 5) * 5;
+    if (roundedMinutes > 55) {
+      roundedMinutes = 55;
+    }
+
+    $timeInput.value = `${String(hours).padStart(2, "0")}:${String(roundedMinutes).padStart(2, "0")}`;
 
     const selectedDates = picker.selectedDates;
 
@@ -2299,7 +2331,7 @@ function createTimeInput(picker) {
 
     selectedDates.forEach((selectedDate) => {
       selectedDate.setHours(hours);
-      selectedDate.setMinutes(minutes);
+      selectedDate.setMinutes(roundedMinutes);
     });
   });
 

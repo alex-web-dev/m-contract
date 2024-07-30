@@ -246,7 +246,11 @@
                       </div>
                       <div class="offer-header__info">
                         <div class="text text--4xs text--lh-13 text--clamp offer-header__name">ООО "УРАЛЬСКАЯ МЕТАЛЛИЧЕСКАЯ КОМПАНИЯ"</div>
-                        <div class="text text--4xs text--lh-13 text--clamp offer-header__city">г. Оренбург (Оренбургская область)</div>
+                        <div class="text text--4xs text--lh-13 text--clamp offer-header__city">
+                          <span class="text text text--4xs text--lh-14 text--clamp offer-header__city-name">Оренбург (Оренбургская область)</span>
+                          <span class="text text text--4xs text--lh-14 offer-header__city-separator">;</span>
+                          <span class="text text text--4xs text--lh-14 text--clamp offer-header__city-spot">Местонахождение товара: Лодейное Поле, Ленинградская область</span>
+                        </div>
                       </div>
                       <button class="btn btn--icon btn--icon-xs btn--icon-transparent offer-header__tags-btn">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -314,9 +318,37 @@
                             </div>
                           </div>
                         </div>
-                        <div class="form__group display_none">
+                        <div class="form__group">
+                          <div class="form__group-items form__group-items--mobile-column form__group-items form__group-items--mobile-reverse">
+                            <div class="select form__group-item">
+                              <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
+                              <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
+                                <option selected value="1">Отсрочка платежа</option>
+                                <option value="2">100% предоплата</option>
+                                <option value="3">Частичная предоплата</option>
+                                <option value="4">По факту поставки</option>
+                              </select>
+                              <span class="text text--4xs text--lh-125 select__error"></span>
+                            </div>
+                            <div class="input form__group-item">
+                              <label class="text text--3xs input__label" for="offer-price-type">Цена</label>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
+                                  id="offer-price-type"
+                                  type="text"
+                                  name="price-type"
+                                  value="без НДС"
+                                  readonly
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form__group" id="offer-terms-payments-conditions">
                           <div class="form__group-items form__group-items--mobile-column">
-                            <div class="input form__group-item display_none">
+                            <div class="input form__group-item" id="offer-terms-payments-deferment-period">
                               <label class="text text--3xs input__label" for="offer-deferment-period">Максимальный срок оплаты</label>
                               <div class="input__main">
                                 <input
@@ -329,7 +361,7 @@
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
-                            <div class="input form__group-item display_none">
+                            <div class="input form__group-item display_none" id="offer-terms-payments-partial-prepayment">
                               <label class="text text--3xs input__label" for="offer-partial-prepayment">Размер предоплаты</label>
                               <div class="input__main">
                                 <input
@@ -338,38 +370,6 @@
                                   type="text"
                                   name="partial-prepayment"
                                   value=""
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form__group">
-                          <div class="form__group-items form__group-items--mobile-column">
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-terms-of-payments">Условия оплаты</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
-                                  id="offer-terms-of-payments"
-                                  type="text"
-                                  name="terms-of-payments"
-                                  value="По факту поставки"
-                                  readonly
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-price-type">Цена</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
-                                  id="offer-price-type"
-                                  type="text"
-                                  name="price-type"
-                                  value="без НДС"
-                                  readonly
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>

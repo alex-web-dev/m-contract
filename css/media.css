@@ -789,12 +789,7 @@
 
   .form__group-items--middle-column .form__group-item {
     flex: none;
-    width: 100%;
-  }
-
-  .form__group-items--middle-column .form__group-item:not(:first-child) {
-    margin-top: 16px;
-    margin-left: 0;
+    width: calc(100% - 16px);
   }
 
   .form__footer--middle-column {
@@ -1181,12 +1176,7 @@
 
   .form__group-items--tablet-column .form__group-item {
     flex: none;
-    width: 100%;
-  }
-
-  .form__group-items--tablet-column .form__group-item:not(:first-child) {
-    margin-top: 16px;
-    margin-left: 0;
+    width: calc(100% - 16px);
   }
 
   .form__group-items--middle-column {
@@ -1199,19 +1189,9 @@
     width: auto;
   }
 
-  .form__group-items--middle-column .form__group-item:not(:first-child) {
-    margin-top: 0;
-    margin-left: 16px;
-  }
-
   .form__group-item--tablet-full {
     width: 100%;
     flex: 1 1 100%;
-  }
-
-  .form__group-item--tablet-full:not(:first-child) {
-    margin-top: 16px;
-    margin-left: 0;
   }
 
   .form__footer--middle-column {
@@ -1902,16 +1882,15 @@
 
   .form__group-items--mobile-column .form__group-item {
     flex: none;
-    width: 100%;
+    width: calc(100% - 16px);
   }
 
-  .form__group-items--mobile-column .form__group-item:not(:first-child) {
-    margin-top: 16px;
-    margin-left: 0;
+  .form__group-items--mobile-reverse {
+    flex-direction: row-reverse;
   }
 
-  .form__group-items--mobile-gap-0 .form__group-item:not(:first-child) {
-    margin-top: 0;
+  .form__group-items--mobile-reverse.form__group-items--mobile-column {
+    flex-direction: column-reverse;
   }
 
   .form__text {
@@ -2768,7 +2747,33 @@
     min-height: 248px;
   }
 
+  .offer__info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .offer__location {
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  .offer__location:not(:first-child) {
+    margin-left: 0;
+  }
+
+  .offer__location-name {
+    margin-top: 4px;
+    flex: none;
+    font-size: 13px;
+  }
+
+  .offer__location-separator {
+    display: none;
+  }
+
+  .offer__location-spot {
+    margin-top: 4px;
     font-size: 13px;
   }
 
@@ -3125,6 +3130,19 @@
   .offer-header__city {
     margin-top: 4px;
     margin-left: 0;
+    flex-direction: column;
+  }
+  
+  .offer-header__city-name {
+    margin-top: 4px;
+  }
+
+  .offer-header__city-separator {
+    display: none;
+  }
+
+  .offer-header__city-spot {
+    margin-top: 4px;
   }
 
   .offer-header__statuses .tags__list {

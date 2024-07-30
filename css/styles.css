@@ -1296,8 +1296,8 @@ mark {
 }
 
 .select__label {
-  margin-bottom: 8px;
-  display: block;
+  padding-bottom: 8px;
+  display: inline-flex;
 }
 
 .select__label--mb-lg {
@@ -1722,9 +1722,10 @@ mark {
 }
 
 .form__group-items {
+  margin-top: -16px;
+  margin-left: -16px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .form__group-items--column {
@@ -1732,16 +1733,9 @@ mark {
 }
 
 .form__group-item {
-  flex: 1 1 0%;
-}
-
-.form__group-item:not(:first-child) {
   margin-left: 16px;
-}
-
-.form__group-items--column .form__group-item:not(:first-child) {
   margin-top: 16px;
-  margin-left: 0;
+  flex: 1 1 0%;
 }
 
 .form__group-item--flex-0-auto {
@@ -6354,8 +6348,20 @@ span.pagination__link--right {
   flex: 0 0 auto;
 }
 
+.offer__location {
+  display: flex;
+}
+
 .offer__location:not(:first-child) {
   margin-left: 10px;
+}
+
+.offer__location-separator {
+  margin: 0 4px;
+}
+
+.offer__location-name {
+  flex: 0 0 auto;
 }
 
 .offer__options-btn {
@@ -6824,6 +6830,16 @@ span.pagination__link--right {
 
 .offer-header__city {
   margin-left: 10px;
+  display: flex;
+}
+
+.offer-header__city-name {
+  flex: 0 0 auto;
+}
+
+.offer-header__city-separator {
+  margin-left: 4px;
+  margin-right: 8px;
 }
 
 .offer-header__info:not(:last-child) {
