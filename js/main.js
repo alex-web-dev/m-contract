@@ -2097,8 +2097,9 @@ $datepickerInputs.forEach(($datepickerInput) => {
         newItemName: year,
       });
     },
-    onSelect: () => {
+    onSelect: (date) => {
       $datepickerInput.value = datepickerInputDefaultValue;
+      verifyData(date);
     },
   });
 
