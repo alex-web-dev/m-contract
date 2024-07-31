@@ -351,7 +351,35 @@
                           </div>
                         </div>
                         <div class="form__group">
-                          <div class="form__group-items form__group-items--mobile-column form__group-items">
+                          <div class="form__group-items form__group-items--mobile-column">
+                            <div class="input form__group-item">
+                              <label class="text text--3xs input__label" for="offer-delivery-load-type">Погрузка</label>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
+                                  id="offer-delivery-load-type"
+                                  type="text"
+                                  name="delivery-load-type"
+                                  value="Силами продавца"
+                                  readonly
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            </div>
+                            <div class="input form__group-item">
+                              <label class="text text--3xs input__label" for="offer-price-type">Цена</label>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
+                                  id="offer-price-type"
+                                  type="text"
+                                  name="price-type"
+                                  value="без НДС"
+                                  readonly
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            </div>
                             <div class="select select--shadow form__group-item">
                               <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
                               <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
@@ -362,6 +390,10 @@
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
+                          </div>
+                        </div>
+                        <div class="form__group">
+                          <div class="form__group-items form__group-items--mobile-column form__group-items">
                             <div class="input form__group-item" id="offer-terms-payments-deferment-period">
                               <label class="text text--3xs input__label" for="offer-deferment-period">Максимальный срок оплаты</label>
                               <div class="input__main">
@@ -384,38 +416,6 @@
                                   type="text"
                                   name="partial-prepayment"
                                   value=""
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-price-type">Цена</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
-                                  id="offer-price-type"
-                                  type="text"
-                                  name="price-type"
-                                  value="без НДС"
-                                  readonly
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form__group">
-                          <div class="form__group-items form__group-items--mobile-column">
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-delivery-load-type">Погрузка</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
-                                  id="offer-delivery-load-type"
-                                  type="text"
-                                  name="delivery-load-type"
-                                  value="Силами продавца"
-                                  readonly
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
