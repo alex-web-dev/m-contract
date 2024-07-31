@@ -318,36 +318,6 @@
                             </div>
                           </div>
                         </div>
-                        <div class="form__group display_none">
-                          <div class="form__group-items form__group-items--mobile-column">
-                            <div class="input form__group-item display_none">
-                              <label class="text text--3xs input__label" for="offer-deferment-period">Максимальный срок оплаты</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm"
-                                  id="offer-deferment-period"
-                                  type="text"
-                                  name="deferment-period"
-                                  value=""
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                            <div class="input form__group-item display_none">
-                              <label class="text text--3xs input__label" for="offer-partial-prepayment">Размер предоплаты</label>
-                              <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm"
-                                  id="offer-partial-prepayment"
-                                  type="text"
-                                  name="partial-prepayment"
-                                  value=""
-                                  data-validate="empty" />
-                              </div>
-                              <span class="text text--4xs text--lh-125 input__error"></span>
-                            </div>
-                          </div>
-                        </div>
                         <div class="form__group">
                           <div class="form__group-items form__group-items--tablet-column">
                             <div class="input form__group-item">
@@ -381,17 +351,39 @@
                           </div>
                         </div>
                         <div class="form__group">
-                          <div class="form__group-items form__group-items--mobile-column">
-                            <div class="input form__group-item">
-                              <label class="text text--3xs input__label" for="offer-terms-of-payments">Условия оплаты</label>
+                          <div class="form__group-items form__group-items--mobile-column form__group-items">
+                            <div class="select select--shadow form__group-item">
+                              <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
+                              <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
+                                <option selected value="1">Отсрочка платежа</option>
+                                <option value="2">100% предоплата</option>
+                                <option value="3">Частичная предоплата</option>
+                                <option value="4">По факту поставки</option>
+                              </select>
+                              <span class="text text--4xs text--lh-125 select__error"></span>
+                            </div>
+                            <div class="input form__group-item" id="offer-terms-payments-deferment-period">
+                              <label class="text text--3xs input__label" for="offer-deferment-period">Максимальный срок оплаты</label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm input__field--gray-50 input__field--color-neutral-500"
-                                  id="offer-terms-of-payments"
+                                  class="input__field input__field--sm"
+                                  id="offer-deferment-period"
                                   type="text"
-                                  name="terms-of-payments"
-                                  value="По факту поставки"
-                                  readonly
+                                  name="deferment-period"
+                                  value=""
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            </div>
+                            <div class="input form__group-item display_none" id="offer-terms-payments-partial-prepayment">
+                              <label class="text text--3xs input__label" for="offer-partial-prepayment">Размер предоплаты</label>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm"
+                                  id="offer-partial-prepayment"
+                                  type="text"
+                                  name="partial-prepayment"
+                                  value=""
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
