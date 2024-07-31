@@ -654,7 +654,7 @@ window.addEventListener("click", (e) => {
     return;
   }
 
-  const $activeSelects = document.querySelectorAll(".select");
+  const $activeSelects = document.querySelectorAll(".select--active");
   $activeSelects.forEach(($activeSelect) => {
     if ($activeSelect !== $select) {
       const $list = $activeSelect.querySelector(`.${LIST_CLASS}`);
