@@ -366,11 +366,12 @@
                               <label class="text text--3xs input__label" for="offer-deferment-period">Максимальный срок оплаты</label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm"
+                                  class="input__field input__field--sm js-imask"
                                   id="offer-deferment-period"
                                   type="text"
                                   name="deferment-period"
                                   value=""
+                                  data-mask="int"
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
@@ -379,11 +380,14 @@
                               <label class="text text--3xs input__label" for="offer-partial-prepayment">Размер предоплаты</label>
                               <div class="input__main">
                                 <input
-                                  class="input__field input__field--sm"
+                                  class="input__field input__field--sm js-imask"
                                   id="offer-partial-prepayment"
                                   type="text"
                                   name="partial-prepayment"
                                   value=""
+                                  data-mask="int"
+                                  data-mask-min="1"
+                                  data-mask-max="99"
                                   data-validate="empty" />
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>

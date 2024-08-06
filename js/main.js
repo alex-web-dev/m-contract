@@ -284,6 +284,22 @@ $updateInputBtns.forEach(($btn) => {
   });
 });
 
+/* Textarea */
+const $textareas = document.querySelectorAll(".input__field--area");
+$textareas.forEach(($textarea) => {
+  textareaSizeHandler($textarea);
+  $textarea.addEventListener("input", () => textareaSizeHandler($textarea));
+  window.addEventListener("resize", () => textareaSizeHandler($textarea));
+});
+
+function textareaSizeHandler($textarea) {
+  const minHeight = $textarea.dataset.minHeight ? +$textarea.dataset.minHeight : 86;
+  $textarea.style.height = `${minHeight}px`;
+
+  const height = Math.max(minHeight, $textarea.scrollHeight);
+  $textarea.style.height = `${height}px`;
+}
+
 /* IMask js */
 const $imaskInputs = document.querySelectorAll(".js-imask");
 $imaskInputs.forEach(($input) => {
@@ -299,40 +315,16 @@ $imaskInputs.forEach(($input) => {
       radix: ",",
       mapToRadix: ["."],
     });
-  } else if (mask === "date") {
+  } else if (mask === "int") {
+    const min = $input.dataset.maskMin ? parseInt($input.dataset.maskMin, 10) : null;
+    const max = $input.dataset.maskMax ? parseInt($input.dataset.maskMax, 10) : null;
+
     IMask($input, {
-      mask: Date,
-      pattern: "d{.}m{.}Y",
-      blocks: {
-        d: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 31,
-          maxLength: 2,
-        },
-        m: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 12,
-          maxLength: 2,
-        },
-        Y: {
-          mask: IMask.MaskedRange,
-          from: 1900,
-          to: 9999,
-        },
-      },
-      format: function (date) {
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        return [day < 10 ? "0" + day : day, month < 10 ? "0" + month : month, year].join(".");
-      },
-      parse: function (str) {
-        const dayMonthYear = str.split(".");
-        return new Date(dayMonthYear[2], dayMonthYear[1] - 1, dayMonthYear[0]);
-      },
-      autofix: true,
+      mask: Number,
+      scale: 0,
+      signed: false,
+      min: min,
+      max: max,
     });
   } else {
     IMask($input, { mask });
@@ -1189,6 +1181,9 @@ function changeTab(name, index) {
 
   $newActiveBtn.classList.add("tabs-btns__btn--active");
   $newActiveTab.classList.add("tabs-list__item--active");
+
+  const $tabTextareas = $newActiveTab.querySelectorAll(".input__field--area");
+  $tabTextareas.forEach(($textarea) => setTimeout(() => textareaSizeHandler($textarea), 50));
 }
 
 /* Features */

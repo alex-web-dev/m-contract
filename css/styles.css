@@ -1037,12 +1037,8 @@ mark {
 
 .input__field--area {
   resize: none;
-  height: 100px;
-}
-
-.input__field--area-sm {
-  height: auto;
-  min-height: 86px;
+  height: 86px;
+  overflow: hidden;
 }
 
 .input__field--sm {
@@ -1394,19 +1390,16 @@ mark {
   height: 20px;
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 14px;
   transform: translateY(-50%);
+}
+
+.simple-select__field--active:after {
+  transform: translateY(calc(-50% - 1px)) rotate(180deg);
 }
 
 .simple-select__field--placeholder {
   color: var(--color-neutral-500);
-}
-
-.simple-select__field:after {
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  transform: translateY(-50%);
 }
 
 .simple-select__box,
