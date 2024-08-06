@@ -756,6 +756,26 @@
     width: 300px;
   }
 
+  .table-price th:nth-child(4),
+  .table-price td:nth-child(4) {
+    width: 22%;
+  }
+  
+  .table-price--offer-edit th:nth-child(2),
+  .table-price--offer-edit td:nth-child(2) {
+    width: 30%;
+  }
+
+  .table-price--offer-edit th:nth-child(3),
+  .table-price--offer-edit td:nth-child(3) {
+    width: 100px;
+  }
+
+  .table-price--offer-edit th:nth-child(4),
+  .table-price--offer-edit td:nth-child(4) {
+    width: 21%;
+  }
+
   .offer-header__top {
     flex-wrap: wrap;
   }
@@ -3132,7 +3152,7 @@
     margin-left: 0;
     flex-direction: column;
   }
-  
+
   .offer-header__city-name {
     margin-top: 4px;
   }
