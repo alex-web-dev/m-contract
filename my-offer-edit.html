@@ -311,8 +311,8 @@
                               <label class="text text--3xs select__label">Условия доставки</label>
                               <select class="select__field" id="offer-delivery-type" data-validate="empty" name="delivery-type">
                                 <option value="">Не выбрано</option>
-                                <option value="2">Силами продавца</option>
-                                <option value="3" selected>Силами покупателя</option>
+                                <option value="2" data-tippy-text="Подсказка">Силами продавца</option>
+                                <option value="3" data-tippy-text="Подсказка" selected>Силами покупателя</option>
                               </select>
                               <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
@@ -351,10 +351,10 @@
                             <div class="select select--shadow form__group-item">
                               <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
                               <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
-                                <option selected value="1">Отсрочка платежа</option>
-                                <option value="2">100% предоплата</option>
-                                <option value="3">Частичная предоплата</option>
-                                <option value="4">По факту поставки</option>
+                                <option value="1" data-tippy-text="Подсказка" selected>Отсрочка платежа</option>
+                                <option value="2" data-tippy-text="Подсказка">100% предоплата</option>
+                                <option value="3" data-tippy-text="Подсказка">Частичная предоплата</option>
+                                <option value="4" data-tippy-text="Подсказка">По факту поставки</option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>

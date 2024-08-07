@@ -62,6 +62,10 @@ function getLockedBodyBy() {
   return document.body.dataset.lockedBy;
 }
 
+function isTouchDevice() {
+  return "ontouchstart" in document.documentElement;
+}
+
 /* Accordion */
 const $accordions = document.querySelectorAll(".accordion");
 $accordions.forEach(($accordion) => {
@@ -405,13 +409,36 @@ function initializeCustomSelect($selectField) {
     }
 
     const $option = $elem;
-    let itemInnerHTML = `<span class="simple-select__item-value">${$option.innerText}</span>`;
-    if ($option.dataset.text) {
-      itemInnerHTML += `<span class="simple-select__item-text">${$option.dataset.text}</span>`;
-    }
-    const $item = createElem("div", ITEM_CLASS, {
-      innerHTML: itemInnerHTML,
+    const $itemValue = createElem("span", "text text--3xs text--iflex simple-select__item-value");
+    const $itemValueSpan = createElem("span", "", {
+      innerText: $option.innerText,
     });
+    $itemValue.append($itemValueSpan);
+
+    if ($option.dataset.tippyText) {
+      const $tippyIcon = createElem("img", "text__icon", {
+        src: "img/icons/info-blue-500.svg",
+      });
+      $tippyIcon.dataset.tippyContent = $option.dataset.tippyText;
+      $tippyIcon.dataset.tippyPlacement = "bottom";
+      $tippyIcon.setAttribute("alt", "");
+      $tippyIcon.addEventListener("click", (e) => {
+        if (isTouchDevice()) {
+          e.stopPropagation();
+        }
+      });
+      $itemValue.append($tippyIcon);
+    }
+
+    const $item = createElem("div", ITEM_CLASS);
+    $item.append($itemValue);
+
+    if ($option.dataset.text) {
+      const $itemText = createElem("simple-select__item-text", {
+        innerText: $option.dataset.text,
+      });
+      $item.append($itemText);
+    }
 
     if ($option.value === "") {
       $item.classList.add(ITEM_PLACEHOLDER_CLASS);
@@ -457,7 +484,7 @@ function initializeCustomSelect($selectField) {
         }
       }
 
-      $selectField.dispatchEvent(new Event('change'));
+      $selectField.dispatchEvent(new Event("change"));
     });
 
     $item.addEventListener("mouseover", () => {
@@ -575,7 +602,7 @@ function initializeCustomSelect($selectField) {
         $hoverItem?.click();
         $simpleSelectField.classList.remove(FIELD_PLACEHOLDER_CLASS);
 
-        $selectField.dispatchEvent(new Event('change'));
+        $selectField.dispatchEvent(new Event("change"));
       } else {
         $simpleSelectList.classList.toggle(LIST_ACTIVE_CLASS);
         $simpleSelectField.classList.toggle(FIELD_ACTIVE_CLASS);
@@ -2020,7 +2047,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
           type: "button",
         },
         onClick: () => {
-          const $timeInput = picker.$datepicker.querySelector('.datepicker-time__field');
+          const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
           const selectedDates = picker.selectedDates;
           const [hours, minutes] = $timeInput.value.split(":").map(Number);
           const roundedMinutes = Math.round(minutes / 5) * 5;
@@ -2166,7 +2193,7 @@ function renderDatePicker({ picker, minYear, maxYear }) {
   }
 
   picker.$datepicker.addEventListener("mousedown", (e) => {
-    const $timeInput = picker.$datepicker.querySelector('.datepicker-time__field');
+    const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
     $timeInput?.blur();
 
     if (!e.target.closest(".datepicker-time")) {
