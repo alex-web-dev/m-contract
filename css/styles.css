@@ -6968,16 +6968,24 @@ span.pagination__link--right {
 }
 
 .file__name {
-  padding: 8px;
+  padding: 5px 8px 5px 38px;
   flex: 1 1 auto;
-  display: flex;
-  align-items: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  line-height: 2;
 }
 
 .file__name:before {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   content: "";
   flex: 0 0 auto;
-  margin-right: 10px;
   display: inline-block;
   background: url("../img/icons/file-blue-500.svg") center / 14px 17px no-repeat;
   width: 20px;
