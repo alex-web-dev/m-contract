@@ -2605,9 +2605,22 @@
     max-width: calc(100% - 100px - 12px);
   }
 
+  .advert__info-location {
+    margin-top: 4px;
+  }
+
   .advert__info-location:not(:first-child) {
     margin-top: 4px;
     margin-left: 0;
+  }
+
+  .advert__info-location-separator {
+    display: none;
+  }
+
+  .advert__info-location-spot {
+    margin-top: 4px;
+    width: 100%;
   }
 
   .advert__mobile-location {
