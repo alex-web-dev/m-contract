@@ -1522,6 +1522,14 @@ mark {
   color: var(--color-neutral-500);
 }
 
+.simple-select__item-tippy {
+  content: '';
+  display: inline-block;
+  background: url('../img/icons/info-blue-500.svg') center / contain no-repeat;
+  width: 17px;
+  height: 17px;
+}
+
 .simple-select__group {
   padding: 2px 12px;
   font-size: 14px;

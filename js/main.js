@@ -416,9 +416,7 @@ function initializeCustomSelect($selectField) {
     $itemValue.append($itemValueSpan);
 
     if ($option.dataset.tippyText) {
-      const $tippyIcon = createElem("img", "text__icon", {
-        src: "img/icons/info-blue-500.svg",
-      });
+      const $tippyIcon = createElem("span", "text__icon simple-select__item-tippy");
       $tippyIcon.dataset.tippyContent = $option.dataset.tippyText;
       $tippyIcon.dataset.tippyPlacement = "bottom";
       $tippyIcon.setAttribute("alt", "");
