@@ -253,6 +253,14 @@ $inputs.forEach(($input) => {
       $clearBtn?.classList.remove("input__clear-field--active");
     }
   });
+
+  const $tippyIcons = $input.querySelectorAll('[data-tippy-content]');
+  $tippyIcons.forEach($tippyIcon => {
+    $tippyIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
 });
 
 const $fileInputs = document.querySelectorAll(".file-input");
@@ -1724,7 +1732,14 @@ $searchItemsBoxes.forEach(($searchItemsBox) => {
 });
 
 /* Tippy.js */
-tippy("[data-tippy-content]");
+const $tippyBoxes = document.querySelectorAll("[data-tippy-content]");
+$tippyBoxes.forEach(($tippyBox) => {
+  const maxWidth = +$tippyBox.dataset.maxWidth || "none";
+  
+  tippy($tippyBox, {
+    maxWidth,
+  });
+});
 
 /* Groups */
 const $groups = document.querySelectorAll(".groups");

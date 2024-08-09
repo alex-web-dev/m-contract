@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/air-datepicker.min.css" />
@@ -104,7 +104,7 @@
               </button>
               <input class="search__field" type="text" placeholder="Поиск" />
               <button class="icon icon--xl search__info">
-                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="">
+                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="" />
               </button>
               <button class="search__btn search__btn--submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +131,9 @@
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
-              <button class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn js-open-lk-sidebar" data-dropdown-min-width="991">
+              <button
+                class="link link--iflex link--medium link--upper link--line link--hover-line header__user-link-main dropdown__btn js-open-lk-sidebar"
+                data-dropdown-min-width="991">
                 <svg
                   class="link__icon link__icon--mx-sm"
                   width="20"
@@ -366,19 +368,6 @@
                             <span class="text text--4xs text--lh-125 input__error"></span>
                           </div>
                           <div class="input form__group-item">
-                            <label class="text text--3xs input__label" for="edit-position">Должность представителя</label>
-                            <div class="input__main">
-                              <input
-                                class="input__field input__field--sm"
-                                id="edit-position"
-                                type="text"
-                                name="position"
-                                data-validate="empty"
-                                value="Должность не указана" />
-                            </div>
-                            <span class="text text--4xs text--lh-125 input__error"></span>
-                          </div>
-                          <div class="input form__group-item">
                             <label class="text text--3xs input__label" for="edit-email">E-mail</label>
                             <div class="input__main">
                               <input
@@ -388,6 +377,23 @@
                                 name="email"
                                 data-validate="empty"
                                 value="voronkovrs22@gmail.com" />
+                            </div>
+                            <span class="text text--4xs text--lh-125 input__error"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form__group">
+                        <div class="form__group-items">
+                          <div class="input form__group-item">
+                            <label class="text text--3xs input__label" for="edit-position">Должность представителя</label>
+                            <div class="input__main">
+                              <input
+                                class="input__field input__field--sm"
+                                id="edit-position"
+                                type="text"
+                                name="position"
+                                data-validate="empty"
+                                value="Должность не указана" />
                             </div>
                             <span class="text text--4xs text--lh-125 input__error"></span>
                           </div>
@@ -470,7 +476,16 @@
                       <div class="form__group">
                         <div class="form__group-items form__group-items--middle-column form__group-items--mobile-column">
                           <div class="input form__group-item">
-                            <label class="text text--3xs input__label" for="edit-city">Город, Регион</label>
+                            <label class="text text--3xs input__label" for="edit-city">
+                              <span>Город, Регион</span>
+                              <img
+                                class="text__icon"
+                                src="img/icons/info-blue-500.svg"
+                                data-tippy-content="Населенный пункт фактического местонахождения Вашей организации"
+                                data-tippy-placement="bottom"
+                                data-max-width="250"
+                                alt="" />
+                            </label>
                             <div class="input__main">
                               <input
                                 class="input__field input__field--sm js-open-popup"
@@ -570,7 +585,8 @@
                             </div>
                           </div>
                           <button
-                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn" id="partner-delete">
+                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn"
+                            id="partner-delete">
                             <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
                             <span>Удалить</span>
                           </button>
@@ -823,7 +839,11 @@
           </div>
           <div class="messages-popup__btns">
             <button class="btn btn--py-sm btn--text-xs btn--white messages-popup__btn">Прочитать все</button>
-            <button class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup" data-popup-name="create-chat">Создать чат</button>
+            <button
+              class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup"
+              data-popup-name="create-chat">
+              Создать чат
+            </button>
           </div>
           <div class="messages-popup__list" data-scrollbar>
             <button class="message-item messages-popup__item">
@@ -1785,7 +1805,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1805,7 +1827,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1825,7 +1849,9 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
+                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                  </div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
