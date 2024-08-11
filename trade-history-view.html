@@ -2,10 +2,11 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/air-datepicker.min.css" />
+    <link rel="stylesheet" href="css/cropper.min.css" />
     <link rel="stylesheet" href="css/normalize.css?v=39" />
     <link rel="stylesheet" href="css/fonts.css?v=39" />
     <link rel="stylesheet" href="css/styles.css?v=39" />
@@ -103,8 +104,8 @@
                 </svg>
               </button>
               <input class="search__field" type="text" placeholder="Поиск" />
-              <button class="icon icon--xl search__info">
-                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="">
+              <button class="icon icon--xl search__info js-open-popup" data-popup-name="search-info">
+                <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="" />
               </button>
               <button class="search__btn search__btn--submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +128,10 @@
             </button>
           </div>
           <div class="header__user">
-            <a class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link" href="#">
+            <a
+              class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link js-open-popup"
+              href="#"
+              data-popup-name="ad-placement">
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
@@ -165,7 +169,7 @@
                       </a>
                     </li>
                     <li class="profile-menu__item">
-                      <a class="profile-menu__link" href="#">
+                      <a class="profile-menu__link" href="history-deals.html">
                         <span>История сделок</span>
                       </a>
                     </li>
@@ -210,7 +214,10 @@
           <div class="lk-sidebar__content" data-scrollbar>
             <div class="lk-sidebar__profile">
               <div class="lk-user lk-sidebar__user">
-                <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                <label class="lk-user__img-box">
+                  <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                  <input class="lk-user__img-file js-crop-img" type="file">
+                </label>
                 <div class="lk-user__info">
                   <div class="text text--medium text--xxs lk-user__name">АО "Торговый Дом "Перекресток</div>
                   <div class="text text--3xs text--medium text--lh-13 lk-user__email">konst.ilin22@gmail.com</div>
@@ -332,265 +339,285 @@
                   </svg>
                   <span>История сделок</span>
                 </a>
-                  <div class="lk__header lk__header--mb-20">
-                    <div class="text text--bold text--lh-16 text--link-no-line lk__header-title">
-                      <span>Контракт</span>
-                      <a class="lk__header-title-link" href="#">№2091</a>
+                <div class="lk__header lk__header--mb-20">
+                  <div class="text text--bold text--lh-16 text--link-no-line lk__header-title">
+                    <span>Контракт</span>
+                    <a class="lk__header-title-link" href="#">№2091</a>
+                  </div>
+                  <div class="lk__header-links">
+                    <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
+                      <img class="link__icon link__icon--mx-xs" src="img/icons/printer-blue-500.svg" alt="" />
+                      <span>Распечатать</span>
+                    </button>
+                    <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
+                      <img class="link__icon link__icon--mx-xs" src="img/icons/email-blue-500.svg" alt="" />
+                      <span>Отправить на E-mail</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="trade-history">
+                  <div class="trade-history__main">
+                    <div class="table-partner table-partner--p-lg trade-history__table">
+                      <table class="table-partner__main">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Дата сделки</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">09.06.2024</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Покупатель</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">ООО "МЕТПРОМ", ИНН 5609205469</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Продавец</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">ООО "МКонтакт"</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Местонахождение товара</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Оренбург (Оренбургская область)</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Условия доставки</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Самовывоз покупателем</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Погрузка</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Силами продавца</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Цена</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">без НДС</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Условия оплаты</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Отсрочка платежа (14 календарн.дн.)</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Валюта</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">Российский рубль (RUB)</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--3xs text--neutral-600 text--lh-14">Срок поставки до</span>
+                            </td>
+                            <td>
+                              <span class="text text--3xs text--medium text--lh-14">13.05.2024 23:59 (МСК)</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <div class="lk__header-links">
-                      <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
-                        <img class="link__icon link__icon--mx-xs" src="img/icons/printer-blue-500.svg" alt="">
-                        <span>Распечатать</span>
-                      </button>
-                      <button class="link link--iflex link--blue-500 link--xxs lk__header-links-link">
-                        <img class="link__icon link__icon--mx-xs" src="img/icons/email-blue-500.svg" alt="">
-                        <span>Отправить на E-mail</span>
+                    <div class="table-price trade-history__table" data-scrollbar data-scrollbar-continue>
+                      <table class="table-price__main">
+                        <thead>
+                          <tr>
+                            <th>
+                              <span class="text text--4xs text--medium">№</span>
+                            </th>
+                            <th>
+                              <span class="text text--4xs text--medium">Наименование товара</span>
+                            </th>
+                            <th>
+                              <span class="text text--4xs text--medium">Кол-во (шт.)</span>
+                            </th>
+                            <th>
+                              <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
+                            </th>
+                            <th>
+                              <span class="text text--4xs text--medium">Сумма / без НДС</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 1</span>
+                              <span class="text text--4xs table-price__value table-price__value--desktop">1</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">
+                                Лом цветных металлов разносортный (из 2-х и более видов)
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 2</span>
+                              <span class="text text--4xs table-price__value table-price__value--desktop">2</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">
+                                Лом цветных металлов разносортный (из 2-х и более видов)
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 3</span>
+                              <span class="text text--4xs table-price__value table-price__value--desktop">3</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">
+                                Лом цветных металлов разносортный (из 2-х и более видов)
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 4</span>
+                              <span class="text text--4xs table-price__value table-price__value--desktop">4</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">
+                                Лом цветных металлов разносортный (из 2-х и более видов)
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                            <td>
+                              <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                              <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="table-price__total">
+                        <div class="text text--xs text--medium table-price__total-value">27 000,00 ₽</div>
+                        <div class="text text--4xs table-price__total-label">Итого</div>
+                      </div>
+                    </div>
+                    <div class="trade-history__main-footer">
+                      <button class="btn btn--iflex btn--px-sm btn--py-sm btn--text-xs btn--orange-100 trade-history__main-footer-btn">
+                        <span>Удалить из истории сделок</span>
                       </button>
                     </div>
                   </div>
-                  <div class="trade-history">
-                    <div class="trade-history__main">
-                      <div class="table-partner table-partner--p-lg trade-history__table">
-                        <table class="table-partner__main">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Дата сделки</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">09.06.2024</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Покупатель</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">ООО "МЕТПРОМ", ИНН 5609205469</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Продавец</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">ООО "МКонтакт"</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Местонахождение товара</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Оренбург (Оренбургская область)</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Условия доставки</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Самовывоз покупателем</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Погрузка</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Силами продавца</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Цена</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">без НДС</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Условия оплаты</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Отсрочка платежа (14 календарн.дн.)</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Валюта</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">Российский рубль (RUB)</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--3xs text--neutral-600 text--lh-14">Срок поставки до</span>
-                              </td>
-                              <td>
-                                <span class="text text--3xs text--medium text--lh-14">13.05.2024 23:59 (МСК)</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                  <div class="trade-history__addition">
+                    <div class="trade-history__authors">
+                      <div class="trade-history__author">
+                        <div class="text text--4xs text--medium text--center trade-history__author-name">Воронков Роман Сергеевич</div>
+                        <div class="text text--4xs text--center trade-history__author-position">Руководитель проекта</div>
                       </div>
-                      <div class="table-price trade-history__table" data-scrollbar data-scrollbar-continue>
-                        <table class="table-price__main">
-                          <thead>
-                            <tr>
-                              <th>
-                                <span class="text text--4xs text--medium">№</span>
-                              </th>
-                              <th>
-                                <span class="text text--4xs text--medium">Наименование товара</span>
-                              </th>
-                              <th>
-                                <span class="text text--4xs text--medium">Кол-во (шт.)</span>
-                              </th>
-                              <th>
-                                <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
-                              </th>
-                              <th>
-                                <span class="text text--4xs text--medium">Сумма / без НДС</span>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 1</span>
-                                <span class="text text--4xs table-price__value table-price__value--desktop">1</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">Лом цветных металлов разносортный (из 2-х и более видов)</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 2</span>
-                                <span class="text text--4xs table-price__value table-price__value--desktop">2</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">Лом цветных металлов разносортный (из 2-х и более видов)</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 3</span>
-                                <span class="text text--4xs table-price__value table-price__value--desktop">3</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">Лом цветных металлов разносортный (из 2-х и более видов)</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">№ 4</span>
-                                <span class="text text--4xs table-price__value table-price__value--desktop">4</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">Лом цветных металлов разносортный (из 2-х и более видов)</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                              <td>
-                                <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
-                                <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <div class="table-price__total">
-                          <div class="text text--xs text--medium table-price__total-value">27 000,00 ₽</div>
-                          <div class="text text--4xs table-price__total-label">Итого</div>
+                      <img class="trade-history__authors-logo" src="img/icons/logo-blue-500.svg" alt="" />
+                      <div class="trade-history__author">
+                        <div class="text text--4xs text--medium text--center trade-history__author-name">
+                          Воропаев Константин Леонидович
                         </div>
-                      </div>
-                      <div class="trade-history__main-footer">
-                        <button class="btn btn--iflex btn--px-sm btn--py-sm btn--text-xs btn--orange-100 trade-history__main-footer-btn">
-                          <span>Удалить из истории сделок</span>
-                        </button>
+                        <div class="text text--4xs text--italic text--neutral-500 text--center trade-history__author-position">
+                          Должность не указана
+                        </div>
                       </div>
                     </div>
-                    <div class="trade-history__addition">
-                      <div class="trade-history__authors">
-                        <div class="trade-history__author">
-                          <div class="text text--4xs text--medium text--center trade-history__author-name">Воронков Роман Сергеевич</div>
-                          <div class="text text--4xs text--center trade-history__author-position">Руководитель проекта</div>
-                        </div>
-                        <img class="trade-history__authors-logo" src="img/icons/logo-blue-500.svg" alt="">
-                        <div class="trade-history__author">
-                          <div class="text text--4xs text--medium text--center trade-history__author-name">Воропаев Константин Леонидович</div>
-                          <div class="text text--4xs text--italic text--neutral-500 text--center trade-history__author-position">Должность не указана</div>
+                    <div class="trade-history__rate">
+                      <div class="text text--xxs text--medium trade-history__rate-title">Оцените контрагента</div>
+                      <div class="rate-control trade-history__rate-control">
+                        <div class="rate-control__list">
+                          <input class="rate-control__input" id="trade-rate-5" type="radio" name="rate" value="5" />
+                          <label class="rate-control__label" for="trade-rate-5"></label>
+                          <input class="rate-control__input" id="trade-rate-4" type="radio" name="rate" value="4" checked />
+                          <label class="rate-control__label" for="trade-rate-4"></label>
+                          <input class="rate-control__input" id="trade-rate-3" type="radio" name="rate" value="3" />
+                          <label class="rate-control__label" for="trade-rate-3"></label>
+                          <input class="rate-control__input" id="trade-rate-2" type="radio" name="rate" value="2" />
+                          <label class="rate-control__label" for="trade-rate-2"></label>
+                          <input class="rate-control__input" id="trade-rate-1" type="radio" name="rate" value="1" />
+                          <label class="rate-control__label" for="trade-rate-1"></label>
                         </div>
                       </div>
-                      <div class="trade-history__rate">
-                        <div class="text text--xxs text--medium trade-history__rate-title">Оцените контрагента</div>
-                        <div class="rate-control trade-history__rate-control">
-                          <div class="rate-control__list">
-                            <input class="rate-control__input" id="trade-rate-5" type="radio" name="rate" value="5" />
-                            <label class="rate-control__label" for="trade-rate-5"></label>
-                            <input class="rate-control__input" id="trade-rate-4" type="radio" name="rate" value="4" checked />
-                            <label class="rate-control__label" for="trade-rate-4"></label>
-                            <input class="rate-control__input" id="trade-rate-3" type="radio" name="rate" value="3" />
-                            <label class="rate-control__label" for="trade-rate-3"></label>
-                            <input class="rate-control__input" id="trade-rate-2" type="radio" name="rate" value="2" />
-                            <label class="rate-control__label" for="trade-rate-2"></label>
-                            <input class="rate-control__input" id="trade-rate-1" type="radio" name="rate" value="1" />
-                            <label class="rate-control__label" for="trade-rate-1"></label>
-                          </div>
+                      <button
+                        class="link link--iflex link--xxs link--blue-500 trade-history__rate-link"
+                        data-tippy-content="Подсказка"
+                        data-tippy-placement="bottom">
+                        <div class="icon icon--sm link__icon link__icon--mx-xxs">
+                          <img class="icon__img" src="img/icons/info-blue-500.svg" alt="" />
                         </div>
-                        <a class="link link--xxs link--blue-500 link--hover-line trade-history__rate-link" href="#">Правила оценки</a>
-                      </div>
+                        <span>Правила оценки</span>
+                      </button>
                     </div>
                   </div>
+                </div>
               </div>
             </div>
 
@@ -633,7 +660,8 @@
                             </div>
                           </div>
                           <button
-                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn" id="partner-delete">
+                            class="btn btn--iflex btn--px-xxs btn--py-xxs btn--text-xs btn--orange-100 partner-header__btn"
+                            id="partner-delete">
                             <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
                             <span>Удалить</span>
                           </button>
@@ -1394,10 +1422,15 @@
                       name="method">
                       <option value="">Выбрать способ оплаты</option>
                       <option value="1" data-btn-text="Сформировать">Выставить счет</option>
-                      <option value="2" data-btn-text="Пополнить">Visa</option>
-                      <option value="3" data-btn-text="Пополнить">Mastercard</option>
-                      <option value="4" data-btn-text="Пополнить">Карта МИР</option>
-                      <option value="5" data-btn-text="Пополнить">Альфа Клик</option>
+                      <option value="2" data-icons="img/icons/payments/sbp.svg" data-btn-text="Пополнить">СБП</option>
+                      <option
+                        value="3"
+                        data-icons="img/icons/payments/visa.svg, img/icons/payments/mastercard.svg, img/icons/payments/mir.svg"
+                        data-btn-text="Пополнить">
+                        Карта
+                      </option>
+                      <option value="4" data-icons="img/icons/payments/alfa.svg" data-btn-text="Пополнить">Альфа Клик</option>
+                      <option value="5" data-icons="img/icons/payments/yandex.svg" data-btn-text="Пополнить">Яндекс Пэй</option>
                       <option value="6" data-btn-text="Отправить">Платежное поручение</option>
                     </select>
                     <div class="text text--4xs text--lh-125 select__error"></div>
@@ -1693,13 +1726,197 @@
       <div class="popup__backdrop"></div>
     </div>
 
+    <div class="popup popup--mobile-full" data-popup-name="search-info">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup-content--mobile-full popup-content--xl popup__content">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Подсказка</div>
+            </div>
+            <div class="popup-content__tooltip">
+              <div class="tooltip-message popup-content__tooltip-message">
+                <span class="text text--3xs text--lh-14 tooltip-message__text tooltip-message__text--sm">
+                  Для более точного результата, обратите внимание на эту подсказку. А также учитывайте, что дополнительное включение
+                  фильтров сужает круг поиска
+                </span>
+              </div>
+              <div class="table-tooltip popup-content__tooltip-table" data-scrollbar>
+                <table class="table-tooltip__main">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Пример</th>
+                      <th>Найдем</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="2">Одно слово</td>
+                      <td>Кабель</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Кабеля</div>
+                          <div class="table-tooltip__item">Кабелей</div>
+                          <div class="table-tooltip__item">Кабель</div>
+                          <div class="table-tooltip__item">Кабельный</div>
+                          <div class="table-tooltip__item">...</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Кабель.</td>
+                      <td>Кабель</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2">Словосочетание</td>
+                      <td>Кабель алюминиевый</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Лом и отходы алюминия</div>
+                          <div class="table-tooltip__item">Алюминеивый прокат</div>
+                          <div class="table-tooltip__item">Алюминий</div>
+                          <div class="table-tooltip__item">Медный кабель</div>
+                          <div class="table-tooltip__item">Разделка кабеля</div>
+                          <div class="table-tooltip__item">Кабельные отходы</div>
+                          <div class="table-tooltip__item">...</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Кабель-алюминиевый</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Отходы алюминиевого кабеля</div>
+                          <div class="table-tooltip__item">Кабель алюминиевый</div>
+                          <div class="table-tooltip__item">Лом кабеля алюминиевого</div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup" data-popup-name="ad-placement">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup__content">
+            <div class="ad-placement">
+              <div class="ad-placement__header">
+                <button class="icon ad-placement__header-back">
+                  <img class="icon__img icon__img--rotate-90deg" src="img/icons/down-round-second.svg" alt="" />
+                </button>
+                <div class="text text--xxs text--upper text--lh-14 text--medium">Размещение объявления</div>
+              </div>
+              <div class="ad-placement__steps">
+                <div class="ad-placement__step">
+                  <button class="btn-placement ad-placement__btn" data-show-step="2">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Продажа</span>
+                      <span class="text text--3xs btn-placement__text">Вы хотите продать товар</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </button>
+                  <button class="btn-placement ad-placement__btn" data-show-step="2">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Закупка</span>
+                      <span class="text text--3xs btn-placement__text">Вы хотите купить товар</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </button>
+                </div>
+                <div class="ad-placement__step">
+                  <button class="btn-placement ad-placement__btn" data-show-step="3">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Запрос предложений</span>
+                      <span class="text text--3xs btn-placement__text">
+                        Вы определяете победителя, предложившего лучшие условия исполнения договора
+                      </span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </button>
+                  <button class="btn-placement btn-placement--disabled ad-placement__btn" data-show-step="3">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Аукцион</span>
+                      <span class="text text--3xs btn-placement__text">Процедура в разработке</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img" src="img/icons/clock-black.svg" alt="" />
+                    </div>
+                  </button>
+                </div>
+                <div class="ad-placement__step">
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Открытый (запрос предложений)</span>
+                      <span class="text text--3xs btn-placement__text">Участвовать могут все пользователи</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </a>
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Открытый (участие ограничено)</span>
+                      <span class="text text--3xs btn-placement__text">
+                        Участвовать могут пользователи, прошедшие предварительный отбор
+                      </span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </a>
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Закрытый (запрос предложений)</span>
+                      <span class="text text--3xs btn-placement__text">Участвовать могут только приглашенные Вами пользователи</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
     <script src="js/air-datepicker.min.js"></script>
-    <script src="js/main.js?v=39"></script>
+    <script src="js/cropper.min.js"></script>
     <script src="js/input-confirm.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/main.js?v=39"></script>
   </body>
 </html>

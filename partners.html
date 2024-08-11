@@ -6,6 +6,7 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/air-datepicker.min.css" />
+    <link rel="stylesheet" href="css/cropper.min.css" />
     <link rel="stylesheet" href="css/normalize.css?v=39" />
     <link rel="stylesheet" href="css/fonts.css?v=39" />
     <link rel="stylesheet" href="css/styles.css?v=39" />
@@ -103,7 +104,7 @@
                 </svg>
               </button>
               <input class="search__field" type="text" placeholder="Поиск" />
-              <button class="icon icon--xl search__info">
+              <button class="icon icon--xl search__info js-open-popup" data-popup-name="search-info">
                 <img class="icon__img" src="img/icons/info-neutral-400.svg" alt="">
               </button>
               <button class="search__btn search__btn--submit">
@@ -127,7 +128,7 @@
             </button>
           </div>
           <div class="header__user">
-            <a class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link" href="#">
+            <a class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link js-open-popup" href="#" data-popup-name="ad-placement">
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
@@ -165,7 +166,7 @@
                       </a>
                     </li>
                     <li class="profile-menu__item">
-                      <a class="profile-menu__link" href="#">
+                      <a class="profile-menu__link" href="history-deals.html">
                         <span>История сделок</span>
                       </a>
                     </li>
@@ -210,7 +211,10 @@
           <div class="lk-sidebar__content" data-scrollbar>
             <div class="lk-sidebar__profile">
               <div class="lk-user lk-sidebar__user">
-                <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                <label class="lk-user__img-box">
+                  <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                  <input class="lk-user__img-file js-crop-img" type="file">
+                </label>
                 <div class="lk-user__info">
                   <div class="text text--medium text--xxs lk-user__name">АО "Торговый Дом "Перекресток</div>
                   <div class="text text--3xs text--medium text--lh-13 lk-user__email">konst.ilin22@gmail.com</div>
@@ -257,7 +261,7 @@
                   </a>
                 </li>
                 <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="#">
+                  <a class="lk-menu-link lk-menu__link" href="history-deals.html">
                     <div class="lk-menu-link__icon">
                       <img src="img/icons/lk-menu/4.svg" alt="" />
                     </div>
@@ -1421,10 +1425,10 @@
                       name="method">
                       <option value="">Выбрать способ оплаты</option>
                       <option value="1" data-btn-text="Сформировать">Выставить счет</option>
-                      <option value="2" data-btn-text="Пополнить">Visa</option>
-                      <option value="3" data-btn-text="Пополнить">Mastercard</option>
-                      <option value="4" data-btn-text="Пополнить">Карта МИР</option>
-                      <option value="5" data-btn-text="Пополнить">Альфа Клик</option>
+                      <option value="2" data-icons="img/icons/payments/sbp.svg" data-btn-text="Пополнить">СБП</option>
+                      <option value="3" data-icons="img/icons/payments/visa.svg, img/icons/payments/mastercard.svg, img/icons/payments/mir.svg" data-btn-text="Пополнить">Карта</option>
+                      <option value="4" data-icons="img/icons/payments/alfa.svg" data-btn-text="Пополнить">Альфа Клик</option>
+                      <option value="5" data-icons="img/icons/payments/yandex.svg" data-btn-text="Пополнить">Яндекс Пэй</option>
                       <option value="6" data-btn-text="Отправить">Платежное поручение</option>
                     </select>
                     <div class="text text--4xs text--lh-125 select__error"></div>
@@ -2108,13 +2112,194 @@
       </div>
       <div class="popup__backdrop"></div>
     </div>
+
+    <div class="popup popup--mobile-full" data-popup-name="search-info">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup-content--mobile-full popup-content--xl popup__content">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Подсказка</div>
+            </div>
+            <div class="popup-content__tooltip">
+              <div class="tooltip-message popup-content__tooltip-message">
+                <span class="text text--3xs text--lh-14 tooltip-message__text tooltip-message__text--sm">
+                  Для более точного результата, обратите внимание на эту подсказку. А также учитывайте, что дополнительное включение
+                  фильтров сужает круг поиска
+                </span>
+              </div>
+              <div class="table-tooltip popup-content__tooltip-table" data-scrollbar>
+                <table class="table-tooltip__main">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Пример</th>
+                      <th>Найдем</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="2">Одно слово</td>
+                      <td>Кабель</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Кабеля</div>
+                          <div class="table-tooltip__item">Кабелей</div>
+                          <div class="table-tooltip__item">Кабель</div>
+                          <div class="table-tooltip__item">Кабельный</div>
+                          <div class="table-tooltip__item">...</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Кабель.</td>
+                      <td>Кабель</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2">Словосочетание</td>
+                      <td>Кабель алюминиевый</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Лом и отходы алюминия</div>
+                          <div class="table-tooltip__item">Алюминеивый прокат</div>
+                          <div class="table-tooltip__item">Алюминий</div>
+                          <div class="table-tooltip__item">Медный кабель</div>
+                          <div class="table-tooltip__item">Разделка кабеля</div>
+                          <div class="table-tooltip__item">Кабельные отходы</div>
+                          <div class="table-tooltip__item">...</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Кабель-алюминиевый</td>
+                      <td>
+                        <div class="table-tooltip__items">
+                          <div class="table-tooltip__item">Отходы алюминиевого кабеля</div>
+                          <div class="table-tooltip__item">Кабель алюминиевый</div>
+                          <div class="table-tooltip__item">Лом кабеля алюминиевого</div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup" data-popup-name="ad-placement">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup__content">
+            <div class="ad-placement">
+              <div class="ad-placement__header">
+                <button class="icon ad-placement__header-back">
+                  <img class="icon__img icon__img--rotate-90deg" src="img/icons/down-round-second.svg" alt="">
+                </button>
+                <div class="text text--xxs text--upper text--lh-14 text--medium">Размещение объявления</div>
+              </div>
+              <div class="ad-placement__steps">
+                <div class="ad-placement__step">
+                  <button class="btn-placement ad-placement__btn" data-show-step="2">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Продажа</span>
+                      <span class="text text--3xs btn-placement__text">Вы хотите продать товар</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </button>
+                  <button class="btn-placement ad-placement__btn" data-show-step="2">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Закупка</span>
+                      <span class="text text--3xs btn-placement__text">Вы хотите купить товар</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </button>
+                </div>
+                <div class="ad-placement__step">
+                  <button class="btn-placement ad-placement__btn" data-show-step="3">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Запрос предложений</span>
+                      <span class="text text--3xs btn-placement__text">Вы определяете победителя, предложившего лучшие условия исполнения договора</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </button>
+                  <button class="btn-placement btn-placement--disabled ad-placement__btn" data-show-step="3">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Аукцион</span>
+                      <span class="text text--3xs btn-placement__text">Процедура в разработке</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img" src="img/icons/clock-black.svg" alt="">
+                    </div>
+                  </button>
+                </div>
+                <div class="ad-placement__step">
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Открытый (запрос предложений)</span>
+                      <span class="text text--3xs btn-placement__text">Участвовать могут все пользователи</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </a>
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Открытый (участие ограничено)</span>
+                      <span class="text text--3xs btn-placement__text">Участвовать могут пользователи, прошедшие предварительный отбор</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </a>
+                  <a class="btn-placement ad-placement__btn" href="ad-placement.html">
+                    <div class="btn-placement__main">
+                      <span class="text text--sm text--semibold btn-placement__title">Закрытый (запрос предложений)</span>
+                      <span class="text text--3xs btn-placement__text">Участвовать могут только приглашенные Вами пользователи</span>
+                    </div>
+                    <div class="icon btn-placement__icon">
+                      <img class="icon__img icon__img--rotate-270deg" src="img/icons/down-round-second.svg" alt="">
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
     <script src="js/imask.js"></script>
     <script src="js/smooth-scrollbar.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/tippy.min.js"></script>
     <script src="js/air-datepicker.min.js"></script>
-    <script src="js/main.js?v=39"></script>
+    <script src="js/cropper.min.js"></script>
     <script src="js/input-confirm.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/main.js?v=39"></script>
   </body>
 </html>

@@ -158,9 +158,9 @@ $messagesPopupDialogBack?.addEventListener("click", () => {
 
 /* Messages */
 const $messages = document.querySelector(".messages");
-if ($messages) {
+const $messagesDialog = $messages?.querySelector(".messages__dialog");
+if ($messages && $messagesDialog) {
   const $messagesDialogBox = $messages.querySelector(".messages__dialog-box");
-  const $messagesDialog = $messages.querySelector(".messages__dialog");
   const $messagesDialogEmpty = $messages.querySelector(".messages__dialog-empty");
   const $messagesItems = $messages.querySelectorAll(".messages__item");
   const $messagesDialogList = $messagesDialog.querySelector(".dialog__list");
@@ -232,7 +232,9 @@ $eyeBtns.forEach(($eyeBtn) => {
 });
 
 const $inputs = document.querySelectorAll(".input");
-$inputs.forEach(($input) => {
+$inputs.forEach(($input) => inputHandler($input));
+
+function inputHandler($input) {
   const $clearBtn = $input.querySelector(".input__clear-field");
   const $field = $input.querySelector(".input__field");
 
@@ -254,14 +256,14 @@ $inputs.forEach(($input) => {
     }
   });
 
-  const $tippyIcons = $input.querySelectorAll('[data-tippy-content]');
-  $tippyIcons.forEach($tippyIcon => {
-    $tippyIcon.addEventListener('click', (e) => {
+  const $tippyIcons = $input.querySelectorAll("[data-tippy-content]");
+  $tippyIcons.forEach(($tippyIcon) => {
+    $tippyIcon.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
     });
   });
-});
+}
 
 const $fileInputs = document.querySelectorAll(".file-input");
 $fileInputs.forEach(($fileInput) => {
@@ -314,7 +316,9 @@ function textareaSizeHandler($textarea) {
 
 /* IMask js */
 const $imaskInputs = document.querySelectorAll(".js-imask");
-$imaskInputs.forEach(($input) => {
+$imaskInputs.forEach(($input) => imaskInputHandler($input));
+
+function imaskInputHandler($input) {
   const mask = $input.dataset.mask;
   if (mask === "num") {
     IMask($input, {
@@ -341,7 +345,7 @@ $imaskInputs.forEach(($input) => {
   } else {
     IMask($input, { mask });
   }
-});
+}
 
 /* Select */
 const SELECT_CLASS = "simple-select";
@@ -423,8 +427,23 @@ function initializeCustomSelect($selectField) {
     });
     $itemValue.append($itemValueSpan);
 
+    if ($option.dataset.icons) {
+      const $iconsBox = createElem("span", "simple-select__item-icons");
+      const icons = $option.dataset.icons.split(", ");
+      icons.forEach((icon) => {
+        const $icon = createElem("img", "simple-select__item-icon", {
+          src: icon,
+        });
+        $iconsBox.append($icon);
+      });
+
+      $itemValue.append($iconsBox);
+    }
+
     if ($option.dataset.tippyText) {
-      const $tippyIcon = createElem("span", "text__icon simple-select__item-tippy");
+      const $tippyIcon = createElem("img", "text__icon", {
+        src: "img/icons/info-blue-500.svg",
+      });
       $tippyIcon.dataset.tippyContent = $option.dataset.tippyText;
       $tippyIcon.dataset.tippyPlacement = "bottom";
       $tippyIcon.setAttribute("alt", "");
@@ -825,79 +844,10 @@ $forms.forEach(($form) => {
   });
 
   const $inputs = $form.querySelectorAll(".input");
-  $inputs.forEach(($input) => {
-    const $field = $input.querySelector(".input__field");
-    $field?.addEventListener("focus", () => {
-      $input.classList.remove("input--error");
-
-      const $passwordsMatch = $input.closest(".js-passwords-match");
-      if (!$passwordsMatch) {
-        return;
-      }
-
-      const $passwordSecond = $passwordsMatch.querySelectorAll(".input")[1];
-      const $passwordSecondError = $passwordSecond.querySelector(`.input__error`);
-      if ($passwordSecondError.innerText === "Пароли должны совпадать") {
-        $passwordSecond.classList.remove("input--error");
-      }
-    });
-
-    $field?.addEventListener("input", () => {
-      if ($input.classList.contains("select__input")) {
-        return;
-      }
-
-      const validateType = $field.dataset.validate;
-      const pattern = validatePatterns.find((pattern) => pattern.name === validateType);
-      if (validateType && pattern.validate($field.value)) {
-        $input.classList.add("input--validated");
-      } else if (validateType) {
-        $input.classList.remove("input--validated");
-      }
-
-      const $submit = $form.querySelector(".js-form-submit");
-      if ($submit?.dataset.disableEmpty !== undefined) {
-        submitDisableHandler($form);
-      }
-
-      setTimeout(() => {
-        if ($input.dataset.confirmedValue === $field.value) {
-          $input.classList.add("input--confirmed");
-        } else {
-          $input.classList.remove("input--confirmed");
-        }
-      });
-    });
-
-    const $fieldFile = $input.querySelector(".input__field-file");
-    const $btnFile = $input.querySelector(".input__file .file-input__btn");
-    const $btnDeleteFile = $input.querySelector(".input__file .file-input__info-delete");
-    $btnFile?.addEventListener("click", () => $input.classList.remove("input--error"));
-    $btnDeleteFile?.addEventListener("click", () => $input.classList.remove("input--error"));
-    $fieldFile?.addEventListener("change", () => {
-      const $submit = $form.querySelector(".js-form-submit");
-      if ($submit?.dataset.disableEmpty !== undefined) {
-        submitDisableHandler($form);
-      }
-    });
-  });
+  $inputs.forEach(($input) => formInputHandler($input, $form));
 
   const $simpleSelects = $form.querySelectorAll(".simple-select");
-  $simpleSelects.forEach(($simpleSelect) => {
-    const $select = $simpleSelect.closest(".select");
-    const simpleSelectField = $simpleSelect.querySelector(".simple-select__field");
-    simpleSelectField.addEventListener("click", () => $select.classList.remove("select--error"));
-
-    const $inputField = $select.querySelector(".select__input .input__field");
-    $inputField?.addEventListener("focus", () => $select.classList.remove("select--error"));
-
-    const $items = $simpleSelect.querySelectorAll(`.${ITEM_CLASS}`);
-    $items.forEach(($item) => {
-      $item.addEventListener("click", () => {
-        setTimeout(() => submitDisableHandler($form));
-      });
-    });
-  });
+  $simpleSelects.forEach(($simpleSelect) => formSimpleSelectHandler($simpleSelect, $form));
 
   /* Form steps */
   const $steps = $form.querySelectorAll(".form__step");
@@ -951,6 +901,94 @@ $forms.forEach(($form) => {
   });
 });
 
+function formInputHandler($input, $form) {
+  const $field = $input.querySelector(".input__field");
+  $field?.addEventListener("focus", () => {
+    $input.classList.remove("input--error");
+
+    const $passwordsMatch = $input.closest(".js-passwords-match");
+    if (!$passwordsMatch) {
+      return;
+    }
+
+    const $passwordSecond = $passwordsMatch.querySelectorAll(".input")[1];
+    const $passwordSecondError = $passwordSecond.querySelector(`.input__error`);
+    if ($passwordSecondError.innerText === "Пароли должны совпадать") {
+      $passwordSecond.classList.remove("input--error");
+    }
+  });
+
+  $field?.addEventListener("input", () => {
+    if ($input.classList.contains("select__input")) {
+      return;
+    }
+
+    const validateType = $field.dataset.validate;
+    const pattern = validatePatterns.find((pattern) => pattern.name === validateType);
+    if (validateType && pattern.validate($field.value)) {
+      $input.classList.add("input--validated");
+    } else if (validateType) {
+      $input.classList.remove("input--validated");
+    }
+
+    const $submit = $form.querySelector(".js-form-submit");
+    if ($submit?.dataset.disableEmpty !== undefined) {
+      submitDisableHandler($form);
+    }
+
+    setTimeout(() => {
+      if ($input.dataset.confirmedValue === $field.value) {
+        $input.classList.add("input--confirmed");
+      } else {
+        $input.classList.remove("input--confirmed");
+      }
+    });
+  });
+
+  const $fieldFile = $input.querySelector(".input__field-file");
+  const $btnFile = $input.querySelector(".input__file .file-input__btn");
+  const $btnDeleteFile = $input.querySelector(".input__file .file-input__info-delete");
+  $btnFile?.addEventListener("click", () => $input.classList.remove("input--error"));
+  $btnDeleteFile?.addEventListener("click", () => $input.classList.remove("input--error"));
+  $fieldFile?.addEventListener("change", () => {
+    const $submit = $form.querySelector(".js-form-submit");
+    if ($submit?.dataset.disableEmpty !== undefined) {
+      submitDisableHandler($form);
+    }
+  });
+}
+
+function addAllHandlersToInputArea($input, $form) {
+  const $inputField = $input.querySelector(".input__field");
+
+  addAllHandlersToInput($input, $form);
+
+  textareaSizeHandler($inputField);
+  $inputField.addEventListener("input", () => textareaSizeHandler($inputField));
+  window.addEventListener("resize", () => textareaSizeHandler($inputField));
+}
+
+function addAllHandlersToInput($input, $form) {
+  inputHandler($input);
+  formInputHandler($input, $form);
+}
+
+function formSimpleSelectHandler($simpleSelect, $form) {
+  const $select = $simpleSelect.closest(".select");
+  const simpleSelectField = $simpleSelect.querySelector(".simple-select__field");
+  simpleSelectField.addEventListener("click", () => $select.classList.remove("select--error"));
+
+  const $inputField = $select.querySelector(".select__input .input__field");
+  $inputField?.addEventListener("focus", () => $select.classList.remove("select--error"));
+
+  const $items = $simpleSelect.querySelectorAll(`.${ITEM_CLASS}`);
+  $items.forEach(($item) => {
+    $item.addEventListener("click", () => {
+      setTimeout(() => submitDisableHandler($form));
+    });
+  });
+}
+
 function validateFields($form) {
   let isError = false;
 
@@ -971,7 +1009,6 @@ function validateFields($form) {
   const $inputs = $form.querySelectorAll(".input");
   $inputs.forEach(($input, i) => {
     let isValidated = true;
-
     if (
       !validateItem({
         $item: $input,
@@ -1486,8 +1523,9 @@ $categoriesBoxes.forEach(($categoriesBox) => {
   const $searchField = $categoriesBox.querySelector(".categories__search .input__field");
   const $searchClearBtn = $categoriesBox.querySelector(".categories__search .input__clear-field");
   const $categories = $categoriesBox.querySelectorAll(".categories__item");
+  const $childCategories = $categoriesBox.querySelectorAll(".category__item");
 
-  $searchField.addEventListener("input", () => {
+  $searchField?.addEventListener("input", () => {
     const rawSearchText = $searchField.value.toLowerCase();
     const searchText = rawSearchText.replace(/[\s.,!]/g, "");
 
@@ -1506,14 +1544,43 @@ $categoriesBoxes.forEach(($categoriesBox) => {
     closeOtherCategories();
   });
 
-  document.addEventListener("click", (event) => {
-    if (event.target.matches(".category__checkbox--all .checkbox__input")) {
-      const $checkbox = event.target;
-      const $category = $checkbox.closest(".category");
-      toggleAllCheckboxes($category, $checkbox.checked);
-    }
+  $childCategories.forEach(($category) => {
+    const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all) .checkbox__input");
+    $checkboxes.forEach(($checkbox) => {
+      $checkbox.addEventListener("change", () => {
+        updateSelectAllState($category);
+      });
+    });
   });
 });
+
+document.addEventListener("click", (event) => {
+  if (event.target.matches(".category__checkbox--all .checkbox__input")) {
+    const $checkbox = event.target;
+    const $category = $checkbox.closest(".category");
+
+    toggleAllCheckboxes($category, $checkbox.checked);
+  }
+});
+
+function updateSelectAllState($category) {
+  const $categoryContentChild = [...$category.children].find((child) => child.matches(".category__content"));
+  const $allCheckboxChild = [...$categoryContentChild.children].find((child) => child.matches(".category__checkbox"));
+  if (!$allCheckboxChild) {
+    return;
+  }
+
+  const $allCheckboxInput = $allCheckboxChild.querySelector(".checkbox__input");
+  const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all) .checkbox__input");
+  const allChecked = [...$checkboxes].every(($checkbox) => $checkbox.checked);
+
+  $allCheckboxInput.checked = allChecked;
+
+  const $parentCategory = $category.closest(".categories__item");
+  if ($parentCategory && $parentCategory !== $category) {
+    updateSelectAllState($parentCategory);
+  }
+}
 
 function filterCategory($category, searchText, rawSearchText) {
   const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all)");
@@ -1574,6 +1641,8 @@ function filterCategory($category, searchText, rawSearchText) {
     $category.classList.add("category--active");
   }
 
+  updateSelectAllState($category);
+
   return anyCheckboxVisible || anyButtonVisible || anyChildCategoryVisible;
 }
 
@@ -1607,6 +1676,7 @@ function resetVisibility($categories) {
 
 function toggleAllCheckboxes($category, isChecked) {
   const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--hide) .checkbox__input");
+
   $checkboxes.forEach(($checkbox) => {
     $checkbox.checked = isChecked;
   });
@@ -1620,6 +1690,8 @@ function toggleAllCheckboxes($category, isChecked) {
   $allCheckboxes.forEach(($checkbox) => {
     $checkbox.checked = isChecked;
   });
+
+  updateSelectAllState($category);
 }
 
 function closeOtherCategories($currentCategory = null) {
@@ -1634,26 +1706,36 @@ function closeOtherCategories($currentCategory = null) {
 }
 
 /* lk sidebar */
-const $lkSidebar = document.querySelector(".lk-sidebar");
-if ($lkSidebar) {
-  const $openBtns = document.querySelectorAll(".js-open-lk-sidebar");
-  $openBtns.forEach(($btn) =>
-    $btn.addEventListener("click", () => {
-      if (window.innerWidth <= 991) {
-        openLKSidebar($lkSidebar);
-      }
-    })
-  );
+const $openLkSidebarBtns = document.querySelectorAll(".js-open-lk-sidebar");
+$openLkSidebarBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const sidebarName = $btn.dataset.sidebarName;
+    const $lkSidebar = sidebarName
+      ? document.querySelector(`.lk-sidebar[data-sidebar-name="${sidebarName}"]`)
+      : document.querySelector(".lk-sidebar");
 
-  const $closeBtns = document.querySelectorAll(".js-close-lk-sidebar");
-  $closeBtns.forEach(($btn) => $btn.addEventListener("click", () => closeLKSidebar($lkSidebar)));
-
-  window.addEventListener("click", (e) => {
-    if (window.innerWidth <= 991 && e.target === $lkSidebar) {
-      closeLKSidebar($lkSidebar);
+    if (window.innerWidth <= 991) {
+      openLKSidebar($lkSidebar);
     }
   });
-}
+});
+
+const $closeLkSidebarBtns = document.querySelectorAll(".js-close-lk-sidebar");
+$closeLkSidebarBtns.forEach(($btn) => {
+  const sidebarName = $btn.dataset.sidebarName;
+  let $lkSidebar = sidebarName
+    ? document.querySelector(`.lk-sidebar[data-sidebar-name="${sidebarName}"]`)
+    : document.querySelector(".lk-sidebar");
+
+  $btn.addEventListener("click", () => closeLKSidebar($lkSidebar));
+});
+
+window.addEventListener("click", (e) => {
+  const $activeLkSidebar = document.querySelector(".lk-sidebar--active");
+  if ($activeLkSidebar && window.innerWidth <= 991 && e.target === $activeLkSidebar) {
+    closeLKSidebar($activeLkSidebar);
+  }
+});
 
 function openLKSidebar($lkSidebar) {
   $lkSidebar.classList.add("lk-sidebar--active");
@@ -1735,7 +1817,7 @@ $searchItemsBoxes.forEach(($searchItemsBox) => {
 const $tippyBoxes = document.querySelectorAll("[data-tippy-content]");
 $tippyBoxes.forEach(($tippyBox) => {
   const maxWidth = +$tippyBox.dataset.maxWidth || "none";
-  
+
   tippy($tippyBox, {
     maxWidth,
   });
@@ -1960,31 +2042,77 @@ $offerTabsBtns.forEach(($btn, index) => {
   });
 });
 
-const $offerMainFiles = document.querySelector(".offer-main__files");
-if ($offerMainFiles) {
+const $offerMainFilesList = document.querySelectorAll(".offer-main__files");
+$offerMainFilesList.forEach(($offerMainFiles) => {
+  const $offerMain = $offerMainFiles.closest(".offer-main");
+  const $offerMainFilesEmpty = $offerMain.querySelector(".offer-main__empty--files");
   const $offerTabsHeaderBtnFileField = $offerTabsHeaderBtn.querySelector(".btn__file-field");
+  let $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
+
+  offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
+
   $offerTabsHeaderBtnFileField?.addEventListener("change", () => {
     const file = $offerTabsHeaderBtnFileField.files[0];
     if (file) {
-      const $offerFile = createOfferFile(file.name);
+      const $offerFile = createOfferFile(file.name, {
+        deleteCallback: () => {
+          $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
+          offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
+        },
+      });
       $offerMainFiles.append($offerFile);
+      $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
+      offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
     }
   });
 
-  const $offerMainFilesItems = document.querySelectorAll(".offer-main__file");
   $offerMainFilesItems.forEach(($offerMainFile) => {
     const $delete = $offerMainFile.querySelector(".file__delete");
     $delete?.addEventListener(
       "click",
       () => {
         $offerMainFile.remove();
+        $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
+        offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
       },
       { once: true }
     );
   });
-}
+});
 
-function createOfferFile(name) {
+const $offerMainImagesList = document.querySelectorAll(".offer-main__images");
+$offerMainImagesList.forEach(($offerMainImages) => {
+  const $offerMain = $offerMainImages.closest(".offer-main");
+  const $offerMainImagesEmpty = $offerMain.querySelector(".offer-main__empty--images");
+  let $offerMainImagesItems = $offerMainImages.querySelectorAll(".offer-img");
+
+  offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
+
+  $offerMainImagesItems.forEach(($offerMainImg) => {
+    const $delete = $offerMainImg.querySelector(".offer-img__delete");
+    $delete?.addEventListener(
+      "click",
+      () => {
+        $offerMainImg.remove();
+        $offerMainImagesItems = document.querySelectorAll(".offer-img");
+        offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
+      },
+      { once: true }
+    );
+  });
+});
+
+const $offerMainCommentsList = document.querySelectorAll(".offer-main__comment");
+$offerMainCommentsList.forEach(($offerMainComments) => {
+  const $offerMain = $offerMainComments.closest(".offer-main");
+  const $offerMainCommentsEmpty = $offerMain.querySelector(".offer-main__empty--comment");
+
+  if ($offerMainComments.innerText.trim() === "") {
+    $offerMainCommentsEmpty.classList.add("offer-main__empty--show");
+  }
+});
+
+function createOfferFile(name, { deleteCallback }) {
   const $offerFile = createElem("div", "file file--success offer-main__file", {
     innerHTML: `<a class="file__name" href="#">${name}</a>`,
   });
@@ -1994,6 +2122,7 @@ function createOfferFile(name) {
     "click",
     () => {
       $offerFile.remove();
+      deleteCallback();
     },
     { once: true }
   );
@@ -2001,6 +2130,16 @@ function createOfferFile(name) {
   $offerFile.append($delete);
 
   return $offerFile;
+}
+
+function offerMainEmptyHandler($offerMainList, $offerMainItems, $empty) {
+  if ($offerMainItems.length === 0) {
+    $offerMainList.classList.add("offer-main__hidden");
+    $empty.classList.add("offer-main__empty--show");
+  } else {
+    $offerMainList.classList.remove("offer-main__hidden");
+    $empty.classList.remove("offer-main__empty--show");
+  }
 }
 
 /* Datepicker */
@@ -2011,7 +2150,9 @@ const $datepickerInputs = document.querySelectorAll("[data-datepicker]");
 
 $datepickerInputs.forEach(($datepickerInput) => {
   const datepickerInputAdditionTimeText = $datepickerInput.dataset.datepickerAdditionTimeText;
-  let datepickerInputDefaultValue = $datepickerInput.value;
+  // let $datepickerInput.pickerDefaultValue = $datepickerInput.value;
+  $datepickerInput.pickerDefaultValue = $datepickerInput.value;
+
   const range = $datepickerInput.dataset.datepickerRange !== undefined;
   const picker = new AirDatepicker($datepickerInput, {
     inline: true,
@@ -2041,7 +2182,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
     buttons: [
       {
         content: "Отменить",
-        className: "btn btn--gray-100 btn--text-xs",
+        className: "btn btn--gray-100 btn--text-xs air-datepicker-button--cancel",
         attrs: {
           type: "button",
         },
@@ -2051,11 +2192,21 @@ $datepickerInputs.forEach(($datepickerInput) => {
           } else {
             picker.hide();
           }
+
+          picker.clear();
+          picker.$datepicker.querySelectorAll(".-in-range-").forEach(($rangeItem) => $rangeItem.classList.remove("-in-range-"));
+          picker.selectDate(new Date());
+
+          if ($datepickerInput.dataset.datepickerCancelClickClearField !== undefined) {
+            $datepickerInput.value = "";
+            $datepickerInput.dispatchEvent(new Event("input"));
+            $datepickerInput.pickerDefaultValue = "";
+          }
         },
       },
       {
         content: "Выбрать",
-        className: "btn btn--blue-500 btn--text-xs",
+        className: "btn btn--blue-500 btn--text-xs air-datepicker-button--submit",
         attrs: {
           type: "button",
         },
@@ -2063,7 +2214,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
           const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
           const selectedDates = picker.selectedDates;
           const [hours, minutes] = $timeInput.value.split(":").map(Number);
-          const roundedMinutes = Math.round(minutes / 5) * 5;
+          let roundedMinutes = Math.round(minutes / 5) * 5;
           if (roundedMinutes > 55) {
             roundedMinutes = 55;
           }
@@ -2088,12 +2239,23 @@ $datepickerInputs.forEach(($datepickerInput) => {
             $datepickerInput.value = `${joinDates}`;
           }
 
-          datepickerInputDefaultValue = $datepickerInput.value;
+          $datepickerInput.pickerDefaultValue = $datepickerInput.value;
+          $datepickerInput.dispatchEvent(new Event("input"));
+
+          const $input = $datepickerInput.closest(".input");
+          const $inputTime = $input.querySelector(".js-input-time");
+          if ($inputTime) {
+            $inputTime.innerText = `${hours}:${roundedMinutes}`;
+          }
 
           if (picker.opts.inline) {
             picker.$datepicker.classList.remove("air-datepicker--show");
           } else {
             picker.hide();
+          }
+
+          if (selectedDates.length === 1) {
+            clearPickerCells(picker);
           }
         },
       },
@@ -2133,12 +2295,14 @@ $datepickerInputs.forEach(($datepickerInput) => {
       });
     },
     onSelect: (date) => {
-      $datepickerInput.value = datepickerInputDefaultValue;
-      verifyData(date);
+      $datepickerInput.value = $datepickerInput.pickerDefaultValue;
+      // verifyData(date); //dev
     },
   });
 
-  setTimeout(() => (picker.$el.value = datepickerInputDefaultValue));
+  $datepickerInput.picker = picker;
+
+  setTimeout(() => (picker.$el.value = $datepickerInput.pickerDefaultValue));
 
   if (picker.opts.inline) {
     renderDatePicker({
@@ -2146,6 +2310,10 @@ $datepickerInputs.forEach(($datepickerInput) => {
       minYear: pickerMinYear,
       maxYear: pickerMaxYear,
     });
+  }
+
+  if ($datepickerInput.dataset.datepickerAlwaysShow !== undefined) {
+    picker.$datepicker.classList.add("air-datepicker--visible");
   }
 
   $datepickerInput.addEventListener("click", () => {
@@ -2322,13 +2490,20 @@ function updateDateDropdown({ picker, type, newIndex, newItemName }) {
 
 function createTimeInput(picker) {
   const $timeInputContainer = createElem("div", "input datepicker-time");
+  if (picker.$el.dataset.datepickerHideTime !== undefined) {
+    $timeInputContainer.classList.add("datepicker-time--hide");
+  }
+
   const $timeType = createElem("span", "text text--neutral-400 text--3xs datepicker-time__type", {
     innerText: "мск",
   });
 
   const thisHours = String(picker.timepicker.hours).padStart(2, "0");
   const thisMinutes = String(picker.timepicker.minutes).padStart(2, "0");
-  const thisMinutesRounded = Math.round(thisMinutes / 5) * 5;
+  let thisMinutesRounded = String(Math.round(thisMinutes / 5) * 5).padStart(2, "0");
+  if (thisMinutesRounded > 55) {
+    thisMinutesRounded = 55;
+  }
 
   const $timeInput = createElem("input", "input__field input__field--sm datepicker-time__field", {
     type: "time",
@@ -2377,6 +2552,11 @@ function createTimeInput(picker) {
   return $timeInputContainer;
 }
 
+function clearPickerCells(picker) {
+  picker.$datepicker.querySelectorAll(".-in-range-").forEach(($rangeItem) => $rangeItem.classList.remove("-in-range-"));
+  picker.$datepicker.querySelectorAll(".-range-to-").forEach(($rangeItem) => $rangeItem.classList.remove("-range-to-"));
+}
+
 function getMonthName(index) {
   const months = getMonthsNames();
   return months[index];
@@ -2389,3 +2569,740 @@ function getMonthsNames() {
 function getYearsArray(minYear, maxYear) {
   return Array.from({ length: maxYear - minYear + 1 }, (_, i) => maxYear - i);
 }
+
+/* Catalog filter */
+const $catalogFilters = document.querySelectorAll(".filter-content");
+const checkboxConfigs = [
+  { key: "period" },
+  { key: "categories" },
+  { key: "regions" },
+  { key: "names" },
+  { key: "statuses" },
+  { key: "contractor" },
+];
+$catalogFilters.forEach(($catalogFilter) => {
+  const $popup = $catalogFilter.closest(".popup");
+  const $popupContent = $popup.querySelector(".popup__content");
+  const $filterGlobalCount = $popupContent.querySelector(".popup-content__header .count-circle");
+  const filterName = $catalogFilter.dataset.filterName;
+
+  const $sections = $catalogFilter.querySelectorAll(".filter-content__section");
+  $sections.forEach(($section) => {
+    const $sectionCheckboxes = $section.querySelectorAll(".checkbox__input");
+
+    //Кнопка "Выбрать все"
+    const $linkSelectAll = $section.querySelector(".filter-content__section-link--all");
+    $linkSelectAll?.addEventListener("click", () => {
+      $sectionCheckboxes.forEach(($checkbox) => ($checkbox.checked = true));
+    });
+
+    //Кнопка "Очистить"
+    const $linkClear = $section.querySelector(".filter-content__section-link--clear");
+    $linkClear?.addEventListener("click", () => {
+      $sectionCheckboxes.forEach(($checkbox) => ($checkbox.checked = false));
+
+      const $sectionTags = $section.querySelectorAll(".filter-tag");
+      $sectionTags.forEach(($tag) => $tag.remove());
+    });
+
+    const $tagsList = $section.querySelector(".filter-content__tags-list");
+    const $btnAddTag = $section.querySelector(".filter-content__add-tag");
+    $btnAddTag?.addEventListener("click", () => {
+      const $inputField = $btnAddTag.closest(".input").querySelector(".input__field");
+      if ($inputField.value === "") {
+        return;
+      }
+
+      const $filterTag = createFilterTag($inputField.value, "filter-content__tag", "gray-100");
+      $tagsList.append($filterTag);
+
+      $inputField.value = "";
+      $inputField.dispatchEvent(new Event("input"));
+    });
+  });
+
+  //Цикл кнопок табов (Период, Категории, Контрагенты, Наименование / ИНН)
+  const $sidebarTabsBtnsBox = $catalogFilter.querySelector(".filter-content__sidebar-btns.tabs-btns");
+  if (!$sidebarTabsBtnsBox) {
+    return;
+  }
+
+  let filterSaves = getFilterStorage(filterName);
+
+  const $sidebarTabsBtns = $sidebarTabsBtnsBox.querySelectorAll(".filter-content__sidebar-btn");
+  $sidebarTabsBtns.forEach(($tabsBtn, index) => {
+    const $delete = $tabsBtn.querySelector(".lk-menu-link__delete");
+
+    //По нажатию на кнопку крестик - очистка содержимого таба
+    $delete.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      $tabsBtn.classList.remove("filter-content__sidebar-btn--selected");
+
+      const $tabItem = $catalogFilter.querySelectorAll(".filter-content__tabs-item")[index];
+      clearCatalogFilter($tabItem);
+      updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+    });
+
+    $tabsBtn.addEventListener("click", () => {
+      $catalogFilter.classList.add("filter-content--active");
+      $popupContent.classList.add("popup-content--filter-active");
+    });
+  });
+
+  //Обновление счетчиков и состояний кнопок при клике на чекбоксы
+  checkboxConfigs.forEach(({ key }) => {
+    const $section = $catalogFilter.querySelector(`.filter-content__section--${key}`);
+    if (!$section) {
+      return;
+    }
+    const $checkboxes = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input`);
+    const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
+    const $tabBtn = $sidebarTabsBtnsBox.querySelector(`.filter-content__sidebar-btn[data-filter-btn-name="${key}"]`);
+
+    $checkboxes.forEach(($checkbox) => {
+      $checkbox.addEventListener("change", () => {
+        // Количество выбранных чекбоксов
+        const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+          return $checkbox.checked ? accumulator + 1 : accumulator;
+        }, 0);
+
+        const $tabBtnCount = $tabBtn.querySelector(".count-circle");
+        $tabBtnCount.innerText = checkedCount;
+        if (checkedCount !== 0) {
+          // Если выбрано чекбоксов 0 - скрываем кнопку крестика и счетчик выбранных чекбоксов у кнопки таба
+          $tabBtn.classList.add("filter-content__sidebar-btn--selected");
+        } else {
+          // Иначе отображаем счетчик и кнопку очистки
+          $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+        }
+
+        updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+      });
+    });
+
+    //Обновление счетчиков и состояний кнопок при работе с календарем
+    const $dateInput = $section.querySelector(".filter-content__date-input");
+    if ($dateInput) {
+      const $dateInputField = $dateInput.querySelector(".input__field");
+      const picker = $dateInputField.picker;
+
+      const $datepickerSubmit = picker.$buttons.querySelector(".air-datepicker-button--submit");
+      $datepickerSubmit.addEventListener("click", () => {
+        $tabBtn.classList.add("filter-content__sidebar-btn--selected");
+        updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+      });
+
+      const $datepickerCancel = picker.$buttons.querySelector(".air-datepicker-button--cancel");
+      $datepickerCancel.addEventListener("click", () => {
+        $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+        updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+      });
+    }
+  });
+
+  const $sidebarSectionSaves = $catalogFilter.querySelector(".filter-content__sidebar-section--saves");
+  const $sidebarSectionSavesBtns = $sidebarSectionSaves?.querySelector(".filter-content__sidebar-btns");
+  if ($sidebarSectionSavesBtns) {
+    updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
+
+    filterSaves.forEach((filterSave) => {
+      const saveCount = getSaveCount(filterSave);
+      const $saveBtn = createSaveBtn(filterSave, saveCount);
+
+      $sidebarSectionSavesBtns.append($saveBtn);
+    });
+  }
+
+  // Кнопка "Сохранить фильтр"
+  const $saveFilterBtn = $catalogFilter.querySelector(".js-filter-content-save");
+  $saveFilterBtn?.addEventListener("click", () => {
+    if (getFilterGlobalCount(checkboxConfigs, $catalogFilter) === 0) {
+      return;
+    }
+
+    const activeSaveId = +$catalogFilter.dataset.activeSaveId;
+    if (!activeSaveId) {
+      const filterSave = saveFilter($catalogFilter, checkboxConfigs, filterName);
+      const saveCount = getSaveCount(filterSave);
+
+      filterSaves = getFilterStorage(filterName);
+
+      const $saveBtn = createSaveBtn(filterSave, saveCount);
+
+      $sidebarSectionSavesBtns.append($saveBtn);
+
+      updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
+
+      return;
+    }
+
+    const $savePopup = createPopup({
+      text: "Вы хотите создать новый фильтр или перезаписать выбранный?",
+      btnCancelText: "Перезаписать",
+      btnCancelCallback: () => {
+        removePopup($savePopup, false);
+
+        createFilterRewriteConfirmPopup({
+          callback: () => {
+            const newSave = generateSave($catalogFilter, checkboxConfigs, filterName, activeSaveId);
+            updateFilterStorageItem(filterName, activeSaveId, newSave);
+
+            const $saveBtn = $catalogFilter.querySelector(`.filter-content__sidebar-btn--save[data-id="${activeSaveId}"]`);
+            $saveBtn.querySelector(".count-circle").innerText = getSaveCountById(filterName, activeSaveId);
+            $saveBtn.save = newSave;
+
+            updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
+          },
+        });
+      },
+      btnText: "Создать новый ",
+      btnCallback: () => {
+        const newSave = saveFilter($catalogFilter, checkboxConfigs, filterName);
+        const saveCount = getSaveCount(newSave);
+        filterSaves = getFilterStorage(filterName);
+
+        const $saveBtn = createSaveBtn(newSave, saveCount);
+        $sidebarSectionSavesBtns.append($saveBtn);
+
+        updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
+
+        removePopup($savePopup);
+      },
+    });
+  });
+
+  // Кнопка "Сбросить фильтры"
+  const $clearFilterBtn = $catalogFilter.querySelector(".js-filter-content-clear");
+  $clearFilterBtn?.addEventListener("click", () => {
+    clearCatalogFilter($catalogFilter);
+
+    $sidebarTabsBtns.forEach(($tabBtn) => {
+      $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+    });
+
+    updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+  });
+
+  /* Кнопка Назад*/
+  const $filterBack = $popupContent.querySelector(".popup-content__filter-back");
+  $filterBack.addEventListener("click", () => {
+    $catalogFilter.classList.remove("filter-content--active");
+    $popupContent.classList.remove("popup-content--filter-active");
+  });
+
+  function createSaveBtn(filterSave, saveCount) {
+    const $saveBtn = createElem(
+      "button",
+      "lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn filter-content__sidebar-btn--save"
+    );
+    $saveBtn.dataset.id = filterSave.id;
+    $saveBtn.save = filterSave;
+
+    const $saveBtnText = createElem("span", "lk-menu-link__text", { innerText: `Сборка ${$saveBtn.save.id}` });
+    const $saveBtnCount = createElem("span", "count-circle count-circle--neutral-50 lk-menu-link__count", { innerText: saveCount });
+
+    const $saveBtnDelete = createElem("span", "icon icon--lg lk-menu-link__delete lk-menu-link__delete--trash");
+    $saveBtnDelete.addEventListener("click", () => {
+      filterSaves = filterSaves.filter((save) => save.id !== $saveBtn.save.id);
+      updateFilterStorage(filterName, filterSaves);
+      delete $catalogFilter.dataset.activeSaveId;
+
+      updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
+
+      $saveBtn.remove();
+    });
+
+    $saveBtn.addEventListener("click", (e) => {
+      if (e.target === $saveBtnDelete) {
+        return;
+      }
+
+      if ($saveBtn.classList.contains("lk-menu-link--active")) {
+        delete $catalogFilter.dataset.activeSaveId;
+        $saveBtn.classList.remove("lk-menu-link--active");
+      } else {
+        const $oldActiveSaveBtn = $catalogFilter.querySelector(".filter-content__sidebar-btn--save.lk-menu-link--active");
+        $oldActiveSaveBtn?.classList.remove("lk-menu-link--active");
+
+        $saveBtn.classList.add("lk-menu-link--active");
+
+        updateFilterSave($saveBtn.save, $catalogFilter, checkboxConfigs);
+        updateFilter($catalogFilter, checkboxConfigs, $filterGlobalCount);
+        $catalogFilter.dataset.activeSaveId = $saveBtn.save.id;
+        filterSaves = getFilterStorage(filterName);
+      }
+    });
+
+    $saveBtn.append($saveBtnText);
+    $saveBtn.append($saveBtnCount);
+    $saveBtn.append($saveBtnDelete);
+
+    return $saveBtn;
+  }
+});
+
+// Функция для очистки содержимого таба
+function clearCatalogFilter($box) {
+  //Очистка чекбоксов
+  const $categoriesCheckboxes = $box.querySelectorAll(".filter-content__checkbox .checkbox__input");
+  $categoriesCheckboxes.forEach(($checkbox) => {
+    $checkbox.checked = false;
+  });
+
+  //Очистка значения календаря
+  const $dateInput = $box.querySelector(".filter-content__date-input");
+  if ($dateInput) {
+    const $dateInputField = $dateInput.querySelector(".input__field");
+    $dateInputField.value = "";
+    $dateInputField.pickerDefaultValue = "";
+    $dateInputField.dispatchEvent(new Event("input"));
+
+    const picker = $dateInputField.picker;
+    picker.clear();
+    clearPickerCells(picker);
+    picker.selectDate(new Date());
+  }
+}
+
+function updateFilter($catalogFilter, checkboxConfigs, $filterGlobalCount) {
+  checkboxConfigs.forEach(({ key }) => {
+    const $section = $catalogFilter.querySelector(`.filter-content__section--${key}`);
+    if (!$section) {
+      return;
+    }
+    const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
+    const $tabBtn = $catalogFilter.querySelector(`.filter-content__sidebar-btn[data-filter-btn-name="${key}"]`);
+
+    // Количество выбранных чекбоксов
+    const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+      return $checkbox.checked ? accumulator + 1 : accumulator;
+    }, 0);
+
+    const $tabBtnCount = $tabBtn.querySelector(".count-circle");
+    $tabBtnCount.innerText = checkedCount;
+    if (checkedCount !== 0) {
+      // Если выбрано чекбоксов 0 - скрываем кнопку крестика и счетчик выбранных чекбоксов у кнопки таба
+      $tabBtn.classList.add("filter-content__sidebar-btn--selected");
+    } else {
+      // Иначе отображаем счетчик и кнопку очистки
+      $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+    }
+  });
+
+  updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+}
+
+/* Функция для обновления общего счетчика фильтров в заголовке */
+function updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $count) {
+  const count = getFilterGlobalCount(checkboxConfigs, $catalogFilter);
+  $count.innerText = count;
+}
+
+function getFilterGlobalCount(checkboxConfigs, $catalogFilter) {
+  let count = 0;
+
+  checkboxConfigs.forEach(({ key }) => {
+    const $section = $catalogFilter.querySelector(`.filter-content__section--${key}`);
+    if (!$section) {
+      return;
+    }
+
+    const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
+    const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+      return $checkbox.checked ? accumulator + 1 : accumulator;
+    }, 0);
+    count += checkedCount;
+
+    const $dateInput = $section.querySelector(".filter-content__date-input");
+    const $dateInputField = $dateInput?.querySelector(".input__field");
+    if ($dateInputField && $dateInputField.value !== "") {
+      count += 1;
+    }
+  });
+
+  return count;
+}
+
+function updateFilterSave(save, $catalogFilter, checkboxConfigs) {
+  checkboxConfigs.forEach(({ key }) => {
+    const $section = $catalogFilter.querySelector(`.filter-content__section--${key}`);
+    if (!$section) {
+      return;
+    }
+
+    const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
+    $checkboxesNotAll.forEach(($checkbox, index) => {
+      if (save && save[key]?.includes(index)) {
+        $checkbox.checked = true;
+      } else {
+        $checkbox.checked = false;
+      }
+    });
+  });
+}
+
+function getFilterStorage(filterName) {
+  return JSON.parse(localStorage.getItem(filterName) || "[]");
+}
+
+function getFilterStorageItem(filterName, id) {
+  const saves = getFilterStorage(filterName);
+
+  return saves.find((save) => save.id === id);
+}
+
+function addFilterToStorage(filterName, save) {
+  const saves = getFilterStorage(filterName);
+  saves.push(save);
+
+  localStorage.setItem(filterName, JSON.stringify(saves));
+}
+
+function updateFilterStorage(filterName, newSaves) {
+  localStorage.setItem(filterName, JSON.stringify(newSaves));
+}
+
+function updateFilterStorageItem(filterName, id, save) {
+  const saves = getFilterStorage(filterName);
+  const index = saves.findIndex((saveItem) => saveItem.id === id);
+
+  if (index !== -1) {
+    saves[index] = save;
+    localStorage.setItem(filterName, JSON.stringify(saves));
+  }
+}
+
+function getFilterSaveUniqueId(filterName) {
+  const saves = getFilterStorage(filterName);
+
+  if (saves.length === 0) {
+    return 1;
+  }
+
+  const maxId = Math.max(...saves.map((save) => save.id));
+  return maxId + 1;
+}
+
+function saveFilter($catalogFilter, checkboxConfigs, filterName) {
+  const save = generateSave($catalogFilter, checkboxConfigs, filterName);
+
+  addFilterToStorage(filterName, save);
+
+  return save;
+}
+
+function generateSave($catalogFilter, checkboxConfigs, filterName, defaultId) {
+  const save = {
+    id: defaultId || getFilterSaveUniqueId(filterName),
+    categories: [],
+    regions: [],
+    names: [],
+    statuses: [],
+  };
+
+  // Сохраняем состояния чекбоксов
+  checkboxConfigs.forEach(({ key }) => {
+    const $section = $catalogFilter.querySelector(`.filter-content__section--${key}`);
+    if (!$section) {
+      return;
+    }
+
+    const $checkboxes = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
+    $checkboxes.forEach(($checkbox, index) => {
+      if ($checkbox.checked) {
+        save[key].push(index);
+      }
+    });
+  });
+
+  return save;
+}
+
+function getSaveCount(save) {
+  let saveCount = 0;
+
+  for (const key in save) {
+    if (Array.isArray(save[key])) {
+      saveCount += save[key].length;
+    }
+  }
+
+  return saveCount;
+}
+
+function getSaveCountById(filterName, id) {
+  const save = getFilterStorageItem(filterName, id);
+
+  let saveCount = 0;
+  for (const key in save) {
+    if (Array.isArray(save[key])) {
+      saveCount += save[key].length;
+    }
+  }
+
+  return saveCount;
+}
+
+function updateFilterSidebarSaves(filterSaves, $sidebarSaves) {
+  if (filterSaves.length !== 0) {
+    $sidebarSaves.classList.add("filter-content__sidebar-section--active");
+  } else {
+    $sidebarSaves.classList.remove("filter-content__sidebar-section--active");
+  }
+}
+
+function createFilterRewriteConfirmPopup({ callback }) {
+  const $popup = createPopup({
+    text: "Выбранный фильтр будет перезаписан? ",
+    btnCancelText: "Отмена",
+    btnCancelCallback: () => {
+      removePopup($popup, false);
+    },
+    btnText: "Перезаписать ",
+    btnCallback: () => {
+      removePopup($popup, false);
+      callback();
+    },
+  });
+}
+
+/* Ad placement steps */
+const $adPlacements = document.querySelectorAll(".ad-placement");
+$adPlacements.forEach(($adPlacement) => {
+  let thisStep = 1;
+
+  updatePlacementStep($adPlacement, thisStep);
+
+  const $btns = $adPlacement.querySelectorAll(".ad-placement__btn");
+  $btns.forEach(($btn) => {
+    $btn.addEventListener("click", () => {
+      thisStep = +$btn.dataset.showStep;
+      if (thisStep) {
+        updatePlacementStep($adPlacement, thisStep);
+      }
+    });
+  });
+
+  const $backBtn = $adPlacement.querySelector(".ad-placement__header-back");
+  $backBtn.addEventListener("click", () => {
+    thisStep = Math.max(thisStep - 1, 1);
+    updatePlacementStep($adPlacement, thisStep);
+  });
+});
+
+function updatePlacementStep($adPlacement, step) {
+  const $oldActiveStep = $adPlacement.querySelector(".ad-placement__step--active");
+  $oldActiveStep?.classList.remove("ad-placement__step--active");
+
+  const $stepsItems = $adPlacement.querySelectorAll(".ad-placement__step");
+  $stepsItems[step - 1].classList.add("ad-placement__step--active");
+
+  const $backBtn = $adPlacement.querySelector(".ad-placement__header-back");
+  if (step > 1) {
+    $backBtn.classList.remove("ad-placement__header-back--hide");
+  } else {
+    $backBtn.classList.add("ad-placement__header-back--hide");
+  }
+}
+
+/* Ad placement table */
+const $tablePlacement = document.querySelector(".table-price--ad-placement");
+if ($tablePlacement) {
+  const $addBtn = document.querySelector(".js-ad-placement-table-add");
+  $addBtn.addEventListener("click", () => {
+    addItemToAdPlacementTable($tablePlacement);
+  });
+
+  const $deleteBtns = $tablePlacement.querySelectorAll(".table-price__delete");
+  $deleteBtns.forEach(($deleteBtn) => {
+    $deleteBtn.addEventListener("click", () => {
+      const $tr = $deleteBtn.closest("tr");
+      $tr.remove();
+    });
+  });
+}
+
+function addItemToAdPlacementTable($table) {
+  const $tbody = $tablePlacement.querySelector("tbody");
+
+  const $tr = $table.querySelector(".table-price__prototype").cloneNode(true);
+  $tr.classList.remove("table-price__prototype");
+
+  const $allRows = $table.querySelectorAll("tbody tr:not(.table-price__prototype)");
+  const allRowsNums = [...$allRows].map(($row) => {
+    return +$row.querySelector(".table-price__row-num").innerText;
+  });
+
+  const maxRowsNum = Math.max(...allRowsNums, 0);
+  const $trRowNums = $tr.querySelectorAll(".table-price__row-num");
+  $trRowNums.forEach(($trRowNum) => ($trRowNum.innerText = maxRowsNum + 1));
+
+  $tbody.append($tr);
+
+  const $groupSelectField = $tr.querySelector(".select__field");
+  $groupSelectField.dataset.validate = "empty";
+  initializeCustomSelect($groupSelectField);
+
+  const $form = $tr.closest(".js-form");
+  const $groupSelectFirstInput = $tr.querySelector(".select-group .input.select-group__item");
+  addAllHandlersToInputArea($groupSelectFirstInput, $form);
+
+  const $inputCount = $tr.querySelector(".table-price__input--count");
+  const $inputCountField = $inputCount.querySelector(".input__field");
+  $inputCountField.dataset.validate = "empty";
+  $inputCountField.dataset.mask = "int";
+  addAllHandlersToInput($inputCount, $form);
+  imaskInputHandler($inputCountField);
+
+  const $inputPriceOne = $tr.querySelector(".table-price__input--price-one");
+  const $inputPriceOneField = $inputPriceOne.querySelector(".input__field");
+  $inputPriceOneField.dataset.mask = "num";
+  addAllHandlersToInput($inputPriceOne, $form);
+  imaskInputHandler($inputPriceOneField);
+
+  const $groupSelectFirstInputField = $groupSelectFirstInput.querySelector(".input__field");
+  $groupSelectFirstInputField.dataset.validate = "empty";
+
+  const $selectGroup = $tr.querySelector(".select-group");
+  const $addBtn = $selectGroup.querySelector(".select-group__add");
+  $addBtn.addEventListener("click", () => selectGroupAddBtnHandler($selectGroup));
+
+  const $deleteBtn = $tr.querySelector(".table-price__delete");
+  $deleteBtn.addEventListener("click", () => $tr.remove());
+
+  return $tr;
+}
+
+/* Select group */
+const $selectGroups = document.querySelectorAll(".select-group");
+$selectGroups.forEach(($selectGroup) => {
+  const $addBtn = $selectGroup.querySelector(".select-group__add");
+
+  $addBtn.addEventListener("click", () => selectGroupAddBtnHandler($selectGroup));
+});
+
+function selectGroupAddBtnHandler($selectGroup) {
+  const $list = $selectGroup.querySelector(".select-group__list");
+  const $form = $list.closest(".js-form");
+  const $input = createInputArea({
+    className: "select-group__item",
+    fieldSize: "xxs",
+    dataMinHeight: 32,
+    dataValidate: "empty",
+    placeholder: "Введите полное наименование товара",
+  });
+  $list.append($input);
+  addAllHandlersToInputArea($input, $form);
+}
+
+function createInputArea({ className = "", fieldSize, placeholder = "", value = "", dataMinHeight, dataValidate }) {
+  const $input = createElem("div", `input ${className}`);
+  const $inputMain = createElem("div", "input__main");
+  const $inputField = createElem("textarea", "input__field input__field--xxs input__field--area", {
+    placeholder,
+    value,
+  });
+  if (fieldSize) {
+    $inputField.classList.add(`input__field--${fieldSize}`);
+  }
+  if (dataMinHeight) {
+    $inputField.dataset.minHeight = dataMinHeight;
+  }
+  if (dataValidate) {
+    $inputField.dataset.validate = dataValidate;
+  }
+
+  const $error = createElem("span", "text text--4xs text--lh-125 input__error");
+
+  $inputMain.append($inputField);
+
+  $input.append($inputMain);
+  $input.append($error);
+
+  return $input;
+}
+
+function createFilterTag(text, className = "", type) {
+  const $filterTag = createElem("div", `filter-tag ${className}`);
+  if (type) {
+    $filterTag.classList.add(`filter-tag--${type}`);
+  }
+
+  const $text = createElem("span", "text text--4xs filter-tag__text", {
+    innerText: text,
+  });
+  const $delete = createElem("button", "filter-tag__delete");
+  $delete.setAttribute("type", "button");
+
+  $delete.addEventListener(
+    "click",
+    () => {
+      $filterTag.remove();
+    },
+    { once: true }
+  );
+
+  $filterTag.append($text);
+  $filterTag.append($delete);
+
+  return $filterTag;
+}
+
+const $lkUserImgFiles = document.querySelectorAll(".js-crop-img");
+$lkUserImgFiles.forEach(($file) => {
+  $file.addEventListener('change', () => {
+    const file = $file.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const url = URL.createObjectURL(file);
+      const $img = createElem('img', '');
+      $img.src = url;
+
+      const cropper = new Cropper($img, {
+        viewMode: 2,
+        aspectRatio: 1 / 1,
+      });      
+
+      const $popup = createPopup({
+        title: 'Фото профиля',
+        btnCancelText: "Отменить",
+        btnCancelCallback: () => {
+          setTimeout(() => cropper.destroy(), 600);
+          removePopup($popup);
+          $file.value = '';
+        },
+        btnCancelSize: 'xxs',
+        btnText: "Сохранить",
+        btnCallback: () => {
+          setTimeout(() => cropper.destroy(), 600);
+          removePopup($popup);
+          $file.value = '';
+
+          const canvas = cropper.getCroppedCanvas({
+            width: 200,
+            height: 200
+          });
+
+          // Преобразование canvas в Data URL (Base64)
+          const canvasBase64 = canvas.toDataURL('image/png');
+          console.log(canvasBase64);
+        },
+        btnSize: 'xxs',
+        link: 'Восстановить',
+        linkCallback: () => {
+          cropper.reset();
+        },
+        $cropperImg: $img,
+        mobileFull: true,
+        closeCallback: () => {
+          setTimeout(() => cropper.destroy(), 600);
+          removePopup($popup);
+          $file.value = '';
+        }
+      });
+      
+    } else {
+    }
+  })
+});
+

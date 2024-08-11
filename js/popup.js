@@ -69,19 +69,43 @@ function closePopup($popup, isLockBody = true) {
   $categoriesBoxes.forEach(($categoriesBox) => {
     const $categories = $categoriesBox.querySelectorAll(".categories__item");
 
-    closeOtherCategories();
-    resetVisibility($categories);
+    if ($popup.dataset.popupName !== "custom") {
+      closeOtherCategories();
+      resetVisibility($categories);
+    }
   });
 }
 
 function openPopup($popup) {
   $popup.classList.add("popup--active");
-  if ($popup.dataset.popupLock !== 'no' && !isLockedBody()) {
+  if ($popup.dataset.popupLock === "no" || ($popup.dataset.popupLock === "mobile" && window.innerWidth >= 768)) {
+    return;
+  }
+
+  if (!isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
   }
 }
 
-function createPopup({ name = 'custom', text = "", btnText, btnCallback, className = "", btnDangerText, btnDangerCallback }) {
+function createPopup({
+  name = "custom",
+  title,
+  text = "",
+  btnText,
+  btnCallback,
+  btnSize,
+  className = "",
+  btnDangerText,
+  btnDangerCallback,
+  btnCancelText,
+  btnCancelCallback,
+  btnCancelSize,
+  link,
+  linkCallback,
+  $cropperImg,
+  mobileFull,
+  closeCallback,
+}) {
   if (document.querySelector('.popup--active[data-popup-name="custom"]')) {
     return;
   }
@@ -95,6 +119,9 @@ function createPopup({ name = 'custom', text = "", btnText, btnCallback, classNa
     </svg>
   `;
 
+  const $popup = createElem("div", `popup popup--show ${className}`);
+  $popup.dataset.popupName = name;
+
   const $popupBody = createElem("div", "popup__body");
   const $popupDialog = createElem("div", "popup__dialog");
   const $popupMain = createElem("div", "popup-content__main popup-content__main--p-lg");
@@ -102,8 +129,27 @@ function createPopup({ name = 'custom', text = "", btnText, btnCallback, classNa
     innerHTML: text,
   });
   const $popupContent = createElem("div", "popup-content popup-content--sm popup__content");
+  if (mobileFull) {
+    $popupContent.classList.add('popup-content--mobile-full');
+    $popup.classList.add('popup--mobile-full');
+  }
 
   $popupMain.append($popupText);
+
+  if (title) {
+    const $popupHeader = createElem("div", "popup-content__header");
+    const $title = createElem("div", "text text--xxs text--upper text--lh-14 text--medium");
+    $title.innerText = title;
+    $popupHeader.append($title);
+    $popupContent.append($popupHeader);
+  }
+
+  if ($cropperImg) {
+    const $popupCropper = createElem("div", "popup-content__cropper");
+    $popupCropper.append($cropperImg);
+    $popupContent.append($popupCropper);
+  }
+
   $popupContent.append($popupMain);
   $popupContent.append($closeBtn);
   $popupDialog.append($popupContent);
@@ -122,10 +168,33 @@ function createPopup({ name = 'custom', text = "", btnText, btnCallback, classNa
     $btns.append($btnDanger);
   }
 
+  if (btnCancelText) {
+    const $btnCancel = createElem("div", "btn btn--px-sm btn--gray-100 btn--text-xs popup-content__btns-btn", {
+      innerHTML: btnCancelText,
+    });
+
+    if (btnCancelSize === 'xxs') {
+      $btnCancel.classList.remove('btn--px-sm')
+      $btnCancel.classList.add('btn--px-xs')
+      $btnCancel.classList.add('btn--py-xxs')
+    }
+
+    if (btnCancelCallback) {
+      $btnCancel.addEventListener("click", btnCancelCallback);
+    }
+    $btns.append($btnCancel);
+  }
+
   if (btnText) {
     const $btnConfirm = createElem("div", "btn btn--px-sm btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn", {
       innerHTML: btnText,
     });
+
+    if (btnSize === 'xxs') {
+      $btnConfirm.classList.remove('btn--px-sm')
+      $btnConfirm.classList.add('btn--px-xs')
+      $btnConfirm.classList.add('btn--py-xxs')
+    }
 
     if (btnCallback) {
       $btnConfirm.addEventListener("click", btnCallback);
@@ -134,18 +203,36 @@ function createPopup({ name = 'custom', text = "", btnText, btnCallback, classNa
     $btns.append($btnConfirm);
   }
 
-  $popupMain.append($btns);
+  if (link) {
+    const $bottom = createElem("div", "popup-content__bottom");
+    const $link = createElem("button", "link link--blue-500 link--xs", {
+      innerText: link,
+    });
+    if (linkCallback) {
+      $link.addEventListener("click", linkCallback);
+    }
+
+    $btns.classList.remove("popup-content__btns--mt-20");
+    $bottom.append($link);
+    $bottom.append($btns);
+    $popupMain.append($bottom);
+  } else {
+    $popupMain.append($btns);
+  }
 
   const $popupBackdrop = createElem("div", "popup__backdrop");
-  $popupBackdrop.addEventListener("click", () => removePopup($popup), { once: true });
-
-  const $popup = createElem("div", `popup popup--show ${className}`);
-  $popup.dataset.popupName = name;
+  $popupBackdrop.addEventListener("click", () => {
+    removePopup($popup), { once: true }
+    closeCallback();
+  });
 
   $popup.append($popupContent);
   $popup.append($popupBackdrop);
 
-  $closeBtn.addEventListener("click", () => removePopup($popup), { once: true });
+  $closeBtn.addEventListener("click", () => {
+    removePopup($popup);
+    closeCallback();
+  }, { once: true });
 
   document.body.append($popup);
   showPopup($popup);
@@ -162,7 +249,11 @@ function showPopup($popup) {
 
   document.body.dataset.lockedBy = `popup-${$popup.dataset.popupName}`;
 
-  if ($popup.dataset.popupLock !== 'no' && !isLockedBody()) {
+  if ($popup.dataset.popupLock === "no" || ($popup.dataset.popupLock === "mobile" && window.innerWidth >= 768)) {
+    return;
+  }
+
+  if (!isLockedBody()) {
     lockBody(`popup-${$popup.dataset.popupName}`);
   }
 }
