@@ -693,14 +693,14 @@ window.addEventListener("click", (e) => {
     return;
   }
 
-  const $select = e.target.closest(`.select`);
-  if (!$select) {
+  const $simpleSelect = e.target.closest(`.simple-select`);
+  if (!$simpleSelect) {
     return;
   }
 
-  const $activeSelects = document.querySelectorAll(".select--active");
+  const $activeSelects = document.querySelectorAll(".simple-select--active");
   $activeSelects.forEach(($activeSelect) => {
-    if ($activeSelect !== $select) {
+    if ($activeSelect !== $simpleSelect) {
       const $list = $activeSelect.querySelector(`.${LIST_CLASS}`);
       const $field = $activeSelect.querySelector(`.${FIELD_CLASS}`);
 
