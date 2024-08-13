@@ -2049,6 +2049,10 @@
     width: 82px;
   }
 
+  .offer-main__footer--tablet {
+    display: flex;
+  }
+
   .offer-bottom__sidebar-btn {
     display: flex;
   }
@@ -2181,6 +2185,11 @@
 
   .input--picker-mobile-max-w-none .air-datepicker.-inline- {
     max-width: 100%;
+  }
+
+  .input--picker-desktop-top .air-datepicker.-inline- {
+    top: calc(100% + 8px);
+    bottom: unset;
   }
 
   .header--desktop {
@@ -2881,10 +2890,6 @@
     max-width: calc(100% - 100px - 12px);
   }
 
-  .advert__info-location {
-    margin-top: 4px;
-  }
-
   .advert__info-location:not(:first-child) {
     margin-top: 4px;
     margin-left: 0;
@@ -3202,6 +3207,7 @@
   }
 
   .table-price tr {
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--color-gray-50);
@@ -3209,6 +3215,10 @@
 
   .table-price tr:not(:first-child) {
     margin-top: 8px;
+  }
+
+  .table-price tr.table-price__prototype {
+    display: none;
   }
 
   .table-price th {
@@ -3469,6 +3479,26 @@
     width: 170px;
   }
 
+  .popup__footer--mobile-column {
+    flex-direction: column;
+  }
+
+  .popup__footer-btns--mobile-column {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .popup__footer-btns--mobile-column .popup__footer-btn:not(:first-child) {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+
+  .popup__footer-filter-btns {
+    width: 100%;
+    border-right: 0;
+    padding-bottom: 0;
+  }
+
   .partner-popup {
     position: fixed;
     z-index: 20;
@@ -3633,7 +3663,8 @@
     order: -1;
   }
 
-  .offer-main__footer--desktop {
+  .offer-main__footer--desktop,
+  .offer-main__footer--tablet {
     display: none;
   }
 
@@ -3705,6 +3736,20 @@
     margin-left: 0;
   }
 
+  .partner-popup--fixed {
+    top: 0;
+    max-height: var(--custom-100vh);
+  }
+
+  .partner-popup--fixed .partner-popup__content {
+    margin-top: 0;
+    height: var(--custom-100vh);
+  }
+
+  .partner-popup--fixed .partner__content {
+    border-radius: 0;
+  }
+
   .lk-catalog__title {
     font-size: 16px;
   }
@@ -3768,6 +3813,10 @@
 
   .filter-content--active .filter-content__sidebar {
     display: none;
+  }
+
+  .filter-content__sidebar-section {
+    border-bottom: none;
   }
 
   .filter-content__tabs-item {
@@ -3941,6 +3990,24 @@
 
   .subscribe__block {
     min-height: unset;
+  }
+
+  .offer-main__tabs {
+    width: 100%;
+  }
+
+  .offer-images__item {
+    padding-top: calc(25% - 12px);
+    width: calc(25% - 12px);
+    height: auto;
+  }
+
+  .offer-images__item .offer-img__main {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 

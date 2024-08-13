@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/media.css" />
-    <title>M-Contract - История сделок</title>
+    <title>M-Contract - Результаты поиска - Просмотр объявления - Предожения - Пусто</title>
   </head>
   <body>
     <header class="header header--lk">
@@ -87,7 +87,7 @@
                   <path d="M19.2297 2.77051L2.95312 19.2293" stroke-linecap="round" />
                 </svg>
               </button>
-              <button class="search__btn search__btn--filter js-open-popup" data-popup-name="search-filter">
+              <button class="search__btn search__btn--filter">
                 <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M8.99512 17.6387C10.2378 17.6387 11.2451 16.6313 11.2451 15.3887C11.2451 14.146 10.2378 13.1387 8.99512 13.1387C7.75248 13.1387 6.74512 14.146 6.74512 15.3887C6.74512 16.6313 7.75248 17.6387 8.99512 17.6387Z" />
@@ -207,7 +207,7 @@
 
     <main class="main">
       <div class="lk main__full-section">
-        <div class="lk-sidebar lk__sidebar">
+        <div class="lk-sidebar lk-sidebar--mobile lk__sidebar">
           <div class="lk-sidebar__content" data-scrollbar>
             <div class="lk-sidebar__profile">
               <div class="lk-user lk-sidebar__user">
@@ -253,20 +253,20 @@
                   </a>
                 </li>
                 <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="my-ads.html">
+                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
                     <div class="lk-menu-link__icon">
                       <img src="img/icons/lk-menu/3.svg" alt="" />
                     </div>
                     <span class="lk-menu-link__text">Мои объявления</span>
-                  </a>
+                  </div>
                 </li>
                 <li class="lk-menu__item">
-                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
+                  <a class="lk-menu-link lk-menu__link" href="history-deals.html">
                     <div class="lk-menu-link__icon">
                       <img src="img/icons/lk-menu/4.svg" alt="" />
                     </div>
                     <span class="lk-menu-link__text">История сделок</span>
-                  </div>
+                  </a>
                 </li>
                 <li class="lk-menu__item">
                   <a class="lk-menu-link lk-menu__link" href="favourites.html">
@@ -316,148 +316,487 @@
             </button>
           </div>
         </div>
+        <div class="lk-sidebar lk-sidebar--offers lk__sidebar" data-sidebar-name="offers">
+          <div class="lk-sidebar__content">
+            <div class="text text--iflex text--xxs text--semibold lk-sidebar__title">
+              <span>Предложения</span>
+              <span class="count-circle lk-sidebar__title-count">0</span>
+            </div>
+            <div class="lk-sidebar__sort">
+              <div class="dropdown dropdown--sort lk-sidebar__sort-btn">
+                <button class="link link--iflex link--blue-500 link--xxs link--disabled dropdown__btn">
+                  <span class="dropdown__btn-text">Цена (По убыванию)</span>
+                  <img class="link__icon dropdown__btn-arrow" src="img/icons/down-triangle-blue-500.svg" alt="" />
+                </button>
+                <div class="dropdown__main dropdown__main--left">
+                  <div class="profile-menu profile-menu--shadow dropdown__controls">
+                    <ul class="profile-menu__list">
+                      <li class="profile-menu__item">
+                        <button class="profile-menu__link">
+                          <span>По дате</span>
+                        </button>
+                      </li>
+                      <li class="profile-menu__item">
+                        <button class="profile-menu__link profile-menu__link--active">
+                          <span>Цена (По возрастанию)</span>
+                        </button>
+                      </li>
+                      <li class="profile-menu__item">
+                        <button class="profile-menu__link">
+                          <span>Цена (По убыванию)</span>
+                        </button>
+                      </li>
+                      <li class="profile-menu__item">
+                        <button class="profile-menu__link">
+                          <span>По рейтингу</span>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="offers-type lk-sidebar__offers-type">
+              <span class="offers-type__text">Закрытая форма подачи предложений</span>
+              <div class="icon offers-type__icon" data-tippy-content="Подсказка" data-tippy-placement="bottom">
+                <img class="icon__img" src="img/icons/info-blue-500.svg" alt="" />
+              </div>
+            </div>
+            <div class="offers-type lk-sidebar__offers-type">
+              <span class="offers-type__text">Предложениям присваиваются ранги</span>
+              <div class="icon offers-type__icon" data-tippy-content="Подсказка" data-tippy-placement="bottom">
+                <img class="icon__img" src="img/icons/info-blue-500.svg" alt="">
+              </div>
+            </div>
+            <div class="lk-sidebar__offers" data-scrollbar>
+              <div class="lk-sidebar__offers-empty">
+                <div class="text text--xs text--neutral-500 text--semibold">Нет предложений</div>
+              </div>
+            </div>
+            <div class="lk-sidebar__footer">
+              <button class="btn btn--blue-500 btn--color-white btn--text-xs btn--full lk-sidebar__footer-btn">Отправить предложение</button>
+            </div>
+            <button class="lk-sidebar__close lk-sidebar__close--sm js-close-lk-sidebar" data-sidebar-name="offers">
+              <img src="img/icons/exit-blue-500.svg" alt="" />
+            </button>
+          </div>
+        </div>
         <div class="lk__body">
           <div class="lk__body-content">
-            <div class="lk__header">
+            <a class="link link--iflex link--blue-500 link--upper link--xs lk__back" href="search-results.html">
+              <svg
+                class="link__icon link__icon--mx-lg"
+                width="8"
+                height="15"
+                viewBox="0 0 8 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M6.98153 0.183058C7.2256 0.427136 7.2256 0.822864 6.98153 1.06694L1.54819 6.50028C1.1506 6.89786 1.1506 7.55214 1.54819 7.94972L6.98153 13.3831C7.2256 13.6271 7.2256 14.0229 6.98153 14.2669C6.73745 14.511 6.34172 14.511 6.09764 14.2669L0.664308 8.83361C-0.221436 7.94786 -0.221436 6.50214 0.664308 5.61639L6.09764 0.183058C6.34172 -0.0610194 6.73745 -0.0610194 6.98153 0.183058Z"
+                  fill="#3C5EC4" />
+              </svg>
+              <span>Результаты поиска</span>
+            </a>
+            <div class="lk__header lk__header--mobile-mb-xs">
               <div class="text text--bold text--lh-16 lk__header-title">
-                <span>История сделок</span>
-                <span class="count-circle count-circle--blue-500 lk__header-title-count">32</span>
+                <span>Продажа № 2266</span>
               </div>
+              <div class="tag tag--white tag--published lk__header-tag">
+                <span class="text text--3xs text--lh-14 tag__text">Идет подача предложений</span>
+              </div>
+              <div class="lk__header-links">
+                <button class="link link--iflex link--blue-500 link--xs lk__header-links-link lk__header-links-link--mx-xs js-open-popup" data-popup-name="edit-history">
+                  <img class="icon icon--xs link__icon link__icon--mx-xs" src="img/icons/clock-arrow-blue-500.svg" alt="" />
+                  <span>История изменений</span>
+                </button>
+                <button class="link link--iflex link--blue-500 link--xs lk__header-links-link lk__header-links-link--mx-xs lk__bookmark-btn">
+                  <span>В избранное</span>
+                </button>
+              </div>
+            </div>
+            <div class="lk__top-btns lk__top-btns--mobile lk__top-btns--column">
+              <button
+                class="btn btn--iflex btn--white btn--px-sm btn--py-5xs btn--text-xs lk__top-btns-btn lk__top-btns-btn--flex-1 js-open-lk-sidebar"
+                data-sidebar-name="offers">
+                <span>Предложения</span>
+                <span class="count-circle btn__icon btn__icon--mx-sm">8</span>
+              </button>
             </div>
             <div class="lk__main">
               <div class="lk__main-body">
-                <div class="lk-catalog">
-                  <div class="filter lk-catalog__filter">
-                    <div class="input filter__search filter__search--mobile-second">
-                      <div class="input__main">
-                        <button class="input__left-btn" type="button">
-                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M13.5835 13.5833L17.3335 17.3333"
-                              stroke="#5D606F"
-                              stroke-width="1.25"
-                              stroke-linecap="round"
-                              stroke-linejoin="round" />
-                            <path
-                              d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                              stroke="#5D606F"
-                              stroke-width="1.25"
-                              stroke-linejoin="round" />
-                          </svg>
-                        </button>
-                        <input
-                          class="input__field input__field--no-shadow input__field--no-border input__field--sm input__field--left-btn input__field--right-btn"
-                          type="text"
-                          placeholder="Поиск по наименованию товара..."
-                          name="search"
-                          autocomplete="off" />
-                        <button class="input__right-btn input__clear-field" type="button">
-                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                              fill="#9093A2" />
-                          </svg>
-                        </button>
+                <div class="ad-info">
+                  <div class="ad-info__sections">
+                    <div class="ad-header ad-info__section ad-info__section--col-6">
+                      <div class="ad-header__user">
+                        <div class="ad-header__user-img">
+                          <img src="img/lk/user.jpg" alt="" />
+                        </div>
+                        <div class="ad-header__main">
+                          <div class="text text--iblock text--xxs text--lh-14 text--semibold ad-header__user-title">
+                            <span class="text__clamp text__clamp--2">АО "Торговый Дом "Перекресток”</span>
+                          </div>
+                          <div class="text text--3xs text--lh-14 ad-header__user-location">г. Оренбург (Оренбургская область)</div>
+                          <div class="text text--iflex text--3xs text--lh-14 ad-header__user-rating">
+                            <span>4.8</span>
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                          </div>
+                        </div>
                       </div>
-                      <span class="text text--3xs text--lh-125 input__error"></span>
+                      <div class="ad-header__footer">
+                        <div class="ad-header__footer-info">
+                          <div class="ad-header__meta">
+                            <div class="text text--iflex text--4xs ad-header__meta-item">
+                              <img class="text__icon text__icon--mx-xxs" src="img/icons/eye-neutral-500.svg" alt="" />
+                              <span>188</span>
+                            </div>
+                            <div class="text text--iflex text--4xs ad-header__meta-item">
+                              <img class="text__icon text__icon--mx-xxs" src="img/icons/list-neutral-500.svg" alt="" />
+                              <span>4</span>
+                            </div>
+                            <div class="text text--iflex text--4xs ad-header__meta-item">
+                              <img class="text__icon text__icon--mx-xxs" src="img/icons/bookmark-neutral-500.svg" alt="" />
+                              <span>8</span>
+                            </div>
+                          </div>
+                          <div class="text text--4xs text--neutral-600 ad-header__info-text">Открытый запрос предложений (с отбором)</div>
+                          <div class="text text--4xs text--neutral-400 text--lh-13 ad-header__info-text">
+                            Общее кол-во: 1,5 тн. | 4 дня назад
+                          </div>
+                        </div>
+                        <div class="ad-header__footer-btns">
+                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 ad-header__footer-btn">Написать</button>
+                          <button class="btn btn--icon btn--icon-sm btn--text-xs btn--orange-100 ad-header__footer-btn" id="partner-delete">
+                            <img class="btn__icon btn__icon--mx-sm" src="img/icons/user-minus-orange-500.svg" alt="" />
+                          </button>
+                          <div class="dropdown ad-header__footer-btn">
+                            <button class="btn btn--icon btn--icon-sm btn--gray-100 dropdown__btn">
+                              <img src="img/icons/more-blue-500.svg" alt="" />
+                            </button>
+                            <div class="dropdown__main">
+                              <div class="profile-menu dropdown__controls">
+                                <ul class="profile-menu__list">
+                                  <li class="profile-menu__item">
+                                    <button class="profile-menu__link">
+                                      <span>Заблокировать</span>
+                                    </button>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="sort-btns filter__sort-btns">
-                      <div class="sort-btns__list sort-btns__list--mobile-align-end sort-btns__list--mobile-between">
+                    <div class="ad-stages ad-info__section ad-info__section--col-6">
+                      <div class="ad-stages__item">
+                        <span class="text text--3xs text--neutral-600 ad-stages__item-name">Завершение 1-го этапа подачи предложений</span>
+                        <span class="text text--3xs text--orange-500 text--iflex ad-stages__item-value">
+                          <span>13:31:13</span>
+                          <img class="text__icon" src="img/icons/clock-orange-500.svg" alt="" />
+                        </span>
+                      </div>
+                      <div class="ad-stages__item">
+                        <span class="text text--3xs text--neutral-600 ad-stages__item-name">Начало 2-го этапа подачи предложений</span>
+                        <span class="text text--3xs text--medium text--iflex ad-stages__item-value">23.05.2024 12:00 мск</span>
+                      </div>
+                      <div class="ad-stages__item">
+                        <span class="text text--3xs text--neutral-600 ad-stages__item-name">Завершение 2-го этапа подачи предложений</span>
+                        <span class="text text--3xs text--medium text--iflex ad-stages__item-value">25.05.2024 12:00 мск</span>
+                      </div>
+                      <div class="ad-stages__item">
+                        <span class="text text--3xs text--neutral-600 ad-stages__item-name">Подведение итогов</span>
+                        <span class="text text--3xs text--medium text--iflex ad-stages__item-value">28.05.2024 12:00 мск</span>
+                      </div>
+                    </div>
+                    <div class="offer-main ad-info__section ad-info__section--main">
+                      <div class="table-partner trade-history__table">
+                        <table class="table-partner__main">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Условия доставки</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">Силами продавца</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Полный адрес местонахождения товара</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">
+                                  Воронежская обл, с. Покровское 110 км трасса Воронеж _Москва
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Погрузка</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">Силами покупателя</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Цена</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">без НДС</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Условия оплаты</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">По факту поставки</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Валюта</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">Российский рубль (RUB)</span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span class="text text--3xs text--neutral-600 text--lh-14">Подача предложений по части позиций</span>
+                              </td>
+                              <td>
+                                <span class="text text--3xs text--medium text--lh-14">Запрещена</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="offer-main__tabs">
+                        <div class="offer-main__tabs-header">
+                          <div class="panel-btns panel-btns--mobile-full offer-main__tabs-btns">
+                            <div class="panel-btns__list tabs-btns" data-tabs-name="offer">
+                              <button
+                                class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active">
+                                Товары
+                              </button>
+                              <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                                Описание
+                              </button>
+                              <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" data-addition-btn="files">
+                                Документы
+                              </button>
+                              <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" data-addition-btn="images">
+                                Фото
+                              </button>
+                            </div>
+                          </div>
+                          <a class="btn btn--gray-100 btn--px-sm btn--py-sm btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--files" href="#">
+                            Скачать архив
+                          </a>
+                          <label class="offer-main__tabs-header-btn offer-main__tabs-header-btn--images">
+                            <input class="btn__file-field js-offer-add-img" type="file">
+                            <span class="btn btn--gray-100 btn--px-sm btn--py-sm btn--text-xs btn--full">
+                              Добавить фото
+                            </span>
+                          </label>
+                        </div>
+                        <div class="tabs-list" data-tabs-name="offer">
+                          <div class="tabs-list__item tabs-list__item--active">
+                            <div class="table-price table-price--offer-ad offer-info__table" data-scrollbar data-scrollbar-continue>
+                              <table class="table-price__main">
+                                <thead>
+                                  <tr>
+                                    <th>
+                                      <span class="text text--4xs text--medium">№</span>
+                                    </th>
+                                    <th>
+                                      <span class="text text--4xs text--medium">Наименование товара</span>
+                                    </th>
+                                    <th>
+                                      <span class="text text--4xs text--medium">Кол-во (шт.)</span>
+                                    </th>
+                                    <th>
+                                      <span class="text text--4xs text--medium">Цена за 1 (шт.) мин / без НДС</span>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">
+                                        № 1
+                                      </span>
+                                      <span class="text text--4xs table-price__value table-price__value--desktop">1</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">
+                                        Лом цветных металлов разносортный (из 2-х и более видов)
+                                      </span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">
+                                        № 2
+                                      </span>
+                                      <span class="text text--4xs table-price__value table-price__value--desktop">2</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">
+                                        Лом цветных металлов разносортный (из 2-х и более видов)
+                                      </span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">10</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                      <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="tabs-list__item">
+                            <div class="text text--medium offer-main__comment">
+                              <p>
+                                Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis
+                                nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus
+                                id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu
+                                et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum
+                                enim. Gravida lectus id pharetra elementum.
+                              </p>
+                              <p>
+                                Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis
+                                nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus
+                                id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu
+                                et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum
+                                enim. Gravida lectus id pharetra elementum.
+                              </p>
+                            </div>
+                            <div class="offer-empty offer-main__empty offer-main__empty--comment">
+                              <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
+                            </div>
+                          </div>
+                          <div class="tabs-list__item">
+                            <div class="offer-main__files">
+                              <div class="file file--success offer-main__file">
+                                <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              </div>
+                              <div class="file file--success offer-main__file">
+                                <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              </div>
+                              <div class="file file--success offer-main__file">
+                                <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              </div>
+                              <div class="file file--success offer-main__file">
+                                <a class="file__name" href="#">BRIX Templates.pdf</a>
+                              </div>
+                            </div>
+                            <div class="offer-empty offer-main__empty offer-main__empty--files">
+                              <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
+                            </div>
+                          </div>
+                          <div class="tabs-list__item">
+                            <div class="offer-images offer-main__images">
+                              <div class="offer-images__list">
+                                <div class="offer-img offer-images__item">
+                                  <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
+                                  <button class="offer-img__delete">
+                                    <img src="img/icons/exit-blue-500.svg" alt="" />
+                                  </button>
+                                </div>
+                                <div class="offer-img offer-images__item">
+                                  <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
+                                  <button class="offer-img__delete">
+                                    <img src="img/icons/exit-blue-500.svg" alt="" />
+                                  </button>
+                                </div>
+                                <div class="offer-img offer-images__item">
+                                  <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
+                                  <button class="offer-img__delete">
+                                    <img src="img/icons/exit-blue-500.svg" alt="" />
+                                  </button>
+                                </div>
+                                <div class="offer-img offer-images__item">
+                                  <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
+                                  <button class="offer-img__delete">
+                                    <img src="img/icons/exit-blue-500.svg" alt="" />
+                                  </button>
+                                </div>
+                                <div class="offer-img offer-images__item">
+                                  <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
+                                  <button class="offer-img__delete">
+                                    <img src="img/icons/exit-blue-500.svg" alt="" />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="offer-empty offer-main__empty offer-main__empty--images">
+                              <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="offer-bottom offer-main__footer offer-main__footer--tablet">
                         <button
-                          class="btn btn--iflex btn--py-xs btn--px-xs btn--text-xs btn--white sort-btns__btn js-open-popup"
-                          data-popup-name="history-filter">
-                          <img class="icon icon--sm btn__icon" src="img/icons/filter-neutral-700.svg" alt="" />
-                          <span>Фильтры</span>
-                        </button>
-                        <button class="link link--iflex link--blue-500 link--xs link--lh-14 sort-btns__btn">
-                          <span class="dropdown__btn-text">Очистить историю</span>
+                          class="btn btn--iflex btn--white btn--px-sm btn--py-sm btn--text-xs offer-bottom__sidebar-btn js-open-lk-sidebar"
+                          data-sidebar-name="offers">
+                          <span>Предложения</span>
+                          <span class="count-circle btn__icon btn__icon--mx-sm">0</span>
                         </button>
                       </div>
                     </div>
                   </div>
-                  <div class="lk-catalog__filter-list">
-                    <div class="filter-item lk-catalog__filter-item" data-scrollbar data-scrollbar-continue>
-                      <div class="filter-item__content">
-                        <span class="text text--3xs text--neutral-700 filter-item__name">Период</span>
-                        <button class="link link--blue-500 link--xs filter-item__reset">Сбросить</button>
-                        <div class="filter-item__tags">
-                          <div class="filter-tag filter-item__tag">
-                            <span class="text text--4xs filter-tag__text">12.06.2024 – 14.06.2024</span>
-                            <button class="filter-tag__delete" type="button"></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="filter-item lk-catalog__filter-item" data-scrollbar data-scrollbar-continue>
-                      <div class="filter-item__content">
-                        <span class="text text--3xs text--neutral-700 filter-item__name">Категории</span>
-                        <button class="link link--blue-500 link--xs filter-item__reset">Сбросить</button>
-                        <div class="filter-item__tags">
-                          <div class="filter-tag filter-item__tag">
-                            <span class="text text--4xs filter-tag__text">Шлак и шлам</span>
-                            <button class="filter-tag__delete" type="button"></button>
-                          </div>
-                          <div class="filter-tag filter-item__tag">
-                            <span class="text text--4xs filter-tag__text">Окалина прокатного и кузнечного производства (27а)</span>
-                            <button class="filter-tag__delete" type="button"></button>
-                          </div>
-                          <div class="filter-tag filter-item__tag">
-                            <span class="text text--4xs filter-tag__text">Отходы нерассортированные (31а)</span>
-                            <button class="filter-tag__delete" type="button"></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="filter-item lk-catalog__filter-item" data-scrollbar data-scrollbar-continue>
-                      <div class="filter-item__content">
-                        <span class="text text--3xs text--neutral-700 filter-item__name">Контрагент</span>
-                        <button class="link link--blue-500 link--xs filter-item__reset">Сбросить</button>
-                        <div class="filter-item__tags">
-                          <div class="filter-tag filter-item__tag">
-                            <span class="text text--4xs filter-tag__text">Яндекс</span>
-                            <button class="filter-tag__delete" type="button"></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+
+                <div class="lk-catalog lk__similar">
+                  <div class="lk-catalog__header">
+                    <div class="text text--semibold text--upper text--xs text--lh-13 lk-catalog__title">Похожие объявления</div>
                   </div>
                   <div class="lk-catalog__list">
                     <div class="advert lk-catalog__item">
                       <div class="advert__header">
                         <div class="tags advert__statuses">
                           <div class="tags__list">
-                            <div class="tag tag--gray-100 tags__item">
-                              <span class="text text--3xs text--lh-14 tag__text">Контракт № 2267</span>
+                            <div class="tag tag--orange-150 tags__item">
+                              <span class="text text--3xs text--orange-800 text--lh-14 tag__text">Закупка № 22678123</span>
+                            </div>
+                            <div class="tag tag--green-100 tags__item">
+                              <span class="text text--3xs text--green-400 text--lh-14 tag__text">Идет подача предложений</span>
                             </div>
                           </div>
                         </div>
-                        <div class="advert__info">
-                          <span class="text text--3xs text--clamp advert__name">г. Оренбург (Оренбургская область)</span>
-                        </div>
+                        <span class="text text--4xs advert__location">г. Оренбург (Оренбургская область)</span>
+                        <button class="advert__options-btn">
+                          <img src="img/icons/more-neutral-400.svg" alt="" />
+                        </button>
                       </div>
                       <div class="advert__main">
-                        <div class="advert__mobile-info">
-                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        <div class="advert__img-box">
+                          <img class="advert__img-icon" src="img/icons/img-blue-500.svg" alt="" />
                         </div>
+                        <span class="text text--4xs advert__mobile-location">г. Оренбург (Оренбургская область)</span>
                         <div class="tags tags--inline advert__tags">
                           <div class="tags__list">
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
+                            <div class="tag tag--active tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">Лом и отходы черных металлов:</span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
@@ -466,7 +805,20 @@
                               <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
+                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">
+                                Окалина прокатного и кузнечного производства (26а)
+                              </span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">
+                                Окалина прокатного и кузнечного производства (27а)
+                              </span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">...</span>
@@ -474,35 +826,24 @@
                           </div>
                         </div>
                       </div>
-                      <div class="advert__user">
-                        <div class="lk-user advert__user-main">
-                          <img class="lk-user__img lk-user__img--xs" src="img/lk/history-deals-avatar.jpg" alt="" />
-                          <div class="lk-user__info">
-                            <div class="lk-user__header">
-                              <div class="text text--medium text--3xs lk-user__name lk-user__name--sm">ООО “Рога и копыта”</div>
-                              <div class="text text--4xs lk-user__header-position">Поставщик</div>
-                            </div>
-                            <div class="text text--4xs lk-user__location">Москва</div>
+                      <div class="advert__footer">
+                        <div class="advert__meta">
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/eye-neutral-500.svg" alt="" />
+                            <span>188</span>
+                          </div>
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/list-neutral-500.svg" alt="" />
+                            <span>4</span>
+                          </div>
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/bookmark-neutral-500.svg" alt="" />
+                            <span>8</span>
                           </div>
                         </div>
-                        <span class="advert__user-addition">
-                          <div class="advert__user-addition-list">
-                            <div class="text text--4xs text--neutral-400 advert__user-addition-item advert__user-addition-item--text">
-                              Открытый запрос предложений
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Общее кол-во:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">0,52 тн.</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Сумма:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">477 882 ₽</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">23.03.2024</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">16:19</span>
-                            </div>
-                          </div>
+                        <span class="text text--4xs text--neutral-600 advert__type">Открытый запрос предложений</span>
+                        <span class="text text--4xs text--neutral-400 text--lh-13 advert__addition-info">
+                          Общее кол-во: 1,5 тн. | 4 дня назад | Подача&nbsp;предложений до 20.05.2024 12:00 мск
                         </span>
                       </div>
                     </div>
@@ -510,38 +851,28 @@
                       <div class="advert__header">
                         <div class="tags advert__statuses">
                           <div class="tags__list">
-                            <div class="tag tag--gray-100 tags__item">
-                              <span class="text text--3xs text--lh-14 tag__text">Контракт № 2267</span>
+                            <div class="tag tag--green-200 tags__item">
+                              <span class="text text--3xs text--green-300 text--lh-14 tag__text">Продажа № 2266</span>
+                            </div>
+                            <div class="tag tag--orange-200 tags__item">
+                              <span class="text text--3xs text--orange-400 text--lh-14 tag__text">Завершена подача предложений</span>
                             </div>
                           </div>
                         </div>
-                        <div class="advert__info">
-                          <span class="text text--3xs text--clamp advert__name">г. Оренбург (Оренбургская область)</span>
-                        </div>
+                        <span class="text text--4xs advert__location">г. Оренбург (Оренбургская область)</span>
+                        <button class="advert__options-btn">
+                          <img src="img/icons/more-neutral-400.svg" alt="" />
+                        </button>
                       </div>
                       <div class="advert__main">
-                        <div class="advert__mobile-info">
-                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        <div class="advert__img-box">
+                          <img class="advert__img-icon" src="img/icons/img-blue-500.svg" alt="" />
                         </div>
+                        <span class="text text--4xs advert__mobile-location">г. Оренбург (Оренбургская область)</span>
                         <div class="tags tags--inline advert__tags">
                           <div class="tags__list">
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
+                            <div class="tag tag--active tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">Лом и отходы черных металлов:</span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
@@ -550,7 +881,20 @@
                               <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
+                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">
+                                Окалина прокатного и кузнечного производства (26а)
+                              </span>
+                            </div>
+                            <div class="tag tags__item">
+                              <span class="text text--3xs text--lh-13 tag__text">
+                                Окалина прокатного и кузнечного производства (27а)
+                              </span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">...</span>
@@ -558,119 +902,24 @@
                           </div>
                         </div>
                       </div>
-                      <div class="advert__user">
-                        <div class="lk-user advert__user-main">
-                          <img class="lk-user__img lk-user__img--xs" src="img/lk/history-deals-avatar.jpg" alt="" />
-                          <div class="lk-user__info">
-                            <div class="lk-user__header">
-                              <div class="text text--medium text--3xs lk-user__name lk-user__name--sm">ООО “Рога и копыта”</div>
-                              <div class="text text--4xs lk-user__header-position">Поставщик</div>
-                            </div>
-                            <div class="text text--4xs lk-user__location">Москва</div>
+                      <div class="advert__footer">
+                        <div class="advert__meta">
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/eye-neutral-500.svg" alt="" />
+                            <span>188</span>
+                          </div>
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/list-neutral-500.svg" alt="" />
+                            <span>4</span>
+                          </div>
+                          <div class="text text--iflex text--4xs advert__meta-item">
+                            <img class="text__icon text__icon--mx-xxs" src="img/icons/bookmark-neutral-500.svg" alt="" />
+                            <span>8</span>
                           </div>
                         </div>
-                        <span class="advert__user-addition">
-                          <div class="advert__user-addition-list">
-                            <div class="text text--4xs text--neutral-400 advert__user-addition-item advert__user-addition-item--text">
-                              Открытый запрос предложений
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Общее кол-во:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">0,52 тн.</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Сумма:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">477 882 ₽</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">23.03.2024</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">16:19</span>
-                            </div>
-                          </div>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="advert lk-catalog__item">
-                      <div class="advert__header">
-                        <div class="tags advert__statuses">
-                          <div class="tags__list">
-                            <div class="tag tag--gray-100 tags__item">
-                              <span class="text text--3xs text--lh-14 tag__text">Контракт № 2267</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="advert__info">
-                          <span class="text text--3xs text--clamp advert__name">г. Оренбург (Оренбургская область)</span>
-                        </div>
-                      </div>
-                      <div class="advert__main">
-                        <div class="advert__mobile-info">
-                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
-                        </div>
-                        <div class="tags tags--inline advert__tags">
-                          <div class="tags__list">
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Негабаритный доменный присад (26а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
-                            </div>
-                            <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">...</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="advert__user">
-                        <div class="lk-user advert__user-main">
-                          <img class="lk-user__img lk-user__img--xs" src="img/lk/history-deals-avatar.jpg" alt="" />
-                          <div class="lk-user__info">
-                            <div class="lk-user__header">
-                              <div class="text text--medium text--3xs lk-user__name lk-user__name--sm">ООО “Рога и копыта”</div>
-                              <div class="text text--4xs lk-user__header-position">Поставщик</div>
-                            </div>
-                            <div class="text text--4xs lk-user__location">Москва</div>
-                          </div>
-                        </div>
-                        <span class="advert__user-addition">
-                          <div class="advert__user-addition-list">
-                            <div class="text text--4xs text--neutral-400 advert__user-addition-item advert__user-addition-item--text">
-                              Открытый запрос предложений
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Общее кол-во:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">0,52 тн.</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--medium advert__user-addition-label">Сумма:</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">477 882 ₽</span>
-                            </div>
-                            <div class="advert__user-addition-item">
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">23.03.2024</span>
-                              <span class="text text--3xs text--neutral-600 advert__user-addition-value">16:19</span>
-                            </div>
-                          </div>
+                        <span class="text text--4xs text--neutral-600 advert__type">Открытый запрос предложений</span>
+                        <span class="text text--4xs text--neutral-400 text--lh-13 advert__addition-info">
+                          Общее кол-во: 1,5 тн. | 4 дня назад | Подача&nbsp;предложений до 20.05.2024 12:00 мск
                         </span>
                       </div>
                     </div>
@@ -856,6 +1105,296 @@
                           </tr>
                         </tbody>
                       </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="popup__backdrop"></div>
+            </div>
+
+            <div class="partner-popup partner-popup--fixed popup" data-popup-name="offer-partner">
+              <div class="partner-popup__content partner-popup__content--p-sm popup__content">
+                <div class="partner partner-popup__main">
+                  <div class="partner__content">
+                    <div class="partner__top">
+                      <div class="text text--3xs text--white text--medium text--upper text--clamp partner__top-title">Предложение №528</div>
+                      <button class="text text--4xs text--white text--iflex partner__top-link">
+                        <img class="text__icon" src="img/icons/printer-white.svg" alt="" />
+                        <span>Распечатать</span>
+                      </button>
+                      <button class="icon partner__top-close js-close-popup" type="button">
+                        <img src="img/icons/exit-white.svg" alt="" />
+                      </button>
+                    </div>
+                    <div class="partner__sections" data-scrollbar data-scrollbar-continue>
+                      <div class="partner__section">
+                        <div class="partner-header partner__section-main">
+                          <div class="partner-header__content">
+                            <div class="partner-header__img">
+                              <img src="img/lk/ad-offer.jpg" alt="" />
+                            </div>
+                            <div class="partner-header__main">
+                              <div class="text text--iblock text--xxs text--lh-14 text--semibold partner-header__title">
+                                <span class="text__clamp text__clamp--2">
+                                  ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                                </span>
+                              </div>
+                              <div class="text text--3xs text--lh-14 partner-header__location">г. Оренбург (Оренбургская область)</div>
+                              <div class="text text--iflex text--3xs text--lh-14 partner-header__rating">
+                                <span>4.8</span>
+                                <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
+                              </div>
+                            </div>
+                            <div class="partner-header__btns partner-header__btns--mobile-row">
+                              <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--blue-500 btn--color-white partner-header__btn">
+                                Написать
+                              </button>
+                              <button class="btn btn--px-xxs btn--py-5xs btn--text-xs btn--gray-100 btn--iflex partner-header__btn">
+                                <div class="icon btn__icon btn__icon--mx-sm">
+                                  <img class="icon__img" src="img/icons/clock-blue-500.svg" alt="" />
+                                </div>
+                                <span>Заявка отправлена</span>
+                              </button>
+                              <div class="dropdown partner-header__btn">
+                                <button class="btn btn--icon btn--icon-sm btn--gray-100 dropdown__btn">
+                                  <img src="img/icons/more-blue-500.svg" alt="" />
+                                </button>
+                                <div class="dropdown__main">
+                                  <div class="profile-menu dropdown__controls">
+                                    <ul class="profile-menu__list">
+                                      <li class="profile-menu__item">
+                                        <button class="profile-menu__link">
+                                          <span>Заблокировать</span>
+                                        </button>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="partner__section partner__section--full">
+                        <div class="partner__section-main">
+                          <div class="offer-main partner__offer-main">
+                            <div class="table-partner table-partner--p-lg trade-history__table">
+                              <table class="table-partner__main">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Покупатель</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--blue-500 text--lh-14">
+                                        ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
+                                      </span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Условия доставки</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">Силами продавца</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Погрузка</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">Силами покупателя</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Цена</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">без НДС</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Условия оплаты</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">По факту поставки</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Валюта</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">Российский рубль (RUB)</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <span class="text text--3xs text--neutral-600 text--lh-14">Предложение действительно до</span>
+                                    </td>
+                                    <td>
+                                      <span class="text text--3xs text--medium text--lh-14">24.05.2024 12:00 Мск</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="offer-main__tabs">
+                              <div class="offer-main__tabs-header">
+                                <div class="panel-btns panel-btns--mobile-full offer-main__tabs-btns">
+                                  <div class="panel-btns__list tabs-btns" data-tabs-name="ad-offer">
+                                    <button
+                                      class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active">
+                                      Товары
+                                    </button>
+                                    <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                                      Документы
+                                    </button>
+                                    <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
+                                      Комментарий
+                                    </button>
+                                  </div>
+                                </div>
+                                <a class="btn btn--gray-100 btn--px-sm btn--py-sm btn--text-xs offer-main__tabs-header-btn" href="#">
+                                  Скачать архив
+                                </a>
+                              </div>
+                              <div class="tabs-list" data-tabs-name="ad-offer">
+                                <div class="tabs-list__item tabs-list__item--active">
+                                  <div class="table-price table-price--offer offer-info__table" data-scrollbar data-scrollbar-continue>
+                                    <table class="table-price__main">
+                                      <thead>
+                                        <tr>
+                                          <th>
+                                            <span class="text text--4xs text--medium">№</span>
+                                          </th>
+                                          <th>
+                                            <span class="text text--4xs text--medium">Наименование товара</span>
+                                          </th>
+                                          <th>
+                                            <span class="text text--4xs text--medium">Кол-во (шт.)</span>
+                                          </th>
+                                          <th>
+                                            <span class="text text--4xs text--medium">Цена за 1 (шт.) мин / без НДС</span>
+                                          </th>
+                                          <th>
+                                            <span class="text text--4xs text--medium">Сумма / без НДС</span>
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>
+                                            <span
+                                              class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">
+                                              № 1
+                                            </span>
+                                            <span class="text text--4xs table-price__value table-price__value--desktop">1</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">
+                                              Длинное текстовое наименование товара для проверки отображения в таблице
+                                            </span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">5</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">
+                                              Цена за 1 (шт.) мин / без НДС
+                                            </span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <span
+                                              class="text text--4xs text--medium table-price__mobile-label table-price__mobile-label--num">
+                                              № 2
+                                            </span>
+                                            <span class="text text--4xs table-price__value table-price__value--desktop">2</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">Цистерна</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">5</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">
+                                              Цена за 1 (шт.) мин / без НДС
+                                            </span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
+                                          </td>
+                                          <td>
+                                            <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                            <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <div class="table-price__total">
+                                      <div class="text text--xs text--medium table-price__total-value">27 000,00 ₽</div>
+                                      <div class="text text--medium text--4xs table-price__total-label">Итого</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="tabs-list__item">
+                                  <div class="offer-main__files">
+                                    <div class="file file--success offer-main__file">
+                                      <a class="file__name" href="#">BRIX Templates.pdf</a>
+                                    </div>
+                                    <div class="file file--success offer-main__file">
+                                      <a class="file__name" href="#">BRIX Templates.pdf</a>
+                                    </div>
+                                    <div class="file file--success offer-main__file">
+                                      <a class="file__name" href="#">BRIX Templates.pdf</a>
+                                    </div>
+                                    <div class="file file--success offer-main__file">
+                                      <a class="file__name" href="#">BRIX Templates.pdf</a>
+                                    </div>
+                                  </div>
+                                  <div class="offer-empty offer-main__empty offer-main__empty--files">
+                                    <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
+                                  </div>
+                                </div>
+                                <div class="tabs-list__item">
+                                  <div class="text text--medium offer-main__comment">
+                                    <p>
+                                      Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum
+                                      duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim.
+                                      Gravida lectus id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa
+                                      ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis
+                                      proin praesent elementum enim. Gravida lectus id pharetra elementum.
+                                    </p>
+                                  </div>
+                                  <div class="offer-empty offer-main__empty offer-main__empty--comment">
+                                    <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="offer-bottom partner__section-footer">
+                          <button
+                            class="btn btn--blue-500 btn--color-white btn--px-sm btn--py-sm btn--text-xs partner__section-footer-btn"
+                            href="my-offer-edit.html">
+                            Заключить контракт
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1779,409 +2318,37 @@
       <div class="popup__backdrop"></div>
     </div>
 
-    <div class="popup popup--mobile-full" data-popup-name="history-filter">
+    <div class="popup popup--mobile-full" data-popup-name="edit-history">
       <div class="popup__body">
         <div class="popup__dialog">
-          <div class="popup-content popup-content--auto popup-content--mobile-full popup-content--mobile-bottom popup__content">
+          <div class="popup-content popup-content--mobile-full popup-content--mobile-bottom popup__content" autocomplete="off">
             <div class="popup-content__header">
-              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
-                <button class="icon text__icon text__icon--mx-lg popup-content__filter-back">
-                  <img class="icon__img icon__img--rotate-90deg" src="img/icons/down-round-second.svg" alt="" />
-                </button>
-                <span>Фильтры</span>
-                <span class="count-circle count-circle--oval count-circle--oval--px-sm text__icon">0</span>
-              </div>
+              <div class="text text--xxs text--upper text--lh-14 text--medium">История изменений</div>
             </div>
-            <div class="filter-content popup-content__filter" data-filter-name="history-filter">
-              <div class="filter-content__body">
-                <div class="filter-content__sidebar" data-scrollbar>
-                  <div class="filter-content__sidebar-section">
-                    <div class="filter-content__sidebar-btns tabs-btns tabs-btns--column" data-tabs-name="history-filter">
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn tabs-btns__btn--active"
-                        data-filter-btn-name="period">
-                        <span class="lk-menu-link__text">Период</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn"
-                        data-filter-btn-name="categories">
-                        <span class="lk-menu-link__text">Категории</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn"
-                        data-filter-btn-name="contractor">
-                        <span class="lk-menu-link__text">Контрагент</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="filter-content__main">
-                  <div class="tabs-list filter-content__tabs-list" data-tabs-name="history-filter">
-                    <div class="tabs-list__item filter-content__tabs-item tabs-list__item--active">
-                      <div class="filter-content__date filter-content__section filter-content__section--period" data-scrollbar>
-                        <div class="input input--picker-buttons-hide filter-content__date-input">
-                          <div class="input__main">
-                            <input
-                              class="input__field input__field--sm"
-                              id="filter-date"
-                              type="hidden"
-                              name="until-date"
-                              value=""
-                              autocomplete="off"
-                              readonly
-                              data-datepicker
-                              data-datepicker-always-show
-                              data-datepicker-hide-time
-                              data-datepicker-update-only-date
-                              data-datepicker-range
-                              data-datepicker-cancel-click-clear-field
-                              data-validate="empty" />
-                          </div>
-                          <span class="text text--4xs text--lh-125 input__error"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tabs-list__item filter-content__tabs-item">
-                      <div class="categories filter-content__section filter-content__section--categories">
-                        <div class="categories__list" data-scrollbar>
-                          <div class="category categories__item">
-                            <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                              <span class="category__btn-icon"></span>
-                              <span>Лом и отходы черных металлов</span>
-                            </button>
-                            <div class="category__content">
-                              <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                <input class="checkbox__input category__check-all" type="checkbox" />
-                                <span class="checkbox__switch"></span>
-                                <span class="text text--3xs checkbox__text">Выбрать все</span>
-                              </label>
-                              <div class="category__list category__list--sub">
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Стальные</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Негабаритный доменный присад (26а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Шлак и шлам (28а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Отходы шлифования (30а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Отходы нерассортированные (31а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Стружка смешенная (33а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Скрап (35а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Чугунные</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Прочие</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tabs-list__item filter-content__tabs-item">
-                      <div class="filter-content__section filter-content__section--contractor search-items">
-                        <div class="filter-content__section-header">
-                          <div class="input filter-content__section-search search-items__input">
-                            <div class="input__main">
-                              <button class="input__left-btn" type="button">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    d="M13.5835 13.5833L17.3335 17.3333"
-                                    stroke="#5D606F"
-                                    stroke-width="1.25"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                  <path
-                                    d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                                    stroke="#5D606F"
-                                    stroke-width="1.25"
-                                    stroke-linejoin="round" />
-                                </svg>
-                              </button>
-                              <input
-                                class="input__field input__field--sm input__field--left-btn input__field--right-btn"
-                                type="text"
-                                placeholder="Введите наименование или ИНН"
-                                name="search"
-                                autocomplete="off" />
-                              <button class="input__right-btn input__clear-field" type="button">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                                    fill="#9093A2" />
-                                </svg>
-                              </button>
-                            </div>
-                            <span class="text text--3xs text--lh-125 input__error"></span>
-                          </div>
-                        </div>
-                        <div class="checkbox-list filter-content__section-list" data-scrollbar>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="edit-history-list popup-content__edit-list" data-scrollbar>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Добавлены фото</div>
               </div>
-            </div>
-            <div class="popup__footer popup__footer--mobile-column popup__footer--p-0">
-              <div class="popup__footer-filter-btns">
-                <button
-                class="btn btn--iflex btn--py-sm btn--text-xs btn--orange-100 btn--full js-filter-content-clear">
-                <span>Сбросить фильтры</span>
-              </button>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Удален докумен: “Название документа”</div>
               </div>
-              <div class="popup__footer-btns popup__footer-btns--p-12 popup__footer-btns--mobile-column">
-                <button class="btn btn--gray-100 btn--text-xs popup__footer-btn js-close-popup" type="button">Отменить</button>
-                <button class="btn btn--blue-500 btn--color-white btn--text-xs popup__footer-btn">Применить</button>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Добавлен докумен: “Название документа”</div>
+              </div>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Добавлены фото</div>
+              </div>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Удален докумен: “Название документа”</div>
+              </div>
+              <div class="edit-history-item edit-history-list__item">
+                <div class="text text--3xs text--lh-14 text--neutral-500 edit-history-item__date">08.05.2024, 12:32</div>
+                <div class="text text--xxs text--lh-14 text--medium edit-history-item__title">Добавлен докумен: “Название документа”</div>
               </div>
             </div>
             <button class="popup__close js-close-popup" type="button">
@@ -2195,620 +2362,7 @@
         </div>
       </div>
       <div class="popup__backdrop"></div>
-    </div>
-
-    <div class="popup popup--mobile-full" data-popup-name="search-filter">
-      <div class="popup__body">
-        <div class="popup__dialog">
-          <div class="popup-content popup-content--auto popup-content--mobile-full popup-content--mobile-bottom popup__content">
-            <div class="popup-content__header">
-              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
-                <button class="icon text__icon text__icon--mx-lg popup-content__filter-back">
-                  <img class="icon__img icon__img--rotate-90deg" src="img/icons/down-round-second.svg" alt="" />
-                </button>
-                <span>Фильтры</span>
-                <span class="count-circle count-circle--oval count-circle--oval--px-sm text__icon">0</span>
-              </div>
-            </div>
-            <div class="filter-content popup-content__filter" data-filter-name="search-filter">
-              <div class="filter-content__btns">
-                <label class="lk-menu-checkbox filter-content__btn">
-                  <input class="lk-menu-checkbox__input" type="radio" name="search-filter-ad-type" checked>
-                  <span class="lk-menu-checkbox__switch">Все объявления</span>
-                </label>
-                <label class="lk-menu-checkbox filter-content__btn">
-                  <input class="lk-menu-checkbox__input" type="radio" name="search-filter-ad-type">
-                  <span class="lk-menu-checkbox__switch">Закупки</span>
-                </label>
-                <label class="lk-menu-checkbox filter-content__btn">
-                  <input class="lk-menu-checkbox__input" type="radio" name="search-filter-ad-type">
-                  <span class="lk-menu-checkbox__switch">Продажи</span>
-                </label>
-              </div>
-              <div class="filter-content__body">
-                <div class="filter-content__sidebar" data-scrollbar>
-                  <div class="filter-content__sidebar-section filter-content__sidebar-section--saves">
-                    <div class="text text--4xs text--neutral-500 text--upper text--lh-15 filter-content__sidebar-title">
-                      Сохраненные фильтры
-                    </div>
-                    <div class="filter-content__sidebar-btns"></div>
-                  </div>
-                  <div class="filter-content__sidebar-section">
-                    <div class="filter-content__sidebar-btns tabs-btns tabs-btns--column" data-tabs-name="search-filter">
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn tabs-btns__btn--active"
-                        data-filter-btn-name="categories">
-                        <span class="lk-menu-link__text">Категории</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn"
-                        data-filter-btn-name="regions">
-                        <span class="lk-menu-link__text">Регионы</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn"
-                        data-filter-btn-name="names">
-                        <span class="lk-menu-link__text">Наименование / ИНН</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                      <button
-                        class="lk-menu-link lk-menu-link--px-lg lk-menu-link--active-blue-500 filter-content__sidebar-btn tabs-btns__btn"
-                        data-filter-btn-name="statuses">
-                        <span class="lk-menu-link__text">Статус процедуры</span>
-                        <span class="count-circle count-circle--neutral-50 lk-menu-link__count"></span>
-                        <span class="icon icon--lg lk-menu-link__delete">
-                          <img src="img/icons/exit-neutral-500.svg" alt="" />
-                        </span>
-                      </button>
-                    </div>
-                    <div class="filter-content__sidebar-footer-btns">
-                      <button
-                        class="btn btn--iflex btn--px-xs btn--py-sm btn--text-xs btn--full btn--gray-100 filter-content__sidebar-footer-btn js-filter-content-save">
-                        <span>Сохранить фильтр</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="filter-content__main">
-                  <div class="tabs-list filter-content__tabs-list" data-tabs-name="search-filter">
-                    <div class="tabs-list__item tabs-list__item--active filter-content__tabs-item">
-                      <div class="categories filter-content__section filter-content__section--categories">
-                        <div class="categories__list" data-scrollbar>
-                          <div class="category categories__item">
-                            <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                              <span class="category__btn-icon"></span>
-                              <span>Лом и отходы черных металлов</span>
-                            </button>
-                            <div class="category__content">
-                              <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                <input class="checkbox__input category__check-all" type="checkbox" />
-                                <span class="checkbox__switch"></span>
-                                <span class="text text--3xs checkbox__text">Выбрать все</span>
-                              </label>
-                              <div class="category__list category__list--sub">
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Стальные</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Негабаритный доменный присад (26а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Шлак и шлам (28а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Отходы шлифования (30а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Отходы нерассортированные (31а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Стружка смешенная (33а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Скрап (35а)</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Чугунные</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Прочие</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">
-                                          Окалина прокатного и кузнечного производства (27а)
-                                        </span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tabs-list__item filter-content__tabs-item">
-                      <div class="categories filter-content__section filter-content__section--regions">
-                        <div class="categories__list" data-scrollbar>
-                          <div class="category categories__item">
-                            <button class="text text--medium text--3xs text--lh-14 category__btn" type="button">
-                              <span class="category__btn-icon"></span>
-                              <span>А</span>
-                            </button>
-                            <div class="category__content">
-                              <div class="category__list category__list--sub">
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Алтайский край</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Барнаул</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Адыгея</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Майкоп</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Амурская область</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Благовещенск</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Архангельская область</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Архангельск</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Вельск</span>
-                                      </label>
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Каргополь</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="category categories__item">
-                            <button class="text text--medium text--3xs text--lh-14 category__btn" type="button">
-                              <span class="category__btn-icon"></span>
-                              <span>Б</span>
-                            </button>
-                            <div class="category__content">
-                              <div class="category__list category__list--sub">
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Башкортостан</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Уфа</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="category category__item">
-                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
-                                    <span class="category__btn-icon"></span>
-                                    <span>Белгородская область</span>
-                                  </button>
-                                  <div class="category__content">
-                                    <label class="checkbox category__checkbox category__checkbox--all filter-content__checkbox">
-                                      <input class="checkbox__input category__check-all" type="checkbox" />
-                                      <span class="checkbox__switch"></span>
-                                      <span class="text text--3xs checkbox__text">Выбрать все</span>
-                                    </label>
-                                    <div class="category__list">
-                                      <label class="checkbox category__checkbox filter-content__checkbox">
-                                        <input class="checkbox__input" type="checkbox" />
-                                        <span class="checkbox__switch"></span>
-                                        <span class="text text--3xs checkbox__text">Белгород</span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tabs-list__item filter-content__tabs-item">
-                      <div class="filter-content__section filter-content__section--names search-items">
-                        <div class="filter-content__section-header">
-                          <div class="input filter-content__section-search search-items__input">
-                            <div class="input__main">
-                              <button class="input__left-btn" type="button">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    d="M13.5835 13.5833L17.3335 17.3333"
-                                    stroke="#5D606F"
-                                    stroke-width="1.25"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                  <path
-                                    d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                                    stroke="#5D606F"
-                                    stroke-width="1.25"
-                                    stroke-linejoin="round" />
-                                </svg>
-                              </button>
-                              <input
-                                class="input__field input__field--sm input__field--left-btn input__field--right-btn"
-                                type="text"
-                                placeholder="Введите наименование или ИНН"
-                                name="search"
-                                autocomplete="off" />
-                              <button class="input__right-btn input__clear-field" type="button">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path
-                                    d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                                    fill="#9093A2" />
-                                </svg>
-                              </button>
-                            </div>
-                            <span class="text text--3xs text--lh-125 input__error"></span>
-                          </div>
-                        </div>
-                        <div class="checkbox-list filter-content__section-list" data-scrollbar>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                          <label class="checkbox checkbox-list__item search-items__item filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="checkbox__text">
-                              <div class="text text--medium checkbox__text-title search-items__text">Яндекс</div>
-                              <div class="text text--4xs text--neutral-600 text--lh-13 checkbox__text-item search-items__text">
-                                119021, г Москва, р-н Хамовники, ул Льва Толстого, д 16
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tabs-list__item filter-content__tabs-item">
-                      <div class="filter-content__section filter-content__section--statuses">
-                        <div class="checkbox-list filter-content__section-list" data-scrollbar>
-                          <label class="checkbox checkbox-list__item checkbox-list__item--py-xl filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="text text--3xs checkbox__text">Идет подача предложений</div>
-                          </label>
-                          <label class="checkbox checkbox-list__item checkbox-list__item--py-xl filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="text text--3xs checkbox__text">Завершена подача предложений</div>
-                          </label>
-                          <label class="checkbox checkbox-list__item checkbox-list__item--py-xl filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="text text--3xs checkbox__text">Завершена без победителя</div>
-                          </label>
-                          <label class="checkbox checkbox-list__item checkbox-list__item--py-xl filter-content__checkbox">
-                            <input class="checkbox__input" type="checkbox" />
-                            <span class="checkbox__switch"></span>
-                            <div class="text text--3xs checkbox__text">Заключен контракт</div>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="popup__footer popup__footer--mobile-column popup__footer--p-0">
-              <div class="popup__footer-filter-btns">
-                <button
-                class="btn btn--iflex btn--py-sm btn--text-xs btn--orange-100 btn--full js-filter-content-clear">
-                <span>Сбросить фильтры</span>
-              </button>
-              </div>
-              <div class="popup__footer-btns popup__footer-btns--p-12 popup__footer-btns--mobile-column">
-                <button class="btn btn--gray-100 btn--text-xs popup__footer-btn js-close-popup" type="button">Отменить</button>
-                <button class="btn btn--blue-500 btn--color-white btn--text-xs popup__footer-btn">Применить</button>
-              </div>
-            </div>
-            <button class="popup__close js-close-popup" type="button">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
-                  fill="#5D606F" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="popup__backdrop"></div>
-    </div>
-
-    <div class="popup popup--mobile-full" data-popup-name="search-info">
+    </div>    <div class="popup popup--mobile-full" data-popup-name="search-info">
       <div class="popup__body">
         <div class="popup__dialog">
           <div class="popup-content popup-content--mobile-full popup-content--xl popup__content">

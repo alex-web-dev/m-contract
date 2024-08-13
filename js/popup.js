@@ -105,6 +105,7 @@ function createPopup({
   $cropperImg,
   mobileFull,
   closeCallback,
+  unlockBody = true
 }) {
   if (document.querySelector('.popup--active[data-popup-name="custom"]')) {
     return;
@@ -222,16 +223,16 @@ function createPopup({
 
   const $popupBackdrop = createElem("div", "popup__backdrop");
   $popupBackdrop.addEventListener("click", () => {
-    removePopup($popup), { once: true }
-    closeCallback();
+    removePopup($popup, unlockBody), { once: true }
+    if (closeCallback) closeCallback();
   });
 
   $popup.append($popupContent);
   $popup.append($popupBackdrop);
 
   $closeBtn.addEventListener("click", () => {
-    removePopup($popup);
-    closeCallback();
+    removePopup($popup, unlockBody);
+    if (closeCallback) closeCallback();
   }, { once: true });
 
   document.body.append($popup);

@@ -1705,6 +1705,16 @@ function closeOtherCategories($currentCategory = null) {
   });
 }
 
+/* lk */
+const $lkBookmarkBtn = document.querySelector(".lk__bookmark-btn");
+$lkBookmarkBtn?.addEventListener("click", () => {
+  if ($lkBookmarkBtn.classList.contains("lk__bookmark-btn--active")) {
+    $lkBookmarkBtn.classList.remove("lk__bookmark-btn--active");
+  } else {
+    $lkBookmarkBtn.classList.add("lk__bookmark-btn--active");
+  }
+});
+
 /* lk sidebar */
 const $openLkSidebarBtns = document.querySelectorAll(".js-open-lk-sidebar");
 $openLkSidebarBtns.forEach(($btn) => {
@@ -1727,7 +1737,14 @@ $closeLkSidebarBtns.forEach(($btn) => {
     ? document.querySelector(`.lk-sidebar[data-sidebar-name="${sidebarName}"]`)
     : document.querySelector(".lk-sidebar");
 
-  $btn.addEventListener("click", () => closeLKSidebar($lkSidebar));
+  $btn.addEventListener("click", () => {
+    const isLockBody = !$btn.classList.contains("js-open-popup");
+    if (!isLockBody) {
+      document.body.dataset.lockedBy = `popup-${$btn.dataset.popupName}`;
+    }
+
+    closeLKSidebar($lkSidebar, isLockBody);
+  });
 });
 
 window.addEventListener("click", (e) => {
@@ -1744,17 +1761,16 @@ function openLKSidebar($lkSidebar) {
   }
 }
 
-function closeLKSidebar($lkSidebar) {
+function closeLKSidebar($lkSidebar, isUnlockBody = true) {
   $lkSidebar.classList.remove("lk-sidebar--active");
 
-  if (isLockedBody() && getLockedBodyBy() === "lk-sidebar") {
+  if (isUnlockBody && isLockedBody() && getLockedBodyBy() === "lk-sidebar") {
     unlockBody();
   }
 }
 
 /* Search items */
 const $searchItemsBoxes = document.querySelectorAll(".search-items");
-
 $searchItemsBoxes.forEach(($searchItemsBox) => {
   const $searchInput = $searchItemsBox.querySelector(".search-items__input .input__field");
   const $clearButton = $searchItemsBox.querySelector(".input__clear-field");
@@ -2030,14 +2046,63 @@ function updateOffersListSubmit($submit, count = 0) {
 }
 
 /* Offer */
+const $offerMainBoxes = document.querySelectorAll(".offer-main");
+$offerMainBoxes.forEach(($offerMain) => {
+  const $addImgFileField = $offerMain.querySelector(".js-offer-add-img");
+  const $offerMainImages = $offerMain.querySelector(".offer-main__images");
+  const $offerMainImagesEmpty = $offerMain.querySelector(".offer-main__empty--images");
+  let $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
+  
+  const $offerImagesList = $offerMain.querySelector(".offer-images__list");
+  $addImgFileField?.addEventListener("change", () => {
+    const file = $addImgFileField.files[0];
+    if (!file || !file.type.startsWith("image/")) {
+      return;
+    }
+
+    const url = URL.createObjectURL(file);
+    const $imgBlock = createElem("div", "offer-img offer-images__item");
+    const $img = createElem("img", "offer-img__main", {
+      src: url,
+    });
+    const $deleteBtn = createElem("button", "offer-img__delete", {
+      innerHTML: '<img src="img/icons/exit-blue-500.svg" alt="" />',
+    });
+
+    $deleteBtn.addEventListener(
+      "click",
+      () => {
+        $imgBlock.remove();
+        $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
+        offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
+      },
+      { once: true }
+    );
+
+    $imgBlock.append($img);
+    $imgBlock.append($deleteBtn);
+
+    $offerImagesList.append($imgBlock);
+    
+    $addImgFileField.value = '';
+    $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
+    offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
+  });
+});
+
 const $offerTabsBtns = document.querySelectorAll(".offer-main__tabs .tabs-btns__btn");
 const $offerTabsHeaderBtn = document.querySelector(".offer-main__tabs-header-btn");
 $offerTabsBtns.forEach(($btn, index) => {
   $btn.addEventListener("click", () => {
-    if (index === 1) {
-      $offerTabsHeaderBtn.classList.add("offer-main__tabs-header-btn--show");
-    } else {
-      $offerTabsHeaderBtn.classList.remove("offer-main__tabs-header-btn--show");
+    const $offerMain = $btn.closest(".offer-main");
+
+    const $oldShowedBtn = $offerMain.querySelector(".offer-main__tabs-header-btn--show");
+    $oldShowedBtn?.classList.remove("offer-main__tabs-header-btn--show");
+
+    const additionBtnName = $btn.dataset.additionBtn;
+    const $additionBtn = $offerMain.querySelector(`.offer-main__tabs-header-btn--${additionBtnName}`);
+    if ($additionBtn) {
+      $additionBtn.classList.add("offer-main__tabs-header-btn--show");
     }
   });
 });
@@ -2056,7 +2121,7 @@ $offerMainImagesList.forEach(($offerMainImages) => {
       "click",
       () => {
         $offerMainImg.remove();
-        $offerMainImagesItems = document.querySelectorAll(".offer-img");
+        $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
         offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
       },
       { once: true }
@@ -2091,8 +2156,6 @@ const pickerOffsetTop = 8;
 const $datepickerInputs = document.querySelectorAll("[data-datepicker]");
 
 $datepickerInputs.forEach(($datepickerInput) => {
-  const datepickerInputAdditionTimeText = $datepickerInput.dataset.datepickerAdditionTimeText;
-  // let $datepickerInput.pickerDefaultValue = $datepickerInput.value;
   $datepickerInput.pickerDefaultValue = $datepickerInput.value;
 
   const range = $datepickerInput.dataset.datepickerRange !== undefined;
@@ -2100,7 +2163,6 @@ $datepickerInputs.forEach(($datepickerInput) => {
     inline: true,
     showOtherMonths: false,
     selectOtherMonths: false,
-    selectedDates: [new Date()],
     minDate: new Date(pickerMinYear, 0, 1),
     maxDate: new Date(pickerMaxYear, 11, 31),
     dateFormat: "dd.MM.yyyy",
@@ -2137,7 +2199,6 @@ $datepickerInputs.forEach(($datepickerInput) => {
 
           picker.clear();
           picker.$datepicker.querySelectorAll(".-in-range-").forEach(($rangeItem) => $rangeItem.classList.remove("-in-range-"));
-          picker.selectDate(new Date());
 
           if ($datepickerInput.dataset.datepickerCancelClickClearField !== undefined) {
             $datepickerInput.value = "";
@@ -2152,54 +2213,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
         attrs: {
           type: "button",
         },
-        onClick: () => {
-          const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
-          const selectedDates = picker.selectedDates;
-          const [hours, minutes] = $timeInput.value.split(":").map(Number);
-          let roundedMinutes = Math.round(minutes / 5) * 5;
-          if (roundedMinutes > 55) {
-            roundedMinutes = 55;
-          }
-
-          selectedDates.forEach((selectedDate) => {
-            selectedDate.setHours(hours);
-            selectedDate.setMinutes(roundedMinutes);
-          });
-
-          const updateOnlyDate = $datepickerInput.dataset.datepickerUpdateOnlyDate !== undefined;
-          const formattedDates = selectedDates.map((date) => {
-            if (updateOnlyDate) {
-              return picker.formatDate(date, `${picker.opts.dateFormat}`);
-            } else {
-              return picker.formatDate(date, `${picker.opts.dateFormat} ${picker.opts.timeFormat}`);
-            }
-          });
-          const joinDates = formattedDates.join(" - ");
-          if (datepickerInputAdditionTimeText && !updateOnlyDate) {
-            $datepickerInput.value = `${joinDates} ${datepickerInputAdditionTimeText}`;
-          } else {
-            $datepickerInput.value = `${joinDates}`;
-          }
-
-          $datepickerInput.pickerDefaultValue = $datepickerInput.value;
-          $datepickerInput.dispatchEvent(new Event("input"));
-
-          const $input = $datepickerInput.closest(".input");
-          const $inputTime = $input.querySelector(".js-input-time");
-          if ($inputTime) {
-            $inputTime.innerText = `${hours}:${roundedMinutes}`;
-          }
-
-          if (picker.opts.inline) {
-            picker.$datepicker.classList.remove("air-datepicker--show");
-          } else {
-            picker.hide();
-          }
-
-          if (selectedDates.length === 1) {
-            clearPickerCells(picker);
-          }
-        },
+        onClick: () => updateDatepickerValue(picker, $datepickerInput),
       },
     ],
     onShow: (isFinished) => {
@@ -2238,7 +2252,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
     },
     onSelect: (date) => {
       $datepickerInput.value = $datepickerInput.pickerDefaultValue;
-      // verifyData(date); //dev
+      verifyData(date);
     },
   });
 
@@ -2325,6 +2339,56 @@ function renderDatePicker({ picker, minYear, maxYear }) {
   });
 }
 
+function updateDatepickerValue(picker, $datepickerInput) {
+  const datepickerInputAdditionTimeText = $datepickerInput.dataset.datepickerAdditionTimeText;
+  const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
+  const selectedDates = picker.selectedDates;
+  const [hours, minutes] = $timeInput.value.split(":").map(Number);
+  let roundedMinutes = Math.round(minutes / 5) * 5;
+  if (roundedMinutes > 55) {
+    roundedMinutes = 55;
+  }
+
+  selectedDates.forEach((selectedDate) => {
+    selectedDate.setHours(hours);
+    selectedDate.setMinutes(roundedMinutes);
+  });
+
+  const updateOnlyDate = $datepickerInput.dataset.datepickerUpdateOnlyDate !== undefined;
+  const formattedDates = selectedDates.map((date) => {
+    if (updateOnlyDate) {
+      return picker.formatDate(date, `${picker.opts.dateFormat}`);
+    } else {
+      return picker.formatDate(date, `${picker.opts.dateFormat} ${picker.opts.timeFormat}`);
+    }
+  });
+  const joinDates = formattedDates.join(" - ");
+  if (datepickerInputAdditionTimeText && !updateOnlyDate) {
+    $datepickerInput.value = `${joinDates} ${datepickerInputAdditionTimeText}`;
+  } else {
+    $datepickerInput.value = `${joinDates}`;
+  }
+
+  $datepickerInput.pickerDefaultValue = $datepickerInput.value;
+  $datepickerInput.dispatchEvent(new Event("input"));
+
+  const $input = $datepickerInput.closest(".input");
+  const $inputTime = $input.querySelector(".js-input-time");
+  if ($inputTime) {
+    $inputTime.innerText = `${hours}:${roundedMinutes}`;
+  }
+
+  if (picker.opts.inline) {
+    picker.$datepicker.classList.remove("air-datepicker--show");
+  } else {
+    picker.hide();
+  }
+
+  if (selectedDates.length === 1) {
+    clearPickerCells(picker);
+  }
+}
+
 function createDateDropdown({ picker, type, items, currentIndex, currentItemName }) {
   const $dropdown = createElem("div", `dropdown dropdown-${type}`);
   const $btn = createElem("button", `select-btn select-btn--py-sm dropdown-${type}__btn dropdown__btn`, {
@@ -2408,6 +2472,11 @@ function resetBottomOffset() {
 }
 
 function pickerBottomOffsetHandler($elem, picker) {
+  const $input = $elem.closest(".input");
+  if ($input && $input.classList.contains("input--picker-desktop-top")) {
+    return;
+  }
+
   const $footer = document.querySelector(".footer");
   const offsetToBottom = getDistanceToElementEnd($elem, $footer) - pickerOffsetTop;
   const pickerHeight = picker.$datepicker.offsetHeight;
@@ -2629,15 +2698,26 @@ $catalogFilters.forEach(($catalogFilter) => {
       const $dateInputField = $dateInput.querySelector(".input__field");
       const picker = $dateInputField.picker;
 
-      const $datepickerSubmit = picker.$buttons.querySelector(".air-datepicker-button--submit");
-      $datepickerSubmit.addEventListener("click", () => {
-        $tabBtn.classList.add("filter-content__sidebar-btn--selected");
-        updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+      picker.update({
+        onSelect: (date) => {
+          $dateInputField.value = $dateInputField.pickerDefaultValue;
+          updateDatepickerValue(picker, $dateInputField);
+
+          if ($dateInputField.value !== "") {
+            $tabBtn.classList.add("filter-content__sidebar-btn--selected");
+          } else {
+            $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+          }
+
+          updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+
+          verifyData(date);
+        },
       });
 
       const $datepickerCancel = picker.$buttons.querySelector(".air-datepicker-button--cancel");
       $datepickerCancel.addEventListener("click", () => {
-        $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+        closePopup($popup);
         updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
       });
     }
@@ -2709,13 +2789,14 @@ $catalogFilters.forEach(($catalogFilter) => {
 
         updateFilterSidebarSaves(filterSaves, $sidebarSectionSaves);
 
-        removePopup($savePopup);
+        removePopup($savePopup, false);
       },
+      unlockBody: false,
     });
   });
 
   // Кнопка "Сбросить фильтры"
-  const $clearFilterBtn = $catalogFilter.querySelector(".js-filter-content-clear");
+  const $clearFilterBtn = $popup.querySelector(".js-filter-content-clear");
   $clearFilterBtn?.addEventListener("click", () => {
     clearCatalogFilter($catalogFilter);
 
@@ -2726,7 +2807,7 @@ $catalogFilters.forEach(($catalogFilter) => {
     updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
   });
 
-  /* Кнопка Назад*/
+  /* Кнопка Назад */
   const $filterBack = $popupContent.querySelector(".popup-content__filter-back");
   $filterBack.addEventListener("click", () => {
     $catalogFilter.classList.remove("filter-content--active");
@@ -2803,7 +2884,6 @@ function clearCatalogFilter($box) {
     const picker = $dateInputField.picker;
     picker.clear();
     clearPickerCells(picker);
-    picker.selectDate(new Date());
   }
 }
 
@@ -3006,6 +3086,7 @@ function createFilterRewriteConfirmPopup({ callback }) {
       removePopup($popup, false);
       callback();
     },
+    unlockBody: false,
   });
 }
 
@@ -3065,10 +3146,10 @@ if ($tablePlacement) {
   });
 }
 
-function addItemToAdPlacementTable($table) {
+function addItemToAdPlacementTable($table, $originalTr) {
   const $tbody = $tablePlacement.querySelector("tbody");
 
-  const $tr = $table.querySelector(".table-price__prototype").cloneNode(true);
+  const $tr = $originalTr ? $originalTr.cloneNode(true) : $table.querySelector(".table-price__prototype").cloneNode(true);
   $tr.classList.remove("table-price__prototype");
 
   const $allRows = $table.querySelectorAll("tbody tr:not(.table-price__prototype)");
@@ -3080,11 +3161,21 @@ function addItemToAdPlacementTable($table) {
   const $trRowNums = $tr.querySelectorAll(".table-price__row-num");
   $trRowNums.forEach(($trRowNum) => ($trRowNum.innerText = maxRowsNum + 1));
 
-  $tbody.append($tr);
+  if ($originalTr) {
+    $originalTr.after($tr);
+  } else {
+    $tbody.append($tr);
+  }
 
-  const $groupSelectField = $tr.querySelector(".select__field");
-  $groupSelectField.dataset.validate = "empty";
-  initializeCustomSelect($groupSelectField);
+  const $group = $tr.querySelector(".table-price__select-group");
+  const $groupSelect = $group.querySelector(".select-group__select");
+  const $groupSelectField = $groupSelect.querySelector(".input__field");
+  const $categoriesPopup = document.querySelector('.popup[data-popup-name="categories"]');
+  $groupSelectField.addEventListener("click", () => {
+    $groupSelect.classList.remove("input--error");
+    openPopup($categoriesPopup);
+    selectGroupFieldHandler($group);
+  });
 
   const $form = $tr.closest(".js-form");
   const $groupSelectFirstInput = $tr.querySelector(".select-group .input.select-group__item");
@@ -3107,8 +3198,14 @@ function addItemToAdPlacementTable($table) {
   $groupSelectFirstInputField.dataset.validate = "empty";
 
   const $selectGroup = $tr.querySelector(".select-group");
+  $selectGroup.classList.remove("select-group--chosen");
   const $addBtn = $selectGroup.querySelector(".select-group__add");
-  $addBtn.addEventListener("click", () => selectGroupAddBtnHandler($selectGroup));
+  $addBtn.addEventListener("click", () => {
+    if ($groupSelectField.value !== "") {
+      addItemToAdPlacementTable($tablePlacement, $tr);
+      updateAdPlacementTableRowsNums($tablePlacement);
+    }
+  });
 
   const $deleteBtn = $tr.querySelector(".table-price__delete");
   $deleteBtn.addEventListener("click", () => $tr.remove());
@@ -3116,13 +3213,55 @@ function addItemToAdPlacementTable($table) {
   return $tr;
 }
 
+function updateAdPlacementTableRowsNums($tablePlacement) {
+  const $trs = $tablePlacement.querySelectorAll("tbody tr:not(.table-price__prototype)");
+  $trs.forEach(($tr, index) => {
+    const $rowNums = $tr.querySelectorAll(".table-price__row-num");
+    $rowNums.forEach(($rowNum) => ($rowNum.innerText = index + 1));
+  });
+}
+
 /* Select group */
 const $selectGroups = document.querySelectorAll(".select-group");
 $selectGroups.forEach(($selectGroup) => {
   const $addBtn = $selectGroup.querySelector(".select-group__add");
+  const $tr = $selectGroup.closest("tr");
+  const $field = $selectGroup.querySelector(".select-group__select .input__field");
+  $field?.addEventListener("click", () => selectGroupFieldHandler($selectGroup));
 
-  $addBtn.addEventListener("click", () => selectGroupAddBtnHandler($selectGroup));
+  if ($field.value !== "") {
+    $addBtn.classList.add("select-group__add--active");
+  }
+
+  $addBtn.addEventListener("click", () => {
+    if ($field.value !== "") {
+      addItemToAdPlacementTable($tablePlacement, $tr);
+      updateAdPlacementTableRowsNums($tablePlacement);
+    }
+  });
 });
+
+const $updateSelectGroupFieldBtns = document.querySelectorAll(".js-update-select-group-field");
+$updateSelectGroupFieldBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const value = $btn.dataset.inputValue;
+    const $chosenGroup = document.querySelector(".select-group--chosen");
+    const $field = $chosenGroup.querySelector(".select-group__select .input__field");
+    $field.value = value;
+
+    const $addBtn = $chosenGroup.querySelector(".select-group__add");
+    if ($field.value !== "") {
+      $addBtn.classList.add("select-group__add--active");
+    }
+  });
+});
+
+function selectGroupFieldHandler($selectGroup) {
+  const $oldChosenGroup = document.querySelector(".select-group--chosen");
+  $oldChosenGroup?.classList.remove("select-group--chosen");
+
+  $selectGroup.classList.add("select-group--chosen");
+}
 
 function selectGroupAddBtnHandler($selectGroup) {
   const $list = $selectGroup.querySelector(".select-group__list");
@@ -3193,44 +3332,44 @@ function createFilterTag(text, className = "", type) {
 
 const $lkUserImgFiles = document.querySelectorAll(".js-crop-img");
 $lkUserImgFiles.forEach(($file) => {
-  $file.addEventListener('change', () => {
+  $file.addEventListener("change", () => {
     const file = $file.files[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file && file.type.startsWith("image/")) {
       const url = URL.createObjectURL(file);
-      const $img = createElem('img', '');
+      const $img = createElem("img", "");
       $img.src = url;
 
       const cropper = new Cropper($img, {
         viewMode: 2,
         aspectRatio: 1 / 1,
-      });      
+      });
 
       const $popup = createPopup({
-        title: 'Фото профиля',
+        title: "Фото профиля",
         btnCancelText: "Отменить",
         btnCancelCallback: () => {
           setTimeout(() => cropper.destroy(), 600);
           removePopup($popup);
-          $file.value = '';
+          $file.value = "";
         },
-        btnCancelSize: 'xxs',
+        btnCancelSize: "xxs",
         btnText: "Сохранить",
         btnCallback: () => {
           setTimeout(() => cropper.destroy(), 600);
           removePopup($popup);
-          $file.value = '';
+          $file.value = "";
 
           const canvas = cropper.getCroppedCanvas({
             width: 200,
-            height: 200
+            height: 200,
           });
 
           // Преобразование canvas в Data URL (Base64)
-          const canvasBase64 = canvas.toDataURL('image/png');
+          const canvasBase64 = canvas.toDataURL("image/png");
           console.log(canvasBase64);
         },
-        btnSize: 'xxs',
-        link: 'Восстановить',
+        btnSize: "xxs",
+        link: "Восстановить",
         linkCallback: () => {
           cropper.reset();
         },
@@ -3239,12 +3378,22 @@ $lkUserImgFiles.forEach(($file) => {
         closeCallback: () => {
           setTimeout(() => cropper.destroy(), 600);
           removePopup($popup);
-          $file.value = '';
-        }
+          $file.value = "";
+        },
       });
-      
-    } else {
     }
-  })
+  });
 });
 
+/* Adverts */
+const $adverts = document.querySelectorAll(".advert");
+$adverts.forEach(($advert) => {
+  const $bookmarkBtn = $advert.querySelector(".advert__options-btn--bookmark");
+  $bookmarkBtn?.addEventListener("click", () => {
+    if ($bookmarkBtn.classList.contains("advert__options-btn--active")) {
+      $bookmarkBtn.classList.remove("advert__options-btn--active");
+    } else {
+      $bookmarkBtn.classList.add("advert__options-btn--active");
+    }
+  });
+});
