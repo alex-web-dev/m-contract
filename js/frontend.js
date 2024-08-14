@@ -3,7 +3,7 @@ $offerMainFilesList.forEach(($offerMainFiles) => {
   const $offerMain = $offerMainFiles.closest(".offer-main");
   const $offerMainFilesEmpty = $offerMain.querySelector(".offer-main__empty--files");
   
-  const $offerTabsHeaderBtnFileField = $offerMainFiles?.querySelector(".btn__file-field");
+  const $offerTabsHeaderBtnFileField = $offerMain?.querySelector(".offer-main__tabs-header-btn--files .btn__file-field");
   let $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
 
   offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
@@ -20,6 +20,7 @@ $offerMainFilesList.forEach(($offerMainFiles) => {
       $offerMainFiles.append($offerFile);
       $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
       offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
+      $offerTabsHeaderBtnFileField.value = '';
     }
   });
 

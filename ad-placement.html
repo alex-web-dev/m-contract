@@ -473,21 +473,27 @@
                               Товары
                             </button>
                             <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
-                              Документы
-                            </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Описание
                             </button>
-                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button" data-addition-btn="files">
+                              Документы
+                            </button>
+                            <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button" data-addition-btn="images">
                               Фото
                             </button>
                           </div>
                         </div>
                         <label
-                          class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-xs btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--file">
+                          class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-xs btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--files">
                           <img class="btn__icon" src="img/icons/plus-blue-500.svg" alt="" />
                           <span>Добавить документ</span>
                           <input class="btn__file-field" type="file" />
+                        </label>
+                        <label
+                          class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-xs btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--images">
+                          <img class="btn__icon" src="img/icons/plus-blue-500.svg" alt="" />
+                          <span>Добавить фото</span>
+                          <input class="btn__file-field js-offer-add-img" type="file" />
                         </label>
                       </div>
                       <div class="tabs-list" data-tabs-name="offer">
@@ -833,6 +839,19 @@
                           </button>
                         </div>
                         <div class="tabs-list__item">
+                          <div class="input offer-main__comment">
+                            <div class="input__main">
+                              <textarea
+                                class="input__field input__field--sm input__field--area input__field--area-sm"
+                                id="offer-comment"
+                                name="">
+Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum.</textarea
+                              >
+                            </div>
+                            <span class="text text--4xs text--lh-125 input__error"></span>
+                          </div>
+                        </div>
+                        <div class="tabs-list__item">
                           <div class="offer-main__files">
                             <div class="file file--success offer-main__file">
                               <a class="file__name" href="#">BRIX Templates.pdf</a>
@@ -853,19 +872,6 @@
                           </div>
                           <div class="offer-empty offer-main__empty offer-main__empty--files">
                             <span class="text text--sm text--semibold text--neutral-500 offer-empty__text">Данные не заполнены</span>
-                          </div>
-                        </div>
-                        <div class="tabs-list__item">
-                          <div class="input offer-main__comment">
-                            <div class="input__main">
-                              <textarea
-                                class="input__field input__field--sm input__field--area input__field--area-sm"
-                                id="offer-comment"
-                                name="">
-Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum.</textarea
-                              >
-                            </div>
-                            <span class="text text--4xs text--lh-125 input__error"></span>
                           </div>
                         </div>
                         <div class="tabs-list__item">

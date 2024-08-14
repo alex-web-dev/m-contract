@@ -120,11 +120,14 @@ $accordions.forEach(($accordion) => {
 const $scrollbarElems = document.querySelectorAll("[data-scrollbar]");
 $scrollbarElems.forEach(($scrollbarElem) => {
   const continuousScrolling = $scrollbarElem.dataset.scrollbarContinue !== undefined;
-  Scrollbar.init($scrollbarElem, {
+  const scrollbar = Scrollbar.init($scrollbarElem, {
     damping: 0.1,
     alwaysShowTracks: false,
     continuousScrolling,
   });
+
+  $scrollbarElem.scrollbar = scrollbar;
+  $scrollbarElem.addEventListener('mouseenter', () => $scrollbarElem.focus());
 });
 
 /* Dialog */
@@ -2168,6 +2171,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
     dateFormat: "dd.MM.yyyy",
     timeFormat: "HH:mm",
     timepicker: true,
+    keyboardNav: false,
     position: ({ $datepicker, $target, $pointer }) => {
       const coords = $target.getBoundingClientRect();
       const top = coords.y + coords.height + window.scrollY + pickerOffsetTop;
@@ -2474,6 +2478,11 @@ function resetBottomOffset() {
 function pickerBottomOffsetHandler($elem, picker) {
   const $input = $elem.closest(".input");
   if ($input && $input.classList.contains("input--picker-desktop-top")) {
+    return;
+  }
+
+  const $popup = $input.closest('.popup');
+  if ($popup) {
     return;
   }
 

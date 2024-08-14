@@ -4135,6 +4135,7 @@ div.scrollbar-thumb-x {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  pointer-events: auto;
 }
 
 .popup__dialog {

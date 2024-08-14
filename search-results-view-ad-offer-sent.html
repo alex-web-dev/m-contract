@@ -614,7 +614,7 @@
                               <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" data-addition-btn="files">
                                 Документы
                               </button>
-                              <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" data-addition-btn="images">
+                              <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
                                 Фото
                               </button>
                             </div>
@@ -622,12 +622,6 @@
                           <a class="btn btn--gray-100 btn--px-sm btn--py-sm btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--files" href="#">
                             Скачать архив
                           </a>
-                          <label class="offer-main__tabs-header-btn offer-main__tabs-header-btn--images">
-                            <input class="btn__file-field js-offer-add-img" type="file">
-                            <span class="btn btn--gray-100 btn--px-sm btn--py-sm btn--text-xs btn--full">
-                              Добавить фото
-                            </span>
-                          </label>
                         </div>
                         <div class="tabs-list" data-tabs-name="offer">
                           <div class="tabs-list__item tabs-list__item--active">
@@ -743,33 +737,18 @@
                               <div class="offer-images__list">
                                 <div class="offer-img offer-images__item">
                                   <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
-                                  <button class="offer-img__delete">
-                                    <img src="img/icons/exit-blue-500.svg" alt="" />
-                                  </button>
                                 </div>
                                 <div class="offer-img offer-images__item">
                                   <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
-                                  <button class="offer-img__delete">
-                                    <img src="img/icons/exit-blue-500.svg" alt="" />
-                                  </button>
                                 </div>
                                 <div class="offer-img offer-images__item">
                                   <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
-                                  <button class="offer-img__delete">
-                                    <img src="img/icons/exit-blue-500.svg" alt="" />
-                                  </button>
                                 </div>
                                 <div class="offer-img offer-images__item">
                                   <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
-                                  <button class="offer-img__delete">
-                                    <img src="img/icons/exit-blue-500.svg" alt="" />
-                                  </button>
                                 </div>
                                 <div class="offer-img offer-images__item">
                                   <img class="offer-img__main" src="img/lk/ad-photo.jpg" alt="" />
-                                  <button class="offer-img__delete">
-                                    <img src="img/icons/exit-blue-500.svg" alt="" />
-                                  </button>
                                 </div>
                               </div>
                             </div>
@@ -808,20 +787,24 @@
                             </div>
                           </div>
                         </div>
-                        <span class="text text--4xs advert__location">г. Оренбург (Оренбургская область)</span>
-                        <button class="advert__options-btn">
-                          <img src="img/icons/more-neutral-400.svg" alt="" />
-                        </button>
+                        <div class="advert__info">
+                          <span class="text text--4xs advert__name">ООО "УРАЛЬСКАЯ МЕТАЛЛИЧЕСКАЯ КОМПАНИЯ"</span>
+                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        </div>
+                        <button class="advert__options-btn advert__options-btn--bookmark"></button>
                       </div>
                       <div class="advert__main">
                         <div class="advert__img-box">
                           <img class="advert__img-icon" src="img/icons/img-blue-500.svg" alt="" />
                         </div>
-                        <span class="text text--4xs advert__mobile-location">г. Оренбург (Оренбургская область)</span>
+                        <div class="advert__mobile-info">
+                          <span class="text text--4xs advert__name">ООО "УРАЛЬСКАЯ МЕТАЛЛИЧЕСКАЯ КОМПАНИЯ"</span>
+                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        </div>
                         <div class="tags tags--inline advert__tags">
                           <div class="tags__list">
                             <div class="tag tag--active tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">Лом и отходы черных металлов:</span>
+                              <span class="text text--3xs text--lh-14 tag__text">Лом и отходы черных металлов:</span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">Cтальные</span>
@@ -836,14 +819,10 @@
                               <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">
-                                Окалина прокатного и кузнечного производства (26а)
-                              </span>
+                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (26а)</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">
-                                Окалина прокатного и кузнечного производства (27а)
-                              </span>
+                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">...</span>
@@ -879,21 +858,25 @@
                             <div class="tag tag--green-200 tags__item">
                               <span class="text text--3xs text--green-300 text--lh-14 tag__text">Продажа № 2266</span>
                             </div>
-                            <div class="tag tag--orange-200 tags__item">
-                              <span class="text text--3xs text--orange-400 text--lh-14 tag__text">Завершена подача предложений</span>
+                            <div class="tag tag--green-100 tags__item">
+                              <span class="text text--3xs text--green-400 text--lh-14 tag__text">Идет подача предложений</span>
                             </div>
                           </div>
                         </div>
-                        <span class="text text--4xs advert__location">г. Оренбург (Оренбургская область)</span>
-                        <button class="advert__options-btn">
-                          <img src="img/icons/more-neutral-400.svg" alt="" />
-                        </button>
+                        <div class="advert__info">
+                          <span class="text text--4xs advert__name">ООО "УРАЛЬСКАЯ МЕТАЛЛИЧЕСКАЯ КОМПАНИЯ"</span>
+                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        </div>
+                        <button class="advert__options-btn advert__options-btn--bookmark"></button>
                       </div>
                       <div class="advert__main">
                         <div class="advert__img-box">
-                          <img class="advert__img-icon" src="img/icons/img-blue-500.svg" alt="" />
+                          <img class="advert__img" src="img/lk/search-results-item.jpg" alt="" />
                         </div>
-                        <span class="text text--4xs advert__mobile-location">г. Оренбург (Оренбургская область)</span>
+                        <div class="advert__mobile-info">
+                          <span class="text text--4xs advert__name">ООО "УРАЛЬСКАЯ МЕТАЛЛИЧЕСКАЯ КОМПАНИЯ"</span>
+                          <span class="text text--4xs advert__info-location">г. Оренбург (Оренбургская область)</span>
+                        </div>
                         <div class="tags tags--inline advert__tags">
                           <div class="tags__list">
                             <div class="tag tag--active tags__item">
@@ -912,14 +895,10 @@
                               <span class="text text--3xs text--lh-13 tag__text">Чугунные</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">
-                                Окалина прокатного и кузнечного производства (26а)
-                              </span>
+                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (26а)</span>
                             </div>
                             <div class="tag tags__item">
-                              <span class="text text--3xs text--lh-13 tag__text">
-                                Окалина прокатного и кузнечного производства (27а)
-                              </span>
+                              <span class="text text--3xs text--lh-13 tag__text">Окалина прокатного и кузнечного производства (27а)</span>
                             </div>
                             <div class="tag tags__item">
                               <span class="text text--3xs text--lh-13 tag__text">...</span>
@@ -1151,7 +1130,7 @@
                         <img src="img/icons/exit-white.svg" alt="" />
                       </button>
                     </div>
-                    <div class="partner__sections" data-scrollbar data-scrollbar-continue>
+                    <div class="partner__sections" data-scrollbar>
                       <div class="partner__section">
                         <div class="partner-header partner__section-main">
                           <div class="partner-header__content">
@@ -1168,24 +1147,6 @@
                               <div class="text text--iflex text--3xs text--lh-14 partner-header__rating">
                                 <span>4.8</span>
                                 <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                              </div>
-                            </div>
-                            <div class="partner-header__btns partner-header__btns--mobile-row">
-                              <div class="dropdown partner-header__btn">
-                                <button class="btn btn--icon btn--icon-sm btn--gray-100 dropdown__btn">
-                                  <img src="img/icons/more-blue-500.svg" alt="" />
-                                </button>
-                                <div class="dropdown__main">
-                                  <div class="profile-menu dropdown__controls">
-                                    <ul class="profile-menu__list">
-                                      <li class="profile-menu__item">
-                                        <button class="profile-menu__link">
-                                          <span>Заблокировать</span>
-                                        </button>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -1294,7 +1255,7 @@
                                             <span class="text text--4xs text--medium">Кол-во (шт.)</span>
                                           </th>
                                           <th>
-                                            <span class="text text--4xs text--medium">Цена за 1 (шт.) мин / без НДС</span>
+                                            <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
                                           </th>
                                           <th>
                                             <span class="text text--4xs text--medium">Сумма / без НДС</span>
@@ -1322,7 +1283,7 @@
                                           </td>
                                           <td>
                                             <span class="text text--4xs text--medium table-price__mobile-label">
-                                              Цена за 1 (шт.) мин / без НДС
+                                              Цена за 1 (шт.) / без НДС
                                             </span>
                                             <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
                                           </td>
@@ -1349,7 +1310,7 @@
                                           </td>
                                           <td>
                                             <span class="text text--4xs text--medium table-price__mobile-label">
-                                              Цена за 1 (шт.) мин / без НДС
+                                              Цена за 1 (шт.) / без НДС
                                             </span>
                                             <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
                                           </td>
