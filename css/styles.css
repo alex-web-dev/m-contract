@@ -4241,6 +4241,10 @@ div.scrollbar-thumb-x {
   max-height: calc(var(--custom-100vh) - 96px);
 }
 
+.popup-content--xxl {
+  width: 720px;
+}
+
 .popup-content--xl {
   width: 580px;
 }
@@ -5978,6 +5982,7 @@ label.lk-user__img-box {
 .category__item-btn {
   padding: 12px;
   font-size: 14px;
+  text-align: left;
 }
 
 .category__content {
@@ -6535,6 +6540,10 @@ span.pagination__link--right {
 
 .lk-catalog__filter-list {
   margin-bottom: 12px;
+}
+
+.lk-catalog__filter-list--mb-lg {
+  margin-bottom: 24px;
 }
 
 .lk-catalog__filter-item:not(:first-child) {

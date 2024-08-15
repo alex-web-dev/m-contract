@@ -3496,7 +3496,10 @@
   .popup__footer-filter-btns {
     width: 100%;
     border-right: 0;
-    padding-bottom: 0;
+  }
+
+  .popup__footer-filter-btns ~ .popup__footer-btns {
+    padding-top: 0;
   }
 
   .partner-popup {
@@ -3802,6 +3805,10 @@
     margin-left: 0;
   }
 
+  .filter-content--active .filter-content__btns:not(.tabs-btns) {
+    display: none;
+  }
+
   .filter-content__body {
     position: relative;
   }
@@ -3833,6 +3840,14 @@
 
   .filter-content__tabs-item.filter-content__tabs-item--mobile-show.tabs-list__item--active {
     display: flex;
+  }
+
+  .filter-content--active .filter-content__btns:not(.tabs-btns) {
+    display: none;
+  }
+
+  .filter-content--active ~ .popup__footer .popup__footer-btns {
+    display: none;
   }
 
   .btn-placement {

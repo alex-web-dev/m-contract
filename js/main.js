@@ -143,6 +143,7 @@ $dialogLists.forEach(($popupDialogList) => {
 
   dialogListScrollbar.scrollTo(0, dialogListScrollbar.limit.y, 0);
   dialogListsScrollbars.push(dialogListScrollbar);
+  $popupDialogList.addEventListener('mouseenter', () => $popupDialogList.focus());
 });
 
 /* Messages popup */
