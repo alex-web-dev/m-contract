@@ -7857,6 +7857,10 @@ span.pagination__link--right {
   flex-wrap: wrap;
 }
 
+.offer-images__list:empty {
+  margin-top: 0;
+}
+
 .offer-images__item {
   margin-left: 12px;
   margin-top: 12px;

@@ -1,4 +1,3 @@
-const $offerMainFilesList = document.querySelectorAll(".offer-main__files");
 $offerMainFilesList.forEach(($offerMainFiles) => {
   const $offerMain = $offerMainFiles.closest(".offer-main");
   const $offerMainFilesEmpty = $offerMain.querySelector(".offer-main__empty--files");

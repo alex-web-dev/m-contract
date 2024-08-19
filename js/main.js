@@ -127,7 +127,7 @@ $scrollbarElems.forEach(($scrollbarElem) => {
   });
 
   $scrollbarElem.scrollbar = scrollbar;
-  $scrollbarElem.addEventListener('mouseenter', () => $scrollbarElem.focus());
+  $scrollbarElem.addEventListener("mouseenter", () => $scrollbarElem.focus());
 });
 
 /* Dialog */
@@ -143,7 +143,7 @@ $dialogLists.forEach(($popupDialogList) => {
 
   dialogListScrollbar.scrollTo(0, dialogListScrollbar.limit.y, 0);
   dialogListsScrollbars.push(dialogListScrollbar);
-  $popupDialogList.addEventListener('mouseenter', () => $popupDialogList.focus());
+  $popupDialogList.addEventListener("mouseenter", () => $popupDialogList.focus());
 });
 
 /* Messages popup */
@@ -2056,7 +2056,7 @@ $offerMainBoxes.forEach(($offerMain) => {
   const $offerMainImages = $offerMain.querySelector(".offer-main__images");
   const $offerMainImagesEmpty = $offerMain.querySelector(".offer-main__empty--images");
   let $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
-  
+
   const $offerImagesList = $offerMain.querySelector(".offer-images__list");
   $addImgFileField?.addEventListener("change", () => {
     const file = $addImgFileField.files[0];
@@ -2087,30 +2087,14 @@ $offerMainBoxes.forEach(($offerMain) => {
     $imgBlock.append($deleteBtn);
 
     $offerImagesList.append($imgBlock);
-    
-    $addImgFileField.value = '';
+
+    $addImgFileField.value = "";
     $offerMainImagesItems = $offerMain.querySelectorAll(".offer-img");
     offerMainEmptyHandler($offerMainImages, $offerMainImagesItems, $offerMainImagesEmpty);
   });
 });
 
-const $offerTabsBtns = document.querySelectorAll(".offer-main__tabs .tabs-btns__btn");
-const $offerTabsHeaderBtn = document.querySelector(".offer-main__tabs-header-btn");
-$offerTabsBtns.forEach(($btn, index) => {
-  $btn.addEventListener("click", () => {
-    const $offerMain = $btn.closest(".offer-main");
-
-    const $oldShowedBtn = $offerMain.querySelector(".offer-main__tabs-header-btn--show");
-    $oldShowedBtn?.classList.remove("offer-main__tabs-header-btn--show");
-
-    const additionBtnName = $btn.dataset.additionBtn;
-    const $additionBtn = $offerMain.querySelector(`.offer-main__tabs-header-btn--${additionBtnName}`);
-    if ($additionBtn) {
-      $additionBtn.classList.add("offer-main__tabs-header-btn--show");
-    }
-  });
-});
-
+//Редактирование/размещение - Фото - Переключение блока "Данные не заполнены"
 const $offerMainImagesList = document.querySelectorAll(".offer-main__images");
 $offerMainImagesList.forEach(($offerMainImages) => {
   const $offerMain = $offerMainImages.closest(".offer-main");
@@ -2133,6 +2117,7 @@ $offerMainImagesList.forEach(($offerMainImages) => {
   });
 });
 
+//Редактирование/размещение - Комментарий/Описание - Переключение блока "Данные не заполнены"
 const $offerMainCommentsList = document.querySelectorAll(".offer-main__comment");
 $offerMainCommentsList.forEach(($offerMainComments) => {
   const $offerMain = $offerMainComments.closest(".offer-main");
@@ -2143,6 +2128,45 @@ $offerMainCommentsList.forEach(($offerMainComments) => {
   }
 });
 
+//Редактирование/размещение - Документы - Переключение блока "Данные не заполнены"
+const $offerMainFilesList = document.querySelectorAll(".offer-main__files");
+$offerMainFilesList.forEach(($offerMainFiles) => {
+  const $offerMain = $offerMainFiles.closest(".offer-main");
+  const $offerMainFilesEmpty = $offerMain.querySelector(".offer-main__empty--files");
+
+  let $offerMainFilesItems = $offerMainFiles.querySelectorAll(".offer-main__file");
+
+  offerMainEmptyHandler($offerMainFiles, $offerMainFilesItems, $offerMainFilesEmpty);
+});
+
+//Редактирование/размещение - Переключение видимости кнопок Скачать архив/Добавить документ/Добавить фото
+const $offerTabsBtns = document.querySelectorAll(".offer-main__tabs .tabs-btns__btn");
+const $offerTabsHeaderBtn = document.querySelector(".offer-main__tabs-header-btn");
+$offerTabsBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const $offerMain = $btn.closest(".offer-main");
+
+    const $oldShowedBtn = $offerMain.querySelector(".offer-main__tabs-header-btn--show");
+    $oldShowedBtn?.classList.remove("offer-main__tabs-header-btn--show");
+
+    const additionBtnName = $btn.dataset.additionBtn;
+    const $additionBtn = $offerMain.querySelector(`.offer-main__tabs-header-btn--${additionBtnName}`);
+    if (!$additionBtn) {
+      return;
+    }
+
+    const $offerMainFilesItems = $offerMain.querySelectorAll(".offer-main__file");
+    if (additionBtnName === "files" && $additionBtn.dataset.btnType === "download") {
+      if ($offerMainFilesItems.length !== 0) {
+        $additionBtn.classList.add("offer-main__tabs-header-btn--show");
+      }
+    } else {
+      $additionBtn.classList.add("offer-main__tabs-header-btn--show");
+    }
+  });
+});
+
+// Обработчик отображение/скрытия блока "Данные не заполнены"
 function offerMainEmptyHandler($offerMainList, $offerMainItems, $empty) {
   if ($offerMainItems.length === 0) {
     $offerMainList.classList.add("offer-main__hidden");
@@ -2482,7 +2506,7 @@ function pickerBottomOffsetHandler($elem, picker) {
     return;
   }
 
-  const $popup = $input.closest('.popup');
+  const $popup = $input.closest(".popup");
   if ($popup) {
     return;
   }
@@ -2814,6 +2838,10 @@ $catalogFilters.forEach(($catalogFilter) => {
       $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
     });
 
+    delete $catalogFilter.dataset.activeSaveId;
+    const $activeSaveBtn = $catalogFilter.querySelector(".filter-content__sidebar-btn--save.lk-menu-link--active");
+    $activeSaveBtn?.classList.remove("lk-menu-link--active");
+
     updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
   });
 
@@ -2970,6 +2998,11 @@ function updateFilterSave(save, $catalogFilter, checkboxConfigs) {
       } else {
         $checkbox.checked = false;
       }
+    });
+
+    const $categoriesItems = $section.querySelectorAll(".category");
+    $categoriesItems.forEach(($category) => {
+      updateSelectAllState($category);
     });
   });
 }
