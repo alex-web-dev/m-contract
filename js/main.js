@@ -2168,6 +2168,10 @@ $offerTabsBtns.forEach(($btn) => {
 
 // Обработчик отображение/скрытия блока "Данные не заполнены"
 function offerMainEmptyHandler($offerMainList, $offerMainItems, $empty) {
+  if (!$offerMainList || !$offerMainItems || !$empty) {
+    return;
+  }
+  
   if ($offerMainItems.length === 0) {
     $offerMainList.classList.add("offer-main__hidden");
     $empty.classList.add("offer-main__empty--show");
