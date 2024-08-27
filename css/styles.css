@@ -393,7 +393,7 @@ mark {
 }
 
 .text--neutral-400 {
-  color: var(--color-neutral-500);
+  color: var(--color-neutral-400);
 }
 
 .text--neutral-500 {
@@ -1391,6 +1391,10 @@ mark {
   bottom: calc(100% + 8px);
 }
 
+.input--picker-border-none .air-datepicker.-inline- {
+  border: none;
+}
+
 .file-input__field {
   display: none;
 }
@@ -1794,10 +1798,23 @@ mark {
   display: block;
 }
 
+.checkbox__text-block {
+  margin-left: 8px;
+}
+
 .checkbox__text {
   margin-left: 7px;
   line-height: 1.4;
   user-select: none;
+}
+
+.checkbox__text--num {
+  margin-left: 0;
+  align-self: flex-start;
+}
+
+.checkbox__text--num ~ .checkbox__text {
+  margin-left: 4px;
 }
 
 .checkbox__text-header {
@@ -4276,6 +4293,10 @@ div.scrollbar-thumb-x {
   padding: 0;
 }
 
+.popup__footer--end {
+  justify-content: end;
+}
+
 .popup__footer-btns {
   display: inline-flex;
 }
@@ -4293,7 +4314,7 @@ div.scrollbar-thumb-x {
 }
 
 .popup__footer-filter-btns {
-  width: 280px;
+  width: 260px;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -4400,6 +4421,10 @@ div.scrollbar-thumb-x {
   max-width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.popup-content__filter--xl {
+  width: 800px;
 }
 
 .popup-content__main--p-lg {
@@ -6074,6 +6099,19 @@ label.lk-user__img-box {
   display: none;
 }
 
+.category__checkbox--align-start {
+  align-items: flex-start;
+}
+
+.category__btn .category__checkbox {
+  margin-right: 8px;
+  padding: 0;
+}
+
+.category__btn .category__checkbox--hide {
+  display: flex;
+}
+
 .category__item-btn {
   padding: 12px;
   font-size: 14px;
@@ -6092,6 +6130,10 @@ label.lk-user__img-box {
 
 .category__list--sub {
   padding-left: 28px;
+}
+
+.category__btn-num {
+  margin-right: 4px;
 }
 
 .category__btn-icon {
@@ -6148,6 +6190,10 @@ label.lk-user__img-box {
 
 .categories__list-h-sm {
   flex-basis: 425px;
+}
+
+.categories__list-content--xl {
+  min-width: 500px;
 }
 
 .categories__footer {
@@ -8274,7 +8320,7 @@ span.pagination__link--right {
 
 .filter-content__sidebar {
   flex: 0 0 auto;
-  width: 280px;
+  width: 260px;
   border-right: 1px solid var(--color-neutral-100);
 }
 
@@ -8397,6 +8443,10 @@ span.pagination__link--right {
 
 .filter-content__section-list--xs {
   height: 336px;
+}
+
+.filter-content__checkbox {
+  align-items: flex-start;
 }
 
 .filter-content__footer {

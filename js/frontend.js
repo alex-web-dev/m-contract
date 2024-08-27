@@ -56,3 +56,5 @@ function createOfferFile(name, { deleteCallback }) {
 
   return $offerFile;
 }
+
+function verifyData(data) {}

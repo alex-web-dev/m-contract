@@ -127,7 +127,11 @@ $scrollbarElems.forEach(($scrollbarElem) => {
   });
 
   $scrollbarElem.scrollbar = scrollbar;
-  $scrollbarElem.addEventListener("mouseenter", () => $scrollbarElem.focus());
+  $scrollbarElem.addEventListener("mouseenter", () => {
+    if (document.activeElement.tagName.toLowerCase() !== "input") {
+      $scrollbarElem.focus();
+    }
+  });
 });
 
 /* Dialog */
@@ -290,6 +294,17 @@ $fileInputs.forEach(($fileInput) => {
     $field.value = "";
     $name.textContent = "";
     $fileInput.classList.remove("file-input--active");
+  });
+});
+
+/* Clear picker buttons */
+const $clearPickerBtns = document.querySelectorAll(".js-clear-picker");
+$clearPickerBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const $field = document.querySelector(`#${$btn.dataset.clearPickerId}`);
+    const $input = $field.closest(".input");
+
+    clearDatepicker($input);
   });
 });
 
@@ -1515,7 +1530,10 @@ const $categoriesItems = document.querySelectorAll(".category");
 $categoriesItems.forEach(($category) => {
   const $btn = $category.querySelector(".category__btn");
   $btn?.addEventListener("click", (e) => {
-    e.stopPropagation();
+    if (e.target.closest(".category__checkbox")) {
+      return;
+    }
+
     const isOpen = $category.classList.contains("category--active");
     closeOtherCategories($category);
     $category.classList.toggle("category--active", !isOpen);
@@ -1549,7 +1567,7 @@ $categoriesBoxes.forEach(($categoriesBox) => {
   });
 
   $childCategories.forEach(($category) => {
-    const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all) .checkbox__input");
+    const $checkboxes = $category.querySelectorAll(".category__checkbox .checkbox__input");
     $checkboxes.forEach(($checkbox) => {
       $checkbox.addEventListener("change", () => {
         updateSelectAllState($category);
@@ -1568,83 +1586,121 @@ document.addEventListener("click", (event) => {
 });
 
 function updateSelectAllState($category) {
+  const $btn = [...$category.children].find((child) => child.matches(".category__btn"));
   const $categoryContentChild = [...$category.children].find((child) => child.matches(".category__content"));
   const $allCheckboxChild = [...$categoryContentChild.children].find((child) => child.matches(".category__checkbox"));
-  if (!$allCheckboxChild) {
+  if (!$allCheckboxChild && !$btn.querySelector(".category__checkbox")) {
     return;
   }
 
-  const $allCheckboxInput = $allCheckboxChild.querySelector(".checkbox__input");
+  const $allCheckboxInput = $category.querySelector(".category__checkbox--all .checkbox__input");
   const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all) .checkbox__input");
   const allChecked = [...$checkboxes].every(($checkbox) => $checkbox.checked);
 
-  $allCheckboxInput.checked = allChecked;
+  if ($allCheckboxInput) $allCheckboxInput.checked = allChecked;
 
-  const $parentCategory = $category.closest(".categories__item");
+  const $parentCategory = $category.closest(".category");
   if ($parentCategory && $parentCategory !== $category) {
     updateSelectAllState($parentCategory);
   }
 }
 
 function filterCategory($category, searchText, rawSearchText) {
-  const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all)");
-  const $buttons = $category.querySelectorAll(".category__item-btn");
-  const $childCategories = $category.querySelectorAll(".category__item");
+  const $checkboxes = $category.querySelectorAll(".category__checkbox:not(.category__checkbox--all) .checkbox__input");
+  const $buttonsSpan = $category.querySelectorAll(".category__btn span");
+  const childCategories = $category.querySelectorAll(".category__item");
+
   let anyCheckboxVisible = false;
   let anyButtonVisible = false;
   let anyChildCategoryVisible = false;
 
-  $checkboxes.forEach(($checkbox) => {
-    const $labelElement = $checkbox.querySelector(".checkbox__text");
-    const labelText = $labelElement.textContent.toLowerCase();
-    const normalizedLabelText = labelText.replace(/[\s.,!]/g, "");
-
-    if (normalizedLabelText.includes(searchText) && searchText !== "") {
-      $checkbox.classList.remove("category__checkbox--hide");
-      anyCheckboxVisible = true;
-
-      const highlightedText = highlightText($labelElement.textContent, rawSearchText);
-      $labelElement.innerHTML = highlightedText;
-    } else {
-      $checkbox.classList.add("category__checkbox--hide");
-      $labelElement.innerHTML = $labelElement.textContent;
-    }
-  });
-
-  $buttons.forEach(($button) => {
-    const buttonText = $button.textContent.toLowerCase();
-    const normalizedButtonText = buttonText.replace(/[\s.,!]/g, "");
+  // Фильтрация кнопок
+  $buttonsSpan.forEach((buttonSpan) => {
+    let buttonText = buttonSpan.textContent.toLowerCase();
+    let normalizedButtonText = buttonText.replace(/[\s.,!]/g, "");
 
     if (normalizedButtonText.includes(searchText) && searchText !== "") {
-      $button.classList.remove("category__checkbox--hide");
+      buttonSpan.closest(".category__btn").classList.remove("category__checkbox--hide");
       anyButtonVisible = true;
 
-      const highlightedText = highlightText($button.textContent, rawSearchText);
-      $button.innerHTML = highlightedText;
+      // Подсветка совпадающего текста
+      const highlightedText = highlightText(buttonSpan.textContent, rawSearchText);
+      buttonSpan.innerHTML = highlightedText;
+
+      $category.classList.remove("category--active");
+      if ($category.parentNode.closest(".category")) {
+        $category.parentNode.closest(".category").classList.add("category--active");
+      }
     } else {
-      $button.classList.add("category__checkbox--hide");
-      $button.innerHTML = $button.textContent;
+      buttonSpan.innerHTML = buttonSpan.textContent; // Восстановление текста без подсветки
     }
   });
 
-  $childCategories.forEach(($childCategory) => {
+  // Фильтрация чекбоксов
+  $checkboxes.forEach(($checkbox) => {
+    let isHighlighted = false;
+    const $labelElements = $checkbox.closest(".category__checkbox").querySelectorAll(".checkbox__text");
+    $labelElements.forEach(($labelElement) => {
+      const labelText = $labelElement.textContent.toLowerCase();
+      const normalizedLabelText = labelText.replace(/[\s.,!]/g, "");
+
+      if (normalizedLabelText.includes(searchText) && searchText !== "") {
+        $checkbox.closest(".category__checkbox").classList.remove("category__checkbox--hide");
+        anyCheckboxVisible = true;
+
+        // Подсветка совпадающего текста
+        const highlightedText = highlightText($labelElement.textContent, rawSearchText);
+        $labelElement.innerHTML = highlightedText;
+
+        $category.classList.add("category--active");
+
+        isHighlighted = true;
+      } else {
+        $labelElement.innerHTML = $labelElement.textContent; // Восстановление текста без подсветки
+      }
+    });
+
+    if (!isHighlighted && !$category.closest(".category--highlight-btn")) {
+      $checkbox.closest(".category__checkbox").classList.add("category__checkbox--hide");
+    }
+  });
+
+  if (anyCheckboxVisible) {
+    $category.classList.add("category--highlight-checkbox");
+  } else {
+    $category.classList.remove("category--highlight-checkbox");
+  }
+
+  if (anyButtonVisible) {
+    $category.classList.add("category--highlight-btn");
+  } else {
+    $category.classList.remove("category--highlight-btn");
+  }
+
+  const parentCategoryHighlightBtn = $category.closest(".category--highlight-btn");
+
+  // Фильтрация дочерних категорий
+  childCategories.forEach(($childCategory) => {
     const childVisible = filterCategory($childCategory, searchText, rawSearchText);
     if (childVisible) {
       $childCategory.classList.remove("category--hide");
       anyChildCategoryVisible = true;
-    } else {
+    } else if (!parentCategoryHighlightBtn) {
       $childCategory.classList.add("category--hide");
     }
   });
 
+  // Если виден хотя бы один чекбокс, кнопка или дочерняя категория
   if (!anyCheckboxVisible && !anyButtonVisible && !anyChildCategoryVisible) {
-    $category.classList.add("category--hide");
+    $category.classList.remove("category--hide");
     $category.classList.remove("category--active");
+
+    if (!parentCategoryHighlightBtn) $category.classList.add("category--hide");
   } else {
     $category.classList.remove("category--hide");
-    $category.classList.add("category--active");
   }
 
+  // Обновление состояния "Выбрать все" после фильтрации
   updateSelectAllState($category);
 
   return anyCheckboxVisible || anyButtonVisible || anyChildCategoryVisible;
@@ -1662,7 +1718,7 @@ function resetVisibility($categories) {
     $checkboxes.forEach(($checkbox) => {
       $checkbox.classList.remove("category__checkbox--hide");
       const $labelElement = $checkbox.querySelector(".checkbox__text");
-      $labelElement.innerHTML = $labelElement.textContent;
+      if ($labelElement) $labelElement.innerHTML = $labelElement.textContent;
     });
 
     const $buttons = $category.querySelectorAll(".category__item-btn");
@@ -2171,7 +2227,7 @@ function offerMainEmptyHandler($offerMainList, $offerMainItems, $empty) {
   if (!$offerMainList || !$offerMainItems || !$empty) {
     return;
   }
-  
+
   if ($offerMainItems.length === 0) {
     $offerMainList.classList.add("offer-main__hidden");
     $empty.classList.add("offer-main__empty--show");
@@ -2286,6 +2342,10 @@ $datepickerInputs.forEach(($datepickerInput) => {
     onSelect: (date) => {
       $datepickerInput.value = $datepickerInput.pickerDefaultValue;
       verifyData(date);
+
+      if ($datepickerInput.dataset.datepickerAutoset !== undefined) {
+        updateDatepickerValue(picker, $datepickerInput);
+      }
     },
   });
 
@@ -2599,6 +2659,17 @@ function createTimeInput(picker) {
   $timeInputContainer.append($timeType);
 
   return $timeInputContainer;
+}
+
+function clearDatepicker($input) {
+  const $field = $input.querySelector(".input__field");
+  $field.value = "";
+  $field.pickerDefaultValue = "";
+  $field.dispatchEvent(new Event("input"));
+
+  const picker = $field.picker;
+  picker.clear();
+  clearPickerCells(picker);
 }
 
 function clearPickerCells(picker) {
@@ -2918,14 +2989,7 @@ function clearCatalogFilter($box) {
   //Очистка значения календаря
   const $dateInput = $box.querySelector(".filter-content__date-input");
   if ($dateInput) {
-    const $dateInputField = $dateInput.querySelector(".input__field");
-    $dateInputField.value = "";
-    $dateInputField.pickerDefaultValue = "";
-    $dateInputField.dispatchEvent(new Event("input"));
-
-    const picker = $dateInputField.picker;
-    picker.clear();
-    clearPickerCells(picker);
+    clearDatepicker($dateInput);
   }
 }
 

@@ -324,23 +324,10 @@
                 <div class="lk-box lk-box--mobile-neutral-75 lk-box--mobile-p-0">
                   <div class="table-payments">
                     <div class="table-payments__header">
-                      <div class="dropdown dropdown--sort table-payments__header-sort-btn">
-                        <button class="link link--iflex link--blue-500 link--xs dropdown__btn">
-                          <span class="dropdown__btn-text">Последние операции</span>
-                          <img class="link__icon link__icon--mx-lg" src="img/icons/down-triangle-blue-500.svg" alt="" />
-                        </button>
-                        <div class="dropdown__main dropdown__main--t-14 dropdown__main--left">
-                          <div class="profile-menu profile-menu--shadow dropdown__controls">
-                            <ul class="profile-menu__list">
-                              <li class="profile-menu__item">
-                                <button class="profile-menu__link profile-menu__link--active">
-                                  <span>Последние операции</span>
-                                </button>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <button class="link link--iflex link--blue-500 link--xs table-payments__header-sort-btn js-open-popup" data-popup-name="payments-date">
+                        <span>Последние операции</span>
+                        <img class="link__icon link__icon--mx-lg" src="img/icons/down-triangle-blue-500.svg" alt="" />
+                      </button>
                     </div>
                     <table class="table-payments__main">
                       <thead>
@@ -1889,6 +1876,57 @@
                     </div>
                   </a>
                 </div>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup popup--mobile-full" data-popup-name="payments-date">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <div class="popup-content popup-content--mobile-full popup-content--mobile-bottom popup__content">
+            <div class="popup-content__header">
+              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
+                <button class="icon text__icon text__icon--mx-lg popup-content__filter-back">
+                  <img class="icon__img icon__img--rotate-90deg" src="img/icons/down-round-second.svg" alt="" />
+                </button>
+                <span>Период</span>
+              </div>
+            </div>
+            <div class="input input--picker-buttons-hide input--picker-border-none filter-content__date-input">
+              <div class="input__main">
+                <input
+                  class="input__field input__field--sm"
+                  id="payments-date"
+                  type="hidden"
+                  name="payments-date"
+                  value=""
+                  autocomplete="off"
+                  readonly
+                  data-datepicker
+                  data-datepicker-always-show
+                  data-datepicker-hide-time
+                  data-datepicker-update-only-date
+                  data-datepicker-range
+                  data-datepicker-autoset
+                  data-validate="empty" />
+              </div>
+              <span class="text text--4xs text--lh-125 input__error"></span>
+            </div>
+            <div class="popup__footer popup__footer--end popup__footer--mobile-column popup__footer--p-0">
+              <div class="popup__footer-btns popup__footer-btns--p-12 popup__footer-btns--mobile-column">
+                <button class="btn btn--gray-100 btn--text-xs popup__footer-btn js-close-popup js-clear-picker" data-clear-picker-id="payments-date" type="button">Отменить</button>
+                <button class="btn btn--blue-500 btn--color-white btn--text-xs popup__footer-btn">Применить</button>
               </div>
             </div>
             <button class="popup__close js-close-popup" type="button">
