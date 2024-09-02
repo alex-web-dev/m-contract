@@ -555,7 +555,6 @@
   }
 
   .banner__single-img {
-    padding-right: 15px;
     max-width: 35.5%;
   }
 
@@ -823,7 +822,7 @@
 
   .table-price th:nth-child(4),
   .table-price td:nth-child(4) {
-    width: 27.5%;
+    width: 16.5%;
   }
 
   .table-price--offer .table-price__total {
@@ -832,7 +831,7 @@
 
   .table-price--ad-placement th:nth-child(2),
   .table-price--ad-placement td:nth-child(2) {
-    width: 62%;
+    width: 58%;
   }
 
   .table-price--ad-placement th:nth-child(4),
@@ -840,8 +839,8 @@
     width: auto;
   }
 
-  .table-price--ad-placement th:nth-child(5),
-  .table-price--ad-placement td:nth-child(5) {
+  .table-price--ad-placement th:last-child,
+  .table-price--ad-placement td:last-child {
     width: 28px;
   }
 
@@ -1474,7 +1473,6 @@
   }
 
   .banner__single-img {
-    padding-right: 12px;
     max-width: 43%;
     align-self: flex-end;
   }
@@ -2041,7 +2039,7 @@
 
   .table-price--ad-placement th:nth-child(2),
   .table-price--ad-placement td:nth-child(2) {
-    width: 57%;
+    width: 50%;
   }
 
   .table-price--ad-placement th:nth-child(3),
@@ -2368,7 +2366,6 @@
   .banner__single-img {
     align-self: center;
     padding-top: 30px;
-    padding-left: 12px;
     max-width: none;
     width: 100%;
     max-width: 320px;
@@ -3234,6 +3231,10 @@
     border-bottom: none;
   }
 
+  .table-price td.display_none {
+    display: none;
+  }
+
   .table-price td:first-child {
     padding-top: 12px;
   }
@@ -3276,8 +3277,8 @@
     padding-right: 12px;
   }
 
-  .table-price--ad-placement th:nth-child(5),
-  .table-price--ad-placement td:nth-child(5) {
+  .table-price--ad-placement th:last-child,
+  .table-price--ad-placement td:last-child {
     padding-top: 0;
   }
 

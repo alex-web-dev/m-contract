@@ -1,7 +1,7 @@
 {
   "tabWidth": 2,
   "printWidth": 140,
-  "htmlWhitespaceSensitivity": "ignore",
+  "htmlWhitespaceSensitivity": "strict",
   "bracketSameLine": true,
   "jsxBracketSameLine": true
 }

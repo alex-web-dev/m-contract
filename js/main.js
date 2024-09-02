@@ -66,6 +66,14 @@ function isTouchDevice() {
   return "ontouchstart" in document.documentElement;
 }
 
+function getElementPosition($element) {
+  const rect = $element.getBoundingClientRect();
+  const x = rect.left + window.scrollX;
+  const y = rect.top + window.scrollY;
+
+  return { x, y };
+}
+
 /* Accordion */
 const $accordions = document.querySelectorAll(".accordion");
 $accordions.forEach(($accordion) => {
@@ -423,12 +431,40 @@ function initializeCustomSelect($selectField) {
     $simpleSelectList.classList.toggle(LIST_ACTIVE_CLASS);
     $simpleSelectField.classList.toggle(FIELD_ACTIVE_CLASS);
     $simpleSelect.classList.toggle(SELECT_ACTIVE_CLASS);
+
+    if (!$selectBox.classList.contains("select--outside")) {
+      return;
+    }
+
+    if ($simpleSelectField.classList.contains(FIELD_ACTIVE_CLASS)) {
+      $simpleSelectList.style.width = `${$simpleSelectList.offsetWidth}px`;
+      $simpleSelectList.style.height = `${$simpleSelectList.offsetHeight}px`;
+
+      const { x, y } = getElementPosition($simpleSelectList);
+      $simpleSelectList.style.left = `${x}px`;
+      $simpleSelectList.style.top = `${y}px`;
+
+      document.body.append($simpleSelectList);
+    } else {
+      $simpleSelectList.removeAttribute("style");
+
+      $simpleSelectList.$select.append($simpleSelectList);
+    }
   });
   $simpleSelect.append($simpleSelectField);
 
   /* Select items */
   const $elems = $selectField.querySelectorAll("optgroup, option");
   const $simpleSelectList = createElem("div", LIST_CLASS);
+  $simpleSelectList.$select = $simpleSelect;
+  $simpleSelect.$list = $simpleSelectList;
+  if ($selectBox.classList.contains("select--shadow")) {
+    $simpleSelectList.classList.add(`${LIST_CLASS}--shadow`);
+  }
+  if ($selectBox.classList.contains("select--xxs")) {
+    $simpleSelectList.classList.add(`${LIST_CLASS}--xxs`);
+  }
+
   $elems.forEach(($elem, index) => {
     if ($elem.nodeName === "OPTGROUP") {
       const $optgroup = $elem;
@@ -442,7 +478,7 @@ function initializeCustomSelect($selectField) {
     const $option = $elem;
     const $itemValue = createElem("span", "text text--3xs text--iflex simple-select__item-value");
     const $itemValueSpan = createElem("span", "", {
-      innerText: $option.innerText,
+      textContent: $option.innerText,
     });
     $itemValue.append($itemValueSpan);
 
@@ -501,7 +537,7 @@ function initializeCustomSelect($selectField) {
 
       $selectField.selectedIndex = +$item.dataset.selectIndex;
 
-      $simpleSelectField.innerText = $option.innerText;
+      $simpleSelectField.textContent = $option.innerText;
       $simpleSelectField.classList.remove(FIELD_PLACEHOLDER_CLASS);
       $simpleSelect.blur();
       $simpleSelectList.classList.remove(LIST_ACTIVE_CLASS);
@@ -532,7 +568,7 @@ function initializeCustomSelect($selectField) {
     });
 
     $item.addEventListener("mouseover", () => {
-      const $oldHoverItem = $simpleSelect.querySelector(`.${ITEM_HOVER_CLASS}`);
+      const $oldHoverItem = $simpleSelectList.querySelector(`.${ITEM_HOVER_CLASS}`);
       if ($oldHoverItem) {
         swapHoverItem($oldHoverItem, $item);
       }
@@ -695,24 +731,35 @@ function initializeCustomSelect($selectField) {
 }
 
 /* Select close when click outside */
-window.addEventListener("click", (e) => {
+window.addEventListener("click", (e) => closeActiveSelects(e.target));
+window.addEventListener("resize", () => closeActiveSelects(document.body));
+
+function closeActiveSelects($target) {
   const $activeSelect = document.querySelector(`.${SELECT_ACTIVE_CLASS}`);
   if (!$activeSelect) {
     return;
   }
 
-  const isInnerSelect = e.target.classList.contains(".select") || e.target.closest(`.select`);
+  const isInnerSelect = $target.classList.contains(".select") || $target.closest(`.select`);
   const $list = $activeSelect.querySelector(`.${LIST_CLASS}`);
   const $field = $activeSelect.querySelector(`.${FIELD_CLASS}`);
 
-  if (!isInnerSelect) {
+  if (!isInnerSelect && $list) {
     $list.classList.remove(LIST_ACTIVE_CLASS);
     $field.classList.remove(FIELD_ACTIVE_CLASS);
     $activeSelect.classList.remove(SELECT_ACTIVE_CLASS);
     return;
+  } else if (!isInnerSelect) {
+    const $outerList = document.querySelector(`.${LIST_ACTIVE_CLASS}`);
+    $outerList.classList.remove(LIST_ACTIVE_CLASS);
+    $outerList.removeAttribute("style");
+    $outerList.$select.append($outerList);
+
+    $field.classList.remove(FIELD_ACTIVE_CLASS);
+    $activeSelect.classList.remove(SELECT_ACTIVE_CLASS);
   }
 
-  const $simpleSelect = e.target.closest(`.simple-select`);
+  const $simpleSelect = $target.closest(`.simple-select`);
   if (!$simpleSelect) {
     return;
   }
@@ -723,17 +770,71 @@ window.addEventListener("click", (e) => {
       const $list = $activeSelect.querySelector(`.${LIST_CLASS}`);
       const $field = $activeSelect.querySelector(`.${FIELD_CLASS}`);
 
-      $list.classList.remove(LIST_ACTIVE_CLASS);
+      if ($list) {
+        $list.classList.remove(LIST_ACTIVE_CLASS);
+      } else {
+        const $outerList = $activeSelect.$list;
+        $outerList.classList.remove(LIST_ACTIVE_CLASS);
+        $outerList.removeAttribute("style");
+
+        $outerList.$select.append($outerList);
+      }
+
       $field.classList.remove(FIELD_ACTIVE_CLASS);
       $activeSelect.classList.remove(SELECT_ACTIVE_CLASS);
     }
   });
-});
+}
 
 function swapHoverItem($oldItem, $newItem) {
   $oldItem.classList.remove(ITEM_HOVER_CLASS);
   $newItem.classList.add(ITEM_HOVER_CLASS);
 }
+
+/* Toggle elements visibility and text based on selected option */
+const $selectFieldsToggle = document.querySelectorAll(".js-select-toggle");
+$selectFieldsToggle.forEach(($select) => {
+  $select.addEventListener("change", () => {
+    const $toggleElementsOptions = $select.querySelectorAll("option[data-toggle-elements]");
+    $toggleElementsOptions.forEach(($option) => {
+      const $elements = document.querySelectorAll($option.getAttribute("data-toggle-elements"));
+      $elements.forEach(($element) => {
+        $element.classList.add("display_none");
+      });
+    });
+
+    const $selectedOption = $select.options[$select.selectedIndex];
+    const textElementId = $selectedOption.dataset.textElement;
+    const $textElement = document.querySelector(textElementId);
+    const textValue = $selectedOption.dataset.textElementValue || "";
+    if ($textElement) $textElement.textContent = textValue;
+
+    const toggleElementsSelector = $selectedOption.dataset.toggleElements;
+    const $toggleElements = document.querySelectorAll(toggleElementsSelector);
+    $toggleElements.forEach(($toggleElement) => {
+      $toggleElement.classList.remove("display_none");
+
+      const $toggleElementSelectFields = $toggleElement.querySelectorAll("select");
+      $toggleElementSelectFields.forEach(($selectField) => {
+        $selectField.dispatchEvent(new Event("change"));
+      });
+    });
+
+    const textElements = $selectedOption.dataset.textElements;
+    if (textElements) {
+      const textElementsArray = JSON.parse(textElements);
+
+      textElementsArray.forEach((item) => {
+        const $elements = document.querySelectorAll(item.selector);
+        $elements.forEach(($element) => ($element.textContent = item.value));
+      });
+    }
+
+    const $selectBox = $select.closest('.select');
+    $selectBox.classList.remove("select--disabled");
+    if ($selectedOption.dataset.disabled !== undefined) $selectBox.classList.add("select--disabled");
+  });
+});
 
 /* Validate patterns */
 const validatePatterns = [
@@ -1566,10 +1667,26 @@ $categoriesBoxes.forEach(($categoriesBox) => {
     closeOtherCategories();
   });
 
+  $categories.forEach(($category) => {
+    const $checkboxes = $category.querySelectorAll(".category__checkbox .checkbox__input");
+    $checkboxes.forEach(($checkbox) => {
+      $checkbox.addEventListener("change", (e) => {
+        if ($checkbox.closest(".category__checkbox").classList.contains("js-update-select-group-field")) {
+          e.stopPropagation();
+          $checkbox.checked = false;
+        }
+      });
+    });
+  });
+
   $childCategories.forEach(($category) => {
     const $checkboxes = $category.querySelectorAll(".category__checkbox .checkbox__input");
     $checkboxes.forEach(($checkbox) => {
       $checkbox.addEventListener("change", () => {
+        if ($checkbox.closest(".category__checkbox").classList.contains("js-update-select-group-field")) {
+          return;
+        }
+
         updateSelectAllState($category);
       });
     });
@@ -3304,6 +3421,12 @@ function addItemToAdPlacementTable($table, $originalTr) {
   $inputPriceOneField.dataset.mask = "num";
   addAllHandlersToInput($inputPriceOne, $form);
   imaskInputHandler($inputPriceOneField);
+
+  const $selectFields = $tr.querySelectorAll(".select__field");
+  $selectFields.forEach(($selectField) => {
+    $selectField.dataset.validate = "empty";
+    initializeCustomSelect($selectField);
+  });
 
   const $groupSelectFirstInputField = $groupSelectFirstInput.querySelector(".input__field");
   $groupSelectFirstInputField.dataset.validate = "empty";

@@ -348,10 +348,11 @@
                           <div class="form__group-items form__group-items--mobile-column">
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
                               <label class="text text--3xs select__label">Условия доставки</label>
-                              <select class="select__field" id="offer-delivery-type" data-validate="empty" name="delivery-type">
+                              <select class="select__field js-select-toggle" id="offer-delivery-type" data-validate="empty" name="delivery-type">
                                 <option data-tippy-text="Подсказка" value="1">Не выбрано</option>
                                 <option data-tippy-text="Подсказка" value="2">Силами продавца</option>
                                 <option data-tippy-text="Подсказка" value="3" selected>Силами покупателя</option>
+                                <option data-tippy-text="Подсказка" value="4" data-disabled>Скрыть</option>
                               </select>
                               <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
@@ -387,10 +388,11 @@
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
                               <label class="text text--3xs select__label">Погрузка</label>
-                              <select class="select__field" id="offer-delivery-load-type" data-validate="empty" name="delivery-load-type">
+                              <select class="select__field js-select-toggle" id="offer-delivery-load-type" data-validate="empty" name="delivery-load-type">
                                 <option data-tippy-text="Подсказка" value="1">Не выбрано</option>
                                 <option data-tippy-text="Подсказка" value="2">Силами продавца</option>
                                 <option data-tippy-text="Подсказка" value="3" selected>Силами покупателя</option>
+                                <option data-tippy-text="Подсказка" value="4" data-disabled>Скрыть</option>
                               </select>
                               <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
@@ -398,15 +400,36 @@
                         </div>
                         <div class="form__group">
                           <div class="form__group-items form__group-items--mobile-column form__group-items">
-                            <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
+                            <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="offer-price-type">Цена</label>
-                              <select class="select__field" id="offer-price-type" data-validate="empty" name="terms-price-type">
-                                <option value="1">с НДС</option>
-                                <option value="2" selected>без НДС</option>
+                              <select
+                                class="select__field js-select-toggle"
+                                id="offer-price-type"
+                                data-validate="empty"
+                                name="terms-price-type">
+                                <option value="1" data-toggle-elements="#offer-rate-vat-item">с НДС</option>
+                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (20%)" selected>
+                                  с НДС (20%)
+                                </option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
-                            <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
+                            <div
+                              class="select select--shadow form__group-item form__group-item--w-3xs form__group-item--xxl-col-4 display_none"
+                              id="offer-rate-vat-item">
+                              <label class="text text--3xs select__label" for="offer-rate-vat">Ставка НДС</label>
+                              <select class="select__field js-select-toggle" id="offer-rate-vat" data-validate="empty" name="rate-vat">
+                                <option value="1" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (0%)">0%</option>
+                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (10%)">
+                                  10%
+                                </option>
+                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (20%)">
+                                  20%
+                                </option>
+                              </select>
+                              <span class="text text--4xs text--lh-125 select__error"></span>
+                            </div>
+                            <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
                               <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
                                 <option value="1" data-tippy-text="Подсказка">Не выбрано</option>
@@ -424,15 +447,50 @@
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
-                            <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
+                            <div class="select select--shadow form__group-item form__group-item--w-3xs form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="offer-unit-measurement">Единица измерения</label>
-                              <select class="select__field" id="offer-unit-measurement" data-validate="empty" name="unit-measurement">
-                                <option value="1">тн</option>
-                                <option value="2">кг</option>
-                                <option value="3" selected>шт</option>
-                                <option value="4">м</option>
-                                <option value="5">м2</option>
-                                <option value="6">км</option>
+                              <select
+                                class="select__field js-select-toggle"
+                                id="offer-unit-measurement"
+                                data-validate="empty"
+                                name="unit-measurement">
+                                <option
+                                  value="1"
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (тн.)"}, {"selector": ".js-offer-table-unit-type", "value": "тн."}]'>
+                                  тн
+                                </option>
+                                <option
+                                  value="2"
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (кг.)"}, {"selector": ".js-offer-table-unit-type", "value": "кг."}]'>
+                                  кг
+                                </option>
+                                <option
+                                  value="3"
+                                  selected
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (шт.)"}, {"selector": ".js-offer-table-unit-type", "value": "шт."}]'>
+                                  шт
+                                </option>
+                                <option
+                                  value="4"
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (м.)"}, {"selector": ".js-offer-table-unit-type", "value": "м."}]'>
+                                  м
+                                </option>
+                                <option
+                                  value="5"
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (м2.)"}, {"selector": ".js-offer-table-unit-type", "value": "м2."}]'>
+                                  м2
+                                </option>
+                                <option
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (км.)"}, {"selector": ".js-offer-table-unit-type", "value": "км."}]'
+                                  value="6">
+                                  км
+                                </option>
+                                <option
+                                  value="7"
+                                  data-toggle-elements=".js-offer-unit-measurement-td"
+                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во"}, {"selector": ".js-offer-table-unit-type", "value": "ед."}]'>
+                                  смешанная
+                                </option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
@@ -467,7 +525,7 @@
                             <button
                               class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active"
                               type="button">
-                              Товары
+                              Позиции
                             </button>
                             <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn" type="button">
                               Описание
@@ -509,13 +567,19 @@
                                     <span class="text text--4xs text--medium">№</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Наименование категории / товара</span>
+                                    <span class="text text--4xs text--medium">Наименование категории / позиции</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium js-offer-table-count-type">Кол-во (шт.)</span>
+                                  </th>
+                                  <th class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                    <span class="text text--4xs text--medium">Ед. изм</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Цена за 1 (шт.) мин / без НДС</span>
+                                    <span class="text text--4xs text--medium">
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      <span id="offer-rate-vat-text">с НДС (20%)</span>
+                                    </span>
                                   </th>
                                   <th></th>
                                 </tr>
@@ -533,7 +597,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Наименование категории / товара
+                                      Наименование категории / позиции
                                     </span>
                                     <div class="select-group table-price__select-group">
                                       <div class="select-group__header">
@@ -557,7 +621,7 @@
                                             <textarea
                                               class="input__field input__field--xxs input__field--area"
                                               data-validate="empty"
-                                              placeholder="Введите полное наименование товара"
+                                              placeholder="Введите наименование товара или услуги"
                                               data-min-height="32"></textarea>
                                           </div>
                                           <span class="text text--4xs text--lh-125 input__error"></span>
@@ -566,7 +630,9 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                      Кол-во (шт.)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--count">
                                       <div class="input__main">
@@ -579,8 +645,24 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
+                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
+                                    <div class="select select--outside select--xxs select--shadow table-price__input">
+                                      <select class="select__field" data-validate="empty">
+                                        <option value="1">тн</option>
+                                        <option value="2">кг</option>
+                                        <option value="3" selected>шт</option>
+                                        <option value="4">м</option>
+                                        <option value="5">м2</option>
+                                        <option value="6">км</option>
+                                      </select>
+                                      <span class="text text--4xs text--lh-125 select__error"></span>
+                                    </div>
+                                  </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
                                       <div class="input__main">
@@ -611,7 +693,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Наименование категории / товара
+                                      Наименование категории / позиции
                                     </span>
                                     <div class="select-group table-price__select-group">
                                       <div class="select-group__header">
@@ -637,7 +719,7 @@
                                             <textarea
                                               class="input__field input__field--xxs input__field--area"
                                               data-validate="empty"
-                                              placeholder="Введите полное наименование товара"
+                                              placeholder="Введите наименование товара или услуги"
                                               data-min-height="32">
 Стальной песок колотый</textarea
                                             >
@@ -648,7 +730,9 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                      Кол-во (шт.)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--count">
                                       <div class="input__main">
@@ -661,8 +745,24 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
+                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
+                                    <div class="select select--outside select--xxs select--shadow table-price__input">
+                                      <select class="select__field" data-validate="empty">
+                                        <option value="1">тн</option>
+                                        <option value="2">кг</option>
+                                        <option value="3" selected>шт</option>
+                                        <option value="4">м</option>
+                                        <option value="5">м2</option>
+                                        <option value="6">км</option>
+                                      </select>
+                                      <span class="text text--4xs text--lh-125 select__error"></span>
+                                    </div>
+                                  </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
                                       <div class="input__main">
@@ -693,7 +793,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Наименование категории / товара
+                                      Наименование категории / позиции
                                     </span>
                                     <div class="select-group table-price__select-group">
                                       <div class="select-group__header">
@@ -719,7 +819,7 @@
                                             <textarea
                                               class="input__field input__field--xxs input__field--area"
                                               data-validate="empty"
-                                              placeholder="Введите полное наименование товара"
+                                              placeholder="Введите наименование товара или услуги"
                                               data-min-height="32">
 Лом черных металлов разносортный (из 2-х и более видов) Лом черных металлов разносортный (из 2-х и более видов) Лом черных металлов разносортный (из 2-х и более видов) Лом черных металлов разносортный (из 2-х и более видов)</textarea
                                             >
@@ -730,7 +830,9 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                      Кол-во (шт.)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--count">
                                       <div class="input__main">
@@ -743,8 +845,24 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
+                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
+                                    <div class="select select--outside select--xxs select--shadow table-price__input">
+                                      <select class="select__field" data-validate="empty">
+                                        <option value="1">тн</option>
+                                        <option value="2">кг</option>
+                                        <option value="3" selected>шт</option>
+                                        <option value="4">м</option>
+                                        <option value="5">м2</option>
+                                        <option value="6">км</option>
+                                      </select>
+                                      <span class="text text--4xs text--lh-125 select__error"></span>
+                                    </div>
+                                  </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
                                       <div class="input__main">
@@ -775,7 +893,7 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Наименование категории / товара
+                                      Наименование категории / позиции
                                     </span>
                                     <div class="select-group table-price__select-group">
                                       <div class="select-group__header">
@@ -799,7 +917,7 @@
                                             <textarea
                                               class="input__field input__field--xxs input__field--area"
                                               data-validate="empty"
-                                              placeholder="Введите полное наименование товара"
+                                              placeholder="Введите наименование товара или услуги"
                                               data-min-height="32"></textarea>
                                           </div>
                                           <span class="text text--4xs text--lh-125 input__error"></span>
@@ -808,7 +926,9 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                      Кол-во (шт.)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--count">
                                       <div class="input__main">
@@ -821,8 +941,24 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
+                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
+                                    <div class="select select--outside select--xxs select--shadow table-price__input">
+                                      <select class="select__field" data-validate="empty">
+                                        <option value="1">тн</option>
+                                        <option value="2">кг</option>
+                                        <option value="3" selected>шт</option>
+                                        <option value="4">м</option>
+                                        <option value="5">м2</option>
+                                        <option value="6">км</option>
+                                      </select>
+                                      <span class="text text--4xs text--lh-125 select__error"></span>
+                                    </div>
+                                  </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) мин / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                    </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
                                       <div class="input__main">
@@ -2845,7 +2981,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
     <div class="popup popup--mobile-full" data-popup-name="categories">
       <div class="popup__body">
         <div class="popup__dialog">
-          <div class="popup-content popup-content--mobile-full popup-content--mobile-bottom popup__content">
+          <div class="popup-content popup-content--xl popup-content--mobile-full popup-content--mobile-bottom popup__content">
             <div class="popup-content__header">
               <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
                 <span>Категории</span>
@@ -2885,38 +3021,237 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                 </div>
                 <span class="text text--3xs text--lh-125 input__error"></span>
               </div>
-              <div class="categories__list categories__list-h-sm" data-scrollbar data-scrollbar-continue>
-                <div class="category categories__item">
-                  <button class="text text--medium text--upper text--3xs text--lh-14 category__btn" type="button">
-                    <span class="category__btn-icon"></span>
-                    <span>Лом и отходы черных металлов</span>
-                  </button>
-                  <div class="category__content">
-                    <div class="category__list category__list--sub">
-                      <button
-                        class="category__item-btn js-update-select-group-field js-close-popup"
-                        data-input-value="Стальные"
-                        data-popup-name="categories">
-                        Стальные
-                      </button>
-                      <button
-                        class="category__item-btn js-update-select-group-field js-close-popup"
-                        data-input-value="Чугунные"
-                        data-popup-name="categories">
-                        Чугунные
-                      </button>
-                      <button
-                        class="category__item-btn js-update-select-group-field js-close-popup"
-                        data-input-value="Лом черных металлов разносортный (из 2-х и более видов)"
-                        data-popup-name="categories">
-                        Лом черных металлов разносортный (из 2-х и более видов)
-                      </button>
-                      <button
-                        class="category__item-btn js-update-select-group-field js-close-popup"
-                        data-input-value="Прочие"
-                        data-popup-name="categories">
-                        Прочие
-                      </button>
+              <div class="categories__list" data-scrollbar>
+                <div class="categories__list-content categories__list-content--xl">
+                  <div class="category categories__item">
+                    <button class="text text--3xs text--lh-14 category__btn" type="button">
+                      <span class="category__btn-icon"></span>
+                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="E ВОДОСНАБЖЕНИЕ; ВОДООТВЕДЕНИЕ, УСЛУГИ ПО УДАЛЕНИЮ И РЕКУЛЬТИВАЦИИ ОТХОДОВ" data-popup-name="categories">
+                        <input class="checkbox__input" type="checkbox" />
+                        <span class="checkbox__switch"></span>
+                      </label>
+                      <div>
+                        <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">E</span>
+                        <span>ВОДОСНАБЖЕНИЕ; ВОДООТВЕДЕНИЕ, УСЛУГИ ПО УДАЛЕНИЮ И РЕКУЛЬТИВАЦИИ ОТХОДОВ</span>
+                      </div>
+                    </button>
+                    <div class="category__content">
+                      <div class="category__list category__list--sub">
+                        <div class="category category__item">
+                          <button class="text text--3xs text--lh-14 category__btn" type="button">
+                            <span class="category__btn-icon"></span>
+                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38 Услуги по сбору, обработке и удалению отходов; услуги по утилизации отходов" data-popup-name="categories">
+                              <input class="checkbox__input" type="checkbox" />
+                              <span class="checkbox__switch"></span>
+                            </label>
+                            <div>
+                              <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38</span>
+                              <span>Услуги по сбору, обработке и удалению отходов; услуги по утилизации отходов</span>
+                            </div>
+                          </button>
+                          <div class="category__content">
+                            <div class="category__list category__list--sub">
+                              <div class="category category__item">
+                                <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                  <span class="category__btn-icon"></span>
+                                  <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.3 Услуги по восстановлению материалов; вторичное сырье" data-popup-name="categories">
+                                    <input class="checkbox__input" type="checkbox" />
+                                    <span class="checkbox__switch"></span>
+                                  </label>
+                                  <div>
+                                    <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.3</span>
+                                    <span>Услуги по восстановлению материалов; вторичное сырье</span>
+                                  </div>
+                                </button>
+                                <div class="category__content">
+                                  <div class="category__list category__list--sub">
+                                    <div class="category category__item">
+                                      <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                        <span class="category__btn-icon"></span>
+                                        <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32 Услуги по сортировке материалов для восстановления; сырье вторичное" data-popup-name="categories">
+                                          <input class="checkbox__input" type="checkbox" />
+                                          <span class="checkbox__switch"></span>
+                                        </label>
+                                        <div>
+                                          <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32</span>
+                                          <span>Услуги по сортировке материалов для восстановления; сырье вторичное</span>
+                                        </div>
+                                      </button>
+                                      <div class="category__content">
+                                        <div class="category__list category__list--sub">
+                                          <div class="category category__item">
+                                            <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                              <span class="category__btn-icon"></span>
+                                              <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.2 Сырье вторичное, содержащее металлы" data-popup-name="categories">
+                                                <input class="checkbox__input" type="checkbox" />
+                                                <span class="checkbox__switch"></span>
+                                              </label>
+                                              <div>
+                                                <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.2</span>
+                                                <span>Сырье вторичное, содержащее металлы</span>
+                                              </div>
+                                            </button>
+                                            <div class="category__content">
+                                              <div class="category__list category__list--sub">
+                                                <div class="category category__item">
+                                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                                    <span class="category__btn-icon"></span>
+                                                    <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21 Сырье вторичное, содержащее драгоценные металлы" data-popup-name="categories">
+                                                      <input class="checkbox__input" type="checkbox" />
+                                                      <span class="checkbox__switch"></span>
+                                                    </label>
+                                                    <div>
+                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.21</span>
+                                                      <span>Сырье вторичное, содержащее драгоценные металлы</span>
+                                                    </div>
+                                                  </button>
+                                                  <div class="category__content">
+                                                    <div class="category__list category__list--sub">
+                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.110 Лом и отходы золота и золотых сплавов" data-popup-name="categories">
+                                                        <input class="checkbox__input" type="checkbox" />
+                                                        <span class="checkbox__switch"></span>
+                                                        <div class="checkbox__text-block">
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.110</span>
+                                                          <span class="text text--3xs checkbox__text">Лом и отходы золота и золотых сплавов</span>
+                                                        </div>
+                                                      </label>
+                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.120 Лом и отходы серебра и серебряных сплавов" data-popup-name="categories">
+                                                        <input class="checkbox__input" type="checkbox" />
+                                                        <span class="checkbox__switch"></span>
+                                                        <div class="checkbox__text-block">
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.120</span>
+                                                          <span class="text text--3xs checkbox__text">
+                                                            Лом и отходы серебра и серебряных сплавов
+                                                          </span>
+                                                        </div>
+                                                      </label>
+                                                      <div class="category category__item">
+                                                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                                          <span class="category__btn-icon"></span>
+                                                          <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.130 Лом и отходы платины, металлов платиновой группы и их сплавов" data-popup-name="categories">
+                                                            <input class="checkbox__input" type="checkbox" />
+                                                            <span class="checkbox__switch"></span>
+                                                          </label>
+                                                          <div>
+                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.21.130</span>
+                                                            <span>Лом и отходы платины, металлов платиновой группы и их сплавов</span>
+                                                          </div>
+                                                        </button>
+                                                        <div class="category__content">
+                                                          <div class="category__list category__list--sub">
+                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.131 Лом и отходы платины и платиновых сплавов" data-popup-name="categories">
+                                                              <input class="checkbox__input" type="checkbox" />
+                                                              <span class="checkbox__switch"></span>
+                                                              <div class="checkbox__text-block">
+                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.131</span>
+                                                                <span class="text text--3xs checkbox__text">
+                                                                  Лом и отходы платины и платиновых сплавов
+                                                                </span>
+                                                              </div>
+                                                            </label>
+                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.132 Лом и отходы палладия и палладиевых сплавов" data-popup-name="categories">
+                                                              <input class="checkbox__input" type="checkbox" />
+                                                              <span class="checkbox__switch"></span>
+                                                              <div class="checkbox__text-block">
+                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.132</span>
+                                                                <span class="text text--3xs checkbox__text">
+                                                                  Лом и отходы палладия и палладиевых сплавов
+                                                                </span>
+                                                              </div>
+                                                            </label>
+                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.139 Лом и отходы прочих металлов платиновой группы и их сплавов" data-popup-name="categories">
+                                                              <input class="checkbox__input" type="checkbox" />
+                                                              <span class="checkbox__switch"></span>
+                                                              <div class="checkbox__text-block">
+                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.139</span>
+                                                                <span class="text text--3xs checkbox__text">
+                                                                  Лом и отходы прочих металлов платиновой группы и их сплавов
+                                                                </span>
+                                                              </div>
+                                                            </label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.190 Лом и отходы прочих драгоценных металлов" data-popup-name="categories">
+                                                        <input class="checkbox__input" type="checkbox" />
+                                                        <span class="checkbox__switch"></span>
+                                                        <div class="checkbox__text-block">
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.190</span>
+                                                          <span class="text text--3xs checkbox__text">
+                                                            Лом и отходы прочих драгоценных металлов
+                                                          </span>
+                                                        </div>
+                                                      </label>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="category category__item">
+                                                  <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                                    <span class="category__btn-icon"></span>
+                                                    <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22 Сырье вторичное, содержащее черные металлы" data-popup-name="categories">
+                                                      <input class="checkbox__input" type="checkbox" />
+                                                      <span class="checkbox__switch"></span>
+                                                    </label>
+                                                    <div>
+                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.22</span>
+                                                      <span>Сырье вторичное, содержащее черные металлы</span>
+                                                    </div>
+                                                  </button>
+                                                  <div class="category__content">
+                                                    <div class="category__list category__list--sub">
+                                                      <div class="category category__item">
+                                                        <button class="text text--3xs text--lh-14 category__btn" type="button">
+                                                          <span class="category__btn-icon"></span>
+                                                          <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.110 Лом и отходы стальные" data-popup-name="categories">
+                                                            <input class="checkbox__input" type="checkbox" />
+                                                            <span class="checkbox__switch"></span>
+                                                          </label>
+                                                          <div>
+                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.22.110</span>
+                                                            <span>Лом и отходы стальные</span>
+                                                          </div>
+                                                        </button>
+                                                        <div class="category__content">
+                                                          <div class="category__list category__list--sub">
+                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.111 Лом и отходы стальные нелегированные (углеродистые)" data-popup-name="categories">
+                                                              <input class="checkbox__input" type="checkbox" />
+                                                              <span class="checkbox__switch"></span>
+                                                              <div class="checkbox__text-block">
+                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.22.111</span>
+                                                                <span class="text text--3xs checkbox__text">
+                                                                  Лом и отходы стальные нелегированные (углеродистые)
+                                                                </span>
+                                                              </div>
+                                                            </label>
+                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.112 Лом и отходы стальные легированные" data-popup-name="categories">
+                                                              <input class="checkbox__input" type="checkbox" />
+                                                              <span class="checkbox__switch"></span>
+                                                              <div class="checkbox__text-block">
+                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.22.112</span>
+                                                                <span class="text text--3xs checkbox__text">
+                                                                  Лом и отходы стальные легированные
+                                                                </span>
+                                                              </div>
+                                                            </label>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2938,7 +3273,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
     <div class="popup popup--mobile-full" data-popup-name="regions">
       <div class="popup__body">
         <div class="popup__dialog">
-          <div class="popup-content popup-content--mobile-full popup-content--mobile-bottom popup__content">
+          <div class="popup-content popup-content--xl popup-content--mobile-full popup-content--mobile-bottom popup__content">
             <div class="popup-content__header">
               <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
                 <span>Регионы</span>

@@ -142,6 +142,10 @@ mark {
   padding-right: 0;
 }
 
+.container--xxl {
+  max-width: 1920px;
+}
+
 .title {
   line-height: 1.2;
   font-weight: 400;
@@ -1524,8 +1528,32 @@ mark {
   padding-bottom: 6px;
 }
 
+.select--xxs .simple-select__field {
+  padding: 4.5px 40px 4.5px 12px;
+}
+
+.select--xxs .simple-select {
+  height: 32px;
+}
+
+.select--xxs .simple-select__item,
+.select--xxs .simple-select__li,
+.simple-select__list--xxs .simple-select__item,
+.simple-select__list--xxs .simple-select__li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 .select--color-blue-500 .simple-select__field:not(.simple-select__field--placeholder) {
   color: var(--color-blue-500);
+}
+
+.select--disabled .simple-select__field {
+  opacity: 0.6;
+}
+
+.select--disabled .select__label {
+  opacity: 0.6;
 }
 
 .simple-select {
@@ -1628,6 +1656,10 @@ mark {
 .simple-select__list--active,
 .simple-select__list--active[data-scrollbar] {
   display: block;
+}
+
+.simple-select__list--shadow {
+  box-shadow: 0px 6px 16px rgba(10, 9, 11, 0.08);
 }
 
 .simple-select__list .scrollbar-track {
@@ -1970,6 +2002,10 @@ mark {
 
 .form__group-item--col-3 {
   flex: 0 0 calc(25% - 16px);
+}
+
+.form__group-item--w-3xs {
+  flex: 0 0 160px;
 }
 
 .form__min-h-44 {
@@ -3146,6 +3182,10 @@ div.scrollbar-thumb-x {
   margin-top: 32px;
 }
 
+.banner__title b {
+  display: block;
+}
+
 .banner__images {
   position: relative;
   z-index: 1;
@@ -3157,8 +3197,9 @@ div.scrollbar-thumb-x {
 .banner__single-img {
   position: relative;
   z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
   flex: 0 0 auto;
-  padding-right: 50px;
   width: 562px;
   max-width: 100%;
 }
@@ -3634,6 +3675,11 @@ div.scrollbar-thumb-x {
   margin-bottom: 30px;
 }
 
+.idea .flex > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .idea .block {
   max-width: 770px;
   width: 100%;
@@ -3694,7 +3740,6 @@ div.scrollbar-thumb-x {
   background-image: url(../img/about/tab-bg.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 420px;
   border-radius: 6px;
   padding: 34px 24px;
   display: flex;
@@ -3714,12 +3759,12 @@ div.scrollbar-thumb-x {
 }
 
 .tabs .tab__text {
+  margin-top: 34px;
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
   text-align: left;
   color: #b2b7c5;
-  margin-top: auto;
 }
 
 .tabcontent {
@@ -3764,6 +3809,11 @@ div.scrollbar-thumb-x {
 .subscribe__btn {
   max-width: 240px;
   width: 100%;
+}
+
+.subscribe__envelope {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contacts {
@@ -3946,6 +3996,10 @@ div.scrollbar-thumb-x {
 
 .login-banner__title {
   font-size: 46px;
+}
+
+.login-banner__title b {
+  display: block;
 }
 
 .login-banner__info {
@@ -7394,7 +7448,7 @@ span.pagination__link--right {
 
 .table-price th:nth-child(2),
 .table-price td:nth-child(2) {
-  width: 48.5%;
+  width: 43.5%;
   text-align: left;
 }
 
@@ -7465,11 +7519,16 @@ span.pagination__link--right {
 .table-price--ad-placement th:nth-child(2),
 .table-price--ad-placement td:nth-child(2) {
   padding-right: 20px;
-  width: 68%;
+  width: 62%;
 }
 
-.table-price--ad-placement th:nth-child(5),
-.table-price--ad-placement td:nth-child(5) {
+.table-price--ad-placement th.table-price__unit-measurement,
+.table-price--ad-placement td.table-price__unit-measurement {
+  width: 100px;
+}
+
+.table-price--ad-placement th:last-child,
+.table-price--ad-placement td:last-child {
   width: 28px;
 }
 

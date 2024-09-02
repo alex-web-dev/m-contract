@@ -394,7 +394,7 @@
                       </div>
                       <span class="text text--4xs text--neutral-600 offer-header__type">Открытый запрос предложений</span>
                       <span class="text text--4xs text--neutral-400 text--lh-13 offer-header__addition-info">
-                        Общее кол-во: 1,5 тн. | 4 дня назад | Подача&nbsp;предложений до 20.05.2024 12:00 мск
+                        Общее кол-во: X | 4 дня назад | Подача&nbsp;предложений до 20.05.2024 12:00 мск
                       </span>
                     </div>
                   </div>
@@ -433,7 +433,7 @@
                               <span class="text text--3xs text--neutral-600 text--lh-14">Цена</span>
                             </td>
                             <td>
-                              <span class="text text--3xs text--medium text--lh-14">без НДС</span>
+                              <span class="text text--3xs text--medium text--lh-14">с НДС (20%)</span>
                             </td>
                           </tr>
                           <tr>
@@ -469,7 +469,7 @@
                           <div class="panel-btns__list tabs-btns" data-tabs-name="offer">
                             <button
                               class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn tabs-btns__btn--active">
-                              Товары
+                              Позиции
                             </button>
                             <button class="panel-btn panel-btn--px-sm panel-btns__btn panel-btns__btn--w-auto tabs-btns__btn">
                               Документы
@@ -493,16 +493,19 @@
                                     <span class="text text--4xs text--medium">№</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Наименование товара</span>
+                                    <span class="text text--4xs text--medium">Наименование позиции</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium">Кол-во</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Цена за 1 (шт.) / без НДС</span>
+                                    <span class="text text--4xs text--medium">Ед. изм.</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">Сумма / без НДС</span>
+                                    <span class="text text--4xs text--medium">Цена за 1 (ед.) / с НДС (20%)</span>
+                                  </th>
+                                  <th>
+                                    <span class="text text--4xs text--medium">Сумма / с НДС (20%)</span>
                                   </th>
                                 </tr>
                               </thead>
@@ -515,21 +518,25 @@
                                     <span class="text text--4xs table-price__value table-price__value--desktop">1</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Наименование позиции</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">
-                                      Длинное текстовое наименование товара для проверки отображения в таблице
+                                      Длинное текстовое наименование позиции для проверки отображения в таблице
                                     </span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм.</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">кг</span>
+                                  </td>
+                                  <td>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (ед.) / с НДС (20%)</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">9 000,00</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Сумма / с НДС (20%)</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
@@ -541,19 +548,23 @@
                                     <span class="text text--4xs table-price__value table-price__value--desktop">2</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Наименование товара</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Наименование позиции</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">Цистерна</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Кол-во</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">5</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (шт.) / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм.</span>
+                                    <span class="text text--4xs text--lh-13 table-price__value">шт</span>
+                                  </td>
+                                  <td>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Цена за 1 (ед.) / с НДС (20%)</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">18 000,00</span>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label">Сумма / без НДС</span>
+                                    <span class="text text--4xs text--medium table-price__mobile-label">Сумма / с НДС (20%)</span>
                                     <span class="text text--4xs text--lh-13 table-price__value">10 000,00</span>
                                   </td>
                                 </tr>
