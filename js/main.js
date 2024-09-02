@@ -1801,6 +1801,9 @@ function filterCategory($category, searchText, rawSearchText) {
     const childVisible = filterCategory($childCategory, searchText, rawSearchText);
     if (childVisible) {
       $childCategory.classList.remove("category--hide");
+      const $childCheckboxes = $childCategory.querySelectorAll(".category__checkbox");
+      $childCheckboxes.forEach(($checkbox) => $checkbox.classList.remove("category__checkbox--hide"));
+      
       anyChildCategoryVisible = true;
     } else if (!parentCategoryHighlightBtn) {
       $childCategory.classList.add("category--hide");
