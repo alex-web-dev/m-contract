@@ -6833,6 +6833,18 @@ span.pagination__link--right {
   background-image: url("../img/icons/bookmark-orange-400.svg");
 }
 
+.advert__options-btn .dropdown__btn svg {
+  fill: var(--color-neutral-400);
+}
+
+.advert__options-btn .dropdown__btn:hover svg {
+  fill: var(--color-blue-600);
+}
+
+.advert__options-btn .dropdown__btn:active svg {
+  fill: var(--color-second);
+}
+
 .advert__tags .tags__categories {
   display: none;
 }
@@ -7519,6 +7531,18 @@ span.pagination__link--right {
   flex: 0 0 auto;
   margin-left: auto;
   align-self: flex-start;
+}
+
+.offer__options-btn .dropdown__btn svg {
+  fill: var(--color-neutral-400);
+}
+
+.offer__options-btn .dropdown__btn:hover svg {
+  fill: var(--color-blue-600);
+}
+
+.offer__options-btn .dropdown__btn:active svg {
+  fill: var(--color-second);
 }
 
 .offer__tags {
