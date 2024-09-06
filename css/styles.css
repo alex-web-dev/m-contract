@@ -3159,7 +3159,7 @@ div.scrollbar-thumb-x {
   position: relative;
   z-index: 1;
   padding-left: 50px;
-  max-width: 782px;
+  max-width: 910px;
 }
 
 .banner__info--about {
@@ -3188,10 +3188,6 @@ div.scrollbar-thumb-x {
 
 .banner__title--about {
   font-size: 42px;
-}
-
-.banner__title b {
-  display: block;
 }
 
 .banner__images {
@@ -4148,15 +4144,11 @@ div.scrollbar-thumb-x {
   font-size: 46px;
 }
 
-.login-banner__title b {
-  display: block;
-}
-
 .login-banner__info {
   position: relative;
   z-index: 1;
-  padding: 40px 80px 40px 40px;
-  max-width: 720px;
+  padding: 40px;
+  max-width: 785px;
 }
 
 .login-banner__bg-images {

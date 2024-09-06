@@ -239,7 +239,7 @@
   }
 
   .banner__img:nth-child(2) {
-    width: 540px;
+    width: 535px;
     height: auto;
   }
 
@@ -572,7 +572,7 @@
   .banner__info {
     padding-left: 15px;
     padding-right: 10px;
-    max-width: 580px;
+    max-width: 670px;
   }
 
   .banner__info--about {
@@ -1556,7 +1556,6 @@
   .banner__info {
     padding-left: 12px;
     padding-right: 12px;
-    max-width: 552px;
   }
 
   .banner__info--about {
