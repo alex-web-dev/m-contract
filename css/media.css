@@ -2964,6 +2964,10 @@
     align-items: flex-end;
   }
 
+  .tags--inline .tags__item.tag--inline {
+    line-height: 2;
+  }
+
   .advert {
     padding: 8px;
   }

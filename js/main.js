@@ -3637,7 +3637,10 @@ $adverts.forEach(($advert) => {
   const $tagsList = $advert.querySelector(".advert__tags .tags__list");
   const $tagsListCategories = $tagsList.querySelector('.tags__categories');
   $tagsListCategories.classList.add('tags__categories--active');
-  adjustAdvertTags($tagsList);
+  
+  const resizeObserver = new ResizeObserver(() => adjustAdvertTags($tagsList));
+  resizeObserver.observe($tagsList);
+  
   window.addEventListener("resize", () => adjustAdvertTags($tagsList));
 });
 
