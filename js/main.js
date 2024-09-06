@@ -350,7 +350,7 @@ function imaskInputHandler($input) {
   if (mask === "num") {
     IMask($input, {
       mask: Number,
-      scale: 2,
+      scale: $input.dataset.maskScale || 2,
       signed: false,
       thousandsSeparator: " ",
       padFractionalZeros: true,
@@ -830,7 +830,7 @@ $selectFieldsToggle.forEach(($select) => {
       });
     }
 
-    const $selectBox = $select.closest('.select');
+    const $selectBox = $select.closest(".select");
     $selectBox.classList.remove("select--disabled");
     if ($selectedOption.dataset.disabled !== undefined) $selectBox.classList.add("select--disabled");
   });
@@ -1803,7 +1803,7 @@ function filterCategory($category, searchText, rawSearchText) {
       $childCategory.classList.remove("category--hide");
       const $childCheckboxes = $childCategory.querySelectorAll(".category__checkbox");
       $childCheckboxes.forEach(($checkbox) => $checkbox.classList.remove("category__checkbox--hide"));
-      
+
       anyChildCategoryVisible = true;
     } else if (!parentCategoryHighlightBtn) {
       $childCategory.classList.add("category--hide");
@@ -3415,7 +3415,7 @@ function addItemToAdPlacementTable($table, $originalTr) {
   const $inputCount = $tr.querySelector(".table-price__input--count");
   const $inputCountField = $inputCount.querySelector(".input__field");
   $inputCountField.dataset.validate = "empty";
-  $inputCountField.dataset.mask = "int";
+  $inputCountField.dataset.mask = "num";
   addAllHandlersToInput($inputCount, $form);
   imaskInputHandler($inputCountField);
 
@@ -3633,4 +3633,53 @@ $adverts.forEach(($advert) => {
       $bookmarkBtn.classList.add("advert__options-btn--active");
     }
   });
+
+  const $tagsList = $advert.querySelector(".advert__tags .tags__list");
+  const $tagsListCategories = $tagsList.querySelector('.tags__categories');
+  $tagsListCategories.classList.add('tags__categories--active');
+  adjustAdvertTags($tagsList);
+  window.addEventListener("resize", () => adjustAdvertTags($tagsList));
 });
+
+const $tabsBtns = document.querySelectorAll(".tabs-btns__btn");
+$tabsBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    $adverts.forEach(($advert) => {
+      const $tagsList = $advert.querySelector(".advert__tags .tags__list");
+      setTimeout(() => adjustAdvertTags($tagsList));
+    });
+  });
+});
+
+function adjustAdvertTags($tagsList) {
+  const $categories = $tagsList.querySelector(".tags__categories");
+  if (!$categories) {
+    return;
+  }
+
+  const tagItems = [...$categories.querySelectorAll(".tag--category:not(.tag--category-count)")];
+  const $tagCount = $tagsList.querySelector(".tag--category-count");
+  const maxWidth = $tagsList.offsetWidth - $tagCount.offsetWidth - 12;
+  let totalWidth = 0;
+
+  tagItems.forEach((tag) => {
+    tag.classList.remove("tag--hide");
+    totalWidth += tag.offsetWidth + 8;
+  });
+
+  let hideTagsCount = 0;
+  for (let i = tagItems.length - 1; i >= 0; i--) {
+    if (totalWidth > maxWidth) {
+      totalWidth -= tagItems[i].offsetWidth + 8;
+      tagItems[i].classList.add("tag--hide");
+      hideTagsCount += 1;
+    }
+  }
+
+  if (hideTagsCount > 0) {
+    $tagCount.classList.add("tag--category-count-visible");
+    $tagCount.querySelector(".tag__text").textContent = `+${hideTagsCount}`;
+  } else {
+    $tagCount.classList.remove("tag--category-count-visible");
+  }
+}
