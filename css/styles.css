@@ -3722,6 +3722,7 @@ div.scrollbar-thumb-x {
 }
 
 .idea-item {
+  position: relative;
   padding: 34px;
   display: flex;
   flex-direction: column;
@@ -3738,7 +3739,7 @@ div.scrollbar-thumb-x {
   position: absolute;
   top: 100%;
   left: 50%;
-  z-index: -1;
+  z-index: 1;
   transform: translate(-50%, -50%);
   background: radial-gradient(50% 50% at 50% 50%, #758FE3 0%, rgba(117, 143, 227, 0) 100%);
   opacity: 0.3;
@@ -3748,12 +3749,16 @@ div.scrollbar-thumb-x {
 }
 
 .idea-item__img {
+  position: relative;
+  z-index: 2;
   margin: auto auto 0;
   display: block;
   width: 400px;
 }
 
 .idea-item__text {
+  position: relative;
+  z-index: 2;
   font-size: 26px;
   color: rgba(var(--color-second--rgb), 0.64);
 }

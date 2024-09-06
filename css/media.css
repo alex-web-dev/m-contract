@@ -1374,7 +1374,8 @@
 
   .idea-item__img {
     margin-top: 24px;
-    max-width: 303px;
+    width: 303px;
+    max-width: 100%;
   }
   
   .idea-item--row {
@@ -1391,7 +1392,8 @@
 
   .idea-item--row .idea-item__img {
     margin-left: auto;
-    max-width: 303px;
+    width: 303px;
+    max-width: 100%;
   }
 
   .idea__col,
