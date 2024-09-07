@@ -5763,9 +5763,15 @@ label.lk-user__img-box {
   color: var(--color-neutral-600);
 }
 
+.tag.tag--inline.js-open-popup .tag__text {
+  background-color: var(--color-blue-50);
+  color: var(--color-blue-500);
+}
+
 .tag--hide {
   display: none;
 }
+
 
 .status {
   padding: 0 5px;
