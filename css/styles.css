@@ -3906,6 +3906,18 @@ div.scrollbar-thumb-x {
   padding: 46px 24px;
 }
 
+.subscribe__block-header {
+  display: flex;
+  align-items: center;
+}
+
+.subscribe__block-envelope {
+  margin-left: auto;
+  padding-left: 20px;
+  width: 200px;
+  height: 57px;
+}
+
 .subscribe__text {
   margin-top: 34px;
   max-width: 346px;
@@ -3923,48 +3935,15 @@ div.scrollbar-thumb-x {
 }
 
 .subscribe__img-box {
-  margin: 46px auto;
+  margin-left: auto;
+  padding: 46px 24px 46px 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex: 0 1 620px;
-  overflow: hidden;
 }
 
 .subscribe__img {
-  transform: translateX(150%);
   object-fit: contain;
-  animation: subscribeFade 8s infinite;
-}
-
-@keyframes subscribeFade {
-  0% {
-    transform: translateX(150%);
-  }
-
-  17% {
-    transform: translateX(0);
-  }
-
-  65% {
-    transform: translateX(0);
-  }
-
-  69% {
-    transform: translateX(50px)
-  }
-
-  70% {
-    transform: translateX(50px)
-  }
-
-  96% {
-    transform: translateX(-150%);
-    animation-timing-function: ease-in;
-  }
-
-  100% {
-    transform: translateX(-150%);
-  }
 }
 
 .contacts {
@@ -6372,6 +6351,18 @@ label.lk-user__img-box {
   padding: 12px;
   font-size: 14px;
   text-align: left;
+}
+
+.category__text {
+  padding: 10px 16px;
+  display: flex;
+  width: 100%;
+}
+
+.category__item-text {
+  padding: 12px;
+  display: flex;
+  width: 100%;
 }
 
 .category__content {
