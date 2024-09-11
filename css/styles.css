@@ -8237,7 +8237,8 @@ span.pagination__link--right {
   display: none;
 }
 
-.offer-main__empty--show {
+.offer-main__empty--show,
+.offer-main__empty--comment {
   display: block;
 }
 

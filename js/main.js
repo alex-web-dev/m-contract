@@ -2293,17 +2293,6 @@ $offerMainImagesList.forEach(($offerMainImages) => {
   });
 });
 
-//Редактирование/размещение - Комментарий/Описание - Переключение блока "Данные не заполнены"
-const $offerMainCommentsList = document.querySelectorAll(".offer-main__comment");
-$offerMainCommentsList.forEach(($offerMainComments) => {
-  const $offerMain = $offerMainComments.closest(".offer-main");
-  const $offerMainCommentsEmpty = $offerMain.querySelector(".offer-main__empty--comment");
-
-  if ($offerMainComments.innerText.trim() === "") {
-    $offerMainCommentsEmpty.classList.add("offer-main__empty--show");
-  }
-});
-
 //Редактирование/размещение - Документы - Переключение блока "Данные не заполнены"
 const $offerMainFilesList = document.querySelectorAll(".offer-main__files");
 $offerMainFilesList.forEach(($offerMainFiles) => {
@@ -3346,6 +3335,8 @@ $adPlacements.forEach(($adPlacement) => {
 });
 
 function updatePlacementStep($adPlacement, step) {
+  if (!step) step = 1;
+  
   const $oldActiveStep = $adPlacement.querySelector(".ad-placement__step--active");
   $oldActiveStep?.classList.remove("ad-placement__step--active");
 

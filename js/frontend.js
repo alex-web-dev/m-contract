@@ -37,6 +37,18 @@ $offerMainFilesList.forEach(($offerMainFiles) => {
   });
 });
 
+const $offerMainCommentsList = document.querySelectorAll(".offer-main__comment");
+$offerMainCommentsList.forEach(($offerMainComments) => {
+  const $offerMain = $offerMainComments.closest(".offer-main");
+  const $offerMainCommentsEmpty = $offerMain.querySelector(".offer-main__empty--comment");
+  
+  if ($offerMainCommentsEmpty && $offerMainComments.innerText.trim() === "") {
+    $offerMainCommentsEmpty.classList.add("offer-main__empty--show");
+  } else {
+    $offerMainCommentsEmpty.style.display = 'none';
+  }
+});
+
 function createOfferFile(name, { deleteCallback }) {
   const $offerFile = createElem("div", "file file--success offer-main__file", {
     innerHTML: `<a class="file__name" href="#">${name}</a>`,
