@@ -44,7 +44,7 @@ $offerMainCommentsList.forEach(($offerMainComments) => {
   
   if ($offerMainCommentsEmpty && $offerMainComments.innerText.trim() === "") {
     $offerMainCommentsEmpty.classList.add("offer-main__empty--show");
-  } else {
+  } else if ($offerMainCommentsEmpty) {
     $offerMainCommentsEmpty.style.display = 'none';
   }
 });

@@ -497,7 +497,7 @@ function initializeCustomSelect($selectField) {
 
     if ($option.dataset.tippyText) {
       const $tippyIcon = createElem("img", "text__icon", {
-        src: "img/icons/info-blue-500.svg",
+        src: "https://m-contract.ru/img/icons/info-blue-500.svg",
       });
       $tippyIcon.dataset.tippyContent = $option.dataset.tippyText;
       $tippyIcon.dataset.tippyPlacement = "bottom";
