@@ -2927,6 +2927,16 @@
     display: flex;
   }
 
+  .popup-content__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .popup-content__header-tags {
+    margin-top: 6px;
+    margin-left: 0;
+  }
+
   .filter-btn {
     padding-left: 11px;
     padding-right: 11px;
