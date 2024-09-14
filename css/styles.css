@@ -1560,6 +1560,15 @@ mark {
   opacity: 0.6;
 }
 
+.select--item-medium .simple-select__item-value {
+  font-weight: 500;
+}
+
+.select--no-check .simple-select__item--active:after,
+.select--no-check .simple-select__li--active:after {
+  display: none;
+}
+
 .simple-select {
   position: relative;
   user-select: none;
@@ -1617,6 +1626,16 @@ mark {
 .simple-select__ul {
   width: 100%;
   max-height: 264px;
+}
+
+.select--list-h-xs .simple-select__box,
+.select--list-h-xs .simple-select__list,
+.select--list-h-xs .simple-select__ul {
+  max-height: 135px;
+}
+
+.select--field-shadow .simple-select__field {
+  box-shadow: 0px 1.5px 4px -1px rgba(10, 9, 11, 0.07);
 }
 
 .simple-select__ul {
@@ -1699,7 +1718,7 @@ mark {
 }
 
 .simple-select__item--active:after,
-.simple-select__li--active {
+.simple-select__li--active:after {
   content: "";
   position: absolute;
   right: 12px;
@@ -1729,11 +1748,10 @@ mark {
   display: none;
 }
 
+.simple-select__item-subtitle,
 .simple-select__item-text,
 .simple-select__li-value {
   display: block;
-  font-size: 12px;
-  color: var(--color-neutral-500);
 }
 
 .simple-select__item-icons {
@@ -1832,6 +1850,14 @@ mark {
 
 .checkbox__input:checked ~ .checkbox__switch:before {
   display: block;
+}
+
+.checkbox__input:checked ~ .checkbox__switch--checked-opacity-04 {
+  opacity: 0.4;
+}
+
+.checkbox__input:checked ~ .checkbox__text--checked-blue-500 {
+  color: var(--color-blue-500);
 }
 
 .checkbox__text-block {
@@ -4687,6 +4713,10 @@ div.scrollbar-thumb-x {
 }
 
 .popup-content__tags-item:not(:first-child) {
+  border-top: 1px solid var(--color-neutral-100);
+}
+
+.popup-content__sign-doc {
   border-top: 1px solid var(--color-neutral-100);
 }
 
@@ -8351,8 +8381,16 @@ span.pagination__link--right {
   color: var(--color-green-400);
 }
 
+.file__icon {
+  margin-right: 4px;
+}
+
+.file__icon:first-child {
+  margin-left: 8px;
+}
+
 .file__name {
-  padding: 5px 8px 5px 38px;
+  padding: 5px 8px 5px 0;
   flex: 1 1 auto;
   overflow: hidden;
   display: -webkit-box;
@@ -8363,25 +8401,12 @@ span.pagination__link--right {
   line-height: 2;
 }
 
-.file__name:before {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "";
-  flex: 0 0 auto;
-  display: inline-block;
-  background: url("../img/icons/file-blue-500.svg") center / 14px 17px no-repeat;
-  width: 20px;
-  height: 20px;
+.file__name:first-child {
+  padding-left: 8px;
 }
 
 .file__name:not(:last-child) {
   padding-right: 32px;
-}
-
-.file--success .file__name:before {
-  background-image: url("../img/icons/file-green-400.svg");
 }
 
 .file__delete {
@@ -8980,4 +9005,35 @@ span.pagination__link--right {
   border: 4px solid var(--color-blue-50);
   border-radius: 20px;
   text-align: center;
+}
+
+.sign-message {
+  padding: 8px;
+  background-color: var(--color-gray-50);
+  border-radius: 4px;
+}
+
+.sign-doc__header {
+  padding: 12px 12px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign-doc__select-all {
+  margin-left: 10px;
+  flex: 0 0 auto;
+}
+
+.sign-doc__checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-doc__checkbox {
+  padding: 12px;
+}
+
+.sign-doc__message {
+  margin: 12px;
 }

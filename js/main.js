@@ -513,8 +513,15 @@ function initializeCustomSelect($selectField) {
     const $item = createElem("div", ITEM_CLASS);
     $item.append($itemValue);
 
+    if ($option.dataset.subtitle) {
+      const $itemText = createElem("span", "text text--4xs text--lh-13 simple-select__item-subtitle", {
+        innerText: $option.dataset.subtitle,
+      });
+      $item.append($itemText);
+    }
+
     if ($option.dataset.text) {
-      const $itemText = createElem("simple-select__item-text", {
+      const $itemText = createElem("span", "text text--4xs text--neutral-500 text--lh-13 simple-select__item-text", {
         innerText: $option.dataset.text,
       });
       $item.append($itemText);
@@ -1325,6 +1332,15 @@ document.addEventListener("formSuccess", (e) => {
     const $fieldFile = $item.querySelector(".input__field-file");
     $fieldFile?.setAttribute("disabled", "");
   });
+
+  console.log($form, $form.dataset);
+  
+  if ($form.dataset.successOpenPopup) {
+    const $popup = document.querySelector(`[data-popup-name="${$form.dataset.successOpenPopup}"]`);
+    console.log($popup);
+    
+    openPopup($popup);
+  }
 });
 
 /* Smooth scroll */
@@ -3336,7 +3352,7 @@ $adPlacements.forEach(($adPlacement) => {
 
 function updatePlacementStep($adPlacement, step) {
   if (!step) step = 1;
-  
+
   const $oldActiveStep = $adPlacement.querySelector(".ad-placement__step--active");
   $oldActiveStep?.classList.remove("ad-placement__step--active");
 
@@ -3626,12 +3642,12 @@ $adverts.forEach(($advert) => {
   });
 
   const $tagsList = $advert.querySelector(".advert__tags .tags__list");
-  const $tagsListCategories = $tagsList.querySelector('.tags__categories');
-  $tagsListCategories.classList.add('tags__categories--active');
-  
+  const $tagsListCategories = $tagsList.querySelector(".tags__categories");
+  $tagsListCategories.classList.add("tags__categories--active");
+
   const resizeObserver = new ResizeObserver(() => adjustAdvertTags($tagsList));
   resizeObserver.observe($tagsList);
-  
+
   window.addEventListener("resize", () => adjustAdvertTags($tagsList));
 });
 
@@ -3677,3 +3693,19 @@ function adjustAdvertTags($tagsList) {
     $tagCount.classList.remove("tag--category-count-visible");
   }
 }
+
+/* Select all checkboxes button */
+const $selectAllCheckboxesBtns = document.querySelectorAll(".js-select-all-checkboxes");
+$selectAllCheckboxesBtns.forEach(($btn) => {
+  $btn.addEventListener("click", () => {
+    const checkboxesName = $btn.dataset.checkboxesName;
+    const $checkboxes = document.querySelector(`[data-checkboxes="${checkboxesName}"]`);
+    if (!$checkboxes) return;
+
+    const $inputs = $checkboxes.querySelectorAll(".checkbox__input");
+    $inputs.forEach(($input) => {
+      $input.checked = true;
+      $input.dispatchEvent(new Event("change"));
+    });
+  });
+});
