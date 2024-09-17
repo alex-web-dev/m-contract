@@ -328,6 +328,8 @@ $updateInputBtns.forEach(($btn) => {
 /* Textarea */
 const $textareas = document.querySelectorAll(".input__field--area");
 $textareas.forEach(($textarea) => {
+  if ($textarea.dataset.noResize !== undefined) return;
+
   textareaSizeHandler($textarea);
   $textarea.addEventListener("input", () => textareaSizeHandler($textarea));
   window.addEventListener("resize", () => textareaSizeHandler($textarea));
@@ -1334,11 +1336,11 @@ document.addEventListener("formSuccess", (e) => {
   });
 
   console.log($form, $form.dataset);
-  
+
   if ($form.dataset.successOpenPopup) {
     const $popup = document.querySelector(`[data-popup-name="${$form.dataset.successOpenPopup}"]`);
     console.log($popup);
-    
+
     openPopup($popup);
   }
 });
@@ -2066,7 +2068,7 @@ function createGroupItem(className) {
   let isCreating = true;
 
   const $saveBtn = createElem("button", "group-item__btn group-item__btn--save");
-  $saveBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />';
+  $saveBtn.innerHTML = '<img class="group-item__btn-icon" src="https://m-contract.ru/img/icons/check-green-400.svg" alt="" />';
   $saveBtn.addEventListener("click", () => {
     const value = $inputField.value;
     if (value !== "") {
@@ -2078,19 +2080,20 @@ function createGroupItem(className) {
   });
 
   const $editBtn = createElem("button", "group-item__btn group-item__btn--edit");
-  $editBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />';
+  $editBtn.innerHTML = '<img class="group-item__btn-icon" src="https://m-contract.ru/img/icons/edit-neutral-500.svg" alt="" />';
   $editBtn.addEventListener("click", () => {
     $groupItem.classList.add("group-item--edit");
   });
 
   const $deleteBtn = createElem("button", "group-item__btn group-item__btn--delete");
-  $deleteBtn.innerHTML = '<img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />';
+  $deleteBtn.innerHTML = '<img class="group-item__btn-icon" src="https://m-contract.ru/img/icons/trash-orange-500.svg" alt="" />';
   $deleteBtn.addEventListener("click", () => {
     $groupItem.remove();
   });
 
   const $cancelBtn = createElem("button", "group-item__btn group-item__btn--cancel");
-  $cancelBtn.innerHTML = '<img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />';
+  $cancelBtn.innerHTML =
+    '<img class="group-item__btn-icon group-item__btn-icon--sm" src="https://m-contract.ru/img/icons/exit-neutral-500.svg" alt="" />';
   $cancelBtn.addEventListener("click", () => {
     if (isCreating) {
       $groupItem.remove();
@@ -2262,7 +2265,7 @@ $offerMainBoxes.forEach(($offerMain) => {
       src: url,
     });
     const $deleteBtn = createElem("button", "offer-img__delete", {
-      innerHTML: '<img src="img/icons/exit-blue-500.svg" alt="" />',
+      innerHTML: '<img src="https://m-contract.ru/img/icons/exit-blue-500.svg" alt="" />',
     });
 
     $deleteBtn.addEventListener(

@@ -1180,6 +1180,13 @@ mark {
   height: auto;
 }
 
+.input__field--area-sm {
+  padding-top: 10.5px;
+  padding-bottom: 10.5px;
+  font-size: 14px;
+  height: 44px;
+}
+
 .input__field--sm {
   padding-top: 10.5px;
   padding-bottom: 10.5px;

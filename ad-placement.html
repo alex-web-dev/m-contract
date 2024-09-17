@@ -348,7 +348,11 @@
                           <div class="form__group-items form__group-items--mobile-column">
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
                               <label class="text text--3xs select__label">Условия доставки</label>
-                              <select class="select__field js-select-toggle" id="offer-delivery-type" data-validate="empty" name="delivery-type">
+                              <select
+                                class="select__field js-select-toggle"
+                                id="ad-delivery-type"
+                                data-validate="empty"
+                                name="delivery-type">
                                 <option data-tippy-text="Подсказка" value="1">Не выбрано</option>
                                 <option data-tippy-text="Подсказка" value="2">Силами продавца</option>
                                 <option data-tippy-text="Подсказка" value="3" selected>Силами покупателя</option>
@@ -357,11 +361,11 @@
                               <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
                             <div class="input form__group-item form__group-item--xxl-col-6">
-                              <label class="text text--3xs input__label" for="offer-location">Местонахождение товара</label>
+                              <label class="text text--3xs input__label" for="ad-location">Местонахождение товара</label>
                               <div class="input__main input__main--arrow">
                                 <input
                                   class="input__field input__field--sm js-open-popup"
-                                  id="offer-location"
+                                  id="ad-location"
                                   type="text"
                                   name="location"
                                   readonly
@@ -372,23 +376,30 @@
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
                             <div class="input form__group-item form__group-item--xxl-col-6">
-                              <label class="text text--3xs input__label" for="offer-location-full">
+                              <label class="text text--3xs input__label" for="ad-location-full">
                                 Полный адрес местонахождения товара
                               </label>
                               <div class="input__main">
-                                <input
-                                  class="input__field input__field--sm"
-                                  id="offer-location-full"
+                                <textarea
+                                  class="input__field input__field--area input__field--area-sm"
+                                  id="ad-location-full"
                                   type="text"
                                   name="location-full"
-                                  value="Проспект Коммунистический, 60 к1 "
-                                  data-validate="empty" />
+                                  maxlength="150"
+                                  data-no-resize
+                                  data-validate="empty">
+Проспект Коммунистический, 60 к1</textarea
+                                >
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-6">
                               <label class="text text--3xs select__label">Погрузка</label>
-                              <select class="select__field js-select-toggle" id="offer-delivery-load-type" data-validate="empty" name="delivery-load-type">
+                              <select
+                                class="select__field js-select-toggle"
+                                id="ad-delivery-load-type"
+                                data-validate="empty"
+                                name="delivery-load-type">
                                 <option data-tippy-text="Подсказка" value="1">Не выбрано</option>
                                 <option data-tippy-text="Подсказка" value="2">Силами продавца</option>
                                 <option data-tippy-text="Подсказка" value="3" selected>Силами покупателя</option>
@@ -401,14 +412,19 @@
                         <div class="form__group">
                           <div class="form__group-items form__group-items--mobile-column form__group-items">
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
-                              <label class="text text--3xs select__label" for="offer-price-type">Цена</label>
+                              <label class="text text--3xs select__label" for="ad-price-type">Цена</label>
                               <select
                                 class="select__field js-select-toggle"
-                                id="offer-price-type"
+                                id="ad-price-type"
                                 data-validate="empty"
                                 name="terms-price-type">
-                                <option value="1" data-toggle-elements="#offer-rate-vat-item">с НДС</option>
-                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="без НДС" selected>
+                                <option value="1" data-toggle-elements="#ad-rate-vat-item">с НДС</option>
+                                <option
+                                  value="2"
+                                  data-text-element="#ad-rate-vat-text"
+                                  data-text-element-value="без НДС"
+                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "без НДС"}]'
+                                  selected>
                                   без НДС
                                 </option>
                               </select>
@@ -416,22 +432,36 @@
                             </div>
                             <div
                               class="select select--shadow form__group-item form__group-item--w-3xs form__group-item--xxl-col-4 display_none"
-                              id="offer-rate-vat-item">
-                              <label class="text text--3xs select__label" for="offer-rate-vat">Ставка НДС</label>
-                              <select class="select__field js-select-toggle" id="offer-rate-vat" data-validate="empty" name="rate-vat">
-                                <option value="1" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (0%)">0%</option>
-                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (10%)">
+                              id="ad-rate-vat-item">
+                              <label class="text text--3xs select__label" for="ad-rate-vat">Ставка НДС</label>
+                              <select class="select__field js-select-toggle" id="ad-rate-vat" data-validate="empty" name="rate-vat">
+                                <option
+                                  value="1"
+                                  data-text-element="#ad-rate-vat-text"
+                                  data-text-element-value="с НДС (0%)"
+                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (0%)"}]'>
+                                  0%
+                                </option>
+                                <option
+                                  value="2"
+                                  data-text-element="#ad-rate-vat-text"
+                                  data-text-element-value="с НДС (10%)"
+                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (10%)"}]'>
                                   10%
                                 </option>
-                                <option value="2" data-text-element="#offer-rate-vat-text" data-text-element-value="с НДС (20%)">
+                                <option
+                                  value="2"
+                                  data-text-element="#ad-rate-vat-text"
+                                  data-text-element-value="с НДС (20%)"
+                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (20%)"}]'>
                                   20%
                                 </option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
-                              <label class="text text--3xs select__label" for="offer-terms-of-payments">Условия оплаты</label>
-                              <select class="select__field" id="offer-terms-of-payments" data-validate="empty" name="terms-of-payments">
+                              <label class="text text--3xs select__label" for="ad-terms-of-payments">Условия оплаты</label>
+                              <select class="select__field" id="ad-terms-of-payments" data-validate="empty" name="terms-of-payments">
                                 <option value="1" data-tippy-text="Подсказка">Не выбрано</option>
                                 <option value="2" data-tippy-text="Подсказка" selected>Отсрочка платежа</option>
                                 <option value="3" data-tippy-text="Подсказка">100% предоплата</option>
@@ -441,17 +471,17 @@
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
-                              <label class="text text--3xs select__label" for="offer-currency">Валюта</label>
-                              <select class="select__field" id="offer-currency" data-validate="empty" name="currency">
+                              <label class="text text--3xs select__label" for="ad-currency">Валюта</label>
+                              <select class="select__field" id="ad-currency" data-validate="empty" name="currency">
                                 <option value="1">Российский рубль (RUB)</option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--w-3xs form__group-item--xxl-col-4">
-                              <label class="text text--3xs select__label" for="offer-unit-measurement">Единица измерения</label>
+                              <label class="text text--3xs select__label" for="ad-unit-measurement">Единица измерения</label>
                               <select
                                 class="select__field js-select-toggle"
-                                id="offer-unit-measurement"
+                                id="ad-unit-measurement"
                                 data-validate="empty"
                                 name="unit-measurement">
                                 <option
@@ -496,13 +526,13 @@
                             </div>
                             <div
                               class="input input--picker-mobile-max-w-none input--picker-right form__group-item form__group-item--xxl-col-4">
-                              <div class="text text--3xs input__label" for="offer-active-until-date">
+                              <div class="text text--3xs input__label" for="ad-active-until-date">
                                 <span>Передача товара до</span>
                               </div>
                               <div class="input__main">
                                 <input
                                   class="input__field input__field--sm"
-                                  id="offer-active-until-date"
+                                  id="ad-active-until-date"
                                   type="text"
                                   name="until-date"
                                   value="08.08.2024 12:00 мск"
@@ -578,7 +608,7 @@
                                   <th>
                                     <span class="text text--4xs text--medium">
                                       Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
-                                      <span id="offer-rate-vat-text">без НДС</span>
+                                      <span id="ad-rate-vat-text">без НДС</span>
                                     </span>
                                   </th>
                                   <th></th>
@@ -662,7 +692,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      <span class="js-offer-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -763,7 +794,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      <span class="js-offer-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -864,7 +896,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      <span class="js-offer-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -961,7 +994,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин / с НДС (20%)
+                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      <span class="js-offer-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -998,7 +1032,7 @@
                             <div class="input__main">
                               <textarea
                                 class="input__field input__field--sm input__field--area input__field--area-sm"
-                                id="offer-comment"
+                                id="ad-comment"
                                 name="">
 Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum. Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum arcu et a elementum duis nunc ullamcorper dolor. Sit turpis et habitasse vel facilisis proin praesent elementum enim. Gravida lectus id pharetra elementum.</textarea
                               >
@@ -1010,28 +1044,28 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="offer-main__files">
                             <div class="file file--success offer-main__file">
                               <span class="icon file__icon">
-                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="">
+                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="" />
                               </span>
                               <a class="file__name" href="#">BRIX Templates.pdf</a>
                               <button class="file__delete"></button>
                             </div>
                             <div class="file file--success offer-main__file">
                               <span class="icon file__icon">
-                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="">
+                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="" />
                               </span>
                               <a class="file__name" href="#">BRIX Templates.pdf</a>
                               <button class="file__delete"></button>
                             </div>
                             <div class="file file--success offer-main__file">
                               <span class="icon file__icon">
-                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="">
+                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="" />
                               </span>
                               <a class="file__name" href="#">BRIX Templates.pdf</a>
                               <button class="file__delete"></button>
                             </div>
                             <div class="file file--success offer-main__file">
                               <span class="icon file__icon">
-                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="">
+                                <img class="icon__img" src="img/icons/file-green-400.svg" alt="" />
                               </span>
                               <a class="file__name" href="#">BRIX Templates.pdf</a>
                               <button class="file__delete"></button>
@@ -1112,13 +1146,13 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                             <div class="form__group-items form__group-items--mobile-column">
                               <div
                                 class="input input--picker-mobile-max-w-none input--picker-desktop-top form__group-item form__group-item--col-3 form__group-item--xxl-col-6">
-                                <div class="text text--3xs input__label" for="offer-active-until-date">
+                                <div class="text text--3xs input__label" for="ad-active-until-date">
                                   <span>Завершение подачи предложений</span>
                                 </div>
                                 <div class="input__main input__main--arrow">
                                   <input
                                     class="input__field input__field--sm"
-                                    id="offer-active-until-date"
+                                    id="ad-active-until-date"
                                     type="text"
                                     name="until-date"
                                     value="08.08.2024 12:00 мск"
@@ -1132,7 +1166,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                               </div>
                               <div
                                 class="input input--picker-mobile-max-w-none input--picker-desktop-top form__group-item form__group-item--col-3 form__group-item--xxl-col-6">
-                                <div class="text text--3xs input__label" for="offer-active-until-date">
+                                <div class="text text--3xs input__label" for="ad-active-until-date">
                                   <span>Подведение итогов до</span>
                                   <img
                                     class="text__icon"
@@ -1144,7 +1178,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                 <div class="input__main">
                                   <input
                                     class="input__field input__field--sm"
-                                    id="offer-active-until-date"
+                                    id="ad-active-until-date"
                                     type="text"
                                     name="until-date"
                                     value="08.08.2024 12:00 мск"
@@ -3042,7 +3076,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                   <div class="category categories__item">
                     <button class="text text--3xs text--lh-14 category__btn" type="button">
                       <span class="category__btn-icon"></span>
-                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="E ВОДОСНАБЖЕНИЕ; ВОДООТВЕДЕНИЕ, УСЛУГИ ПО УДАЛЕНИЮ И РЕКУЛЬТИВАЦИИ ОТХОДОВ" data-popup-name="categories">
+                      <label
+                        class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                        data-input-value="E ВОДОСНАБЖЕНИЕ; ВОДООТВЕДЕНИЕ, УСЛУГИ ПО УДАЛЕНИЮ И РЕКУЛЬТИВАЦИИ ОТХОДОВ"
+                        data-popup-name="categories">
                         <input class="checkbox__input" type="checkbox" />
                         <span class="checkbox__switch"></span>
                       </label>
@@ -3056,7 +3093,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <div class="category category__item">
                           <button class="text text--3xs text--lh-14 category__btn" type="button">
                             <span class="category__btn-icon"></span>
-                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38 Услуги по сбору, обработке и удалению отходов; услуги по утилизации отходов" data-popup-name="categories">
+                            <label
+                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                              data-input-value="38 Услуги по сбору, обработке и удалению отходов; услуги по утилизации отходов"
+                              data-popup-name="categories">
                               <input class="checkbox__input" type="checkbox" />
                               <span class="checkbox__switch"></span>
                             </label>
@@ -3070,7 +3110,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                               <div class="category category__item">
                                 <button class="text text--3xs text--lh-14 category__btn" type="button">
                                   <span class="category__btn-icon"></span>
-                                  <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.3 Услуги по восстановлению материалов; вторичное сырье" data-popup-name="categories">
+                                  <label
+                                    class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                    data-input-value="38.3 Услуги по восстановлению материалов; вторичное сырье"
+                                    data-popup-name="categories">
                                     <input class="checkbox__input" type="checkbox" />
                                     <span class="checkbox__switch"></span>
                                   </label>
@@ -3084,7 +3127,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                     <div class="category category__item">
                                       <button class="text text--3xs text--lh-14 category__btn" type="button">
                                         <span class="category__btn-icon"></span>
-                                        <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32 Услуги по сортировке материалов для восстановления; сырье вторичное" data-popup-name="categories">
+                                        <label
+                                          class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                          data-input-value="38.32 Услуги по сортировке материалов для восстановления; сырье вторичное"
+                                          data-popup-name="categories">
                                           <input class="checkbox__input" type="checkbox" />
                                           <span class="checkbox__switch"></span>
                                         </label>
@@ -3098,7 +3144,10 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                           <div class="category category__item">
                                             <button class="text text--3xs text--lh-14 category__btn" type="button">
                                               <span class="category__btn-icon"></span>
-                                              <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.2 Сырье вторичное, содержащее металлы" data-popup-name="categories">
+                                              <label
+                                                class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                data-input-value="38.32.2 Сырье вторичное, содержащее металлы"
+                                                data-popup-name="categories">
                                                 <input class="checkbox__input" type="checkbox" />
                                                 <span class="checkbox__switch"></span>
                                               </label>
@@ -3112,30 +3161,47 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                                 <div class="category category__item">
                                                   <button class="text text--3xs text--lh-14 category__btn" type="button">
                                                     <span class="category__btn-icon"></span>
-                                                    <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21 Сырье вторичное, содержащее драгоценные металлы" data-popup-name="categories">
+                                                    <label
+                                                      class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                      data-input-value="38.32.21 Сырье вторичное, содержащее драгоценные металлы"
+                                                      data-popup-name="categories">
                                                       <input class="checkbox__input" type="checkbox" />
                                                       <span class="checkbox__switch"></span>
                                                     </label>
                                                     <div>
-                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.21</span>
+                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num"
+                                                        >38.32.21</span
+                                                      >
                                                       <span>Сырье вторичное, содержащее драгоценные металлы</span>
                                                     </div>
                                                   </button>
                                                   <div class="category__content">
                                                     <div class="category__list category__list--sub">
-                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.110 Лом и отходы золота и золотых сплавов" data-popup-name="categories">
+                                                      <label
+                                                        class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                        data-input-value="38.32.21.110 Лом и отходы золота и золотых сплавов"
+                                                        data-popup-name="categories">
                                                         <input class="checkbox__input" type="checkbox" />
                                                         <span class="checkbox__switch"></span>
                                                         <div class="checkbox__text-block">
-                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.110</span>
-                                                          <span class="text text--3xs checkbox__text">Лом и отходы золота и золотых сплавов</span>
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                            >38.32.21.110</span
+                                                          >
+                                                          <span class="text text--3xs checkbox__text"
+                                                            >Лом и отходы золота и золотых сплавов</span
+                                                          >
                                                         </div>
                                                       </label>
-                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.120 Лом и отходы серебра и серебряных сплавов" data-popup-name="categories">
+                                                      <label
+                                                        class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                        data-input-value="38.32.21.120 Лом и отходы серебра и серебряных сплавов"
+                                                        data-popup-name="categories">
                                                         <input class="checkbox__input" type="checkbox" />
                                                         <span class="checkbox__switch"></span>
                                                         <div class="checkbox__text-block">
-                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.120</span>
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                            >38.32.21.120</span
+                                                          >
                                                           <span class="text text--3xs checkbox__text">
                                                             Лом и отходы серебра и серебряных сплавов
                                                           </span>
@@ -3144,42 +3210,65 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                                       <div class="category category__item">
                                                         <button class="text text--3xs text--lh-14 category__btn" type="button">
                                                           <span class="category__btn-icon"></span>
-                                                          <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.130 Лом и отходы платины, металлов платиновой группы и их сплавов" data-popup-name="categories">
+                                                          <label
+                                                            class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                            data-input-value="38.32.21.130 Лом и отходы платины, металлов платиновой группы и их сплавов"
+                                                            data-popup-name="categories">
                                                             <input class="checkbox__input" type="checkbox" />
                                                             <span class="checkbox__switch"></span>
                                                           </label>
                                                           <div>
-                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.21.130</span>
+                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num"
+                                                              >38.32.21.130</span
+                                                            >
                                                             <span>Лом и отходы платины, металлов платиновой группы и их сплавов</span>
                                                           </div>
                                                         </button>
                                                         <div class="category__content">
                                                           <div class="category__list category__list--sub">
-                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.131 Лом и отходы платины и платиновых сплавов" data-popup-name="categories">
+                                                            <label
+                                                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                              data-input-value="38.32.21.131 Лом и отходы платины и платиновых сплавов"
+                                                              data-popup-name="categories">
                                                               <input class="checkbox__input" type="checkbox" />
                                                               <span class="checkbox__switch"></span>
                                                               <div class="checkbox__text-block">
-                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.131</span>
+                                                                <span
+                                                                  class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                                  >38.32.21.131</span
+                                                                >
                                                                 <span class="text text--3xs checkbox__text">
                                                                   Лом и отходы платины и платиновых сплавов
                                                                 </span>
                                                               </div>
                                                             </label>
-                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.132 Лом и отходы палладия и палладиевых сплавов" data-popup-name="categories">
+                                                            <label
+                                                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                              data-input-value="38.32.21.132 Лом и отходы палладия и палладиевых сплавов"
+                                                              data-popup-name="categories">
                                                               <input class="checkbox__input" type="checkbox" />
                                                               <span class="checkbox__switch"></span>
                                                               <div class="checkbox__text-block">
-                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.132</span>
+                                                                <span
+                                                                  class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                                  >38.32.21.132</span
+                                                                >
                                                                 <span class="text text--3xs checkbox__text">
                                                                   Лом и отходы палладия и палладиевых сплавов
                                                                 </span>
                                                               </div>
                                                             </label>
-                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.139 Лом и отходы прочих металлов платиновой группы и их сплавов" data-popup-name="categories">
+                                                            <label
+                                                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                              data-input-value="38.32.21.139 Лом и отходы прочих металлов платиновой группы и их сплавов"
+                                                              data-popup-name="categories">
                                                               <input class="checkbox__input" type="checkbox" />
                                                               <span class="checkbox__switch"></span>
                                                               <div class="checkbox__text-block">
-                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.139</span>
+                                                                <span
+                                                                  class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                                  >38.32.21.139</span
+                                                                >
                                                                 <span class="text text--3xs checkbox__text">
                                                                   Лом и отходы прочих металлов платиновой группы и их сплавов
                                                                 </span>
@@ -3188,11 +3277,16 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                                           </div>
                                                         </div>
                                                       </div>
-                                                      <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.21.190 Лом и отходы прочих драгоценных металлов" data-popup-name="categories">
+                                                      <label
+                                                        class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                        data-input-value="38.32.21.190 Лом и отходы прочих драгоценных металлов"
+                                                        data-popup-name="categories">
                                                         <input class="checkbox__input" type="checkbox" />
                                                         <span class="checkbox__switch"></span>
                                                         <div class="checkbox__text-block">
-                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.21.190</span>
+                                                          <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                            >38.32.21.190</span
+                                                          >
                                                           <span class="text text--3xs checkbox__text">
                                                             Лом и отходы прочих драгоценных металлов
                                                           </span>
@@ -3204,12 +3298,17 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                                 <div class="category category__item">
                                                   <button class="text text--3xs text--lh-14 category__btn" type="button">
                                                     <span class="category__btn-icon"></span>
-                                                    <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22 Сырье вторичное, содержащее черные металлы" data-popup-name="categories">
+                                                    <label
+                                                      class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                      data-input-value="38.32.22 Сырье вторичное, содержащее черные металлы"
+                                                      data-popup-name="categories">
                                                       <input class="checkbox__input" type="checkbox" />
                                                       <span class="checkbox__switch"></span>
                                                     </label>
                                                     <div>
-                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.22</span>
+                                                      <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num"
+                                                        >38.32.22</span
+                                                      >
                                                       <span>Сырье вторичное, содержащее черные металлы</span>
                                                     </div>
                                                   </button>
@@ -3218,32 +3317,49 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                                       <div class="category category__item">
                                                         <button class="text text--3xs text--lh-14 category__btn" type="button">
                                                           <span class="category__btn-icon"></span>
-                                                          <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.110 Лом и отходы стальные" data-popup-name="categories">
+                                                          <label
+                                                            class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                            data-input-value="38.32.22.110 Лом и отходы стальные"
+                                                            data-popup-name="categories">
                                                             <input class="checkbox__input" type="checkbox" />
                                                             <span class="checkbox__switch"></span>
                                                           </label>
                                                           <div>
-                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num">38.32.22.110</span>
+                                                            <span class="text text--3xs text--neutral-400 text--lh-14 category__btn-num"
+                                                              >38.32.22.110</span
+                                                            >
                                                             <span>Лом и отходы стальные</span>
                                                           </div>
                                                         </button>
                                                         <div class="category__content">
                                                           <div class="category__list category__list--sub">
-                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.111 Лом и отходы стальные нелегированные (углеродистые)" data-popup-name="categories">
+                                                            <label
+                                                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                              data-input-value="38.32.22.111 Лом и отходы стальные нелегированные (углеродистые)"
+                                                              data-popup-name="categories">
                                                               <input class="checkbox__input" type="checkbox" />
                                                               <span class="checkbox__switch"></span>
                                                               <div class="checkbox__text-block">
-                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.22.111</span>
+                                                                <span
+                                                                  class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                                  >38.32.22.111</span
+                                                                >
                                                                 <span class="text text--3xs checkbox__text">
                                                                   Лом и отходы стальные нелегированные (углеродистые)
                                                                 </span>
                                                               </div>
                                                             </label>
-                                                            <label class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup" data-input-value="38.32.22.112 Лом и отходы стальные легированные" data-popup-name="categories">
+                                                            <label
+                                                              class="checkbox category__checkbox filter-content__checkbox js-update-select-group-field js-close-popup"
+                                                              data-input-value="38.32.22.112 Лом и отходы стальные легированные"
+                                                              data-popup-name="categories">
                                                               <input class="checkbox__input" type="checkbox" />
                                                               <span class="checkbox__switch"></span>
                                                               <div class="checkbox__text-block">
-                                                                <span class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num">38.32.22.112</span>
+                                                                <span
+                                                                  class="text text--3xs text--neutral-400 checkbox__text checkbox__text--num"
+                                                                  >38.32.22.112</span
+                                                                >
                                                                 <span class="text text--3xs checkbox__text">
                                                                   Лом и отходы стальные легированные
                                                                 </span>
@@ -3346,7 +3462,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Барнаул"
                               data-popup-name="regions">
                               Барнаул
@@ -3363,7 +3479,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Майкоп"
                               data-popup-name="regions">
                               Майкоп
@@ -3380,7 +3496,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Благовещенск"
                               data-popup-name="regions">
                               Благовещенск
@@ -3397,21 +3513,21 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Архангельск"
                               data-popup-name="regions">
                               Архангельск
                             </button>
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Вельск"
                               data-popup-name="regions">
                               Вельск
                             </button>
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Каргополь"
                               data-popup-name="regions">
                               Каргополь
@@ -3428,7 +3544,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Астрахань"
                               data-popup-name="regions">
                               Астрахань
@@ -3455,7 +3571,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Уфа"
                               data-popup-name="regions">
                               Уфа
@@ -3472,7 +3588,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="category__list category__list--sub">
                             <button
                               class="category__item-btn js-update-input js-close-popup"
-                              data-input-id="offer-location"
+                              data-input-id="ad-location"
                               data-input-value="Белгород"
                               data-popup-name="regions">
                               Белгород
