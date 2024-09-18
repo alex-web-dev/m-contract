@@ -2474,6 +2474,10 @@ $datepickerInputs.forEach(($datepickerInput) => {
       if ($datepickerInput.dataset.datepickerAutoset !== undefined) {
         updateDatepickerValue(picker, $datepickerInput);
       }
+
+      if ($datepickerInput.onDateSelect) {
+        $datepickerInput.onDateSelect(picker);
+      }
     },
   });
 
@@ -3712,3 +3716,14 @@ $selectAllCheckboxesBtns.forEach(($btn) => {
     });
   });
 });
+
+/* Пример добавления события для определенного поля ввода */
+const $activeUntilDateInput = document.getElementById('ad-active-until-date');
+$activeUntilDateInput.onDateSelect = (picker) => {
+  const formattedDates = picker.selectedDates.map((date) => {
+    return picker.formatDate(date, `${picker.opts.dateFormat}`);
+  });
+  const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
+
+  console.log(formattedDates[0], $timeInput.value);
+}
