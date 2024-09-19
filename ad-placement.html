@@ -409,7 +409,7 @@
                         </div>
                         <div class="form__group">
                           <div class="form__group-items form__group-items--mobile-column form__group-items">
-                            <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
+                            <div class="select select--shadow form__group-item form__group-item--w-4xs form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="ad-price-type">Цена</label>
                               <select
                                 class="select__field js-select-toggle"
@@ -421,7 +421,7 @@
                                   value="2"
                                   data-text-element="#ad-rate-vat-text"
                                   data-text-element-value="без НДС"
-                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "без НДС"}]'
+                                  data-text-elements='[{"selector": ".js-ad-table-rate-vat", "value": "без НДС"}]'
                                   selected>
                                   без НДС
                                 </option>
@@ -437,21 +437,21 @@
                                   value="1"
                                   data-text-element="#ad-rate-vat-text"
                                   data-text-element-value="с НДС (0%)"
-                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (0%)"}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-rate-vat", "value": "с НДС (0%)"}]'>
                                   0%
                                 </option>
                                 <option
                                   value="2"
                                   data-text-element="#ad-rate-vat-text"
                                   data-text-element-value="с НДС (10%)"
-                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (10%)"}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-rate-vat", "value": "с НДС (10%)"}]'>
                                   10%
                                 </option>
                                 <option
                                   value="2"
                                   data-text-element="#ad-rate-vat-text"
                                   data-text-element-value="с НДС (20%)"
-                                  data-text-elements='[{"selector": ".js-offer-table-rate-vat", "value": "с НДС (20%)"}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-rate-vat", "value": "с НДС (20%)"}]'>
                                   20%
                                 </option>
                               </select>
@@ -459,14 +459,59 @@
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="ad-terms-of-payments">Условия оплаты</label>
-                              <select class="select__field" id="ad-terms-of-payments" data-validate="empty" name="terms-of-payments">
-                                <option value="1" data-tippy-text="Подсказка">Не выбрано</option>
-                                <option value="2" data-tippy-text="Подсказка" selected>Отсрочка платежа</option>
+                              <select class="select__field js-select-toggle" id="ad-terms-of-payments" data-validate="empty" name="terms-of-payments">
+                                <option value="1" data-tippy-text="Подсказка" selected>Не выбрано</option>
+                                <option value="2" data-tippy-text="Подсказка" data-toggle-elements="#ad-terms-payments-deferment-period">Отсрочка платежа</option>
                                 <option value="3" data-tippy-text="Подсказка">100% предоплата</option>
-                                <option value="4" data-tippy-text="Подсказка">Частичная предоплата</option>
+                                <option value="4" data-tippy-text="Подсказка" data-toggle-elements="#ad-terms-payments-partial-prepayment">Частичная предоплата</option>
                                 <option value="5" data-tippy-text="Подсказка">По факту поставки</option>
                               </select>
                               <span class="text text--4xs text--lh-125 select__error"></span>
+                            </div>
+                            <div class="input form__group-item form__group-item--w-xxs form__group-item--xxl-col-4 display_none" id="ad-terms-payments-deferment-period">
+                              <div class="text text--3xs input__label" for="ad-deferment-period">
+                                <span>Cрок оплаты</span>
+                                <img
+                                  class="text__icon"
+                                  src="img/icons/info-blue-500.svg"
+                                  data-tippy-content="Подсказка"
+                                  data-tippy-placement="bottom"
+                                  alt="" />
+                              </div>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm js-imask"
+                                  id="ad-deferment-period"
+                                  type="text"
+                                  name="deferment-period"
+                                  value="5"
+                                  data-mask="int"
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
+                            </div>
+                            <div class="input form__group-item form__group-item--w-xxs form__group-item--xxl-col-4 display_none" id="ad-terms-payments-partial-prepayment">
+                              <div class="text text--3xs input__label" for="ad-partial-prepayment">
+                                <span>Размер предоплаты</span>
+                                <img
+                                  class="text__icon"
+                                  src="img/icons/info-blue-500.svg"
+                                  data-tippy-content="Подсказка"
+                                  data-tippy-placement="bottom"
+                                  alt="" />
+                              </div>
+                              <div class="input__main">
+                                <input
+                                  class="input__field input__field--sm js-imask"
+                                  id="ad-partial-prepayment"
+                                  type="text"
+                                  name="partial-prepayment"
+                                  data-mask="int"
+                                  data-mask-min="1"
+                                  data-mask-max="99"
+                                  data-validate="empty" />
+                              </div>
+                              <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
                             <div class="select select--shadow form__group-item form__group-item--xxl-col-4">
                               <label class="text text--3xs select__label" for="ad-currency">Валюта</label>
@@ -484,39 +529,39 @@
                                 name="unit-measurement">
                                 <option
                                   value="1"
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (тн.)"}, {"selector": ".js-offer-table-unit-type", "value": "тн."}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (тн.)"}, {"selector": ".js-ad-table-unit-type", "value": "тн."}]'>
                                   тн
                                 </option>
                                 <option
                                   value="2"
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (кг.)"}, {"selector": ".js-offer-table-unit-type", "value": "кг."}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (кг.)"}, {"selector": ".js-ad-table-unit-type", "value": "кг."}]'>
                                   кг
                                 </option>
                                 <option
                                   value="3"
                                   selected
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (шт.)"}, {"selector": ".js-offer-table-unit-type", "value": "шт."}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (шт.)"}, {"selector": ".js-ad-table-unit-type", "value": "шт."}]'>
                                   шт
                                 </option>
                                 <option
                                   value="4"
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (м.)"}, {"selector": ".js-offer-table-unit-type", "value": "м."}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (м.)"}, {"selector": ".js-ad-table-unit-type", "value": "м."}]'>
                                   м
                                 </option>
                                 <option
                                   value="5"
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (м2.)"}, {"selector": ".js-offer-table-unit-type", "value": "м2."}]'>
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (м2.)"}, {"selector": ".js-ad-table-unit-type", "value": "м2."}]'>
                                   м2
                                 </option>
                                 <option
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во (км.)"}, {"selector": ".js-offer-table-unit-type", "value": "км."}]'
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во (км.)"}, {"selector": ".js-ad-table-unit-type", "value": "км."}]'
                                   value="6">
                                   км
                                 </option>
                                 <option
                                   value="7"
-                                  data-toggle-elements=".js-offer-unit-measurement-td"
-                                  data-text-elements='[{"selector": ".js-offer-table-count-type", "value": "Кол-во"}, {"selector": ".js-offer-table-unit-type", "value": "ед."}]'>
+                                  data-toggle-elements=".js-ad-unit-measurement-td"
+                                  data-text-elements='[{"selector": ".js-ad-table-count-type", "value": "Кол-во"}, {"selector": ".js-ad-table-unit-type", "value": "ед."}]'>
                                   смешанная
                                 </option>
                               </select>
@@ -582,7 +627,7 @@
                           class="btn btn--iflex btn--gray-100 btn--px-sm btn--py-xs btn--text-xs offer-main__tabs-header-btn offer-main__tabs-header-btn--images">
                           <img class="btn__icon" src="img/icons/plus-blue-500.svg" alt="" />
                           <span>Добавить фото</span>
-                          <input class="btn__file-field js-offer-add-img" type="file" />
+                          <input class="btn__file-field js-ad-add-img" type="file" />
                         </label>
                       </div>
                       <div class="tabs-list" data-tabs-name="offer">
@@ -598,14 +643,14 @@
                                     <span class="text text--4xs text--medium">Наименование категории / позиции</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium js-offer-table-count-type">Кол-во (шт.)</span>
+                                    <span class="text text--4xs text--medium js-ad-table-count-type">Кол-во (шт.)</span>
                                   </th>
-                                  <th class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                  <th class="table-price__unit-measurement js-ad-unit-measurement-td display_none">
                                     <span class="text text--4xs text--medium">Ед. изм</span>
                                   </th>
                                   <th>
                                     <span class="text text--4xs text--medium">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
+                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
                                       <span id="ad-rate-vat-text">без НДС</span>
                                     </span>
                                   </th>
@@ -658,7 +703,7 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-ad-table-count-type">
                                       Кол-во (шт.)
                                     </span>
                                     <div
@@ -674,7 +719,7 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
-                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                  <td class="table-price__unit-measurement js-ad-unit-measurement-td display_none">
                                     <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
                                     <div class="select select--outside select--xxs select--shadow table-price__input">
                                       <select class="select__field" data-validate="empty">
@@ -690,8 +735,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
-                                      <span class="js-offer-table-rate-vat">без НДС</span>
+                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
+                                      <span class="js-ad-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -760,7 +805,7 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-ad-table-count-type">
                                       Кол-во (шт.)
                                     </span>
                                     <div
@@ -776,7 +821,7 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
-                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                  <td class="table-price__unit-measurement js-ad-unit-measurement-td display_none">
                                     <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
                                     <div class="select select--outside select--xxs select--shadow table-price__input">
                                       <select class="select__field" data-validate="empty">
@@ -792,8 +837,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
-                                      <span class="js-offer-table-rate-vat">без НДС</span>
+                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
+                                      <span class="js-ad-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -862,7 +907,7 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-ad-table-count-type">
                                       Кол-во (шт.)
                                     </span>
                                     <div
@@ -878,7 +923,7 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
-                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                  <td class="table-price__unit-measurement js-ad-unit-measurement-td display_none">
                                     <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
                                     <div class="select select--outside select--xxs select--shadow table-price__input">
                                       <select class="select__field" data-validate="empty">
@@ -894,8 +939,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
-                                      <span class="js-offer-table-rate-vat">без НДС</span>
+                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
+                                      <span class="js-ad-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">
@@ -960,7 +1005,7 @@
                                     </div>
                                   </td>
                                   <td>
-                                    <span class="text text--4xs text--medium table-price__mobile-label js-offer-table-count-type">
+                                    <span class="text text--4xs text--medium table-price__mobile-label js-ad-table-count-type">
                                       Кол-во (шт.)
                                     </span>
                                     <div
@@ -976,7 +1021,7 @@
                                       <span class="text text--4xs text--lh-125 input__error"></span>
                                     </div>
                                   </td>
-                                  <td class="table-price__unit-measurement js-offer-unit-measurement-td display_none">
+                                  <td class="table-price__unit-measurement js-ad-unit-measurement-td display_none">
                                     <span class="text text--4xs text--medium table-price__mobile-label">Ед. изм</span>
                                     <div class="select select--outside select--xxs select--shadow table-price__input">
                                       <select class="select__field" data-validate="empty">
@@ -992,8 +1037,8 @@
                                   </td>
                                   <td>
                                     <span class="text text--4xs text--medium table-price__mobile-label">
-                                      Цена за 1 (<span class="js-offer-table-unit-type">шт.</span>) мин /
-                                      <span class="js-offer-table-rate-vat">без НДС</span>
+                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
+                                      <span class="js-ad-table-rate-vat">без НДС</span>
                                     </span>
                                     <div
                                       class="input table-price__input table-price__input--left table-price__input--mobile-full table-price__input--price-one">

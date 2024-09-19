@@ -1716,7 +1716,7 @@ mark {
 .simple-select__item,
 .simple-select__li {
   position: relative;
-  padding: 8px 12px;
+  padding: 8px 26px 8px 12px;
   font-size: 14px;
   line-height: 20px;
   transition: background-color 0.1s;
@@ -1769,6 +1769,11 @@ mark {
 
 .simple-select__item-icon:not(:first-child) {
   margin-left: 10px;
+}
+
+.simple-select__item-value {
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .simple-select__group {
@@ -2041,8 +2046,16 @@ mark {
   flex: 0 0 calc(25% - 16px);
 }
 
+.form__group-item--w-xxs {
+  flex: 0 0 168px;
+}
+
 .form__group-item--w-3xs {
-  flex: 0 0 160px;
+  flex: 0 0 140px;
+}
+
+.form__group-item--w-4xs {
+  flex: 0 0 115px;
 }
 
 .form__min-h-44 {
