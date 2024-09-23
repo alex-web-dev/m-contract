@@ -361,7 +361,15 @@
                               <div class="text text--4xs text--lh-125 select__error"></div>
                             </div>
                             <div class="input form__group-item form__group-item--xxl-col-6">
-                              <label class="text text--3xs input__label" for="ad-location">Местонахождение товара</label>
+                              <label class="text text--3xs input__label" for="ad-location">
+                                <span>Место поставки</span>
+                                <img
+                                  class="text__icon"
+                                  src="img/icons/info-blue-500.svg"
+                                  data-tippy-content="Выберите населенный пункт и, если необходимо, укажите полный адрес"
+                                  data-tippy-placement="bottom"
+                                  alt="" />
+                              </label>
                               <div class="input__main input__main--arrow">
                                 <input
                                   class="input__field input__field--sm js-open-popup"
@@ -376,9 +384,7 @@
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
                             <div class="input form__group-item form__group-item--xxl-col-6">
-                              <label class="text text--3xs input__label" for="ad-location-full">
-                                Полный адрес местонахождения товара
-                              </label>
+                              <label class="text text--3xs input__label" for="ad-location-full"> Полный адрес поставки товара </label>
                               <div class="input__main">
                                 <textarea
                                   class="input__field input__field--area input__field--area-sm"
@@ -387,7 +393,9 @@
                                   name="location-full"
                                   maxlength="150"
                                   data-no-resize
-                                  data-validate="empty">Проспект Коммунистический, 60 к1</textarea>
+                                  data-validate="empty">
+Проспект Коммунистический, 60 к1</textarea
+                                >
                               </div>
                               <span class="text text--4xs text--lh-125 input__error"></span>
                             </div>
@@ -410,7 +418,15 @@
                         <div class="form__group">
                           <div class="form__group-items form__group-items--mobile-column form__group-items">
                             <div class="select select--shadow form__group-item form__group-item--w-4xs form__group-item--xxl-col-4">
-                              <label class="text text--3xs select__label" for="ad-price-type">Цена</label>
+                              <label class="text text--3xs select__label" for="ad-price-type">
+                                <span>Цена</span>
+                                <img
+                                  class="text__icon"
+                                  src="img/icons/info-blue-500.svg"
+                                  data-tippy-content="Укажите с НДС или без НДС будут отправлять предложения участники. Рекомендуем использовать тот вариант, который будет в договоре"
+                                  data-tippy-placement="bottom"
+                                  alt="" />
+                              </label>
                               <select
                                 class="select__field js-select-toggle"
                                 id="ad-price-type"
@@ -474,7 +490,7 @@
                                 <img
                                   class="text__icon"
                                   src="img/icons/info-blue-500.svg"
-                                  data-tippy-content="Подсказка"
+                                  data-tippy-content="Укажите целым числом максимальное количество календарных дней для отсрочки"
                                   data-tippy-placement="bottom"
                                   alt="" />
                               </div>
@@ -496,7 +512,7 @@
                                 <img
                                   class="text__icon"
                                   src="img/icons/info-blue-500.svg"
-                                  data-tippy-content="Подсказка"
+                                  data-tippy-content="Укажите размер предоплаты в процентах, целым числом (1-99)"
                                   data-tippy-placement="bottom"
                                   alt="" />
                               </div>
@@ -571,6 +587,13 @@
                               class="input input--picker-mobile-max-w-none input--picker-right form__group-item form__group-item--xxl-col-4">
                               <div class="text text--3xs input__label" for="ad-active-until-date">
                                 <span>Передача товара до</span>
+                                <img
+                                  class="text__icon"
+                                  src="img/icons/info-blue-500.svg"
+                                  data-tippy-content="Продажа - Укажите максимальный срок для передачи товара. И, если товар уже готов к передаче, то рекомендуем отметить это в Описании для получения наиболее выгодных предложений <br><br> Закупка - Укажите максимальный срок для поставки товара/услуги"
+                                  data-tippy-placement="bottom"
+                                  data-tippy-html
+                                  alt="" />
                               </div>
                               <div class="input__main">
                                 <input
@@ -649,9 +672,17 @@
                                     <span class="text text--4xs text--medium">Ед. изм</span>
                                   </th>
                                   <th>
-                                    <span class="text text--4xs text--medium">
-                                      Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
-                                      <span id="ad-rate-vat-text">без НДС</span>
+                                    <span class="text text--4xs text--medium text--iflex">
+                                      <span>
+                                        Цена за 1 (<span class="js-ad-table-unit-type">шт.</span>) мин /
+                                        <span id="ad-rate-vat-text">без НДС</span>
+                                      </span>
+                                      <img
+                                        class="text__icon text__icon--mx-sm"
+                                        src="img/icons/info-blue-500.svg"
+                                        data-tippy-content="Вы можете установить пороговое значение по цене. Участники не смогут отправлять предложения хуже установленного"
+                                        data-tippy-placement="bottom"
+                                        alt="" />
                                     </span>
                                   </th>
                                   <th></th>
@@ -1165,22 +1196,76 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs checkbox__text">Скрыть количество участников</span>
+                          <span class="text text--3xs text--iflex checkbox__text">
+                            <span>Скрыть количество участников</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Участники не будут видеть сколько подано предложений по Вашему объявлению"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
                         </label>
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs checkbox__text">Участники видят цены друг друга</span>
+                          <span class="text text--3xs text--iflex checkbox__text">
+                            <span>Участники видят цены друг друга</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Участники будут видеть только цены друг друга. Наименования остаются скрытыми"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
                         </label>
-                        <label class="checkbox checkbox--disabled offer-main__checkbox">
+                        <label class="checkbox checkbox--inactive offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs checkbox__text">Присвоить ранги предложениям</span>
+                          <span class="text text--3xs text--iflex checkbox__text">
+                            <span>Присвоить ранги предложениям</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Участники будут видеть только ранг предложений друг друга относительно цен. Наименования остаются скрытыми. Не рекомендуем использовать данную функцию, если цена не главный критерий выбора победителя"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--inactive">
+                            <span>Присвоить ранги предложениям</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Для активации этой функции в условиях сделки не должно быть значений - «не выбрано»"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
                         </label>
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs checkbox__text">Частичная подача предложений</span>
+                          <span class="text text--3xs text--iflex checkbox__text">
+                            <span>Частичная подача предложений</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Участники смогут отправлять предложения на часть указанных позиций, а Вы выбрать более одного победителя"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
+                        </label>
+                        <label class="checkbox offer-main__checkbox">
+                          <input class="checkbox__input" type="checkbox" />
+                          <span class="checkbox__switch"></span>
+                          <span class="text text--3xs text--iflex checkbox__text">
+                            <span>Эл. подпись</span>
+                            <img
+                              class="text__icon text__icon--mx-sm"
+                              src="img/icons/info-blue-500.svg"
+                              data-tippy-content="Включив данную функцию, участники будут обязаны подписывать свои предложения ЭП. Но и с Вашей стороны выбор победителя (-ей) будет возможен только через подписание ЭП"
+                              data-tippy-placement="bottom"
+                              alt="" />
+                          </span>
                         </label>
                       </div>
                       <div class="form offer-main__section-form">
@@ -1191,6 +1276,12 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                 class="input input--picker-mobile-max-w-none input--picker-desktop-top form__group-item form__group-item--col-3 form__group-item--xxl-col-6">
                                 <div class="text text--3xs input__label" for="ad-closing-offers-date">
                                   <span>Завершение подачи предложений</span>
+                                  <img
+                                    class="text__icon"
+                                    src="img/icons/info-blue-500.svg"
+                                    data-tippy-content="Срок окончания подачи предложений от участников. Минимум - 1 день, максимум - 21 день от текущего времени"
+                                    data-tippy-placement="bottom"
+                                    alt="" />
                                 </div>
                                 <div class="input__main input__main--arrow">
                                   <input
@@ -1214,7 +1305,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                                   <img
                                     class="text__icon"
                                     src="img/icons/info-blue-500.svg"
-                                    data-tippy-content="Подсказка"
+                                    data-tippy-content="Срок после истечения которого участники смогут отзывать свои предложения. Минимум - 1 час, максимум - 25 дней после Завершения подачи предложений"
                                     data-tippy-placement="bottom"
                                     alt="" />
                                 </div>
@@ -2786,23 +2877,8 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                           <div class="input filter-content__section-search search-items__input">
                             <div class="input__content">
                               <div class="input__main">
-                                <button class="input__left-btn" type="button">
-                                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                      d="M13.5835 13.5833L17.3335 17.3333"
-                                      stroke="#5D606F"
-                                      stroke-width="1.25"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round" />
-                                    <path
-                                      d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                                      stroke="#5D606F"
-                                      stroke-width="1.25"
-                                      stroke-linejoin="round" />
-                                  </svg>
-                                </button>
                                 <input
-                                  class="input__field input__field--sm input__field--left-btn input__field--right-btn"
+                                  class="input__field input__field--sm input__field--right-btn"
                                   type="text"
                                   placeholder="Введите E-mail"
                                   name="search"
@@ -2821,7 +2897,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                             </div>
                             <span class="text text--3xs text--lh-125 input__error"></span>
                           </div>
-                          <div class="filter-content__section-links filter-content__section-links--end">
+                          <div class="filter-content__section-links">
                             <button class="link link--blue-500 link--xxs filter-content__section-link filter-content__section-link--clear">
                               Очистить
                             </button>

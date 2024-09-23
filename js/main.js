@@ -2031,9 +2031,10 @@ $searchItemsBoxes.forEach(($searchItemsBox) => {
 const $tippyBoxes = document.querySelectorAll("[data-tippy-content]");
 $tippyBoxes.forEach(($tippyBox) => {
   const maxWidth = +$tippyBox.dataset.maxWidth || "none";
-
+  const allowHTML = $tippyBox.dataset.tippyHtml !== undefined;
   tippy($tippyBox, {
     maxWidth,
+    allowHTML
   });
 });
 
@@ -3379,7 +3380,7 @@ const $tablePlacement = document.querySelector(".table-price--ad-placement");
 if ($tablePlacement) {
   const $addBtn = document.querySelector(".js-ad-placement-table-add");
   $addBtn.addEventListener("click", () => {
-    addItemToAdPlacementTable($tablePlacement);
+    addItemToAdPlacementTable($tablePlacement, null, true);
   });
 
   const $deleteBtns = $tablePlacement.querySelectorAll(".table-price__delete");
@@ -3391,10 +3392,14 @@ if ($tablePlacement) {
   });
 }
 
-function addItemToAdPlacementTable($table, $originalTr) {
+function addItemToAdPlacementTable($table, $originalTr, clearGroupFields = false) {
   const $tbody = $tablePlacement.querySelector("tbody");
+  const $tableRows = $table.querySelectorAll('tbody tr');
+  const $lastRow = $tableRows[$tableRows.length - 1];
+  if (!$originalTr) $originalTr = $lastRow;
 
-  const $tr = $originalTr ? $originalTr.cloneNode(true) : $table.querySelector(".table-price__prototype").cloneNode(true);
+  const $tr = $originalTr.cloneNode(true);
+  
   $tr.classList.remove("table-price__prototype");
 
   const $allRows = $table.querySelectorAll("tbody tr:not(.table-price__prototype)");
@@ -3414,9 +3419,11 @@ function addItemToAdPlacementTable($table, $originalTr) {
 
   const $group = $tr.querySelector(".table-price__select-group");
   const $groupSelect = $group.querySelector(".select-group__select");
-  const $groupSelectField = $groupSelect.querySelector(".input__field");
+  const $groupSelectFirstField = $group.querySelectorAll(".input__field")[0];
+  const $groupSelectSecondField = $group.querySelectorAll(".input__field")[1];
+
   const $categoriesPopup = document.querySelector('.popup[data-popup-name="categories"]');
-  $groupSelectField.addEventListener("click", () => {
+  $groupSelectFirstField.addEventListener("click", () => {
     $groupSelect.classList.remove("input--error");
     openPopup($categoriesPopup);
     selectGroupFieldHandler($group);
@@ -3430,17 +3437,21 @@ function addItemToAdPlacementTable($table, $originalTr) {
   const $inputCountField = $inputCount.querySelector(".input__field");
   $inputCountField.dataset.validate = "empty";
   $inputCountField.dataset.mask = "num";
+  $inputCountField.value = '';
   addAllHandlersToInput($inputCount, $form);
   imaskInputHandler($inputCountField);
 
   const $inputPriceOne = $tr.querySelector(".table-price__input--price-one");
   const $inputPriceOneField = $inputPriceOne.querySelector(".input__field");
   $inputPriceOneField.dataset.mask = "num";
+  $inputPriceOneField.value = '';
   addAllHandlersToInput($inputPriceOne, $form);
   imaskInputHandler($inputPriceOneField);
 
   const $selectFields = $tr.querySelectorAll(".select__field");
-  $selectFields.forEach(($selectField) => {
+  $selectFields.forEach(($selectField, index) => {
+    $selectField.value = $originalTr.querySelectorAll('.select__field')[index].value;
+    
     $selectField.dataset.validate = "empty";
     initializeCustomSelect($selectField);
   });
@@ -3452,11 +3463,17 @@ function addItemToAdPlacementTable($table, $originalTr) {
   $selectGroup.classList.remove("select-group--chosen");
   const $addBtn = $selectGroup.querySelector(".select-group__add");
   $addBtn.addEventListener("click", () => {
-    if ($groupSelectField.value !== "") {
+    if ($groupSelectFirstField.value !== "") {
       addItemToAdPlacementTable($tablePlacement, $tr);
       updateAdPlacementTableRowsNums($tablePlacement);
     }
   });
+
+  if (clearGroupFields) {
+    $addBtn.classList.remove('select-group__add--active');
+    $groupSelectFirstField.value = '';
+    $groupSelectSecondField.value = '';
+  }
 
   const $deleteBtn = $tr.querySelector(".table-price__delete");
   $deleteBtn.addEventListener("click", () => $tr.remove());
@@ -3716,6 +3733,15 @@ $selectAllCheckboxesBtns.forEach(($btn) => {
     });
   });
 });
+
+/* Checkboxes */
+const $checkboxesInactive = document.querySelectorAll('.checkbox--inactive');
+$checkboxesInactive.forEach($checkboxInactive => {
+  const $input = $checkboxInactive.querySelector('.checkbox__input');
+  $input.addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+})
 
 /* Пример добавления события для определенного поля ввода */
 const $activeUntilDateInput = document.getElementById('ad-active-until-date');

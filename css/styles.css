@@ -1827,9 +1827,25 @@ mark {
   align-items: center;
 }
 
+.checkbox__text--inactive {
+  display: none;
+}
+
 .checkbox--disabled {
   pointer-events: none;
   opacity: 0.4;
+}
+
+.checkbox--inactive {
+  opacity: 0.4;
+}
+
+.checkbox--inactive .checkbox__text {
+  display: none;
+}
+
+.checkbox--inactive .checkbox__text--inactive {
+  display: inline-flex;
 }
 
 .checkbox__switch {
