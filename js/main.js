@@ -2470,7 +2470,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
     },
     onSelect: (date) => {
       $datepickerInput.value = $datepickerInput.pickerDefaultValue;
-      verifyData(date);
+      verifyData(date, picker);
 
       if ($datepickerInput.dataset.datepickerAutoset !== undefined) {
         updateDatepickerValue(picker, $datepickerInput);
@@ -2508,7 +2508,7 @@ $datepickerInputs.forEach(($datepickerInput) => {
   });
 
   window.addEventListener("click", (e) => {
-    if (e.target.dataset.datepicker === "" || e.target.closest("[data-datepicker]")) {
+    if (e.target.dataset.datepicker === "" || e.target.closest("[data-datepicker]") || e.target.closest('.popup[data-popup-name="custom"]')) {
       return;
     }
 
