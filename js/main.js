@@ -2568,12 +2568,14 @@ function renderDatePicker({ picker, minYear, maxYear }) {
 function updateDatepickerValue(picker, $datepickerInput) {
   const datepickerInputAdditionTimeText = $datepickerInput.dataset.datepickerAdditionTimeText;
   const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
-  const selectedDates = picker.selectedDates;
   const [hours, minutes] = $timeInput.value.split(":").map(Number);
   let roundedMinutes = Math.round(minutes / 5) * 5;
   if (roundedMinutes > 55) {
     roundedMinutes = 55;
   }
+  
+  const selectedDates = picker.selectedDates;
+  if (selectedDates.length === 0) selectedDates.push(new Date());
 
   selectedDates.forEach((selectedDate) => {
     selectedDate.setHours(hours);
