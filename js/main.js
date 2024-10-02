@@ -1709,6 +1709,19 @@ $categoriesBoxes.forEach(($categoriesBox) => {
       });
     });
   });
+
+  $categoriesBox.addEventListener('click', (e) => {
+    if (e.target.closest('.js-update-select-group-field')) {
+      const $btn = e.target.closest('.js-update-select-group-field');
+      updateSelectGroupFieldHandler($btn);
+    }
+
+    if (e.target.closest('.js-close-popup')) {
+      const popupName = e.target.closest('.js-close-popup').dataset.popupName;
+      const $popup = document.querySelector(`.popup[data-popup-name="${popupName}"`);      
+      closePopup($popup);
+    }
+  });
 });
 
 document.addEventListener("click", (event) => {
@@ -3513,18 +3526,20 @@ $selectGroups.forEach(($selectGroup) => {
 
 const $updateSelectGroupFieldBtns = document.querySelectorAll(".js-update-select-group-field");
 $updateSelectGroupFieldBtns.forEach(($btn) => {
-  $btn.addEventListener("click", () => {
-    const value = $btn.dataset.inputValue;
-    const $chosenGroup = document.querySelector(".select-group--chosen");
-    const $field = $chosenGroup.querySelector(".select-group__select .input__field");
-    $field.value = value;
-
-    const $addBtn = $chosenGroup.querySelector(".select-group__add");
-    if ($field.value !== "") {
-      $addBtn.classList.add("select-group__add--active");
-    }
-  });
+  $btn.addEventListener("click", () => updateSelectGroupFieldHandler($btn));
 });
+
+function updateSelectGroupFieldHandler($btn) {
+  const value = $btn.dataset.inputValue;
+  const $chosenGroup = document.querySelector(".select-group--chosen");
+  const $field = $chosenGroup.querySelector(".select-group__select .input__field");
+  $field.value = value;
+
+  const $addBtn = $chosenGroup.querySelector(".select-group__add");
+  if ($field.value !== "") {
+    $addBtn.classList.add("select-group__add--active");
+  }
+}
 
 function selectGroupFieldHandler($selectGroup) {
   const $oldChosenGroup = document.querySelector(".select-group--chosen");
