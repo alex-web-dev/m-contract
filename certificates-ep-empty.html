@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no" />
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/air-datepicker.min.css" />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/media.css" />
-    <title>M-Contract - Партнеры - Поиск</title>
+    <title>M-Contract - Данные профиля - Сертификаты ЭП - Пусто</title>
   </head>
   <body>
     <header class="header header--lk">
@@ -216,7 +216,7 @@
             <div class="lk-sidebar__profile">
               <div class="lk-user lk-sidebar__user">
                 <label class="lk-user__img-box">
-                  <img class="lk-user__img" src="img/lk/user.jpg" alt="" />
+                  <img class="lk-user__img-icon" src="img/icons/user-sharing.svg" alt="" />
                   <input class="lk-user__img-file js-crop-img" type="file">
                 </label>
                 <div class="lk-user__info">
@@ -241,12 +241,12 @@
               </div>
               <ul class="lk-menu lk-sidebar__menu">
                 <li class="lk-menu__item">
-                  <a class="lk-menu-link lk-menu__link" href="profile-data.html">
+                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
                     <div class="lk-menu-link__icon">
                       <img src="img/icons/lk-menu/1.svg" alt="" />
                     </div>
                     <span class="lk-menu-link__text">Данные профиля</span>
-                  </a>
+                  </div>
                 </li>
                 <li class="lk-menu__item">
                   <a class="lk-menu-link lk-menu__link" href="payments.html">
@@ -298,12 +298,12 @@
                   </a>
                 </li>
                 <li class="lk-menu__item">
-                  <div class="lk-menu-link lk-menu-link--active lk-menu__link">
+                  <a class="lk-menu-link lk-menu__link" href="partners.html">
                     <div class="lk-menu-link__icon">
                       <img src="img/icons/lk-menu/8.svg" alt="" />
                     </div>
                     <span class="lk-menu-link__text">Партнеры</span>
-                  </div>
+                  </a>
                 </li>
               </ul>
               <div class="lk-sidebar__bottom-item">
@@ -323,417 +323,99 @@
         <div class="lk__body">
           <div class="lk__body-content">
             <div class="lk__header">
-              <div class="text text--bold text--lh-16 lk__header-title">
-                <span>Партнеры</span>
-                <span class="count-circle count-circle--blue-500 lk__header-title-count">2</span>
-              </div>
+              <div class="text text--bold text--lh-16 lk__header-title">Сертификаты ЭП</div>
             </div>
             <div class="lk__main">
               <div class="lk__main-body">
-                <div class="lk-catalog">
-                  <div class="filter lk-catalog__filter">
-                    <div class="input filter__search">
-                      <div class="input__main">
-                        <button class="input__left-btn" type="button">
-                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M13.5835 13.5833L17.3335 17.3333"
-                              stroke="#5D606F"
-                              stroke-width="1.25"
-                              stroke-linecap="round"
-                              stroke-linejoin="round" />
-                            <path
-                              d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                              stroke="#5D606F"
-                              stroke-width="1.25"
-                              stroke-linejoin="round" />
-                          </svg>
-                        </button>
-                        <input
-                          class="input__field input__field--no-shadow input__field--no-border input__field--sm input__field--left-btn input__field--right-btn"
-                          type="text"
-                          placeholder="Поиск по наименованию или ИНН..."
-                          name="search"
-                          autocomplete="off" />
-                        <button class="input__right-btn input__clear-field" type="button">
-                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                              fill="#9093A2" />
-                          </svg>
-                        </button>
-                      </div>
-                      <span class="text text--3xs text--lh-125 input__error"></span>
-                    </div>
-                    <div class="sort-btns filter__sort-btns">
-                      <div class="sort-btns__list sort-btns__list--mobile-between">
-                        <button class="link link--iflex link--blue-500 link--xs sort-btns__btn js-open-popup" data-popup-name="groups">
-                          <span>Группы</span>
-                          <img class="link__icon link__icon--mx-lg" src="img/icons/down-triangle-blue-500.svg" alt="" />
-                        </button>
-                        <button
-                          class="link link--iflex link--blue-500 link--xs sort-btns__btn js-open-popup"
-                          data-popup-name="groups-settings">
-                          <img class="link__icon link__icon--mx-xs" src="img/icons/gear-blue-500.svg" alt="" />
-                          <span>Настройки групп</span>
-                        </button>
+                <div class="certificates lk__certificates">
+                  <div class="certificates__info-list">
+                    <div class="certificate-info certificates__info-item">
+                      <img class="certificate-info__icon" src="img/icons/info-orange-400.svg" alt="">
+                      <div class="certificate-info__main">
+                        <p class="text text--3xs text--blue-700 text--lh-14">Убедитесь, что Ваш компьютер готов к работе с электронной подписью (ЭП), установлено ПО КриптоПро CSP 5 (или выше), а также установлен и включен КриптоПро ЭЦП Browser blug-in.</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="lk-catalog__section">
-                    <div class="text text--xxs text--iflex lk-catalog__label">
-                      <span>Мои партнеры</span>
-                      <span class="count-circle count-circle--white count-circle--oval--px-sm text__icon text__icon--mx-xs">2</span>
-                    </div>
-                    <div class="lk-catalog__list">
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/1.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                            <div class="tag tag--clamp tag--sm partner-item__tag">
-                              <span class="text text--4xs text--lh-14 tag__text">Металлолом</span>
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--orange-100 partner-item__btns-btn">
-                            <img src="img/icons/user-minus-orange-500.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/4.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                            <div class="tag tag--clamp tag--sm partner-item__tag">
-                              <span class="text text--4xs text--lh-14 tag__text">Металлолом</span>
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--orange-100 partner-item__btns-btn">
-                            <img src="img/icons/user-minus-orange-500.svg" alt="" />
-                          </button>
-                        </div>
+                    <div class="certificate-info certificates__info-item">
+                      <img class="certificate-info__icon" src="img/icons/info-orange-400.svg" alt="">
+                      <div class="certificate-info__main">
+                        <p class="text text--3xs text--blue-700 text--lh-14">Мы не выдаем сертификаты ЭП и Вы можете использовать свой полученный в любом удостоверяющем центре или ФНС</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="lk-catalog__section">
-                    <div class="text text--xxs text--iflex lk-catalog__label">
-                      <span>Результаты поиска</span>
-                      <span class="count-circle count-circle--white count-circle--oval--px-sm text__icon text__icon--mx-xs">480</span>
-                    </div>
-                    <div class="lk-catalog__list">
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/2.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/3.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--gray-100 partner-item__btns-btn">
-                            <img src="img/icons/user-check-blue-500.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/3.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                          <img class="text__icon text__icon--mx-sm" src="img/icons/lock-second.svg" alt="" />
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/2.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/1.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                          <img
-                            class="text__icon text__icon--mx-sm"
-                            src="img/icons/prohibit-orange-500.svg"
-                            data-tippy-content="Пользователь заблокирован"
-                            data-tippy-placement="bottom"
-                            alt="" />
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--white partner-item__btns-btn">Разблокировать</button>
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/1.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/3.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/2.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/2.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
-                      </div>
-                      <div class="partner-item lk-catalog__item lk-catalog__item--col-6">
-                        <a class="partner-item__img-box" href="partner.html">
-                          <div class="partner-item__img">
-                            <img src="img/lk/partners/1.jpg" alt="" />
-                          </div>
-                        </a>
-                        <a
-                          class="text text--iflex text--justify-start text--medium text--lh-14 text--link-no-line text--link-inherit partner-item__title" href="partner.html">
-                          <span class="text__clamp">АО "Торговый Дом "Перекресток”</span>
-                        </a>
-                        <a class="partner-item__info" href="partner.html">
-                          <div class="text text--4xs partner-item__location">Белгородская область, г. Белгород</div>
-                          <div class="partner-item__meta">
-                            <div class="text text--iflex text--4xs partner-item__rating">
-                              <span>4.8</span>
-                              <img class="text__icon text__icon--mx-xxs" src="img/icons/star-orange.svg" alt="" />
-                            </div>
-                          </div>
-                        </a>
-                        <div class="partner-item__btns">
-                          <button class="btn btn--px-xs btn--py-xxs btn--text-xs btn--gray-100 partner-item__btns-btn">Написать</button>
-                          <button class="btn btn--icon btn--icon-sm btn--blue-500 partner-item__btns-btn">
-                            <img src="img/icons/user-plus-white.svg" alt="" />
-                          </button>
-                        </div>
+                    <div class="certificate-info certificates__info-item">
+                      <img class="certificate-info__icon" src="img/icons/info-orange-400.svg" alt="">
+                      <div class="certificate-info__main">
+                        <p class="text text--3xs text--blue-700 text--lh-14">Вы можете добавить сертификат директора/ИП, а также сертификат сотрудника + МЧД (машиночитаемая доверенность)</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="lk-section-footer lk-catalog__footer">
-                    <div class="text text--4xs text--neutral-600 lk-section-footer__count">Показ 1 - 50 из 1 286</div>
-                    <div class="pagination lk-section-footer__pagination">
-                      <div class="pagination__list">
-                        <a class="pagination__link pagination__link--left" href="#">Назад</a>
-                        <a class="pagination__link" href="#">1</a>
-                        <a class="pagination__link" href="#">2</a>
-                        <span class="pagination__active" href="#">3</span>
-                        <a class="pagination__link" href="#">4</a>
-                        <a class="pagination__link" href="#">5</a>
-                        <a class="pagination__link" href="#">6</a>
-                        <a class="pagination__link pagination__link--right" href="#">Вперед</a>
+                    <div class="certificate-info certificates__info-item">
+                      <img class="certificate-info__icon" src="img/icons/info-orange-400.svg" alt="">
+                      <div class="certificate-info__main">
+                        <p class="text text--3xs text--blue-700 text--lh-14">Обращаем внимание, что на мобильных устройствах пока нет технической возможности использования ЭП</p>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="certificates lk__certificates">
+                  <div class="certificates__header">
+                    <div class="text text--semibold text--xs text--lh-16 text--upper certificates__title">Добавленные сертификаты ЭП</div>
+                  </div>
+                  <div class="lk-empty lk-empty--sm lk-empty--transparent certificates__empty">
+                    <img class="lk-empty__img" src="img/lk/subscribe-empty.svg" alt="" />
+                    <div class="text text--3xs text--medium text--lh-14 lk-empty__text lk-empty__text--mt-lg">Нет добавленных сертификатов ЭП</div>
+                    <button
+                      class="btn btn--iflex btn--blue-500 btn--px-xxs btn--py-3xs btn--text-xs lk-empty__btn lk-empty__btn--mt-lg js-open-popup" data-popup-name="add-certificate">
+                      <img class="btn__icon" src="img/icons/plus-white.svg" alt="" />
+                      <span>Добавить</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="lk__main-sidebar">
+                <ul class="lk-menu lk-menu--mobile-row lk__main-sidebar-menu">
+                  <li class="lk-menu__item">
+                    <a class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link" href="profile-data.html">
+                      <span class="lk-menu-link__text">Основные данные</span>
+                    </a>
+                  </li>
+                  <li class="lk-menu__item">
+                    <div class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu-link--inactive lk-menu__link">
+                      <span class="lk-menu-link__text">Реквизиты</span>
+                    </div>
+                  </li>
+                  <li class="lk-menu__item">
+                    <a
+                      class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link"
+                      href="profile-data-notifications.html">
+                      <span class="lk-menu-link__text">Уведомления</span>
+                    </a>
+                  </li>
+                  <li class="lk-menu__item">
+                    <div
+                      class="lk-menu-link lk-menu-link--active lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link">
+                      <span class="lk-menu-link__text">Сертификаты ЭП</span>
+                  </div>
+                  </li>
+                  <li class="lk-menu__item">
+                    <a class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link" href="profile-data-subscribe.html">
+                      <span class="lk-menu-link__text">Подписка на объявления</span>
+                    </a>
+                  </li>
+                  <li class="lk-menu__item">
+                    <div class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu-link--inactive lk-menu__link">
+                      <span class="lk-menu-link__text">Сотрудники</span>
+                    </div>
+                  </li>
+                  <li class="lk-menu__item">
+                    <div class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu-link--inactive lk-menu__link">
+                      <span class="lk-menu-link__text">Статистика</span>
+                    </div>
+                  </li>
+                  <li class="lk-menu__item">
+                    <a class="lk-menu-link lk-menu-link--lg lk-menu-link--active-blue-500 lk-menu__link" href="blacklist.html">
+                      <span class="lk-menu-link__text">Черный список</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -1029,11 +711,7 @@
           </div>
           <div class="messages-popup__btns">
             <button class="btn btn--py-sm btn--text-xs btn--white messages-popup__btn">Прочитать все</button>
-            <button
-              class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup"
-              data-popup-name="create-chat">
-              Создать чат
-            </button>
+            <button class="btn btn--py-sm btn--text-xs btn--blue-500 btn--color-white messages-popup__btn js-open-popup" data-popup-name="create-chat">Создать чат</button>
           </div>
           <div class="messages-popup__list" data-scrollbar>
             <button class="message-item messages-popup__item">
@@ -1667,9 +1345,7 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
-                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
-                  </div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1689,9 +1365,7 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
-                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
-                  </div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1711,9 +1385,7 @@
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
-                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">
-                    ООО "Длинное текстовое наименование организации для проверки отображения в блоках"
-                  </div>
+                  <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">ООО "Длинное текстовое наименование организации для проверки отображения в блоках"</div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
                 <button class="add-item add-list__item search-items__item">
@@ -1728,399 +1400,6 @@
                   <div class="text text--3xs text--lh-14 text--medium add-item__title search-items__text">АО "УК "Кузбассразрезуголь"</div>
                   <div class="text text--4xs text--lh-13 text--neutral-600 add-item__text search-items__text">Советская Гавань</div>
                 </button>
-              </div>
-            </div>
-            <button class="popup__close js-close-popup" type="button">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
-                  fill="#5D606F" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="popup__backdrop"></div>
-    </div>
-
-    <div class="popup popup--mobile-full" data-popup-name="groups-settings">
-      <div class="popup__body">
-        <div class="popup__dialog">
-          <div class="popup-content popup-content--mobile-full popup__content">
-            <div class="popup-content__header">
-              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
-                <span>Настройки групп</span>
-                <span class="count-circle count-circle--oval count-circle--oval--px-sm text__icon">34</span>
-              </div>
-            </div>
-            <div class="search-items">
-              <div class="search-items__header">
-                <div class="input search-items__input">
-                  <div class="input__main">
-                    <button class="input__left-btn" type="button">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M13.5835 13.5833L17.3335 17.3333"
-                          stroke="#5D606F"
-                          stroke-width="1.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round" />
-                        <path
-                          d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                          stroke="#5D606F"
-                          stroke-width="1.25"
-                          stroke-linejoin="round" />
-                      </svg>
-                    </button>
-                    <input
-                      class="input__field input__field--sm input__field--left-btn input__field--right-btn"
-                      type="text"
-                      placeholder="Поиск"
-                      name="search"
-                      autocomplete="off" />
-                    <button class="input__right-btn input__clear-field" type="button">
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                          fill="#9093A2" />
-                      </svg>
-                    </button>
-                  </div>
-                  <span class="text text--3xs text--lh-125 input__error"></span>
-                </div>
-              </div>
-              <div class="groups" data-scrollbar>
-                <div class="groups__main">
-                  <button class="link link--iflex link--blue-500 link--xs groups__add">
-                    <div class="icon link__icon">
-                      <img src="img/icons/plus-blue-500.svg" alt="" />
-                    </div>
-                    <span>Добавить группу</span>
-                  </button>
-                  <div class="groups__list">
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">
-                        Длинное наименование группы для проверки отображения информации в блоке
-                      </div>
-                      <div class="input group-item__input">
-                        <input
-                          class="input__field input__field--xxs"
-                          type="text"
-                          value="Длинное наименование группы для проверки отображения информации в блоке" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Металлолом</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Металлолом" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 1</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 1" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 2</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 2" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 3</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 3" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 4</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 4" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 5</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 5" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 6</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 7" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 7</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 7" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 8</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 8" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                    <div class="group-item groups__item search-items__item">
-                      <button class="group-item__btn group-item__btn--save">
-                        <img class="group-item__btn-icon" src="img/icons/check-green-400.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--edit">
-                        <img class="group-item__btn-icon" src="img/icons/edit-neutral-500.svg" alt="" />
-                      </button>
-                      <div class="text text--3xs text--lh-14 group-item__value search-items__text">Группа 9</div>
-                      <div class="input group-item__input">
-                        <input class="input__field input__field--xxs" type="text" value="Группа 9" />
-                      </div>
-                      <button class="group-item__btn group-item__btn--delete">
-                        <img class="group-item__btn-icon" src="img/icons/trash-orange-500.svg" alt="" />
-                      </button>
-                      <button class="group-item__btn group-item__btn--cancel">
-                        <img class="group-item__btn-icon group-item__btn-icon--sm" src="img/icons/exit-neutral-500.svg" alt="" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="popup__footer">
-              <div class="popup__footer-btns popup__footer-btns--ml-auto">
-                <button class="btn btn--gray-100 btn--text-xs popup__footer-btn js-close-popup" type="button">Отменить</button>
-                <button class="btn btn--blue-500 btn--color-white btn--text-xs popup__footer-btn">Сохранить</button>
-              </div>
-            </div>
-            <button class="popup__close js-close-popup" type="button">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
-                  fill="#5D606F" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="popup__backdrop"></div>
-    </div>
-
-    <div class="popup popup--mobile-full" data-popup-name="groups">
-      <div class="popup__body">
-        <div class="popup__dialog">
-          <div class="popup-content popup-content--mobile-full popup__content">
-            <div class="popup-content__header">
-              <div class="text text--iflex text--xxs text--upper text--lh-14 text--medium">
-                <span>Группы</span>
-              </div>
-            </div>
-            <div class="categories popup-content__categories">
-              <div class="input categories__search">
-                <div class="input__main">
-                  <button class="input__left-btn" type="button">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.5835 13.5833L17.3335 17.3333"
-                        stroke="#5D606F"
-                        stroke-width="1.25"
-                        stroke-linecap="round"
-                        stroke-linejoin="round" />
-                      <path
-                        d="M15.6665 8.16667C15.6665 4.02453 12.3086 0.666668 8.1665 0.666668C4.02437 0.666668 0.666504 4.02453 0.666504 8.16667C0.666504 12.3088 4.02437 15.6667 8.1665 15.6667C12.3086 15.6667 15.6665 12.3088 15.6665 8.16667Z"
-                        stroke="#5D606F"
-                        stroke-width="1.25"
-                        stroke-linejoin="round" />
-                    </svg>
-                  </button>
-                  <input
-                    class="input__field input__field--sm input__field--left-btn input__field--right-btn"
-                    type="text"
-                    placeholder="Поиск"
-                    name="search"
-                    autocomplete="off" />
-                  <button class="input__right-btn input__clear-field" type="button">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
-                        fill="#9093A2" />
-                    </svg>
-                  </button>
-                </div>
-                <span class="text text--3xs text--lh-125 input__error"></span>
-              </div>
-              <div class="categories__list categories__list-h-sm" data-scrollbar data-scrollbar-continue>
-                <div class="category categories__item">
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">
-                      Длинное наименование группы для проверки отображения информации в блоке
-                    </span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Металлолом</span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Чугун</span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Сталь</span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">
-                      Длинное наименование группы для проверки отображения информации в блоке
-                    </span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Металлолом</span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Чугун</span>
-                  </label>
-                  <label class="checkbox category__checkbox">
-                    <input class="checkbox__input" type="checkbox" />
-                    <span class="checkbox__switch"></span>
-                    <span class="text text--3xs checkbox__text">Сталь</span>
-                  </label>
-                </div>
-              </div>
-              <div class="categories__footer">
-                <button class="link link--blue-500 link--xs categories__footer-link">Сбросить</button>
-                <div class="categories__btns">
-                  <button class="btn btn--gray-100 btn--text-xs categories__btns-btn js-close-popup" type="button">Отменить</button>
-                  <button class="btn btn--blue-500 btn--color-white btn--text-xs categories__btns-btn">Применить</button>
-                </div>
               </div>
             </div>
             <button class="popup__close js-close-popup" type="button">
@@ -2403,6 +1682,126 @@
               </svg>
             </button>
           </div>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup" data-popup-name="attach-mchd">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <form class="popup-content popup-content--xxs popup__content js-form" action="#" autocomplete="off">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Прикрепление МЧД</div>
+            </div>
+            <div class="popup-content__main">
+              <div class="form">
+                <div class="form__main">
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="attach-attorney-number">Номер доверенности</label>
+                    <div class="input__main">
+                      <input
+                        class="input__field input__field--sm"
+                        id="attach-attorney-number"
+                        type="text"
+                        name="sender"
+                        value="b539f4a9-4e5f-4abb-bec6-aae430c254f2"
+                        data-validate="empty" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                  </div>
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="attach-principal-inn">ИНН доверителя</label>
+                    <div class="input__main">
+                      <input
+                        class="input__field input__field--sm"
+                        id="attach-principal-inn"
+                        type="text"
+                        name="sender"
+                        value="783000229341"
+                        data-validate="empty" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                  </div>
+                  <div class="input form__item">
+                    <label class="text text--3xs input__label" for="attach-representative-inn">ИНН представителя</label>
+                    <div class="input__main">
+                      <input
+                        class="input__field input__field--sm"
+                        id="attach-representative-inn"
+                        type="text"
+                        name="sender"
+                        value="783000229341"
+                        data-validate="empty" />
+                    </div>
+                    <span class="text text--4xs text--lh-125 input__error"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popup-content__footer">
+              <div class="popup-content__btns">
+                <button
+                  class="btn btn--gray-100 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-close-popup"
+                  type="button">
+                  Отменить
+                </button>
+                <button
+                  class="btn btn--blue-500 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-form-submit"
+                  data-disable-empty>
+                  Отправить
+                </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup__backdrop"></div>
+    </div>
+
+    <div class="popup" data-popup-name="add-certificate">
+      <div class="popup__body">
+        <div class="popup__dialog">
+          <form class="popup-content popup-content--xl popup__content" action="#" autocomplete="off">
+            <div class="popup-content__header">
+              <div class="text text--xxs text--upper text--lh-14 text--medium">Добавление сертификата ЭП</div>
+            </div>
+            <div class="popup-content__main">
+              <div class="lk-empty lk-empty--xs lk-empty--transparent certificates__empty">
+                <img class="lk-empty__img lk-empty__img--xl" src="img/lk/blacklist-empty.svg" alt="" />
+                <div class="text text--3xs text--medium text--lh-14 lk-empty__text lk-empty__text--mt-sm">Не найдено ЭП, проверьте подключение</div>
+              </div>
+            </div>
+            <div class="popup-content__footer">
+              <div class="popup-content__btns">
+                <button
+                  class="btn btn--gray-100 btn--text-xs popup-content__btns-btn popup-content__btns-btn--full js-close-popup"
+                  type="button">
+                  Отменить
+                </button>
+                <button
+                  class="btn btn--blue-500 btn--color-white btn--text-xs popup-content__btns-btn popup-content__btns-btn--full"
+                  data-disable-empty
+                  type="button">
+                  Повторить
+                </button>
+              </div>
+            </div>
+            <button class="popup__close js-close-popup" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0675 12.1829C13.1256 12.241 13.1717 12.3099 13.2031 12.3858C13.2345 12.4617 13.2507 12.543 13.2507 12.6251C13.2507 12.7072 13.2345 12.7885 13.2031 12.8644C13.1717 12.9403 13.1256 13.0092 13.0675 13.0673C13.0095 13.1254 12.9405 13.1714 12.8647 13.2029C12.7888 13.2343 12.7075 13.2505 12.6253 13.2505C12.5432 13.2505 12.4619 13.2343 12.386 13.2029C12.3102 13.1714 12.2412 13.1254 12.1832 13.0673L7.00035 7.8837L1.81754 13.0673C1.70026 13.1846 1.5412 13.2505 1.37535 13.2505C1.2095 13.2505 1.05044 13.1846 0.93316 13.0673C0.815885 12.95 0.75 12.791 0.75 12.6251C0.75 12.4593 0.815885 12.3002 0.93316 12.1829L6.11675 7.0001L0.93316 1.81729C0.815885 1.70002 0.75 1.54096 0.75 1.3751C0.75 1.20925 0.815885 1.05019 0.93316 0.932916C1.05044 0.81564 1.2095 0.749756 1.37535 0.749756C1.5412 0.749756 1.70026 0.81564 1.81754 0.932916L7.00035 6.11651L12.1832 0.932916C12.3004 0.81564 12.4595 0.749756 12.6253 0.749756C12.7912 0.749756 12.9503 0.81564 13.0675 0.932916C13.1848 1.05019 13.2507 1.20925 13.2507 1.3751C13.2507 1.54096 13.1848 1.70002 13.0675 1.81729L7.88394 7.0001L13.0675 12.1829Z"
+                  fill="#5D606F" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
       <div class="popup__backdrop"></div>

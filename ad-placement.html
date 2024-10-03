@@ -1208,7 +1208,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs text--iflex checkbox__text">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled">
                             <span>Скрыть количество участников</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -1221,7 +1221,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs text--iflex checkbox__text">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled">
                             <span>Участники видят цены друг друга</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -1234,7 +1234,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox checkbox--inactive offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs text--iflex checkbox__text">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled">
                             <span>Присвоить ранги предложениям</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -1243,7 +1243,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                               data-tippy-placement="bottom"
                               alt="" />
                           </span>
-                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--inactive">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled checkbox__text--inactive">
                             <span>Присвоить ранги предложениям</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -1256,7 +1256,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" checked />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs text--iflex checkbox__text">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled">
                             <span>Частичная подача предложений</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -1269,7 +1269,7 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
                         <label class="checkbox offer-main__checkbox">
                           <input class="checkbox__input" type="checkbox" />
                           <span class="checkbox__switch"></span>
-                          <span class="text text--3xs text--iflex checkbox__text">
+                          <span class="text text--3xs text--iflex checkbox__text checkbox__text--disabled">
                             <span>Эл. подпись</span>
                             <img
                               class="text__icon text__icon--mx-sm"
@@ -2478,9 +2478,18 @@ Lorem ipsum dolor sit amet consectetur. Ipsum non volutpat massa ut nunc. Dictum
             </div>
             <div class="filter-content popup-content__filter">
               <div class="filter-content__btns tabs-btns" data-tabs-name="alerts">
-                <label class="lk-menu-btn filter-content__btn tabs-btns__btn tabs-btns__btn--active">Все партнеры</label>
-                <label class="lk-menu-btn filter-content__btn tabs-btns__btn">Группы</label>
-                <label class="lk-menu-btn filter-content__btn tabs-btns__btn">E-mail</label>
+                <label class="lk-menu-btn filter-content__btn tabs-btns__btn tabs-btns__btn--active">
+                  <span>Все партнеры</span>
+                  <span class="count-circle count-circle--neutral-50 lk-menu-btn__count">9</span>
+                </label>
+                <label class="lk-menu-btn filter-content__btn tabs-btns__btn">
+                  <span>Группы</span>
+                  <span class="count-circle count-circle--neutral-50 lk-menu-btn__count">2</span>
+                </label>
+                <label class="lk-menu-btn filter-content__btn tabs-btns__btn">
+                  <span>E-mail</span>
+                  <span class="count-circle count-circle--neutral-50 lk-menu-btn__count">10</span>
+                </label>
               </div>
               <div class="filter-content__body">
                 <div class="filter-content__main">

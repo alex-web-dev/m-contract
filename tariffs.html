@@ -155,93 +155,75 @@
 
     <main class="main">
       <section class="tariffs main__tariffs">
-        <div class="tariffs__content">
-          <div class="tariffs__header">
-            <h1 class="title title--4 title--gray-200 title--medium title--spacing-10 tariffs__title">Тарифы для участников</h1>
+        <div class="container container--xxl container--px-0">
+          <div class="tariffs__content">
+            <div class="tariffs__header">
+              <h1 class="title title--4 title--gray-200 title--medium title--spacing-10 tariffs__title">Тарифы для участников</h1>
+            </div>
+            <div class="tariffs__list">
+              <a class="tariff-item tariffs__item" href="#">
+                <div class="tariff-item__content">
+                  <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Базовый минимальный</h2>
+                  <div class="text text--sm text--blue-750 tariff-item__price">
+                    <span class="tariff-item__price-value">119</span>
+                    ₽
+                    <span class="tariff-item__price-text">(119₽ / предложение)</span>
+                  </div>
+                  <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                    <img class="text__icon" src="img/icons/infinity.svg" alt="" />
+                    <span>Бессрочно</span>
+                  </div>
+                  <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                    В стоимость включено участие в одной процедуре в течение неограниченного периода времени с момента покупки тарифного плана
+                  </div>
+                  <div class="tariff-item__footer">
+                    <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                  </div>
+                </div>
+              </a>
+              <a class="tariff-item tariffs__item" href="#">
+                <div class="tariff-item__content">
+                  <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит минимальный</h2>
+                  <div class="text text--sm text--blue-750 tariff-item__price">
+                    <span class="tariff-item__price-value">610</span>
+                    ₽ / 30 дней
+                  </div>
+                  <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                    <img class="text__icon" src="img/icons/datetime.svg" alt="" />
+                    <span>30 дней</span>
+                  </div>
+                  <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                    В стоимость включено неограниченное количество участий в процедурах в течение 30 дней с момента покупки тарифного плана
+                  </div>
+                  <div class="tariff-item__footer">
+                    <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                  </div>
+                </div>
+              </a>
+              <a class="tariff-item tariff-item--active tariffs__item" href="#">
+                <div class="tariff-item__content">
+                  <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит оптимальный</h2>
+                  <div class="text text--sm text--blue-750 tariff-item__price">
+                    <span class="tariff-item__price-value">5 990</span>
+                    ₽
+                  </div>
+                  <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
+                    <img class="text__icon" src="img/icons/datetime.svg" alt="" />
+                    <span>1 год</span>
+                  </div>
+                  <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
+                    В стоимость включено неограниченное количество участий в процедурах в течение 1 года с момента покупки тарифного плана
+                  </div>
+                  <div class="tariff-item__footer">
+                    <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
+                  </div>
+                </div>
+                <img class="tariff-item__img" src="img/tariffs/img.svg" alt="" />
+                <span class="tariff-item__label">Выгодно</span>
+              </a>
+            </div>
+            <div class="text text--xs text--gray-200 tariffs__ps">*Организаторы процедур пользуются площадкой бесплатно</div>
           </div>
-          <div class="tariffs__list">
-            <a class="tariff-item tariffs__item" href="#">
-              <div class="tariff-item__content">
-                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Базовый минимальный</h2>
-                <div class="text text--sm text--blue-750 tariff-item__price">
-                  <span class="tariff-item__price-value">119</span>
-                  ₽
-                  <span class="tariff-item__price-text">(119₽ / предложение)</span>
-                </div>
-                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
-                  <img class="text__icon" src="img/icons/infinity.svg" alt="" />
-                  <span>Бессрочно</span>
-                </div>
-                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
-                  В стоимость включено участие в одной процедуре в течение неограниченного периода времени с момента покупки тарифного плана
-                </div>
-                <div class="tariff-item__footer">
-                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
-                </div>
-              </div>
-            </a>
-            <a class="tariff-item tariffs__item" href="#">
-              <div class="tariff-item__content">
-                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Базовый оптимальный</h2>
-                <div class="text text--sm text--blue-750 tariff-item__price">
-                  <span class="tariff-item__price-value">395</span>
-                  ₽
-                  <span class="tariff-item__price-text">(79₽ / предложение)</span>
-                </div>
-                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
-                  <img class="text__icon" src="img/icons/infinity.svg" alt="" />
-                  <span>Бессрочно</span>
-                </div>
-                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
-                  В стоимость включено участие в пяти процедурах в течение неограниченного периода времени с момента покупки тарифного плана
-                </div>
-                <div class="tariff-item__footer">
-                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
-                </div>
-              </div>
-            </a>
-            <a class="tariff-item tariffs__item" href="#">
-              <div class="tariff-item__content">
-                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит минимальный</h2>
-                <div class="text text--sm text--blue-750 tariff-item__price">
-                  <span class="tariff-item__price-value">610</span>
-                  ₽ / 30 дней
-                </div>
-                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
-                  <img class="text__icon" src="img/icons/datetime.svg" alt="" />
-                  <span>30 дней</span>
-                </div>
-                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
-                  В стоимость включено неограниченное количество участий в процедурах в течение 30 дней с момента покупки тарифного плана
-                </div>
-                <div class="tariff-item__footer">
-                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
-                </div>
-              </div>
-            </a>
-            <a class="tariff-item tariff-item--active tariffs__item" href="#">
-              <div class="tariff-item__content">
-                <h2 class="text text--upper text--sm text--blue-750 tariff-item__title">Безлимит оптимальный</h2>
-                <div class="text text--sm text--blue-750 tariff-item__price">
-                  <span class="tariff-item__price-value">5 990</span>
-                  ₽
-                </div>
-                <div class="text text--medium text--iflex text--blue-750 tariff-item__period">
-                  <img class="text__icon" src="img/icons/datetime.svg" alt="" />
-                  <span>1 год</span>
-                </div>
-                <div class="text text--xxs text--blue-750 text--lh-16 tariff-item__text">
-                  В стоимость включено неограниченное количество участий в процедурах в течение 1 года с момента покупки тарифного плана
-                </div>
-                <div class="tariff-item__footer">
-                  <div class="btn btn--border btn--upper btn--full btn--text-sm tariff-item__btn">Подключить</div>
-                </div>
-              </div>
-              <img class="tariff-item__img" src="img/tariffs/img.svg" alt="" />
-              <span class="tariff-item__label">Выгодно</span>
-            </a>
-          </div>
-          <div class="text text--xs text--gray-200 tariffs__ps">*Организаторы процедур пользуются площадкой бесплатно</div>
         </div>
       </section>
     </main>

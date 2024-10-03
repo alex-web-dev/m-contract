@@ -328,6 +328,10 @@ mark {
   font-size: 12px;
 }
 
+.text--3-5xs {
+  font-size: 13px;
+}
+
 .text--3xs {
   font-size: 14px;
 }
@@ -418,6 +422,10 @@ mark {
 
 .text--blue-600 {
   color: var(--color-blue-600);
+}
+
+.text--blue-700 {
+  color: var(--color-blue-700);
 }
 
 .text--blue-750 {
@@ -1929,6 +1937,15 @@ mark {
   margin-top: 2px;
 }
 
+.checkbox--neutral-400 .checkbox__input:checked ~ .checkbox__switch {
+  background-color: transparent;
+  border-color: var(--color-gray-400);
+}
+
+.checkbox--neutral-400 .checkbox__input:checked ~ .checkbox__switch:before {
+  background-image: url('../img/icons/check-neutral-400.svg');
+}
+
 .switch {
   display: flex;
   align-items: center;
@@ -2626,7 +2643,7 @@ div.scrollbar-thumb-x {
   position: absolute;
   top: calc(100% + 4px);
   right: 0;
-  z-index: 1;
+  z-index: 5;
   display: none;
 }
 
@@ -2753,6 +2770,12 @@ div.scrollbar-thumb-x {
 .icon--xxs {
   width: 14px;
   height: 14px;
+}
+
+.icon__img--full {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .icon__img--w-16 {
@@ -3017,15 +3040,22 @@ div.scrollbar-thumb-x {
   flex: 1 1 0%;
 }
 
-.air-datepicker-button.btn--blue-500:hover,
-.air-datepicker-button.btn--blue-500:focus {
-  background: var(--color-blue-500);
+.air-datepicker-button.btn--blue-500:hover {
+  background-color: var(--color-blue-600);
   color: var(--color-gray-200);
 }
 
-.air-datepicker-button.btn--gray-100:hover,
-.air-datepicker-button.btn--gray-100:focus {
-  background-color: var(--color-gray-100);
+.air-datepicker-button.btn--blue-500:active {
+  background-color: var(--color-blue-700);
+}
+
+.air-datepicker-button.btn--gray-100:hover {
+  background-color: var(--color-blue-50);
+  color: var(--color-blue-500);
+}
+
+.air-datepicker-button.btn--gray-100:active {
+  background-color: var(--color-blue-100);
   color: var(--color-blue-500);
 }
 
@@ -3126,21 +3156,18 @@ div.scrollbar-thumb-x {
 }
 
 .header__user-link {
+  padding: 0 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   flex: 0 0 auto;
+  border-left: 1px solid var(--color-gray-300);
   transition: background 0.3s;
 }
 
-.header__user-link:not(:first-child) {
-  margin-left: 30px;
-  border-left: 1px solid var(--color-gray-300);
-}
-
 .header__user-link--login {
-  width: 210px;
+  width: 122px;
 }
 
 .header__user-link--login:hover {
@@ -3154,10 +3181,6 @@ div.scrollbar-thumb-x {
 
 .header__user-link--login:hover svg {
   stroke: #fff;
-}
-
-.header__user-link--profile {
-  width: 154px;
 }
 
 .header__user-link--profile:hover {
@@ -3194,6 +3217,10 @@ div.scrollbar-thumb-x {
 }
 
 .main__full-section {
+  flex: 1 1 auto;
+}
+
+.main__tariffs {
   flex: 1 1 auto;
 }
 
@@ -3378,7 +3405,7 @@ div.scrollbar-thumb-x {
 .feature-item__title {
   position: relative;
   z-index: 1;
-  max-width: 250px;
+  max-width: 330px;
 }
 
 .feature-item__text {
@@ -4404,7 +4431,7 @@ div.scrollbar-thumb-x {
 
 .tariffs__item {
   margin: 24px 12px 0;
-  width: calc(25% - 24px);
+  width: calc(33.33% - 24px);
 }
 
 .tariffs__ps {
@@ -4753,7 +4780,18 @@ div.scrollbar-thumb-x {
 }
 
 .popup-content__sign-doc {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   border-top: 1px solid var(--color-neutral-100);
+}
+
+.popup-content__loader--lg {
+  min-height: 310px;
+}
+
+.popup-content__certificate-btns {
+  height: 310px;
 }
 
 .partner-popup {
@@ -5011,6 +5049,21 @@ label.lk-user__img-box {
   background-color: var(--color-gray-50);
   color: var(--color-blue-500);
   cursor: default;
+}
+
+.lk-menu-btn {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.lk-menu-btn__count {
+  margin-left: 8px;
+}
+
+.lk-menu-btn--active .lk-menu-btn__count,
+.lk-menu-btn.tabs-btns__btn--active .lk-menu-btn__count {
+  background-color: var(--color-blue-500);
+  color: #fff;
 }
 
 .count-circle {
@@ -5516,6 +5569,10 @@ label.lk-user__img-box {
   background-image: url("../img/icons/bookmark-orange-400.svg");
 }
 
+.lk__certificates:not(:first-child) {
+  margin-top: 20px;
+}
+
 .messages-popup {
   position: fixed;
   right: 0;
@@ -5732,6 +5789,10 @@ label.lk-user__img-box {
   padding-bottom: 2px;
 }
 
+.tag--xs {
+  padding: 0 4px;
+}
+
 .tag--py-lg {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -5822,6 +5883,22 @@ label.lk-user__img-box {
 
 .tag--contractconcluded .tag__text {
   color: var(--color-blue-500);
+}
+
+.tag--not-valid {
+  background-color: var(--color-gray-50);
+}
+
+.tag--not-valid .tag__text {
+  color: var(--color-neutral-500);
+}
+
+.tag--verification {
+  background-color: var(--color-orange-200);
+}
+
+.tag--verification .tag__text {
+  color: var(--color-orange-400);
 }
 
 .tag--gray-100 {
@@ -6365,6 +6442,10 @@ label.lk-user__img-box {
   height: 16px;
 }
 
+.profile-menu__link--justify-start {
+  justify-content: flex-start;
+}
+
 .profile-menu__count {
   margin-left: 10px;
 }
@@ -6586,12 +6667,40 @@ label.lk-user__img-box {
   border-radius: 4px;
 }
 
+.lk-empty--xs {
+  min-height: 310px;
+}
+
+.lk-empty--sm {
+  min-height: 400px;
+}
+
+.lk-empty__img--xl {
+  width: 196px;
+}
+
 .lk-empty__text {
   margin-top: 16px;
 }
 
+.lk-empty__text--mt-sm {
+  margin-top: 12px;
+}
+
+.lk-empty__text--mt-lg {
+  margin-top: 20px;
+}
+
 .lk-empty__btn {
   margin-top: 16px;
+}
+
+.lk-empty__btn--mt-lg {
+  margin-top: 20px;
+}
+
+.lk-empty--transparent {
+  background-color: transparent;
 }
 
 .table-payments__header {
@@ -7888,14 +7997,18 @@ span.pagination__link--right {
 
 .info__body {
   display: flex;
+  align-items: flex-start;
 }
 
 .info__sidebar {
-  position: fixed;
+  position: sticky;
   width: 321px;
   max-height: calc(100vh - 64px - 60px);
   display: flex;
+  top: calc(64px + 30px);
   flex-direction: column;
+  z-index: 2;
+  flex: 0 0 auto;
 }
 
 .info__sidebar-content {
@@ -7930,7 +8043,7 @@ span.pagination__link--right {
 
 .info__main {
   padding-top: 95px;
-  padding-left: 341px;
+  padding-left: 20px;
 }
 
 .info-text h1 {
@@ -9068,12 +9181,165 @@ span.pagination__link--right {
 .sign-doc__checkboxes {
   display: flex;
   flex-direction: column;
+  max-height: 220px;
 }
 
 .sign-doc__checkbox {
   padding: 12px;
+  display: flex;
 }
 
 .sign-doc__message {
   margin: 12px;
+}
+
+.certificate-info {
+  padding: 8px;
+  border-radius: 2px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.certificate-info__icon {
+  margin-right: 10px;
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+.certificate-item {
+  padding: 8px;
+  display: flex;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.certificate-item__left {
+  flex: 1 1 auto;
+}
+
+.certificate-item__text:not(:first-child) {
+  margin-top: 10px;
+}
+
+.certificate-item__text--sm {
+  font-size: 13px;
+}
+
+.certificate-item__files {
+  margin-top: -12px;
+  margin-left: -12px;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.certificate-item__file {
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.certificate-item__right {
+  display: flex;
+  flex-direction: column;
+  
+  flex: 0 0 auto;
+  text-align: right;
+  margin-left: 12px;
+}
+
+.certificate-item__right-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.certificate-item__right-header:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.certificate-item__right-footer {
+  margin-top: auto;
+}
+
+.certificate-item__delete {
+  margin-left: 12px;
+}
+
+.certificates__info-item:not(:first-child) {
+  margin-top: 4px;
+}
+
+.certificates__header {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.certificates__header-btn:not(:first-child) {
+  margin-left: 12px;
+}
+
+.certificates__item:not(:first-child) {
+  margin-top: 8px;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader__main {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-blue-200);
+  border-bottom-color: var(--color-blue-500);
+  border-radius: 50%;
+  animation: loaderRotation 0.8s linear infinite;
+}
+
+.loader__text {
+  margin-top: 10px;
+}
+
+@keyframes loaderRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.certificate-btn {
+  display: block;
+}
+
+.certificate-btn__input {
+  display: none;
+}
+
+.certificate-btn__main {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--color-gray-50);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.certificate-btn__text:not(:first-child) {
+  margin-top: 10px;
+}
+
+.certificate-btn__input:checked ~ .certificate-btn__main {
+  border-color: var(--color-blue-500);
+}
+
+.certificate-btns__btn:not(:first-child) {
+  margin-top: 8px;
 }

@@ -1335,8 +1335,6 @@ document.addEventListener("formSuccess", (e) => {
     $fieldFile?.setAttribute("disabled", "");
   });
 
-  console.log($form, $form.dataset);
-
   if ($form.dataset.successOpenPopup) {
     const $popup = document.querySelector(`[data-popup-name="${$form.dataset.successOpenPopup}"]`);
     console.log($popup);
@@ -1598,6 +1596,13 @@ const $dropdowns = document.querySelectorAll(".dropdown");
 $dropdowns.forEach(($dropdown) => {
   const $btn = $dropdown.querySelector(".dropdown__btn");
   $btn.addEventListener("click", (e) => dropdownBtnHandler($btn, $dropdown, e));
+
+  const $closeBtns = $dropdown.querySelectorAll('.js-close-dropdown');
+  $closeBtns.forEach($closeBtn => {
+    $closeBtn.addEventListener('click', () => {
+      $dropdown.classList.remove('dropdown--active');
+    });
+  });
 });
 
 window.addEventListener("click", (e) => {
@@ -1649,7 +1654,7 @@ const $categoriesItems = document.querySelectorAll(".category");
 $categoriesItems.forEach(($category) => {
   const $btn = $category.querySelector(".category__btn");
   $btn?.addEventListener("click", (e) => {
-    if (e.target.closest(".category__checkbox")) {
+    if (e.target.closest(".category__checkbox") || e.target.closest('.js-close-popup')) {
       return;
     }
 
@@ -1686,12 +1691,17 @@ $categoriesBoxes.forEach(($categoriesBox) => {
   });
 
   $categories.forEach(($category) => {
-    const $checkboxes = $category.querySelectorAll(".category__checkbox .checkbox__input");
-    $checkboxes.forEach(($checkbox) => {
-      $checkbox.addEventListener("change", (e) => {
+    const $checks = $category.querySelectorAll(".category__checkbox");
+    $checks.forEach(($check) => {
+      const $checkbox = $check.querySelector(".checkbox__input");
+      $checkbox?.addEventListener("change", (e) => {
         if ($checkbox.closest(".category__checkbox").classList.contains("js-update-select-group-field")) {
           e.stopPropagation();
           $checkbox.checked = false;
+        }
+
+        if ($categoriesBox.dataset.innerSelectable !== undefined) {
+          categoryInnerSelectableHandler($check);
         }
       });
     });
@@ -1732,6 +1742,99 @@ document.addEventListener("click", (event) => {
     toggleAllCheckboxes($category, $checkbox.checked);
   }
 });
+
+function categoryInnerSelectableHandler($check) {
+  const $checkbox = $check.querySelector('.checkbox__input');
+  const $thisCategory = $checkbox.closest(".category");
+  const $parentCheckedCategory = getParentCheckedCategory($thisCategory);
+
+  if ($parentCheckedCategory) {
+    const $parentCheckedCategoryChecks = $parentCheckedCategory.querySelectorAll(".category__checkbox");
+    $parentCheckedCategoryChecks.forEach(($checkItem) => {
+      $checkItem.classList.remove("checkbox--neutral-400");
+      $checkItem.querySelector(".checkbox__input").checked = false;
+
+      if ($check === $checkItem) $checkItem.querySelector(".checkbox__input").checked = true;
+    });
+  }
+
+  if ($parentCheckedCategory && $checkbox.checked) {
+    const $thisCategoryChecks = $thisCategory.querySelectorAll(".category__checkbox");
+    $thisCategoryChecks.forEach(($checkItem) => {
+      $checkItem.querySelector(".checkbox__input").checked = true;
+    });
+  }
+
+  const $btn = $checkbox.closest(".category__btn");
+  if (!$btn && isCategoryChecked($thisCategory)) {
+    const $thisCategoryChecks = $thisCategory.querySelectorAll(".category__checkbox");
+    $thisCategoryChecks.forEach(($checkItem) => {
+      $checkItem.classList.remove("checkbox--neutral-400");
+      $checkItem.querySelector(".checkbox__input").checked = false;
+    });
+    $checkbox.checked = true;
+  }
+
+  if (!$btn) {
+    return;
+  }
+
+  const $subChecks = $thisCategory.querySelectorAll(".category__checkbox");
+  $subChecks.forEach(($subCheck) => {
+    if ($subCheck === $check) return;
+
+    const $subCheckbox = $subCheck.querySelector(".checkbox__input");
+    $subCheckbox.checked = $checkbox.checked;
+
+    if ($checkbox.checked) {
+      $subCheck.classList.add("checkbox--neutral-400");
+    } else {
+      $subCheck.classList.remove("checkbox--neutral-400");
+    }
+  });
+}
+
+function getParentCheckedCategory($category) {
+  let $parentCategory = $category.parentNode.closest(".category");
+  let $resultCategory = null;
+
+  while ($parentCategory) {
+    const parentCheckbox = $parentCategory.querySelector(":scope > .category__btn .category__checkbox .checkbox__input:checked");
+
+    if (parentCheckbox) {
+      $resultCategory = $parentCategory;
+    }
+
+    $parentCategory = $parentCategory.parentNode.closest(".category");
+  }
+
+  return $resultCategory;
+}
+
+function isParentCategoryChecked($category) {
+  let $parentCategory = $category.parentNode.closest(".category");
+
+  while ($parentCategory) {
+    const parentCheckbox = $parentCategory.querySelector(":scope > .category__btn .category__checkbox .checkbox__input:checked");
+
+    if (parentCheckbox) {
+      return true;
+    }
+
+    $parentCategory = $parentCategory.parentNode.closest(".category");
+  }
+
+  return false;
+}
+
+function isCategoryChecked($category) {
+  const $checkbox = $category.querySelector(":scope > .category__btn .category__checkbox .checkbox__input:checked");
+  if ($checkbox) {
+    return true;
+  }
+
+  return false;
+}
 
 function updateSelectAllState($category) {
   const $btn = [...$category.children].find((child) => child.matches(".category__btn"));
@@ -2047,7 +2150,7 @@ $tippyBoxes.forEach(($tippyBox) => {
   const allowHTML = $tippyBox.dataset.tippyHtml !== undefined;
   tippy($tippyBox, {
     maxWidth,
-    allowHTML
+    allowHTML,
   });
 });
 
@@ -2521,7 +2624,11 @@ $datepickerInputs.forEach(($datepickerInput) => {
   });
 
   window.addEventListener("click", (e) => {
-    if (e.target.dataset.datepicker === "" || e.target.closest("[data-datepicker]") || e.target.closest('.popup[data-popup-name="custom"]')) {
+    if (
+      e.target.dataset.datepicker === "" ||
+      e.target.closest("[data-datepicker]") ||
+      e.target.closest('.popup[data-popup-name="custom"]')
+    ) {
       return;
     }
 
@@ -2586,7 +2693,7 @@ function updateDatepickerValue(picker, $datepickerInput) {
   if (roundedMinutes > 55) {
     roundedMinutes = 55;
   }
-  
+
   const selectedDates = picker.selectedDates;
   if (selectedDates.length === 0) selectedDates.push(new Date());
 
@@ -2930,22 +3037,29 @@ $catalogFilters.forEach(($catalogFilter) => {
 
     $checkboxes.forEach(($checkbox) => {
       $checkbox.addEventListener("change", () => {
-        // Количество выбранных чекбоксов
-        const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
-          return $checkbox.checked ? accumulator + 1 : accumulator;
-        }, 0);
+        requestAnimationFrame(() => {
+          // Количество выбранных чекбоксов
+          const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+            const $check = $checkbox.closest(".checkbox");
+            if ($check.classList.contains("checkbox--neutral-400")) {
+              return accumulator;
+            }
 
-        const $tabBtnCount = $tabBtn.querySelector(".count-circle");
-        $tabBtnCount.innerText = checkedCount;
-        if (checkedCount !== 0) {
-          // Если выбрано чекбоксов 0 - скрываем кнопку крестика и счетчик выбранных чекбоксов у кнопки таба
-          $tabBtn.classList.add("filter-content__sidebar-btn--selected");
-        } else {
-          // Иначе отображаем счетчик и кнопку очистки
-          $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
-        }
+            return $checkbox.checked ? accumulator + 1 : accumulator;
+          }, 0);
 
-        updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+          const $tabBtnCount = $tabBtn.querySelector(".count-circle");
+          $tabBtnCount.innerText = checkedCount;
+          if (checkedCount !== 0) {
+            // Если выбрано чекбоксов 0 - скрываем кнопку крестика и счетчик выбранных чекбоксов у кнопки таба
+            $tabBtn.classList.add("filter-content__sidebar-btn--selected");
+          } else {
+            // Иначе отображаем счетчик и кнопку очистки
+            $tabBtn.classList.remove("filter-content__sidebar-btn--selected");
+          }
+
+          updateFilterGlobalCount(checkboxConfigs, $catalogFilter, $filterGlobalCount);
+        });
       });
     });
 
@@ -3152,6 +3266,11 @@ function updateFilter($catalogFilter, checkboxConfigs, $filterGlobalCount) {
 
     // Количество выбранных чекбоксов
     const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+      const $check = $checkbox.closest(".checkbox");
+      if ($check.classList.contains("checkbox--neutral-400")) {
+        return accumulator;
+      }
+
       return $checkbox.checked ? accumulator + 1 : accumulator;
     }, 0);
 
@@ -3186,6 +3305,11 @@ function getFilterGlobalCount(checkboxConfigs, $catalogFilter) {
 
     const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
     const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
+      const $check = $checkbox.closest(".checkbox");
+      if ($check.classList.contains("checkbox--neutral-400")) {
+        return accumulator;
+      }
+
       return $checkbox.checked ? accumulator + 1 : accumulator;
     }, 0);
     count += checkedCount;
@@ -3409,12 +3533,12 @@ if ($tablePlacement) {
 
 function addItemToAdPlacementTable($table, $originalTr, clearGroupFields = false) {
   const $tbody = $tablePlacement.querySelector("tbody");
-  const $tableRows = $table.querySelectorAll('tbody tr');
+  const $tableRows = $table.querySelectorAll("tbody tr");
   const $lastRow = $tableRows[$tableRows.length - 1];
   if (!$originalTr) $originalTr = $lastRow;
 
   const $tr = $originalTr.cloneNode(true);
-  
+
   $tr.classList.remove("table-price__prototype");
 
   const $allRows = $table.querySelectorAll("tbody tr:not(.table-price__prototype)");
@@ -3452,21 +3576,21 @@ function addItemToAdPlacementTable($table, $originalTr, clearGroupFields = false
   const $inputCountField = $inputCount.querySelector(".input__field");
   $inputCountField.dataset.validate = "empty";
   $inputCountField.dataset.mask = "num";
-  $inputCountField.value = '';
+  $inputCountField.value = "";
   addAllHandlersToInput($inputCount, $form);
   imaskInputHandler($inputCountField);
 
   const $inputPriceOne = $tr.querySelector(".table-price__input--price-one");
   const $inputPriceOneField = $inputPriceOne.querySelector(".input__field");
   $inputPriceOneField.dataset.mask = "num";
-  $inputPriceOneField.value = '';
+  $inputPriceOneField.value = "";
   addAllHandlersToInput($inputPriceOne, $form);
   imaskInputHandler($inputPriceOneField);
 
   const $selectFields = $tr.querySelectorAll(".select__field");
   $selectFields.forEach(($selectField, index) => {
-    $selectField.value = $originalTr.querySelectorAll('.select__field')[index].value;
-    
+    $selectField.value = $originalTr.querySelectorAll(".select__field")[index].value;
+
     $selectField.dataset.validate = "empty";
     initializeCustomSelect($selectField);
   });
@@ -3485,9 +3609,9 @@ function addItemToAdPlacementTable($table, $originalTr, clearGroupFields = false
   });
 
   if (clearGroupFields) {
-    $addBtn.classList.remove('select-group__add--active');
-    $groupSelectFirstField.value = '';
-    $groupSelectSecondField.value = '';
+    $addBtn.classList.remove("select-group__add--active");
+    $groupSelectFirstField.value = "";
+    $groupSelectSecondField.value = "";
   }
 
   const $deleteBtn = $tr.querySelector(".table-price__delete");
@@ -3752,21 +3876,17 @@ $selectAllCheckboxesBtns.forEach(($btn) => {
 });
 
 /* Checkboxes */
-const $checkboxesInactive = document.querySelectorAll('.checkbox--inactive');
-$checkboxesInactive.forEach($checkboxInactive => {
-  const $input = $checkboxInactive.querySelector('.checkbox__input');
-  $input.addEventListener('click', (e) => {
+const $checkboxes = document.querySelectorAll('.checkbox');
+$checkboxes.forEach($checkbox => {
+  const $input = $checkbox.querySelector(".checkbox__input");
+  $input?.addEventListener("click", (e) => {
+    if ($checkbox.classList.contains('checkbox--inactive')) {
+      e.preventDefault();
+    }
+  });
+
+  const $disabledText = $checkbox.querySelector('.checkbox__text--disabled');
+  $disabledText?.addEventListener('click', (e) => {
     e.preventDefault();
   });
-})
-
-/* Пример добавления события для определенного поля ввода */
-const $activeUntilDateInput = document.getElementById('ad-active-until-date');
-$activeUntilDateInput.onDateSelect = (picker) => {
-  const formattedDates = picker.selectedDates.map((date) => {
-    return picker.formatDate(date, `${picker.opts.dateFormat}`);
-  });
-  const $timeInput = picker.$datepicker.querySelector(".datepicker-time__field");
-
-  console.log(formattedDates[0], $timeInput.value);
-}
+});
