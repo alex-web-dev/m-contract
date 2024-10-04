@@ -336,6 +336,11 @@ $textareas.forEach(($textarea) => {
 });
 
 function textareaSizeHandler($textarea) {
+  if ($textarea.dataset.resizeMobile !== undefined && window.innerWidth > 767) {
+    $textarea.style.height = '';
+    return;
+  }
+
   const minHeight = $textarea.dataset.minHeight ? +$textarea.dataset.minHeight : 86;
   $textarea.style.height = `${minHeight}px`;
 
@@ -1597,10 +1602,10 @@ $dropdowns.forEach(($dropdown) => {
   const $btn = $dropdown.querySelector(".dropdown__btn");
   $btn.addEventListener("click", (e) => dropdownBtnHandler($btn, $dropdown, e));
 
-  const $closeBtns = $dropdown.querySelectorAll('.js-close-dropdown');
-  $closeBtns.forEach($closeBtn => {
-    $closeBtn.addEventListener('click', () => {
-      $dropdown.classList.remove('dropdown--active');
+  const $closeBtns = $dropdown.querySelectorAll(".js-close-dropdown");
+  $closeBtns.forEach(($closeBtn) => {
+    $closeBtn.addEventListener("click", () => {
+      $dropdown.classList.remove("dropdown--active");
     });
   });
 });
@@ -1654,7 +1659,7 @@ const $categoriesItems = document.querySelectorAll(".category");
 $categoriesItems.forEach(($category) => {
   const $btn = $category.querySelector(".category__btn");
   $btn?.addEventListener("click", (e) => {
-    if (e.target.closest(".category__checkbox") || e.target.closest('.js-close-popup')) {
+    if (e.target.closest(".category__checkbox") || e.target.closest(".js-close-popup")) {
       return;
     }
 
@@ -1720,15 +1725,15 @@ $categoriesBoxes.forEach(($categoriesBox) => {
     });
   });
 
-  $categoriesBox.addEventListener('click', (e) => {
-    if (e.target.closest('.js-update-select-group-field')) {
-      const $btn = e.target.closest('.js-update-select-group-field');
+  $categoriesBox.addEventListener("click", (e) => {
+    if (e.target.closest(".js-update-select-group-field")) {
+      const $btn = e.target.closest(".js-update-select-group-field");
       updateSelectGroupFieldHandler($btn);
     }
 
-    if (e.target.closest('.js-close-popup')) {
-      const popupName = e.target.closest('.js-close-popup').dataset.popupName;
-      const $popup = document.querySelector(`.popup[data-popup-name="${popupName}"`);      
+    if (e.target.closest(".js-close-popup")) {
+      const popupName = e.target.closest(".js-close-popup").dataset.popupName;
+      const $popup = document.querySelector(`.popup[data-popup-name="${popupName}"`);
       closePopup($popup);
     }
   });
@@ -1744,7 +1749,7 @@ document.addEventListener("click", (event) => {
 });
 
 function categoryInnerSelectableHandler($check) {
-  const $checkbox = $check.querySelector('.checkbox__input');
+  const $checkbox = $check.querySelector(".checkbox__input");
   const $thisCategory = $checkbox.closest(".category");
   const $parentCheckedCategory = getParentCheckedCategory($thisCategory);
 
@@ -3040,11 +3045,6 @@ $catalogFilters.forEach(($catalogFilter) => {
         requestAnimationFrame(() => {
           // Количество выбранных чекбоксов
           const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
-            const $check = $checkbox.closest(".checkbox");
-            if ($check.classList.contains("checkbox--neutral-400")) {
-              return accumulator;
-            }
-
             return $checkbox.checked ? accumulator + 1 : accumulator;
           }, 0);
 
@@ -3266,11 +3266,6 @@ function updateFilter($catalogFilter, checkboxConfigs, $filterGlobalCount) {
 
     // Количество выбранных чекбоксов
     const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
-      const $check = $checkbox.closest(".checkbox");
-      if ($check.classList.contains("checkbox--neutral-400")) {
-        return accumulator;
-      }
-
       return $checkbox.checked ? accumulator + 1 : accumulator;
     }, 0);
 
@@ -3305,11 +3300,6 @@ function getFilterGlobalCount(checkboxConfigs, $catalogFilter) {
 
     const $checkboxesNotAll = $section.querySelectorAll(`.filter-content__checkbox .checkbox__input:not(.category__check-all)`);
     const checkedCount = [...$checkboxesNotAll].reduce((accumulator, $checkbox) => {
-      const $check = $checkbox.closest(".checkbox");
-      if ($check.classList.contains("checkbox--neutral-400")) {
-        return accumulator;
-      }
-
       return $checkbox.checked ? accumulator + 1 : accumulator;
     }, 0);
     count += checkedCount;
@@ -3339,6 +3329,20 @@ function updateFilterSave(save, $catalogFilter, checkboxConfigs) {
         $checkbox.checked = false;
       }
     });
+
+    if ($section.dataset.innerSelectable !== undefined) {
+      const $checks = $section.querySelectorAll(".category__checkbox");
+      $checks.forEach(($check) => {
+        const $checkbox = $check.querySelector(".checkbox__input");
+        const $thisCategory = $check.closest(".category");
+        const $btn = $checkbox.closest(".category__btn");
+        if (($checkbox.checked && getParentCheckedCategory($thisCategory)) || (!$btn && isCategoryChecked($thisCategory))) {
+          $check.classList.add("checkbox--neutral-400");
+        } else {
+          $check.classList.remove("checkbox--neutral-400");
+        }
+      });
+    }
 
     const $categoriesItems = $section.querySelectorAll(".category");
     $categoriesItems.forEach(($category) => {
@@ -3876,17 +3880,17 @@ $selectAllCheckboxesBtns.forEach(($btn) => {
 });
 
 /* Checkboxes */
-const $checkboxes = document.querySelectorAll('.checkbox');
-$checkboxes.forEach($checkbox => {
+const $checkboxes = document.querySelectorAll(".checkbox");
+$checkboxes.forEach(($checkbox) => {
   const $input = $checkbox.querySelector(".checkbox__input");
   $input?.addEventListener("click", (e) => {
-    if ($checkbox.classList.contains('checkbox--inactive')) {
+    if ($checkbox.classList.contains("checkbox--inactive")) {
       e.preventDefault();
     }
   });
 
-  const $disabledText = $checkbox.querySelector('.checkbox__text--disabled');
-  $disabledText?.addEventListener('click', (e) => {
+  const $disabledText = $checkbox.querySelector(".checkbox__text--disabled");
+  $disabledText?.addEventListener("click", (e) => {
     e.preventDefault();
   });
 });

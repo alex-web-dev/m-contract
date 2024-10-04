@@ -1184,10 +1184,6 @@ mark {
   overflow: hidden;
 }
 
-.input__field--area[data-min-height] {
-  height: auto;
-}
-
 .input__field--area-sm {
   padding-top: 10.5px;
   padding-bottom: 10.5px;
@@ -4583,7 +4579,7 @@ div.scrollbar-thumb-x {
 }
 
 .popup__footer-filter-btns {
-  width: 260px;
+  width: 275px;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -8816,7 +8812,7 @@ span.pagination__link--right {
 
 .filter-content__sidebar {
   flex: 0 0 auto;
-  width: 260px;
+  width: 275px;
   border-right: 1px solid var(--color-neutral-100);
 }
 

@@ -128,10 +128,11 @@
             </button>
           </div>
           <div class="header__user">
-            <a
-              class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link js-open-popup"
-              href="#"
-              data-popup-name="ad-placement">
+            <a class="link link--iflex link--medium link--upper link--spacing-10 header__user-link header__user-link--callback" href="#">
+              <img class="link__icon link__icon--mx-lg" src="img/icons/chat-multiple-second.svg" alt="">
+              <span>Обратная связь</span>
+            </a>
+            <a class="link link--iflex link--medium link--primary-dark link--line link--upper link--spacing-5 header__user-link js-open-popup" href="#" data-popup-name="ad-placement">
               Разместить объявление
             </a>
             <div class="dropdown header__user-link header__user-link--profile">
@@ -392,7 +393,8 @@
                                   type="text"
                                   name="location-full"
                                   maxlength="150"
-                                  data-no-resize
+                                  data-min-height="44"
+                                  data-resize-mobile
                                   data-validate="empty">
 Проспект Коммунистический, 60 к1</textarea
                                 >
